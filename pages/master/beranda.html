@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+
+    <link
+      rel="shortcut icon"
+      href="/assets/compiled/svg/favicon.svg"
+      type="image/x-icon"
+    />
+    <link
+      rel="shortcut icon"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAYAAADRcLDBAAAEs2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249IjMzIgogICBleGlmOlBpeGVsWURpbWVuc2lvbj0iMzQiCiAgIGV4aWY6Q29sb3JTcGFjZT0iMSIKICAgdGlmZjpJbWFnZVdpZHRoPSIzMyIKICAgdGlmZjpJbWFnZUxlbmd0aD0iMzQiCiAgIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiCiAgIHRpZmY6WFJlc29sdXRpb249Ijk2LjAiCiAgIHRpZmY6WVJlc29sdXRpb249Ijk2LjAiCiAgIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiCiAgIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiCiAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJwcm9kdWNlZCIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWZmaW5pdHkgRGVzaWduZXIgMS4xMC4xIgogICAgICBzdEV2dDp3aGVuPSIyMDIyLTAzLTMxVDEwOjUwOjIzKzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz5V57uAAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rRFEUxz9maORHo1hYKC9hISNGTWwsRn4VFmOUX5uZZ36oeTOv954kW2WrKLHxa8FfwFZZK0WkZClrYoOe87ypmWTO7dzzud97z+nec8ETzaiaWd4NWtYyIiNhZWZ2TvE946WZSjqoj6mmPjE1HKWkfdxR5sSbgFOr9Ll/rXoxYapQVik8oOqGJTwqPL5i6Q5vCzeo6dii8KlwpyEXFL519LjLLw6nXP5y2IhGBsFTJ6ykijhexGra0ITl5bRqmWU1fx/nJTWJ7PSUxBbxJkwijBBGYYwhBgnRQ7/MIQIE6ZIVJfK7f/MnyUmuKrPOKgZLpEhj0SnqslRPSEyKnpCRYdXp/9++msneoFu9JgwVT7b91ga+LfjetO3PQ9v+PgLvI1xkC/m5A+h7F32zoLXug38dzi4LWnwHzjeg8UGPGbFfySvuSSbh9QRqZ6H+Gqrm3Z7l9zm+h+iafNUV7O5Bu5z3L/wAdthn7QIme0YAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJTSURBVFiF7Zi9axRBGIefEw2IdxFBRQsLWUTBaywSK4ubdSGVIY1Y6HZql8ZKCGIqwX/AYLmCgVQKfiDn7jZeEQMWfsSAHAiKqPiB5mIgELWYOW5vzc3O7niHhT/YZvY37/swM/vOzJbIqVq9uQ04CYwCI8AhYAlYAB4Dc7HnrOSJWcoJcBS4ARzQ2F4BZ2LPmTeNuykHwEWgkQGAet9QfiMZjUSt3hwD7psGTWgs9pwH1hC1enMYeA7sKwDxBqjGnvNdZzKZjqmCAKh+U1kmEwi3IEBbIsugnY5avTkEtIAtFhBrQCX2nLVehqyRqFoCAAwBh3WGLAhbgCRIYYinwLolwLqKUwwi9pxV4KUlxKKKUwxC6ZElRCPLYAJxGfhSEOCz6m8HEXvOB2CyIMSk6m8HoXQTmMkJcA2YNTHm3congOvATo3tE3A29pxbpnFzQSiQPcB55IFmFNgFfEQeahaAGZMpsIJIAZWAHcDX2HN+2cT6r39GxmvC9aPNwH5gO1BOPFuBVWAZue0vA9+A12EgjPadnhCuH1WAE8ivYAQ4ohKaagV4gvxi5oG7YSA2vApsCOH60WngKrA3R9IsvQUuhIGY00K4flQG7gHH/mLytB4C42EgfrQb0mV7us8AAMeBS8mGNMR4nwHamtBB7B4QRNdaS0M8GxDEog7iyoAguvJ0QYSBuAOcAt71Kfl7wA8DcTvZ2KtOlJEr+ByyQtqqhTyHTIeB+ONeqi3brh+VgIN0fohUgWGggizZFTplu12yW8iy/YLOGWMpDMTPXnl+Az9vj2HERYqPAAAAAElFTkSuQmCC"
+      type="image/png"
+    />
+
+
+    <link rel="stylesheet" href="/assets/compiled/css/app.css" />
+    <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
+    <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
+
+    <link rel="stylesheet" href="/assets/extensions/simple-datatables/style.css">
+    <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css">
+
+    <style>
+      .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            position: relative;
+        }
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: yellow;
+            transition: width 0.3s ease-in-out;
+        }
+        .navbar a:hover::after {
+            width: 100%;
+        }
+    </style>
+  
+  </head>
+
+  <body>
+    <script src="/assets/static/js/initTheme.js"></script>
+    <div id="app">
+      
+      <div id="main" class="layout-horizontal">
+        <header class="">
+          <!-- <div class="header-top"  style="background-color: #132144;"> -->
+           
+          
+
+              <nav class="navbar navbar-expand-lg " style="background-color: #132144;">
+                <div class="container-fluid">
+                  <div class="logo">
+                    <a href="index.html" class="menu-link" >
+                        <span class=""><img src="/assets/compiled/svg/logoATR.svg" alt="" height="46" width="135">
+                        </span>
+                    </a>
+                  </div>
+
+                 
+                  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav ">
+                     <li class="nav-item">
+                          <a class="nav-link text-white me-2" aria-current="page" href="beranda.html"><i class="me-2"><img src="/assets/compiled/svg/iconDashboard.svg" alt="" height="20" width="20"></i>Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link text-white me-2" aria-current="page" href="kiosk.html"><i class="me-2"><img src="/assets/compiled/svg/iconMaster.svg" alt="" height="20" width="20"></i>Master Kiosk</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconReport.svg" alt="" height="20" width="20"></i>Report</span>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Error Log</a></li>
+                            <li><a class="dropdown-item" href="#">Transaksi</a></li>
+                            <li><a class="dropdown-item" href="#">Kertas & Toner</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+              
+                 
+              
+                
+             
+       
+               
+          <!-- </div> -->
+        </header>
+          <div class="container-fluid">
+            
+            <div class col-12>
+              <div class="ratio ratio-16x9">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16328182.696144234!2d107.22117646647732!3d-2.3813555440085796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sen!2sid!4v1716265382869!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            </div>
+                                    
+                                        
+                                            <!-- Google Maps Embed -->
+                                            
+                                       
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-1">
+
+                    </div>
+                    <div class="col-10 mt-5">
+                      <!-- <section class="section" style="align-self: center;"> -->
+                        <div class="card border">
+                            <div class="card-header">
+                                <h5 class="card-title">
+                                    Simple Datatable
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="table1">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>City</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Graiden</td>
+                                            <td>vehicula.aliquet@semconsequat.co.uk</td>
+                                            <td>076 4820 8838</td>
+                                            <td>Offenburg</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dale</td>
+                                            <td>fringilla.euismod.enim@quam.ca</td>
+                                            <td>0500 527693</td>
+                                            <td>New Quay</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Nathaniel</td>
+                                            <td>mi.Duis@diam.edu</td>
+                                            <td>(012165) 76278</td>
+                                            <td>Grumo Appula</td>
+                                            <td>
+                                                <span class="badge bg-danger">Inactive</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Darius</td>
+                                            <td>velit@nec.com</td>
+                                            <td>0309 690 7871</td>
+                                            <td>Ways</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Oleg</td>
+                                            <td>rhoncus.id@Aliquamauctorvelit.net</td>
+                                            <td>0500 441046</td>
+                                            <td>Rossignol</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kermit</td>
+                                            <td>diam.Sed.diam@anteVivamusnon.org</td>
+                                            <td>(01653) 27844</td>
+                                            <td>Patna</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jermaine</td>
+                                            <td>sodales@nuncsit.org</td>
+                                            <td>0800 528324</td>
+                                            <td>Mold</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ferdinand</td>
+                                            <td>gravida.molestie@tinciduntadipiscing.org</td>
+                                            <td>(016977) 4107</td>
+                                            <td>Marlborough</td>
+                                            <td>
+                                                <span class="badge bg-danger">Inactive</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kuame</td>
+                                            <td>Quisque.purus@mauris.org</td>
+                                            <td>(0151) 561 8896</td>
+                                            <td>Tresigallo</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Deacon</td>
+                                            <td>Duis.a.mi@sociisnatoquepenatibus.com</td>
+                                            <td>07740 599321</td>
+                                            <td>Karapınar</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Channing</td>
+                                            <td>tempor.bibendum.Donec@ornarelectusante.ca</td>
+                                            <td>0845 46 49</td>
+                                            <td>Warrnambool</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Aladdin</td>
+                                            <td>sem.ut@pellentesqueafacilisis.ca</td>
+                                            <td>0800 1111</td>
+                                            <td>Bothey</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cruz</td>
+                                            <td>non@quisturpisvitae.ca</td>
+                                            <td>07624 944915</td>
+                                            <td>Shikarpur</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Keegan</td>
+                                            <td>molestie.dapibus@condimentumDonecat.edu</td>
+                                            <td>0800 200103</td>
+                                            <td>Assen</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ray</td>
+                                            <td>placerat.eget@sagittislobortis.edu</td>
+                                            <td>(0112) 896 6829</td>
+                                            <td>Hofors</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Maxwell</td>
+                                            <td>diam@dapibus.org</td>
+                                            <td>0334 836 4028</td>
+                                            <td>Thane</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Carter</td>
+                                            <td>urna.justo.faucibus@orci.com</td>
+                                            <td>07079 826350</td>
+                                            <td>Biez</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Stone</td>
+                                            <td>velit.Aliquam.nisl@sitametrisus.com</td>
+                                            <td>0800 1111</td>
+                                            <td>Olivar</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Berk</td>
+                                            <td>fringilla.porttitor.vulputate@taciti.edu</td>
+                                            <td>(0101) 043 2822</td>
+                                            <td>Sanquhar</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Philip</td>
+                                            <td>turpis@euenimEtiam.org</td>
+                                            <td>0500 571108</td>
+                                            <td>Okara</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Kibo</td>
+                                            <td>feugiat@urnajustofaucibus.co.uk</td>
+                                            <td>07624 682306</td>
+                                            <td>La Cisterna</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bruno</td>
+                                            <td>elit.Etiam.laoreet@luctuslobortisClass.edu</td>
+                                            <td>07624 869434</td>
+                                            <td>Rocca d"Arce</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leonard</td>
+                                            <td>blandit.enim.consequat@mollislectuspede.net</td>
+                                            <td>0800 1111</td>
+                                            <td>Lobbes</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hamilton</td>
+                                            <td>mauris@diam.org</td>
+                                            <td>0800 256 8788</td>
+                                            <td>Sanzeno</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Harding</td>
+                                            <td>Lorem.ipsum.dolor@etnetuset.com</td>
+                                            <td>0800 1111</td>
+                                            <td>Obaix</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Emmanuel</td>
+                                            <td>eget.lacus.Mauris@feugiatSednec.org</td>
+                                            <td>(016977) 8208</td>
+                                            <td>Saint-Remy-Geest</td>
+                                            <td>
+                                                <span class="badge bg-success">Active</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                
+                    </section>
+  
+                    </div>
+                    <div class="col-1">
+
+                    </div>
+  
+
+                  </div>
+
+
+                  
+
+                 
+
+                  <!-- Fullscreen Modal -->
+                    <div class="modal modal-fullscreen" id="fullscreenModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-fullscreen" id="modal-detail">
+                        <div class="modal-content modal-content-fullscreen ">
+                          <div class="modal-header" style="background:linear-gradient(#0052D4, #4364F7, #6FB1FC); color: #FFFFFF;">
+                            <h5 class="modal-title text-white" id="exampleModalLabel">Kebaktian Minggu 1</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div id="modalDetail">
+                              <div class="card border">
+                              
+                                <div class="card-content">
+                                  <div class="col-12">
+                                    <div class="card-body">
+                                      <p>Detail Kebaktian</p>
+                                      <hr />
+      
+                                      <div class="row">
+                                        <div class="col-5">
+                                          <p>Tanggal Kebaktian</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-6">
+                                          Minggu, 24 Maret 2024
+                                          
+                                        </div>
+  
+                                        <div class="col-5">
+                                          <p>Jam Kebaktian</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-6">
+                                          06:30
+                                          
+                                        </div>
+  
+                                        <div class="col-5">
+                                          <p>Tema Kebaktian</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-6">
+                                          Samabutlah Sang Raja Damai
+                                          
+                                        </div>
+  
+                                        <div class="col-5">
+                                          <p>Jenis Kebaktian</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-6">
+                                          Onsite
+                                          
+                                        </div>
+  
+                                        <div class="col-5">
+                                          <p>Metode Kebaktian Online</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-6">
+                                          -
+                                          
+                                        </div>
+  
+                                        <div class="col-5">
+                                          <p>Link Kebaktian Kebaktian</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-6">
+                                          -
+                                          
+                                        </div>
+      
+                                      </div>
+      
+                                    </div>
+                                  </div>
+                                
+  
+                                </div>
+                                
+                              </div>
+                              <div class="card border">
+                                
+                                <div class="card-content">
+                                  <div class="card-body">
+                                    <div class="row">
+                                      <p>Tugas Pelayanan</p>
+                                      <hr />
+                                        <div class="col-4">
+                                          <p>Panatua</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-7">
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          
+                                        </div>
+  
+                                        <div class="col-4">
+                                          <p>Pelayan Firman</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-7">
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          
+                                        </div>
+  
+                                        <div class="col-4">
+                                          <p>Pengisi Pujian</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-7">
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          
+                                        </div>
+  
+                                        <div class="col-4">
+                                          <p>Pemusik</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-7">
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          
+                                        </div>
+  
+                                        <div class="col-4">
+                                          <p>Pemandu Pujian</p>
+      
+                                        </div>
+                                        <div class="col-1">
+                                          :
+                                          
+                                        </div>
+                                        <div class="col-7">
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          <li>test</li>
+                                          
+                                        </div>
+                                    </div>
+
+                                    <hr />
+
+                                    <div class="d-flex align-items-end flex-column">
+                                      <a href="#" class="btn btn-outline-primary icon icon-left" id="editBtn"></i>Edit</a>
+        
+                                    </div>
+                                    
+                                  </div>
+  
+                                </div>
+                                
+                              </div>
+                            </div>
+
+                            <div id="modalEdit" style="display: none;">
+                              <div class="card border">
+                                
+                                <div class="card-content">
+                                  <div class="col-12">
+                                    <div class="card-body">
+                                      <p>Detail Kebaktian</p>
+                                      <hr />
+      
+                                      <div class="row">
+                                          <div class="col-12">
+                                            <div class="form-group">
+                                              <label for="tanggalInput">Tanggal Kebaktian</label>
+                                              <input
+                                                type="date"
+                                                class="form-control"
+                                                id="basicInput"
+                                                placeholder=""
+                                                
+                                              />
+                                            </div>
+                                          </div>
+    
+                                          <div class="col-12">
+                                            <div class="form-group">
+                                              <label for="tanggalInput">Jam Kebaktian</label>
+                                              <input
+                                                type="text"
+                                                class="form-control"
+                                                id="basicInput"
+                                                placeholder=""
+                                                
+                                              />
+                                            </div>
+                                          </div>
+    
+                                          <div class="col-12">
+                                            <div class="form-group">
+                                              <label for="tanggalInput">Tema Kebaktian</label>
+                                              <input
+                                                type="text"
+                                                class="form-control"
+                                                id="basicInput"
+                                                placeholder=""
+                                                
+                                                
+                                              />
+                                            </div>
+                                          </div>
+                                          
+                                          <div class="col-12">
+                                            <div class="form-group">
+                                              <label for="tanggalInput">Catatan Sipil</label>
+                                              <input
+                                                type="text"
+                                                class="form-control"
+                                                id="basicInput"
+                                                placeholder=""
+                                                
+                                              />
+                                            </div>
+                                          </div>
+    
+                                          <div class="col-12">
+                                            <div class="form-group">
+                                              <label for="tanggalInput">Jenis Kebaktian</label>
+                                              <input
+                                                type="date"
+                                                class="form-control"
+                                                id="basicInput"
+                                                placeholder=""
+                                                
+                                              />
+                                            </div>
+                                          </div>
+    
+    
+                                          <div class="col-12">
+                                            <div class="form-group">
+                                              <label for="tanggalInput">Metode Kebaktian Online</label>
+                                              <input
+                                                type="date"
+                                                class="form-control"
+                                                id="basicInput"
+                                                placeholder=""
+                                                
+                                              />
+                                            </div>
+                                          </div>
+    
+                                          <div class="col-12">
+                                            <div class="form-group">
+                                              <label for="tanggalInput">Link Kebaktian Online</label>
+                                              <input
+                                                type="text"
+                                                class="form-control"
+                                                id="basicInput"
+                                                placeholder=""
+                                                
+                                              />
+                                            </div>
+                                          </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="card border">
+                                <div class="card-content">
+                                  <div class="card-body">
+                                    <div class="row">
+                                      <div class="col-12">
+                                        <div class="form-group">
+                                          <label for="tanggalInput">Tugas Pelayanan</label>
+                                          <input
+                                            type="text"
+                                            class="form-control"
+                                            id="basicInput"
+                                            placeholder=""
+                                            
+                                          />
+                                        </div>
+                                      </div>
+    
+                                      <div class="col-12">
+                                        <div class="form-group">
+                                          <label for="tanggalInput">Panatua</label>
+                                          <input
+                                            type="text"
+                                            class="form-control"
+                                            id="basicInput"
+                                            placeholder=""
+                                            
+                                          />
+                                        </div>
+                                      </div>
+    
+                                      <div class="col-12">
+                                        <div class="form-group">
+                                          <label for="tanggalInput">Pelayan Firman</label>
+                                          <input
+                                            type="text"
+                                            class="form-control"
+                                            id="basicInput"
+                                            placeholder=""
+                                            
+                                            
+                                          />
+                                        </div>
+                                      </div>
+                                      
+                                      <div class="col-12">
+                                        <div class="form-group">
+                                          <label for="tanggalInput">Pengisi Pujian</label>
+                                          <input
+                                            type="text"
+                                            class="form-control"
+                                            id="basicInput"
+                                            placeholder=""
+                                            
+                                          />
+                                        </div>
+                                      </div>
+    
+                                      <div class="col-12">
+                                        <div class="form-group">
+                                          <label for="tanggalInput">Pemusik</label>
+                                          <input
+                                            type="text"
+                                            class="form-control"
+                                            id="basicInput"
+                                            placeholder=""
+                                            
+                                          />
+                                        </div>
+                                      </div>
+    
+    
+                                      <div class="col-12">
+                                        <div class="form-group">
+                                          <label for="tanggalInput">Pemandu Pujian</label>
+                                          <input
+                                            type="text"
+                                            class="form-control"
+                                            id="basicInput"
+                                            placeholder=""
+                                            
+                                          />
+                                        </div>
+                                      </div>
+    
+                                      
+                                  </div>
+                                  <hr />
+                                  <div class="d-flex justify-content-end gap-2">
+                                    <a href="#" class="btn btn-outline-primary">Batalkan</a>
+                                    <a href="#" class="btn btn-primary">Simpan</a>
+        
+                                  </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                 
+              </div>
+
+              
+                 
+                  
+                
+              </div>
+                 
+                  </div>
+                  </div>
+              </div>
+                    </div>
+              </div>
+          <!-- </section> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/assets/static/js/components/dark.js"></script>
+    <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+    
+
+    <script src="/assets/static/js/pages/horizontal-layout.js"></script>
+    <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+    <script src="/assets/compiled/js/app.js"></script>
+
+    <script src="/assets/static/js/pages/dashboard.js"></script>
+
+    <script>
+      document.getElementById('editBtn').addEventListener('click', function() {
+        // Toggle between initial and edit card content
+        document.getElementById('modalDetail').style.display = 'none';
+        document.getElementById('modalEdit').style.display = 'block';
+      });
+    </script>
+    <script src="/assets/static/js/components/dark.js"></script>
+    <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    
+    
+    <script src="assets/compiled/js/app.js"></script>
+    <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/assets/static/js/pages/simple-datatables.js"></script>
+
+
+
+  </body>
+</html>
