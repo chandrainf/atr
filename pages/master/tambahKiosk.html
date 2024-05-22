@@ -23,21 +23,22 @@
 
     <link rel="stylesheet" href="/assets/extensions/simple-datatables/style.css">
     <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css">
+    <script src="/assets/static/js/initTheme.js"></script>
 
     <style>
-      .navbar {
+      .navbar-nav {
             display: flex;
             justify-content: center;
-            background-color: #333;
+            /* background-color: #333; */
             padding: 10px 0;
         }
-        .navbar a {
-            color: white;
+        .navbar-nav a {
+            /* color: white; */
             text-decoration: none;
             padding: 10px 20px;
             position: relative;
         }
-        .navbar a::after {
+        .navbar-nav a::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -47,7 +48,7 @@
             background-color: yellow;
             transition: width 0.3s ease-in-out;
         }
-        .navbar a:hover::after {
+        .navbar-nav a:hover::after {
             width: 100%;
         }
     </style>
@@ -55,15 +56,12 @@
   </head>
 
   <body>
-    <script src="/assets/static/js/initTheme.js"></script>
+    
     <div id="app">
       
       <div id="main" class="layout-horizontal">
         <header class="">
           <!-- <div class="header-top"  style="background-color: #132144;"> -->
-           
-          
-
               <nav class="navbar navbar-expand-lg " style="background-color: #132144;">
                 <div class="container-fluid">
                   <div class="logo">
@@ -72,8 +70,6 @@
                         </span>
                     </a>
                   </div>
-
-                 
                   <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav ">
                      <li class="nav-item">
@@ -96,307 +92,478 @@
                   </div>
                 </div>
               </nav>
-              
-                 
-              
-                
-             
-       
-               
           <!-- </div> -->
         </header>
-          <div class="container-fluid">
-            
-            <div class col-12>
-              <div class="ratio ratio-16x9">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16328182.696144234!2d107.22117646647732!3d-2.3813555440085796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sen!2sid!4v1716265382869!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+        <div class="content-wrapper container mt-5">
+          <div class="page-heading">
+            <h1>Tambah Kiosks</h1>
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Master Kiosk</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tambah Kiosk</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="page-content">
+            <div class="container">
+              <div class="card mt-5 border">
+                <div class="card-header">
+                  <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconDetail.svg" alt="" height="40" width="40"></i>Detail Kiosk</span>
 
-            </div>
-                                    
-                                        
-                                            <!-- Google Maps Embed -->
-                                            
-                                       
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <hr />
+                <div class="card-body">
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="no_kiosk">Nomor Kiosk*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="no_kiosk" class="form-control" name="no_kiosk" placeholder="" value="" />
                       </div>
                     </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="versi_app">Versi Aplikasi*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="versi_app" class="form-control" name="versi_app" placeholder=""  value=""/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="sts_kiosk">Status Kiosk</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="sts_kiosk" class="form-control" name="sts_kiosk" placeholder="" value=""/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="lokasi">Lokasi</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="lokasi" class="form-control" name="lokasi" placeholder="" value=""/>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-1">
-
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="latitude">Latitide*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="latitude" class="form-control" name="latitude" placeholder="" value=""/>
+                      </div>
                     </div>
-                    <div class="col-10 mt-5">
-                      <!-- <section class="section" style="align-self: center;"> -->
-                        <div class="card border">
-                            <div class="card-header">
-                                
-                            </div>
-                            <div class="card-body">
-                                <table class="table" id="table1">
-                                    <thead>
-                                        <tr>
-                                            <th>Status Error</th>
-                                            <th>Nomor Kiosk</th>
-                                            <th>Lokasi</th>
-                                            <th>Waktu Error</th>
-                                            <th>Status Pengerjaan</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Graiden</td>
-                                            <td>vehicula.aliquet@semconsequat.co.uk</td>
-                                            <td>076 4820 8838</td>
-                                            <td>Offenburg</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dale</td>
-                                            <td>fringilla.euismod.enim@quam.ca</td>
-                                            <td>0500 527693</td>
-                                            <td>New Quay</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Nathaniel</td>
-                                            <td>mi.Duis@diam.edu</td>
-                                            <td>(012165) 76278</td>
-                                            <td>Grumo Appula</td>
-                                            <td>
-                                                <span class="badge bg-danger">Inactive</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Darius</td>
-                                            <td>velit@nec.com</td>
-                                            <td>0309 690 7871</td>
-                                            <td>Ways</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Oleg</td>
-                                            <td>rhoncus.id@Aliquamauctorvelit.net</td>
-                                            <td>0500 441046</td>
-                                            <td>Rossignol</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kermit</td>
-                                            <td>diam.Sed.diam@anteVivamusnon.org</td>
-                                            <td>(01653) 27844</td>
-                                            <td>Patna</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jermaine</td>
-                                            <td>sodales@nuncsit.org</td>
-                                            <td>0800 528324</td>
-                                            <td>Mold</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ferdinand</td>
-                                            <td>gravida.molestie@tinciduntadipiscing.org</td>
-                                            <td>(016977) 4107</td>
-                                            <td>Marlborough</td>
-                                            <td>
-                                                <span class="badge bg-danger">Inactive</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kuame</td>
-                                            <td>Quisque.purus@mauris.org</td>
-                                            <td>(0151) 561 8896</td>
-                                            <td>Tresigallo</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Deacon</td>
-                                            <td>Duis.a.mi@sociisnatoquepenatibus.com</td>
-                                            <td>07740 599321</td>
-                                            <td>Karapınar</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Channing</td>
-                                            <td>tempor.bibendum.Donec@ornarelectusante.ca</td>
-                                            <td>0845 46 49</td>
-                                            <td>Warrnambool</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Aladdin</td>
-                                            <td>sem.ut@pellentesqueafacilisis.ca</td>
-                                            <td>0800 1111</td>
-                                            <td>Bothey</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cruz</td>
-                                            <td>non@quisturpisvitae.ca</td>
-                                            <td>07624 944915</td>
-                                            <td>Shikarpur</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Keegan</td>
-                                            <td>molestie.dapibus@condimentumDonecat.edu</td>
-                                            <td>0800 200103</td>
-                                            <td>Assen</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ray</td>
-                                            <td>placerat.eget@sagittislobortis.edu</td>
-                                            <td>(0112) 896 6829</td>
-                                            <td>Hofors</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maxwell</td>
-                                            <td>diam@dapibus.org</td>
-                                            <td>0334 836 4028</td>
-                                            <td>Thane</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Carter</td>
-                                            <td>urna.justo.faucibus@orci.com</td>
-                                            <td>07079 826350</td>
-                                            <td>Biez</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Stone</td>
-                                            <td>velit.Aliquam.nisl@sitametrisus.com</td>
-                                            <td>0800 1111</td>
-                                            <td>Olivar</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Berk</td>
-                                            <td>fringilla.porttitor.vulputate@taciti.edu</td>
-                                            <td>(0101) 043 2822</td>
-                                            <td>Sanquhar</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Philip</td>
-                                            <td>turpis@euenimEtiam.org</td>
-                                            <td>0500 571108</td>
-                                            <td>Okara</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kibo</td>
-                                            <td>feugiat@urnajustofaucibus.co.uk</td>
-                                            <td>07624 682306</td>
-                                            <td>La Cisterna</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bruno</td>
-                                            <td>elit.Etiam.laoreet@luctuslobortisClass.edu</td>
-                                            <td>07624 869434</td>
-                                            <td>Rocca d"Arce</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Leonard</td>
-                                            <td>blandit.enim.consequat@mollislectuspede.net</td>
-                                            <td>0800 1111</td>
-                                            <td>Lobbes</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Hamilton</td>
-                                            <td>mauris@diam.org</td>
-                                            <td>0800 256 8788</td>
-                                            <td>Sanzeno</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Harding</td>
-                                            <td>Lorem.ipsum.dolor@etnetuset.com</td>
-                                            <td>0800 1111</td>
-                                            <td>Obaix</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Emmanuel</td>
-                                            <td>eget.lacus.Mauris@feugiatSednec.org</td>
-                                            <td>(016977) 8208</td>
-                                            <td>Saint-Remy-Geest</td>
-                                            <td>
-                                                <span class="badge bg-success">Active</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="longitude">Longitude</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="longitude" class="form-control" name="longitude" placeholder="" value=""/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="card mt-5 border">
+              <div class="card-header">
+                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconPrinter.svg" alt="" height="40" width="40"></i>Printer</span>
+
+              </div>
+              <hr />
+              <div class="card-body">
                 
-                    </section>
-  
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="nama_printer">Nama Printer*</label>
                     </div>
-                    <div class="col-1">
-
+                    <div class="col-8">
+                      <input type="text" id="nama_printer" class="form-control" name="nama_printer" placeholder="" value="" />
                     </div>
-  
-
                   </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="versi_printer">Versi Printer*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="versi_printer" class="form-control" name="versi_printer" placeholder=""  value=""/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="sts_printer">Status Printer</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="sts_printer" class="form-control" name="sts_printer" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="sts_kertas">Status Kertas</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="sts_kertas" class="form-control" name="sts_kertas" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="sts_toner">Status Toner*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="sts_toner" class="form-control" name="sts_toner" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="sts_pencetakan">Status Pencetakan*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="sts_pencetakan" class="form-control" name="sts_pencetakan" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+              <div class="card mt-5 border">
+                <div class="card-header">
+                  <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconCPU.svg" alt="" height="40" width="40"></i>CPU</span>
+
+                </div>
+                <hr />
+                <div class="card-body">
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="processor">Processor*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="processor" class="form-control" name="processor" placeholder="" value="" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="RAM">RAM*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="RAM" class="form-control" name="RAM" placeholder=""  value=""/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="VGA">VGA*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="VGA" class="form-control" name="VGA" placeholder="" value=""/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="SSD">SSD*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="SSD" class="form-control" name="SSD" placeholder="" value=""/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="HDD">HDD*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="HDD" class="form-control" name="HDD" placeholder="" value=""/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="PSU">PSU*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="PSU" class="form-control" name="PSU" placeholder="" value=""/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="networking">Networking*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="networking" class="form-control" name="networking" placeholder="" value=""/>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="OS">OS*</label>
+                      </div>
+                      <div class="col-8">
+                        <input type="text" id="OS" class="form-control" name="OS" placeholder="" value=""/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="card mt-5 border">
+              <div class="card-header">
+                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconWebcam.svg" alt="" height="40" width="40"></i>Webcam</span>
+
+              </div>
+              <hr />
+              <div class="card-body">
+                
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="nama_webcam">Nama*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="nama_webcam" class="form-control" name="nama_webcam" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="port">Port*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="port" class="form-control" name="port" placeholder=""  value=""/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="max_resolution">Max Resolution*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="max_resolution" class="form-control" name="max_resolution" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="focus_type">Focus Type*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="focus_type" class="form-control" name="focus_type" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="lens_technology">Lens Technology*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="lens_technology" class="form-control" name="lens_technology" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="built-in-mic">Built-in-mic*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="built-in-mic" class="form-control" name="built-in-mic" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="networking">Networking*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="networking" class="form-control" name="networking" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="fov">FoV*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="fov" class="form-control" name="fov" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+          </div>
+
+
+            <div class="card mt-5 border">
+              <div class="card-header">
+                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconUtil.svg" alt="" height="40" width="40"></i>Utilization</span>
+
+              </div>
+              <hr />
+              <div class="card-body">
+               
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="cpu_util">CPU Utilization*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="cpu_util" class="form-control" name="cpu_util" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="ram_util">RAM Utilization*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="ram_util" class="form-control" name="ram_util" placeholder=""  value=""/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="storage">Storage*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="storage" class="form-control" name="storage" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="sts_webcam">Status Webcam*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="sts_webcam" class="form-control" name="sts_webcam" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="sts_camera_ocr">Status Camera OCR*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="sts_camera_ocr" class="form-control" name="sts_camera_ocr" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="sts_ereader">Status E-KTP rEADER*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="sts_ereader" class="form-control" name="sts_ereader" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="api_connection">API Connection*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="api_connection" class="form-control" name="api_connection" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="internet_connection">Internet Comnnection*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="internet_connection" class="form-control" name="internet_connection" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <div class="col-4">
+                      <label class="col-form-label" for="bandwith_internet">Bandwith Internet*</label>
+                    </div>
+                    <div class="col-8">
+                      <input type="text" id="bandwith_internet" class="form-control" name="bandwith_internet" placeholder="" value=""/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+
+
+           
+
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+
+                 
 
 
                   
@@ -824,15 +991,9 @@
                       </div>
                     </div>
                   </div>
-
-
                  
               </div>
-
-              
-                 
                   
-                
               </div>
                  
                   </div>
