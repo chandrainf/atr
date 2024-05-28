@@ -6654,8 +6654,11 @@ fieldset:disabled .btn {
 .offcanvas-header {
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
   justify-content: space-between;
-  padding: var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x);
+  margin-left: 40%;
+  
+   padding: var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x); */
 }
 .offcanvas-header .btn-close {
   padding: calc(var(--bs-offcanvas-padding-y) * 0.5)
