@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Master Kiosk</title>
-   
 
     <link
       rel="shortcut icon"
@@ -17,228 +16,245 @@
       type="image/png"
     />
 
-
     <link rel="stylesheet" href="/assets/compiled/css/app.css" />
     <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
     <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
 
-    <link rel="stylesheet" href="/assets/extensions/simple-datatables/style.css">
-    <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css">
+    <link
+      rel="stylesheet"
+      href="/assets/extensions/simple-datatables/style.css"
+    />
+    <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css" />
 
     <style>
       .navbar {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-            padding: 10px 0;
-        }
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            position: relative;
-        }
-        .navbar a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: yellow;
-            transition: width 0.3s ease-in-out;
-        }
-        .navbar a:hover::after {
-            width: 100%;
-        }
+        display: flex;
+        justify-content: center;
+        background-color: #333;
+        padding: 10px 0;
+      }
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        position: relative;
+      }
+      .navbar a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: yellow;
+        transition: width 0.3s ease-in-out;
+      }
+      .navbar a:hover::after {
+        width: 100%;
+      }
     </style>
-  
   </head>
 
   <body>
     <script src="/assets/static/js/initTheme.js"></script>
     <div id="app">
-      
       <div id="main" class="layout-horizontal">
         <header class="">
           <!-- <div class="header-top"  style="background-color: #132144;"> -->
-           
-          
 
-              <nav class="navbar navbar-expand-lg " style="background-color: #132144;">
-                <div class="container-fluid">
-                  <div class="logo">
-                    <a href="beranda.html" class="menu-link" >
-                        <span class=""><img src="/assets/compiled/svg/logoATR.svg" alt="" height="46" width="135">
-                        </span>
+          <nav
+            class="navbar navbar-expand-lg"
+            style="background-color: #132144"
+          >
+            <div class="container-fluid">
+              <div class="logo">
+                <a href="beranda.html" class="menu-link">
+                  <span class=""
+                    ><img
+                      src="/assets/compiled/svg/logoATR.svg"
+                      alt=""
+                      height="46"
+                      width="135"
+                    />
+                  </span>
+                </a>
+              </div>
+
+              <div
+                class="collapse navbar-collapse justify-content-center"
+                id="navbarNav"
+              >
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-white me-2"
+                      aria-current="page"
+                      href="beranda.html"
+                      ><i class="me-2"
+                        ><img
+                          src="/assets/compiled/svg/iconDashboard.svg"
+                          alt=""
+                          height="20"
+                          width="20" /></i
+                      >Dashboard</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-white me-2"
+                      aria-current="page"
+                      href="kiosk.html"
+                      ><i class="me-2"
+                        ><img
+                          src="/assets/compiled/svg/iconMaster.svg"
+                          alt=""
+                          height="20"
+                          width="20" /></i
+                      >Master Kiosk</a
+                    >
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link text-white dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <span class=""
+                        ><i class="me-2"
+                          ><img
+                            src="/assets/compiled/svg/iconReport.svg"
+                            alt=""
+                            height="20"
+                            width="20" /></i
+                        >Report</span
+                      >
                     </a>
-                  </div>
-
-                 
-                  <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav ">
-                     <li class="nav-item">
-                          <a class="nav-link text-white me-2" aria-current="page" href="beranda.html"><i class="me-2"><img src="/assets/compiled/svg/iconDashboard.svg" alt="" height="20" width="20"></i>Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-white me-2" aria-current="page" href="kiosk.html"><i class="me-2"><img src="/assets/compiled/svg/iconMaster.svg" alt="" height="20" width="20"></i>Master Kiosk</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconReport.svg" alt="" height="20" width="20"></i>Report</span>
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Error Log</a></li>
-                            <li><a class="dropdown-item" href="#">Transaksi</a></li>
-                            <li><a class="dropdown-item" href="#">Kertas & Toner</a></li>
-                          </ul>
-                        </li>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="errorLog.html"
+                          >Error Log</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="transaksi.html"
+                          >Transaksi</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="kertasToner.html"
+                          >Kertas & Toner</a
+                        >
+                      </li>
                     </ul>
-                  </div>
-                </div>
-              </nav>
-              
-                 
-              
-                
-             
-       
-               
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
           <!-- </div> -->
         </header>
-          <div class="container-fluid">
-            
-            <div class col-12>
-              <div class="ratio ratio-16x9">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16328182.696144234!2d107.22117646647732!3d-2.3813555440085796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sen!2sid!4v1716265382869!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="container-fluid">
+          <div class col-12>
+            <div class="ratio ratio-16x9">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16328182.696144234!2d107.22117646647732!3d-2.3813555440085796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sen!2sid!4v1716265382869!5m2!1sen!2sid"
+                width="600"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
-
-            </div>
-                                    
-                                        
-                                            <!-- Google Maps Embed -->
-                                            
-                                       
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-1">
-
-                    </div>
-                    <div class="col-10 mt-5">
-                      <!-- <section class="section" style="align-self: center;"> -->
-                        <div class="card border">
-                            <div class="card-header">
-                              <a class="" href="tambahKiosk.html"><button id="create" class="btn btn-primary" >Tambah Kiosk</button></a>
-                                
-                            </div>
-                            <div class="card-body">
-                                <table class="table" id="table1">
-                                    <thead>
-                                        <tr>
-                                            <th>Nomor Kiosk</th>
-                                            <th>Lokasi</th>
-                                            <th>Status Kiosk</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>K2300012</td>
-                                            <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                              <a class="" href="detailKiosk.html">Detail</a>
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                            <td>K2300013</td>
-                                            <td>Kantor Pertanahan Kota Surabaya I</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                                <a class="" href="">Detail</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>K2300014</td>
-                                            <td>Kantor Pertanahan Kota Surabaya II</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                              <a class="">Detail</a>
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                            <td>K2300015</td>
-                                            <td>Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                              <a class="">Detail</a>
-                                          </td>
-                                        </tr>
-                                        <tr>
-                                            <td>K2300016</td>
-                                            <td>Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur</td>
-                                            <td>Aktif</td>
-                                            <td>
-                                              <a class="">Detail</a>
-                                            </td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                
-                    </section>
-  
-                    </div>
-                    <div class="col-1">
-
-                    </div>
-  
-
-                  </div>
-
-
-                  
-
-                 
-
-              
-                    
-                  </div>
-
-
-                 
-              </div>
-
-              
-                 
-                  
-                
-              </div>
-                 
-                  </div>
-                  </div>
-              </div>
-                    </div>
-              </div>
-          <!-- </section> -->
           </div>
+
+          <!-- Google Maps Embed -->
         </div>
       </div>
     </div>
 
+    <div class="row justify-content-center">
+      
+      <div class="col-10 mt-5">
+        <!-- <section class="section" style="align-self: center;"> -->
+        <div class="card border">
+          <div class="card-header">
+            <a class="" href="tambahKiosk.html"
+              ><button id="create" class="btn btn-primary">
+                Tambah Kiosk
+              </button></a
+            >
+          </div>
+          <div class="card-body">
+            <table class="table" id="table1">
+              <thead>
+                <tr>
+                  <th>Nomor Kiosk</th>
+                  <th>Lokasi</th>
+                  <th>Status Kiosk</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>K2300012</td>
+                  <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
+                  <td>Aktif</td>
+                  <td>
+                    <a class="" href="detailKiosk.html">Detail</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>K2300013</td>
+                  <td>Kantor Pertanahan Kota Surabaya I</td>
+                  <td>Aktif</td>
+                  <td>
+                    <a class="" href="">Detail</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>K2300014</td>
+                  <td>Kantor Pertanahan Kota Surabaya II</td>
+                  <td>Aktif</td>
+                  <td>
+                    <a class="">Detail</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>K2300015</td>
+                  <td>
+                    Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
+                    Timur
+                  </td>
+                  <td>Aktif</td>
+                  <td>
+                    <a class="">Detail</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>K2300016</td>
+                  <td>
+                    Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
+                    Timur
+                  </td>
+                  <td>Aktif</td>
+                  <td>
+                    <a class="">Detail</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
     <script src="/assets/static/js/components/dark.js"></script>
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
-    
 
     <script src="/assets/static/js/pages/horizontal-layout.js"></script>
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
@@ -248,56 +264,57 @@
     <script src="/assets/static/js/pages/dashboard.js"></script>
 
     <script>
-      document.getElementById('editBtn').addEventListener('click', function() {
+      document.getElementById("editBtn").addEventListener("click", function () {
         // Toggle between initial and edit card content
-        document.getElementById('modalDetail').style.display = 'none';
-        document.getElementById('modalEdit').style.display = 'block';
+        document.getElementById("modalDetail").style.display = "none";
+        document.getElementById("modalEdit").style.display = "block";
       });
     </script>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dataTable = new simpleDatatables.DataTable("#example");
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      const dataTable = new simpleDatatables.DataTable("#example");
-  
-      // Create custom buttons
-      const buttonsContainer = document.createElement('div');
-      buttonsContainer.innerHTML = `
+        // Create custom buttons
+        const buttonsContainer = document.createElement("div");
+        buttonsContainer.innerHTML = `
           <button id="export-csv" class="btn btn-primary">Export CSV</button>
           <button id="export-pdf" class="btn btn-danger">Export PDF</button>
           <button id="custom-action" class="btn btn-secondary">Custom Action</button>
       `;
-      
-      // Add buttons to the table
-      const tableWrapper = document.querySelector('.dataTable-wrapper');
-      tableWrapper.insertBefore(buttonsContainer, tableWrapper.firstChild);
-  
-      // CSV export functionality
-      document.getElementById('export-csv').addEventListener('click', function() {
-          dataTable.exportToCSV('datatable-export');
+
+        // Add buttons to the table
+        const tableWrapper = document.querySelector(".dataTable-wrapper");
+        tableWrapper.insertBefore(buttonsContainer, tableWrapper.firstChild);
+
+        // CSV export functionality
+        document
+          .getElementById("export-csv")
+          .addEventListener("click", function () {
+            dataTable.exportToCSV("datatable-export");
+          });
+
+        // PDF export functionality
+        document
+          .getElementById("export-pdf")
+          .addEventListener("click", function () {
+            dataTable.exportToPDF("datatable-export");
+          });
+
+        // Custom button action
+        document
+          .getElementById("custom-action")
+          .addEventListener("click", function () {
+            alert("Custom action triggered");
+          });
       });
-  
-      // PDF export functionality
-      document.getElementById('export-pdf').addEventListener('click', function() {
-          dataTable.exportToPDF('datatable-export');
-      });
-  
-      // Custom button action
-      document.getElementById('custom-action').addEventListener('click', function() {
-          alert('Custom action triggered');
-      });
-  });
-  </script>
-  
+    </script>
+
     <script src="/assets/static/js/components/dark.js"></script>
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
-    
+
     <script src="assets/compiled/js/app.js"></script>
     <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="/assets/static/js/pages/simple-datatables.js"></script>
-
-
-
   </body>
 </html>

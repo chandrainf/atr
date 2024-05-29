@@ -15,11 +15,6 @@
       type="image/png"
     />
 
-    <link
-      rel="stylesheet"
-      href="/assets/extensions/jsvectormap/css/jsvectormap.min.css"
-    />
-
     <link rel="stylesheet" href="/assets/compiled/css/app.css" />
     <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
     <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
@@ -56,6 +51,129 @@
       .navbar a:hover::after {
         width: 100%;
       }
+      .timeline {
+        position: relative;
+        margin: 0 auto;
+        /* padding: 40px 0; */
+        width: 100%;
+        max-width: 900px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        border-style: dotted;
+        border-width: 3px;
+        /* width: 4px; */
+        /* border-style: dotted ; */
+        height: 100%;
+        background: #ccc;
+      }
+
+      .timeline-red {
+        position: relative;
+        margin: 20px 0;
+        /* padding-left: 10%; */
+        clear: both;
+      }
+
+      .timeline-red::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #007bff;
+        border: 4px solid white;
+        z-index: 1;
+      }
+
+      .timeline-grey {
+        position: relative;
+        margin: 20px 0;
+        /* padding-left: 10%; */
+        clear: both;
+      }
+
+      .timeline-grey::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #c9d9e9;
+        border: 4px solid white;
+        z-index: 1;
+      }
+
+      .timeline-yellow {
+        position: relative;
+        margin: 20px 0;
+
+        /* padding-left: 10%; */
+        clear: both;
+      }
+
+      .timeline-yellow::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+
+        /* border-radius: 50%; */
+        background: #ff8533;
+        border: 4px solid white;
+        z-index: 1;
+      }
+
+      .timeline-green {
+        position: relative;
+        margin: 20px 0;
+        /* padding-left: 10%; */
+        clear: both;
+      }
+
+      .timeline-green::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #00e525;
+        border: 4px solid white;
+        z-index: 1;
+      }
+
+      .timeline-content {
+        padding: 20px;
+        /* background: #f8f9fa; */
+        /* border: 1px solid #e9ecef; */
+        border-radius: 5px;
+      }
+
+      /* .timeline-item:nth-child(even) .timeline-content {
+            margin-left: -50%;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+        } */
     </style>
   </head>
 
@@ -136,20 +254,10 @@
                       >
                     </a>
                     <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="errorLog.html">Error Log</a></li>
+                      <li><a class="dropdown-item" href="transaksi.html">Transaksi</a></li>
                       <li>
-                        <a class="dropdown-item" href="errorLog.html"
-                          >Error Log</a
-                        >
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="transaksi.html"
-                          >Transaksi</a
-                        >
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="kertasToner.html"
-                          >Kertas & Toner</a
-                        >
+                        <a class="dropdown-item" href="kertasToner.html">Kertas & Toner</a>
                       </li>
                     </ul>
                   </li>
@@ -158,70 +266,257 @@
             </div>
           </nav>
         </header>
-        <div class="container-fluid">
-          <div class col-12>
-            <div class="ratio ratio-16x9">
-              <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16328182.696144234!2d107.22117646647732!3d-2.3813555440085796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2c4c07d7496404b7%3A0xe37b4de71badf485!2sIndonesia!5e0!3m2!1sen!2sid!4v1716265382869!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-              <div id="world-map"></div>
-            </div>
 
-            <!-- Google Maps Embed -->
+        <div class="content-wrapper container">
+          <div class="page-heading mt-3">
+            <h3>Transaksi</h3>
+          </div>
+          <div class="page-content">
+            <div class="col-12">
+              <div class="row">
+                  <div class="col-4">
+                      <div class="card">
+                          <div class="card-body px-4 py-4-5">
+                              <div class="row">
+                                <div class="col-9">
+                                  <h6>Total Transaksi</h6>
+                                  <h1>20</h1>
+  
+                                </div>
+  
+                                <div class="col-3 d-flex justify-content-center" >
+                                  <img src="/assets/compiled/svg/totalTransaksi.svg" alt="" height="50" width="50" alt="Centered Image" class="img-fluid">
+  
+  
+                                </div>
+                                
+                                
+                                  
+                              </div> 
+                          </div>
+  
+                          <div class="card-footer">
+                            <div class="d-flex flex-row-reverse">
+                              <p>Hari ini</p>
+  
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="card">
+                        <div class="card-body px-4 py-4-5">
+                            <div class="row">
+                              <div class="col-9">
+                                <h6>Total Cetak Sertipikat</h6>
+                                <h1>15</h1>
 
-            <div class="row justify-content-center">
-              <div class="col-10 mt-5">
+                              </div>
+
+                              <div class="col-3 d-flex justify-content-center" >
+                                <img src="/assets/compiled/svg/totalSerifikat.svg" alt="" height="50" width="50" alt="Centered Image" class="img-fluid">
+
+
+                              </div>
+                              
+                              
+                                
+                            </div> 
+                        </div>
+
+                        <div class="card-footer">
+                          <div class="d-flex flex-row-reverse">
+                            <p>Hari ini</p>
+
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                  <div class="card">
+                      <div class="card-body px-4 py-4-5">
+                          <div class="row">
+                            <div class="col-9">
+                              <h6>Total Verifikasi Sentuh Tanahku</h6>
+                              <h1>5</h1>
+
+                            </div>
+
+                            <div class="col-3 d-flex justify-content-center" >
+                              <img src="/assets/compiled/svg/totalVerfikasi.svg" alt="" height="50" width="50" alt="Centered Image" class="img-fluid">
+
+
+                            </div>
+                            
+                            
+                              
+                          </div> 
+                      </div>
+
+                      <div class="card-footer">
+                        <div class="d-flex flex-row-reverse">
+                          <p>Hari ini</p>
+
+                        </div>
+                      </div>
+                  </div>
+              </div>
+                  
+              </div>
+              
+             
+          </div>
+  
+           
+  
+           
+  
+            <div class="row">
+             
+              <div class="col-12 mt-5">
                 <!-- <section class="section" style="align-self: center;"> -->
                 <div class="card border">
-                  <div class="card-header"></div>
+                  <div class="card-header">
+                    <h3>List Transaksi Kiosk </h3>
+                  </div>
                   <div class="card-body">
-                    <table class="table" id="table1">
+                    <table class="table table-striped" id="table1">
                       <thead>
                         <tr>
-                          <th>Status Error</th>
-                          <th>Nomor Kiosk</th>
+                          <th>Nomor Mesin</th>
                           <th>Lokasi</th>
-                          <th>Waktu Error</th>
-                          <th>Status Pengerjaan</th>
-                          <th>Action</th>
+                          <th>Cetak Sertipikat</th>
+                          <th>Verifikasi Sentuh Tanahku</th>
+                          <th>Total Transaksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Server Error</td>
                           <td>K2300012</td>
                           <td>
                             Kantor Pertanahan Kota Administratif Jakarta Pusat
                           </td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-warning" style="opacity: 70%"
-                              >Dalam Perbaikan</span
-                            >
-                          </td>
-                          <td><a href="detailKiosk.html">Detail</a></td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
                         </tr>
                         <tr>
-                          <td>Blanko Sertifikat Habis</td>
                           <td>K2300013</td>
                           <td>Kantor Pertanahan Kota Surabaya I</td>
-                          <td>20 Maret 2024</td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300014</td>
+                          <td>Kantor Pertanahan Kota Surabaya II</td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300015</td>
                           <td>
-                            <span class="badge bg-danger" style="opacity: 70%"
-                              >Dalam Antrian</span
-                            >
+                            Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                            Kalimantan Timur
                           </td>
-                          <td><a href="detailKiosk.html">Detail</a></td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300016</td>
+                          <td>
+                            Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                            Kalimantan Timur
+                          </td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300012</td>
+                          <td>
+                            Kantor Pertanahan Kota Administratif Jakarta Pusat
+                          </td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300013</td>
+                          <td>Kantor Pertanahan Kota Surabaya I</td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        
+                        <tr>
+                          <td>K2300012</td>
+                          <td>
+                            Kantor Pertanahan Kota Administratif Jakarta Pusat
+                          </td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300013</td>
+                          <td>Kantor Pertanahan Kota Surabaya I</td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300014</td>
+                          <td>Kantor Pertanahan Kota Surabaya II</td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300015</td>
+                          <td>
+                            Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                            Kalimantan Timur
+                          </td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300016</td>
+                          <td>
+                            Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                            Kalimantan Timur
+                          </td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300012</td>
+                          <td>
+                            Kantor Pertanahan Kota Administratif Jakarta Pusat
+                          </td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
+                        </tr>
+                        <tr>
+                          <td>K2300013</td>
+                          <td>Kantor Pertanahan Kota Surabaya I</td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
                         </tr>
                         <tr>
                           <td>Printer Tidak Terdeteksi</td>
                           <td>K2300014</td>
                           <td>Kantor Pertanahan Kota Surabaya II</td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-warning" style="opacity: 70%"
-                              >Dalam Perbaikan</span
-                            >
-                          </td>
-                          <td><a href="detailKiosk.html">Detail</a></td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
                         </tr>
                         <tr>
                           <td>Kertas Hampir Habis</td>
@@ -230,184 +525,96 @@
                             Kantor Wilayah Badan Pertanahan Nasional Provinsi
                             Kalimantan Timur
                           </td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-warning" style="opacity: 70%"
-                              >Dalam Perbaikan</span
-                            >
-                          </td>
-                          <td><a href="detailKiosk.html">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>Toner Hampir Habis</td>
-                          <td>K2300016</td>
-                          <td>
-                            Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                            Kalimantan Timur
-                          </td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-danger" style="opacity: 70%"
-                              >Dalam Antrian</span
-                            >
-                          </td>
-                          <td><a href="detailKiosk.html">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>Server Error</td>
-                          <td>K2300012</td>
-                          <td>
-                            Kantor Pertanahan Kota Administratif Jakarta Pusat
-                          </td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-warning" style="opacity: 70%"
-                              >Dalam Perbaikan</span
-                            >
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Blanko Sertifikat Habis</td>
-                          <td>K2300013</td>
-                          <td>Kantor Pertanahan Kota Surabaya I</td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-danger">Dalam Antrian</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Printer Tidak Terdeteksi</td>
-                          <td>K2300014</td>
-                          <td>Kantor Pertanahan Kota Surabaya II</td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-warning"
-                              >Dalam Perbaikan</span
-                            >
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Kertas Hampir Habis</td>
-                          <td>K2300015</td>
-                          <td>
-                            Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                            Kalimantan Timur
-                          </td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-warning"
-                              >Dalam Perbaikan</span
-                            >
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Toner Hampir Habis</td>
-                          <td>K2300016</td>
-                          <td>
-                            Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                            Kalimantan Timur
-                          </td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-danger">Dalam Antrian</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Server Error</td>
-                          <td>K2300012</td>
-                          <td>
-                            Kantor Pertanahan Kota Administratif Jakarta Pusat
-                          </td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-warning"
-                              >Dalam Perbaikan</span
-                            >
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Blanko Sertifikat Habis</td>
-                          <td>K2300013</td>
-                          <td>Kantor Pertanahan Kota Surabaya I</td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-danger">Dalam Antrian</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Printer Tidak Terdeteksi</td>
-                          <td>K2300014</td>
-                          <td>Kantor Pertanahan Kota Surabaya II</td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-warning"
-                              >Dalam Perbaikan</span
-                            >
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Kertas Hampir Habis</td>
-                          <td>K2300015</td>
-                          <td>
-                            Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                            Kalimantan Timur
-                          </td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-warning"
-                              >Dalam Perbaikan</span
-                            >
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Toner Hampir Habis</td>
-                          <td>K2300016</td>
-                          <td>
-                            Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                            Kalimantan Timur
-                          </td>
-                          <td>20 Maret 2024</td>
-                          <td>
-                            <span class="badge bg-danger">Dalam Antrian</span>
-                          </td>
+                          <td>20</td>
+                          <td>10</td>
+                          <td>60</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
+  
+                <!-- </section> -->
               </div>
+             
             </div>
+  
+            <div class="row">
+              <div class="col-12 mt-5">
+                <!-- <section class="section" style="align-self: center;"> -->
+                <div class="card border">
+                  <div class="card-header">
+                    <h3>Total Keseluruhan Transaksi</h3>
+                    
+                  </div>
+                  <div class="card-body">
+                    <div id="chart-total-keseluruhan-transaksi"></div>
+                   
+                  </div>
+                </div>
+  
+                <!-- </section> -->
+              </div>
+              
+            </div>
+
+            <div class="row">
+              <div class="col-12 mt-5">
+                <!-- <section class="section" style="align-self: center;"> -->
+                <div class="card border">
+                  <div class="card-header">
+                    <h3>Statistik Waktu Transaksi</h3>
+                    
+                  </div>
+                  <div class="card-body">
+                    <div id="statistik-waktu-transaksi"></div>
+                   
+                  </div>
+                </div>
+  
+                <!-- </section> -->
+              </div>
+              
+            </div>
+
           </div>
+          
+
+         
+
+         
         </div>
       </div>
     </div>
 
-    <script src="/assets/static/js/components/dark.js"></script>
-    <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    
 
     <script src="/assets/static/js/pages/horizontal-layout.js"></script>
+    
+
+
+    <!-- <script>
+      document.getElementById('editBtn').addEventListener('click', function() {
+        // Toggle between initial and edit card content
+        document.getElementById('modalDetail').style.display = 'none';
+        document.getElementById('modalEdit').style.display = 'block';
+      });
+    </script> -->
+    <script src="/assets/static/js/components/dark.js"></script>
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="/assets/compiled/js/app.js"></script>
-
+    <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/assets/static/js/pages/simple-datatables.js"></script>
+    <script src="/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="/assets/static/js/pages/dashboard.js"></script>
 
     <script>
-      document.getElementById("editBtn").addEventListener("click", function () {
-        // Toggle between initial and edit card content
-        document.getElementById("modalDetail").style.display = "none";
-        document.getElementById("modalEdit").style.display = "block";
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Simple-DataTables for each table
+        const dataTable1 = new simpleDatatables.DataTable("#table1");
+      
       });
     </script>
-    <script src="/assets/static/js/components/dark.js"></script>
-    <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
-    <script src="assets/compiled/js/app.js"></script>
-    <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="/assets/static/js/pages/simple-datatables.js"></script>
-
-    <script src="/assets/extensions/jsvectormap/js/jsvectormap.min.js"></script>
-    <script src="/assets/extensions/jsvectormap/maps/world.js"></script>
-    <script src="/assets/static/js/pages/jsvectormap.js"></script>
   </body>
 </html>
