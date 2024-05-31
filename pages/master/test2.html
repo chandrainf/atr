@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTables Example</title>
+    <!-- <link
+      rel="stylesheet"
+      href="/assets/extensions/simple-datatables/style.css"
+    /> -->
+    <!-- <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css" /> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-header div {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="card-header">
+        <div>
+            <label for="filter-lokasi">Filter by Lokasi:</label>
+            <input type="text" id="filter-lokasi" placeholder="Enter location">
+        </div>
+        <div>
+            <label for="filter-error">Filter by Jumlah Error:</label>
+            <input type="number" id="filter-error" placeholder="Enter error count">
+        </div>
+    </div>
+    <div class="card-body">
+        <table id="example" class="display">
+            <thead>
+                <tr>
+                    <th>Nomor Mesin</th>
+                    <th>Lokasi</th>
+                    <th>Jumlah Error</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Jakarta</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Bandung</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>Surabaya</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td>Jakarta</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>005</td>
+                    <td>Bandung</td>
+                    <td>7</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="assets/compiled/js/app.js"></script>
+    <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/assets/static/js/pages/simple-datatables.js"></script>
+<script>
+    // Initialize the data table
+    const dataTable = new simpleDatatables.DataTable("#example");
+
+    // Filter function for both location and error count
+    function filterTable() {
+        const filterLokasi = document.getElementById('filter-lokasi').value.toLowerCase();
+        const filterError = document.getElementById('filter-error').value;
+
+        dataTable.rows().every((row, index) => {
+            const cells = row.cells;
+            const lokasi = cells[1].innerText.toLowerCase();
+            const jumlahError = cells[2].innerText;
+
+            const lokasiMatch = filterLokasi === "" || lokasi.includes(filterLokasi);
+            const errorMatch = filterError === "" || jumlahError === filterError;
+
+            if (lokasiMatch && errorMatch) {
+                row.show();
+            } else {
+                row.hide();
+            }
+        });
+    }
+
+    // Attach event listeners for the filters
+    document.getElementById('filter-lokasi').addEventListener('input', filterTable);
+    document.getElementById('filter-error').addEventListener('input', filterTable);
+</script>
+
+</body>
+</html>
