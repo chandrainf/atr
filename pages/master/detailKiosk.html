@@ -29,6 +29,9 @@
       body {
         margin: 0;
         font-family: Arial, sans-serif;
+        background-image: url(/assets/compiled/svg/bgKiosks.svg);
+        background-size: auto;
+        background-repeat: no-repeat;
       }
 
       .navbar {
@@ -158,12 +161,12 @@
         box-shadow: 41.967px -41.967px 41.967px 0px rgba(165, 165, 165, 0.2) inset,
           -41.967px 41.967px 41.967px 0px rgba(255, 255, 255, 0.2) inset;
         backdrop-filter: blur(59.59266662597656px);
-        background-color: rgba(255, 255, 255, 0.2);
+        /* background-color: rgba(255, 255, 255, 0.2); */
         /* display: flex; */
         /* flex-direction: column; */
         /* align-items: start; */
         /* font-size: 16px; */
-        color: #dde8f1;
+        /* color: #dde8f1; */
         /* font-weight: 400; */
         /* justify-content: center; */
         padding: 10px;
@@ -188,9 +191,9 @@
         font-family: Inter, sans-serif;
         justify-content: center;
         border-radius: 5px;
-        background-color: #fff;
+        /* background-color: #fff; */
         align-self: stretch;
-        color: #377dff;
+        /* color: #DDE8F1; */
         padding: 10px;
       }
       .kiosk-item {
@@ -219,7 +222,7 @@
             </a>
             <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
             <ul class="navbar-list">
-              <li class="navbar-item active">
+              <li class="navbar-item ">
                 <a href="beranda.html" class="navbar-link"
                   ><i class="me-2"
                     ><img
@@ -230,7 +233,7 @@
                   >Dashboard</a
                 >
               </li>
-              <li class="navbar-item">
+              <li class="navbar-item active">
                 <a href="kiosk.html" class="navbar-link"
                   ><i class="me-2"
                     ><img
@@ -272,12 +275,13 @@
         </nav>
 
          <div class="content-wrapper container mt-5">
-          <div class="page-heading">
-            <h1>Tambah Kiosks</h1>
+          <div class="page-heading" style="margin-top: 60px;">
+            <h3 class="text-white">Detail Kiosk</h3>
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Master Kiosk</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Tambah Kiosk</li>
+                <li class="breadcrumb-item text-white">Master Kiosk</li>
+                <li class="breadcrumb-item text-white">Detail</li>
+                <li class="breadcrumb-item text-white"  aria-current="page">K2300012</li>
               </ol>
             </nav>
           </div>

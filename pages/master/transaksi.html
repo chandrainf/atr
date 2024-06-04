@@ -21,14 +21,22 @@
 
     <link
       rel="stylesheet"
-      href="/assets/extensions/simple-datatables/style.css"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
     />
-    <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css" />
+
+    <!-- <link
+      rel="stylesheet"
+      href="/assets/extensions/simple-datatables/style.css"
+    /> -->
+    <!-- <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css" /> -->
 
     <style>
       body {
         margin: 0;
         font-family: Arial, sans-serif;
+        background-image: url(/assets/compiled/svg/bgKiosks.svg);
+        background-size: auto;
+        background-repeat: no-repeat;
       }
 
       .navbar {
@@ -53,8 +61,6 @@
 
       .navbar-logo {
         height: 50px;
-     
-        
       }
 
       .navbar-list {
@@ -282,189 +288,187 @@
     <script src="/assets/static/js/initTheme.js"></script>
     <div id="app">
       <div id="main" class="layout-horizontal">
-       
-          <!-- <div class="header-top"  style="background-color: #132144;"> -->
+        <!-- <div class="header-top"  style="background-color: #132144;"> -->
 
-            <nav class="navbar">
-              <div class="navbar-content">
-                <a href="beranda.html" class="menu-link">
-                  <img
-                    class="navbar-logo"
-                    src="/assets/compiled/svg/logoATR.svg"
-                    alt="Logo"
-                    height="46"
-                    width="135"
-                  />
-                </a>
-                <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
-                <ul class="navbar-list">
-                  <li class="navbar-item active">
-                    <a href="beranda.html" class="navbar-link"
-                      ><i class="me-2"
-                        ><img
-                          src="/assets/compiled/svg/iconDashboard.svg"
-                          alt=""
-                          height="20"
-                          width="20" /></i
-                      >Dashboard</a
+        <nav class="navbar">
+          <div class="navbar-content">
+            <a href="beranda.html" class="menu-link">
+              <img
+                class="navbar-logo"
+                src="/assets/compiled/svg/logoATR.svg"
+                alt="Logo"
+                height="46"
+                width="135"
+              />
+            </a>
+            <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
+            <ul class="navbar-list">
+              <li class="navbar-item">
+                <a href="beranda.html" class="navbar-link"
+                  ><i class="me-2"
+                    ><img
+                      src="/assets/compiled/svg/iconDashboard.svg"
+                      alt=""
+                      height="20"
+                      width="20" /></i
+                  >Dashboard</a
+                >
+              </li>
+              <li class="navbar-item">
+                <a href="kiosk.html" class="navbar-link"
+                  ><i class="me-2"
+                    ><img
+                      src="/assets/compiled/svg/iconMaster.svg"
+                      alt=""
+                      height="20"
+                      width="20" /></i
+                  >Master</a
+                >
+              </li>
+              <li class="navbar-item active dropdown">
+                <a href="#" class="navbar-link" id="report-link"
+                  ><i class="me-2"
+                    ><img
+                      src="/assets/compiled/svg/iconReport.svg"
+                      alt=""
+                      height="20"
+                      width="20" /></i
+                  >Report</a
+                >
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item">
+                    <a href="errorLog.html" class="dropdown-link">Error Log</a>
+                  </li>
+                  <li class="dropdown-item">
+                    <a href="transaksi.html" class="dropdown-link">
+                      Transaksi</a
                     >
                   </li>
-                  <li class="navbar-item">
-                    <a href="kiosk.html" class="navbar-link"
-                      ><i class="me-2"
-                        ><img
-                          src="/assets/compiled/svg/iconMaster.svg"
-                          alt=""
-                          height="20"
-                          width="20" /></i
-                      >Master</a
+                  <li class="dropdown-item">
+                    <a href="kertasToner.html" class="dropdown-link">
+                      Kertas & Toner</a
                     >
-                  </li>
-                  <li class="navbar-item dropdown">
-                    <a href="#" class="navbar-link" id="report-link"
-                      ><i class="me-2"
-                        ><img
-                          src="/assets/compiled/svg/iconReport.svg"
-                          alt=""
-                          height="20"
-                          width="20" /></i
-                      >Report</a
-                    >
-                    <ul class="dropdown-menu">
-                      <li class="dropdown-item">
-                        <a href="errorLog.html" class="dropdown-link">Error Log</a>
-                      </li>
-                      <li class="dropdown-item">
-                        <a href="transaksi.html" class="dropdown-link">
-                          Transaksi</a
-                        >
-                      </li>
-                      <li class="dropdown-item">
-                        <a href="kertasToner.html" class="dropdown-link">
-                          Kertas & Toner</a
-                        >
-                      </li>
-                    </ul>
                   </li>
                 </ul>
-              </div>
-            </nav>
-       
+              </li>
+            </ul>
+          </div>
+        </nav>
 
-        <div class="content-wrapper container" style="margin-top:100px;">
+        <div class="content-wrapper container" style="margin-top: 100px">
           <div class="page-heading">
-            <h3>Transaksi</h3>
+            <h3 class="text-white">Transaksi</h3>
           </div>
           <div class="page-content">
             <div class="col-12">
               <div class="row">
-                  <div class="col-4">
-                      <div class="card">
-                          <div class="card-body px-4 py-4-5">
-                              <div class="row">
-                                <div class="col-9">
-                                  <h6>Total Transaksi</h6>
-                                  <h1>20</h1>
-  
-                                </div>
-  
-                                <div class="col-3 d-flex justify-content-center" >
-                                  <img src="/assets/compiled/svg/totalTransaksi.svg" alt="" height="50" width="50" alt="Centered Image" class="img-fluid">
-  
-  
-                                </div>
-                                
-                                
-                                  
-                              </div> 
-                          </div>
-  
-                          <div class="card-footer">
-                            <div class="d-flex flex-row-reverse">
-                              <p>Hari ini</p>
-  
-                            </div>
-                          </div>
+                <div class="col-4">
+                  <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                      <div class="row">
+                        <div class="col-9">
+                          <h6>Total Transaksi</h6>
+                          <h1>20</h1>
+                        </div>
+
+                        <div class="col-3 d-flex justify-content-center">
+                          <img
+                            src="/assets/compiled/svg/totalTransaksi.svg"
+                            alt=""
+                            height="50"
+                            width="50"
+                            alt="Centered Image"
+                            class="img-fluid"
+                          />
+                        </div>
                       </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="card">
-                        <div class="card-body px-4 py-4-5">
-                            <div class="row">
-                              <div class="col-9">
-                                <h6>Total Cetak Sertipikat</h6>
-                                <h1>15</h1>
-
-                              </div>
-
-                              <div class="col-3 d-flex justify-content-center" >
-                                <img src="/assets/compiled/svg/totalSerifikat.svg" alt="" height="50" width="50" alt="Centered Image" class="img-fluid">
-
-
-                              </div>
-                              
-                              
-                                
-                            </div> 
-                        </div>
-
-                        <div class="card-footer">
-                          <div class="d-flex flex-row-reverse">
-                            <p>Hari ini</p>
-
-                          </div>
-                        </div>
                     </div>
+
+                    <div class="card-footer">
+                      <div class="d-flex flex-row-reverse">
+                        <p>Hari ini</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-4">
                   <div class="card">
-                      <div class="card-body px-4 py-4-5">
-                          <div class="row">
-                            <div class="col-9">
-                              <h6>Total Verifikasi Sentuh Tanahku</h6>
-                              <h1>5</h1>
+                    <div class="card-body px-4 py-4-5">
+                      <div class="row">
+                        <div class="col-9">
+                          <h6>Total Cetak Sertipikat</h6>
+                          <h1>15</h1>
+                        </div>
 
-                            </div>
-
-                            <div class="col-3 d-flex justify-content-center" >
-                              <img src="/assets/compiled/svg/totalVerfikasi.svg" alt="" height="50" width="50" alt="Centered Image" class="img-fluid">
-
-
-                            </div>
-                            
-                            
-                              
-                          </div> 
-                      </div>
-
-                      <div class="card-footer">
-                        <div class="d-flex flex-row-reverse">
-                          <p>Hari ini</p>
-
+                        <div class="col-3 d-flex justify-content-center">
+                          <img
+                            src="/assets/compiled/svg/totalSerifikat.svg"
+                            alt=""
+                            height="50"
+                            width="50"
+                            alt="Centered Image"
+                            class="img-fluid"
+                          />
                         </div>
                       </div>
+                    </div>
+
+                    <div class="card-footer">
+                      <div class="d-flex flex-row-reverse">
+                        <p>Hari ini</p>
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <div class="col-4">
+                  <div class="card">
+                    <div class="card-body px-4 py-4-5">
+                      <div class="row">
+                        <div class="col-9">
+                          <h6>Total Verifikasi Sentuh Tanahku</h6>
+                          <h1>5</h1>
+                        </div>
+
+                        <div class="col-3 d-flex justify-content-center">
+                          <img
+                            src="/assets/compiled/svg/totalVerfikasi.svg"
+                            alt=""
+                            height="50"
+                            width="50"
+                            alt="Centered Image"
+                            class="img-fluid"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-footer">
+                      <div class="d-flex flex-row-reverse">
+                        <p>Hari ini</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-                  
-              </div>
-              
-             
-          </div>
-  
-           
-  
-           
-  
+            </div>
+
             <div class="row">
-             
               <div class="col-12 mt-5">
                 <!-- <section class="section" style="align-self: center;"> -->
-                <div class="card border">
-                  <div class="card-header">
-                    <h3>List Transaksi Kiosk </h3>
+                  <div class="card border">
+                    <div class="card-header d-flex justify-content-between">
+                    <h3>List Transaksi Kiosk</h3>
+                    <div>
+                      <label for="filter-date1">Filter by Date:</label>
+                      <input
+                        type="date"
+                        id="filter-date1"
+                        placeholder="Enter date"
+                      />
+                    </div>
                   </div>
                   <div class="card-body">
-                    <table class="table table-striped" id="table1">
+                    <table id="example1" class="display">
                       <thead>
                         <tr>
                           <th>Nomor Mesin</th>
@@ -534,7 +538,7 @@
                           <td>10</td>
                           <td>60</td>
                         </tr>
-                        
+
                         <tr>
                           <td>K2300012</td>
                           <td>
@@ -617,29 +621,25 @@
                     </table>
                   </div>
                 </div>
-  
+
                 <!-- </section> -->
               </div>
-             
             </div>
-  
+
             <div class="row">
               <div class="col-12 mt-5">
                 <!-- <section class="section" style="align-self: center;"> -->
                 <div class="card border">
                   <div class="card-header">
                     <h3>Total Keseluruhan Transaksi</h3>
-                    
                   </div>
                   <div class="card-body">
                     <div id="chart-total-keseluruhan-transaksi"></div>
-                   
                   </div>
                 </div>
-  
+
                 <!-- </section> -->
               </div>
-              
             </div>
 
             <div class="row">
@@ -648,34 +648,21 @@
                 <div class="card border">
                   <div class="card-header">
                     <h3>Statistik Waktu Transaksi</h3>
-                    
                   </div>
                   <div class="card-body">
                     <div id="statistik-waktu-transaksi"></div>
-                   
                   </div>
                 </div>
-  
+
                 <!-- </section> -->
               </div>
-              
             </div>
-
           </div>
-          
-
-         
-
-         
         </div>
       </div>
     </div>
 
-    
-
     <script src="/assets/static/js/pages/horizontal-layout.js"></script>
-    
-
 
     <!-- <script>
       document.getElementById('editBtn').addEventListener('click', function() {
@@ -688,16 +675,36 @@
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="/assets/compiled/js/app.js"></script>
-    <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="/assets/static/js/pages/simple-datatables.js"></script>
+    <!-- <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/assets/static/js/pages/simple-datatables.js"></script> -->
     <script src="/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="/assets/static/js/pages/dashboard.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      $(document).ready(function () {
         // Initialize Simple-DataTables for each table
-        const dataTable1 = new simpleDatatables.DataTable("#table1");
-      
+        var table1 = $("#example1").DataTable();
+      });
+
+      $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+          if (settings.nTable.id !== "example1") {
+            return true;
+          }
+          var filterDate = $("#filter-date1").val();
+          var tableDate = data[3];
+          if (!filterDate || tableDate === filterDate) {
+            return true;
+          }
+          return false;
+        });
+
+
+      // Event listener for the dropdown
+      $("#dateFilter1").on("change", function () {
+        table1.draw();
       });
     </script>
   </body>

@@ -469,25 +469,34 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const navbarItems = document.querySelectorAll(".navbar-item");
-        const dropdownItems = document.querySelectorAll(".dropdown-item");
-
-        navbarItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            this.classList.add("active");
-          });
-        });
-
-        dropdownItems.forEach((item) => {
-          item.addEventListener("click", function (event) {
-            event.stopPropagation();
-            dropdownItems.forEach((dropdown) =>
-              dropdown.classList.remove("active")
-            );
-            this.classList.add("active");
-          });
-        });
+        const navbarItems = document.querySelectorAll('.navbar-item');
+            const dropdownLink = document.getElementById('report-link');
+            const dropdownMenu = dropdownLink.nextElementSibling;
+    
+            dropdownLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                dropdownMenu.classList.toggle('show');
+                dropdownLink.parentElement.classList.toggle('active');
+            });
+    
+            navbarItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navbarItems.forEach(nav => nav.classList.remove('active'));
+                    if (this.querySelector('.dropdown-menu')) {
+                        this.classList.add('active');
+                    } else {
+                        this.classList.add('active');
+                        dropdownMenu.classList.remove('show');
+                    }
+                });
+            });
+    
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.navbar-item')) {
+                    navbarItems.forEach(nav => nav.classList.remove('active'));
+                    dropdownMenu.classList.remove('show');
+                }
+            });
       });
     </script>
     <script src="/assets/static/js/components/dark.js"></script>

@@ -12,8 +12,8 @@
         <label for="locationFilter">Location:</label>
         <select id="locationFilter">
           <!-- Populate with options dynamically based on your data -->
-          <option value="location1">Location 1</option>
-          <option value="location2">Location 2</option>
+          <option value="Location 1">Location 1</option>
+          <option value="Location 2">Location 2</option>
           <!-- Add more options as needed -->
         </select>
         <label for="errorFilter">Error Filter:</label>
@@ -24,15 +24,40 @@
       </div>
   <div id="chart"></div>
   
+  <!-- Sample table for data -->
+  <table id="data-table">
+    <thead>
+      <tr>
+        <th>Kiosk</th>
+        <th>Location</th>
+        <th>Error Date</th>
+        <th>Number of Errors</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Kiosk 1</td>
+        <td>Location 1</td>
+        <td>2024-01-05</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>Kiosk 2</td>
+        <td>Location 2</td>
+        <td>2024-02-15</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>Kiosk 3</td>
+        <td>Location 1</td>
+        <td>2024-03-20</td>
+        <td>7</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
 
   <script>
-    // Sample data (replace with your actual data)
-    const data = [
-      { kiosk: 'Kiosk 1', location: 'Location 1', errorDate: '2024-01-05', numErrors: 3 },
-      { kiosk: 'Kiosk 2', location: 'Location 2', errorDate: '2024-02-15', numErrors: 5 },
-      // Add more data entries...
-    ];
-
     // Initialize chart options
     const chartOptions = {
       chart: {
@@ -43,6 +68,22 @@
       },
       // Add more options as needed
     };
+
+    // Function to retrieve data from table
+    function getDataFromTable() {
+      const tableRows = document.querySelectorAll('#data-table tbody tr');
+      const data = [];
+      tableRows.forEach(row => {
+        const rowData = {
+          kiosk: row.cells[0].innerText,
+          location: row.cells[1].innerText,
+          errorDate: row.cells[2].innerText,
+          numErrors: parseInt(row.cells[3].innerText)
+        };
+        data.push(rowData);
+      });
+      return data;
+    }
 
     // Function to filter data based on location
     function filterDataByLocation(data, location) {
@@ -71,13 +112,14 @@
 
     // Function to update the chart based on filters
     function updateChart(location, errorFilter) {
+      const data = getDataFromTable();
       let filteredData = filterDataByLocation(data, location);
       filteredData = filterDataByErrorFilter(filteredData, errorFilter);
       renderChart(filteredData);
     }
 
     // Initial render of the chart
-    renderChart(data);
+    updateChart('Location 1', 'weekly'); // Default values
 
     // Event listeners for filter changes
     document.getElementById('locationFilter').addEventListener('change', function() {
