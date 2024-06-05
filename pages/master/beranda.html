@@ -158,6 +158,121 @@
         height: 100%;
         border: 0;
       }
+
+      .timeline {
+        position: relative;
+        margin: 0 auto;
+        /* padding: 40px 0; */
+        width: 100%;
+        max-width: 900px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        border-style: dotted;
+        border-width: 3px;
+        /* width: 4px; */
+        /* border-style: dotted ; */
+        height: 100%;
+        background: #ccc;
+      }
+
+      .timeline-red {
+        position: relative;
+        margin: 20px 0;
+        /* padding-left: 10%; */
+        clear: both;
+      }
+
+      .timeline-red::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #007bff;
+        border: 4px solid white;
+        z-index: 1;
+      }
+
+      .timeline-grey {
+        position: relative;
+        margin: 20px 0;
+        /* padding-left: 10%; */
+        clear: both;
+      }
+
+      .timeline-grey::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #c9d9e9;
+        border: 4px solid white;
+        z-index: 1;
+      }
+
+      .timeline-yellow {
+        position: relative;
+        margin: 20px 0;
+
+        /* padding-left: 10%; */
+        clear: both;
+      }
+
+      .timeline-yellow::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+
+        /* border-radius: 50%; */
+        background: #ff8533;
+        border: 4px solid white;
+        z-index: 1;
+      }
+
+      .timeline-green {
+        position: relative;
+        margin: 20px 0;
+        /* padding-left: 10%; */
+        clear: both;
+      }
+
+      .timeline-green::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        /* left: 50%; */
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #00e525;
+        border: 4px solid white;
+        z-index: 1;
+      }
+
+      .timeline-content {
+        padding: 20px;
+        /* background: #f8f9fa; */
+        /* border: 1px solid #e9ecef; */
+        border-radius: 5px;
+      }
     </style>
   </head>
 
@@ -275,7 +390,14 @@
                           >Dalam Perbaikan</span
                         >
                       </td>
-                      <td><a href="detailKiosk.html">Detail</a></td>
+                      <td>
+                          <a
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"
+                            >Detail</a
+                          >
+                        </td>
                     </tr>
                     <tr>
                       <td>Blanko Sertifikat Habis</td>
@@ -287,7 +409,14 @@
                           >Dalam Antrian</span
                         >
                       </td>
-                      <td><a href="detailKiosk.html">Detail</a></td>
+                      <td>
+                        <a
+                          data-bs-toggle="offcanvas"
+                          data-bs-target="#offcanvasRight"
+                          aria-controls="offcanvasRight"
+                          >Detail</a
+                        >
+                      </td>
                     </tr>
                     <tr>
                       <td>Printer Tidak Terdeteksi</td>
@@ -299,7 +428,14 @@
                           >Dalam Perbaikan</span
                         >
                       </td>
-                      <td><a href="detailKiosk.html">Detail</a></td>
+                      <td>
+                        <a
+                          data-bs-toggle="offcanvas"
+                          data-bs-target="#offcanvasRight"
+                          aria-controls="offcanvasRight"
+                          >Detail</a
+                        >
+                      </td>
                     </tr>
                     <tr>
                       <td>Kertas Hampir Habis</td>
@@ -329,7 +465,14 @@
                           >Dalam Antrian</span
                         >
                       </td>
-                      <td><a href="detailKiosk.html">Detail</a></td>
+                      <td>
+                        <a
+                          data-bs-toggle="offcanvas"
+                          data-bs-target="#offcanvasRight"
+                          aria-controls="offcanvasRight"
+                          >Detail</a
+                        >
+                      </td>
                     </tr>
                     <tr>
                       <td>Server Error</td>
@@ -445,6 +588,91 @@
             </div>
           </div>
         </div>
+
+        <div
+              class="offcanvas offcanvas-end"
+              tabindex="-1"
+              id="offcanvasRight"
+              aria-labelledby="offcanvasRightLabel"
+            >
+              <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">K2300012</h5>
+                <button
+                  type="button"
+                  class="btn-close text-reset"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </div>
+
+              <div class="offcanvas-body">
+                <div class="container">
+                  <div class="timeline">
+                    <div class="timeline-red">
+                      <div class="timeline-content">
+                        <h4>Server Error</h4>
+                        <p>
+                          Sistem mendeteksi adanya “Server Error” pada Kiosk.
+                          Pemberitahuan otomatis telah dikirim ke tim teknis
+                          untuk penanganan lebih lanjut
+                        </p>
+
+                        <span class="text-muted"
+                          >15.00 WIB | 24 Maret 2024</span
+                        >
+                      </div>
+                    </div>
+                    <div class="timeline-grey">
+                      <div class="timeline-content">
+                        <h4>Pemberitahuan Diterima oleh Tim Teknis</h4>
+                        <p>
+                          Tim Teknis telah menerima pemberitahuan dan akan
+                          melakukan penanganan.
+                        </p>
+
+                        <span class="text-muted"
+                          >15.00 WIB | 24 Maret 2024</span
+                        >
+                      </div>
+                    </div>
+                    <div class="timeline-yellow">
+                      <div class="timeline-content">
+                        <h4
+                          class="text-white"
+                          style="background-color: #ff8533; border-radius: 5px"
+                        >
+                          Dalam Perbaikan
+                        </h4>
+                        <p>Status pengerjaan diperbarui.</p>
+
+                        <span class="text-muted"
+                          >15.00 WIB | 24 Maret 2024</span
+                        >
+                      </div>
+                    </div>
+                    <div class="timeline-green">
+                      <div class="timeline-content">
+                        <h4>Perbaikan Selesai</h4>
+                        <p>
+                          Perbaikan telah selesai. Kiosk telah dapat digunakan
+                          dengan normal.
+                        </p>
+
+                        <span class="text-muted"
+                          >15.00 WIB | 24 Maret 2024</span
+                        >
+                      </div>
+                    </div>
+                    <!-- Add more timeline items as needed -->
+                  </div>
+                  ...
+                </div>
+              </div>
+            </div>
+
+
+
+
       </div>
       <!-- </div> -->
     </div>
