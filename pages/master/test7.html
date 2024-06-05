@@ -5,80 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kiosk Error Chart</title>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
-  <style>
-    .active {
-      background-color: #007bff;
-      color: white;
-    }
-  </style>
 </head>
 <body>
-  <div>
-    <label for="location-filter">Location:</label>
-    <select id="location-filter">
-      <!-- Options will be dynamically added -->
-    </select>
-    <button id="filter-weekly" class="active">Weekly</button>
-    <button id="filter-monthly">Monthly</button>
-  </div>
   <div id="chart"></div>
+  <select id="location-filter"></select>
+  <button id="filter-weekly" class="active">Weekly</button>
+  <button id="filter-monthly">Monthly</button>
 
   <script>
     // Data (replace with your actual data fetching logic)
     const chartData = [
       { status: "Failed", kioskNumber: 1, location: "Store A", errorTime: new Date("2024-06-03"), numberOfErrors: 5 },
       { status: "Success", kioskNumber: 2, location: "Store B", errorTime: new Date("2024-06-04"), numberOfErrors: 2 },
-      { status: "Failed", kioskNumber: 3, location: "Store A", errorTime: new Date("2024-06-01"), numberOfErrors: 7 },
-      { status: "Failed", kioskNumber: 1, location: "Store A", errorTime: new Date("2024-05-29"), numberOfErrors: 3 },
-      { status: "Failed", kioskNumber: 2, location: "Store B", errorTime: new Date("2024-05-28"), numberOfErrors: 4 },
       // ... more data entries
     ];
 
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
     // Function to filter data based on location and timeframe
     function filterData(location, timeframe) {
-      const now = new Date();
       return chartData.filter((entry) => {
         const isLocationMatch = location === "all" || entry.location === location;
         const isTimeframeMatch = timeframe === "weekly"
-          ? (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 7
-          : (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 30;
+          ? entry.errorTime.getDate() >= new Date().getDate() - 7
+          : true; // Monthly timeframe includes all data
         return isLocationMatch && isTimeframeMatch;
       });
     }
 
-    // Function to group data by month
-    function groupDataByMonth(data) {
-      const groupedData = Array(12).fill(0);
-      data.forEach(entry => {
-        const month = entry.errorTime.getMonth();
-        groupedData[month] += entry.numberOfErrors;
-      });
-      return groupedData;
-    }
-
     // Function to generate chart options
     function getChartOptions(data) {
-      const seriesData = groupDataByMonth(data);
       return {
         chart: {
           type: "bar",
         },
         series: [{
           name: "Number of Errors",
-          data: seriesData,
+          data: data.map((entry) => entry.numberOfErrors),
         }],
         xaxis: {
-          categories: monthNames,
-        },
-        yaxis: {
-          title: {
-            text: "Number of Errors"
-          }
+          categories: data.map((entry) => entry.kioskNumber),
         },
         title: {
-          text: `Number of Errors by Month - ${locationFilter.value}`,
+          text: `Number of Errors by Kiosk - ${locationFilter.value}`,
         },
         dataLabels: {
           enabled: false, // Optional: disable data labels on bars

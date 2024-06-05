@@ -4,92 +4,190 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kiosk Error Chart</title>
-  <!-- Include ApexCharts -->
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+  <style>
+    .active {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-    <div>
-        <label for="locationFilter">Location:</label>
-        <select id="locationFilter">
-          <!-- Populate with options dynamically based on your data -->
-          <option value="location1">Location 1</option>
-          <option value="location2">Location 2</option>
-          <!-- Add more options as needed -->
-        </select>
-        <label for="errorFilter">Error Filter:</label>
-        <select id="errorFilter">
-          <option value="weekly">Weekly</option>
-          <option value="monthly">Monthly</option>
-        </select>
-      </div>
+  <div>
+    <label for="location-filter">Location:</label>
+    <select id="location-filter">
+      <!-- Options will be dynamically added -->
+    </select>
+    <button id="filter-weekly" class="active">Weekly</button>
+    <button id="filter-monthly">Monthly</button>
+  </div>
   <div id="chart"></div>
-  
+
+  <!-- Table containing data -->
+  <table id="data-table" style="display: none;">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Kiosk Number</th>
+        <th>Location</th>
+        <th>Error Time</th>
+        <th>Number of Errors</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Failed</td>
+        <td>1</td>
+        <td>Store A</td>
+        <td>2024-06-03</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>Success</td>
+        <td>2</td>
+        <td>Store B</td>
+        <td>2024-06-04</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Failed</td>
+        <td>3</td>
+        <td>Store A</td>
+        <td>2024-06-01</td>
+        <td>7</td>
+      </tr>
+      <tr>
+        <td>Failed</td>
+        <td>1</td>
+        <td>Store A</td>
+        <td>2024-05-29</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>Failed</td>
+        <td>2</td>
+        <td>Store B</td>
+        <td>2024-05-28</td>
+        <td>4</td>
+      </tr>
+      <!-- More rows as needed -->
+    </tbody>
+  </table>
 
   <script>
-    // Sample data (replace with your actual data)
-    const data = [
-      { kiosk: 'Kiosk 1', location: 'Location 1', errorDate: '2024-01-05', numErrors: 3 },
-      { kiosk: 'Kiosk 2', location: 'Location 2', errorDate: '2024-02-15', numErrors: 5 },
-      // Add more data entries...
-    ];
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    // Initialize chart options
-    const chartOptions = {
-      chart: {
-        type: 'bar'
-      },
-      xaxis: {
-        categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-      },
-      // Add more options as needed
-    };
-
-    // Function to filter data based on location
-    function filterDataByLocation(data, location) {
-      return data.filter(entry => entry.location === location);
-    }
-
-    // Function to filter data based on error filter (weekly or monthly)
-    function filterDataByErrorFilter(data, filterType) {
-      if (filterType === 'weekly') {
-        // Implement weekly filtering logic
-      } else if (filterType === 'monthly') {
-        // Implement monthly filtering logic
-      }
+    // Function to get data from table
+    function getDataFromTable() {
+      const data = [];
+      const rows = document.querySelectorAll('#data-table tbody tr');
+      rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        data.push({
+          status: cells[0].textContent,
+          kioskNumber: parseInt(cells[1].textContent),
+          location: cells[2].textContent,
+          errorTime: new Date(cells[3].textContent),
+          numberOfErrors: parseInt(cells[4].textContent)
+        });
+      });
       return data;
     }
 
-    // Function to render the chart
-    function renderChart(data) {
-      const numErrors = data.map(entry => entry.numErrors);
-      const chart = new ApexCharts(document.querySelector("#chart"), {
-        ...chartOptions,
-        series: [{ data: numErrors }]
+    // Function to filter data based on location and timeframe
+    function filterData(data, location, timeframe) {
+      const now = new Date();
+      return data.filter((entry) => {
+        const isLocationMatch = location === "all" || entry.location === location;
+        const isTimeframeMatch = timeframe === "weekly"
+          ? (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 7
+          : (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 30;
+        return isLocationMatch && isTimeframeMatch;
       });
-      chart.render();
     }
 
-    // Function to update the chart based on filters
-    function updateChart(location, errorFilter) {
-      let filteredData = filterDataByLocation(data, location);
-      filteredData = filterDataByErrorFilter(filteredData, errorFilter);
-      renderChart(filteredData);
+    // Function to group data by month
+    function groupDataByMonth(data) {
+      const groupedData = Array(12).fill(0);
+      data.forEach(entry => {
+        const month = entry.errorTime.getMonth();
+        groupedData[month] += entry.numberOfErrors;
+      });
+      return groupedData;
     }
 
-    // Initial render of the chart
-    renderChart(data);
+    // Function to generate chart options
+    function getChartOptions(data) {
+      const seriesData = groupDataByMonth(data);
+      return {
+        chart: {
+          type: "bar",
+        },
+        series: [{
+          name: "Number of Errors",
+          data: seriesData,
+        }],
+        xaxis: {
+          categories: monthNames,
+        },
+        yaxis: {
+          title: {
+            text: "Number of Errors"
+          }
+        },
+        title: {
+          text: `Number of Errors by Month - ${locationFilter.value}`,
+        },
+        dataLabels: {
+          enabled: false, // Optional: disable data labels on bars
+        },
+      };
+    }
 
-    // Event listeners for filter changes
-    document.getElementById('locationFilter').addEventListener('change', function() {
-      const location = this.value;
-      const errorFilter = document.getElementById('errorFilter').value;
-      updateChart(location, errorFilter);
+    // Location dropdown population
+    function populateLocationFilter(locations) {
+      const locationFilter = document.getElementById("location-filter");
+      locations.forEach((location) => {
+        const option = document.createElement("option");
+        option.value = location;
+        option.text = location;
+        locationFilter.appendChild(option);
+      });
+    }
+
+    // Initial setup
+    const chartData = getDataFromTable();
+    const locations = ["all", ...new Set(chartData.map(entry => entry.location))];
+    populateLocationFilter(locations);
+
+    // Initial chart render
+    const initialData = filterData(chartData, "all", "weekly");
+    const chart = new ApexCharts(document.getElementById("chart"), getChartOptions(initialData));
+    chart.render();
+
+    // Filter buttons functionality
+    const filterWeeklyButton = document.getElementById("filter-weekly");
+    const filterMonthlyButton = document.getElementById("filter-monthly");
+
+    filterWeeklyButton.addEventListener("click", () => {
+      const filteredData = filterData(chartData, locationFilter.value, "weekly");
+      chart.updateOptions(getChartOptions(filteredData));
+      filterWeeklyButton.classList.add("active");
+      filterMonthlyButton.classList.remove("active");
     });
 
-    document.getElementById('errorFilter').addEventListener('change', function() {
-      const errorFilter = this.value;
-      const location = document.getElementById('locationFilter').value;
-      updateChart(location, errorFilter);
+    filterMonthlyButton.addEventListener("click", () => {
+      const filteredData = filterData(chartData, locationFilter.value, "monthly");
+      chart.updateOptions(getChartOptions(filteredData));
+      filterMonthlyButton.classList.add("active");
+      filterWeeklyButton.classList.remove("active");
+    });
+
+    // Location filter change handler
+    const locationFilter = document.getElementById("location-filter");
+    locationFilter.addEventListener("change", () => {
+      const filteredData = filterData(chartData, locationFilter.value, filterWeeklyButton.classList.contains("active") ? "weekly" : "monthly");
+      chart.updateOptions(getChartOptions(filteredData));
     });
   </script>
 </body>

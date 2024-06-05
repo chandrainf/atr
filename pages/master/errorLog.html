@@ -256,6 +256,42 @@
         /* border: 1px solid #e9ecef; */
         border-radius: 5px;
       }
+      .active {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .toggle-container {
+        border-radius: 4.818px;
+        background-color: #edf2f8;
+        display: flex;
+        gap: 12px;
+        font-size: 13px;
+        white-space: nowrap;
+        text-align: center;
+        line-height: 114%;
+        justify-content: space-between;
+        padding: 6px;
+      }
+
+      .toggle-option {
+        font-feature-settings: "clig" off, "liga" off;
+        font-family: Inter, sans-serif;
+        margin: auto 0;
+        padding: 6px;
+      }
+
+      .option-inactive {
+        color: #9291a5;
+        font-weight: 400;
+      }
+
+      .option-active {
+        border-radius: 4.818px;
+        background-color: #002845;
+        color: #fff;
+        font-weight: 500;
+      }
     </style>
   </head>
   <body>
@@ -942,7 +978,7 @@
             </div>
           </div>
 
-          <table id="data-table1" style="display: none">
+          <!-- <table id="data-table1" style="display: none">
             <thead>
               <tr>
                 <th>Status Error</th>
@@ -984,7 +1020,7 @@
                 <td>2024-04-14</td>
                 <td>5</td>
               </tr>
-              <!-- <tr>
+              <tr>
                 <td>Toner Hampir Habis</td>
                 <td>K2300016</td>
                 <td>
@@ -1075,121 +1111,119 @@
                 </td>
                 <td>2024-03-14</td>
                 <td>3</td>
-              </tr> -->
+              </tr>
             </tbody>
-          </table>
+          </table> -->
 
           <div class="row">
             <div class="col-12 mt-5">
               <!-- <section class="section" style="align-self: center;"> -->
               <div class="card border">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                   <h3>Total Kiosk Error</h3>
+                  <div>
+                    <label for="location-filter"></label>
+                    <select id="location-filter">
+                      <!-- Options will be dynamically added -->
+                    </select>
+                    
+                  </div>
+                  <div class="toggle-container">
+
+                    <button id="filter-weekly" class="active" style="border-radius: 4.818px;">Mingguan</button>
+                    <button id="filter-monthly" style="border-radius: 4.818px;">Bulanan</button>
+                    <!-- <span class="toggle-option option-inactive" tabindex="0" role="button">Mingguan</span>
+                    <span class="toggle-option option-active" tabindex="0">Bulanan</span> -->
+                  </div>
                 </div>
                 <div class="card-body">
-                  <div>
-                    <label for="locationFilter">Location:</label>
-                    <select id="locationFilter">
-                      <!-- Populate with options dynamically based on your data -->
-                      <option value="location1">
-                        Kantor Pertanahan Kota Administratif Jakarta Pusat
-                      </option>
-                      <option value="location2">
-                        Kantor Pertanahan Kota Surabaya I
-                      </option>
-                      <option value="location3">
-                        Kantor Pertanahan Kota Surabaya II
-                      </option>
-                      <option value="location4">
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </option>
-                      <!-- Add more options as needed -->
-                    </select>
-                    <label for="errorFilter">Error Filter:</label>
-                    <select id="errorFilter">
-                      <option value="weekly">Weekly</option>
-                      <option value="monthly">Monthly</option>
-                    </select>
-                  </div>
                   <div id="chart"></div>
+
                   <!-- <div id="chart-profile-visit"></div> -->
                 </div>
+
+                <!-- </section> -->
+              </div>
+            </div>
+
+            <div
+              class="offcanvas offcanvas-end"
+              tabindex="-1"
+              id="offcanvasRight"
+              aria-labelledby="offcanvasRightLabel"
+            >
+              <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">K2300012</h5>
+                <button
+                  type="button"
+                  class="btn-close text-reset"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
               </div>
 
-              <!-- </section> -->
-            </div>
-          </div>
+              <div class="offcanvas-body">
+                <div class="container">
+                  <div class="timeline">
+                    <div class="timeline-red">
+                      <div class="timeline-content">
+                        <h4>Server Error</h4>
+                        <p>
+                          Sistem mendeteksi adanya “Server Error” pada Kiosk.
+                          Pemberitahuan otomatis telah dikirim ke tim teknis
+                          untuk penanganan lebih lanjut
+                        </p>
 
-          <div
-            class="offcanvas offcanvas-end"
-            tabindex="-1"
-            id="offcanvasRight"
-            aria-labelledby="offcanvasRightLabel"
-          >
-            <div class="offcanvas-header">
-              <h5 id="offcanvasRightLabel">K2300012</h5>
-              <button
-                type="button"
-                class="btn-close text-reset"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"
-              ></button>
-            </div>
-
-            <div class="offcanvas-body">
-              <div class="container">
-                <div class="timeline">
-                  <div class="timeline-red">
-                    <div class="timeline-content">
-                      <h4>Server Error</h4>
-                      <p>
-                        Sistem mendeteksi adanya “Server Error” pada Kiosk.
-                        Pemberitahuan otomatis telah dikirim ke tim teknis untuk
-                        penanganan lebih lanjut
-                      </p>
-
-                      <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                        <span class="text-muted"
+                          >15.00 WIB | 24 Maret 2024</span
+                        >
+                      </div>
                     </div>
-                  </div>
-                  <div class="timeline-grey">
-                    <div class="timeline-content">
-                      <h4>Pemberitahuan Diterima oleh Tim Teknis</h4>
-                      <p>
-                        Tim Teknis telah menerima pemberitahuan dan akan
-                        melakukan penanganan.
-                      </p>
+                    <div class="timeline-grey">
+                      <div class="timeline-content">
+                        <h4>Pemberitahuan Diterima oleh Tim Teknis</h4>
+                        <p>
+                          Tim Teknis telah menerima pemberitahuan dan akan
+                          melakukan penanganan.
+                        </p>
 
-                      <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                        <span class="text-muted"
+                          >15.00 WIB | 24 Maret 2024</span
+                        >
+                      </div>
                     </div>
-                  </div>
-                  <div class="timeline-yellow">
-                    <div class="timeline-content">
-                      <h4
-                        class="text-white"
-                        style="background-color: #ff8533; border-radius: 5px"
-                      >
-                        Dalam Perbaikan
-                      </h4>
-                      <p>Status pengerjaan diperbarui.</p>
+                    <div class="timeline-yellow">
+                      <div class="timeline-content">
+                        <h4
+                          class="text-white"
+                          style="background-color: #ff8533; border-radius: 5px"
+                        >
+                          Dalam Perbaikan
+                        </h4>
+                        <p>Status pengerjaan diperbarui.</p>
 
-                      <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                        <span class="text-muted"
+                          >15.00 WIB | 24 Maret 2024</span
+                        >
+                      </div>
                     </div>
-                  </div>
-                  <div class="timeline-green">
-                    <div class="timeline-content">
-                      <h4>Perbaikan Selesai</h4>
-                      <p>
-                        Perbaikan telah selesai. Kiosk telah dapat digunakan
-                        dengan normal.
-                      </p>
+                    <div class="timeline-green">
+                      <div class="timeline-content">
+                        <h4>Perbaikan Selesai</h4>
+                        <p>
+                          Perbaikan telah selesai. Kiosk telah dapat digunakan
+                          dengan normal.
+                        </p>
 
-                      <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                        <span class="text-muted"
+                          >15.00 WIB | 24 Maret 2024</span
+                        >
+                      </div>
                     </div>
+                    <!-- Add more timeline items as needed -->
                   </div>
-                  <!-- Add more timeline items as needed -->
+                  ...
                 </div>
-                ...
               </div>
             </div>
           </div>
@@ -1280,116 +1314,167 @@
           table3.column(1).search(this.value).draw();
         });
 
-      
-        // Initialize chart options
-        const chartOptions = {
-          chart: {
-            type: "bar",
+        // Data (replace with your actual data fetching logic)
+        const chartData = [
+          {
+            status: "Kertas Hampir Habis",
+            kioskNumber: "K2300012",
+            location: "Kantor Pertanahan Kota Administratif Jakarta Pusat",
+            errorTime: new Date("2024-06-03"),
+            numberOfErrors: 10,
           },
-          xaxis: {
-            categories: [
-              "January",
-              "February",
-              "March",
-              "April",
-              "May",
-              "June",
-              "July",
-              "August",
-              "September",
-              "October",
-              "November",
-              "December",
+          {
+            status: "Kertas Hampir Habis",
+            kioskNumber: "K2300013",
+            location: "Kantor Pertanahan Kota Surabaya I",
+            errorTime: new Date("2024-06-04"),
+            numberOfErrors: 10,
+          },
+          {
+            status: "Kertas Hampir Habis",
+            kioskNumber: "K2300014",
+            location: "Kantor Pertanahan Kota Surabaya II",
+            errorTime: new Date("2024-06-01"),
+            numberOfErrors: 10,
+          },
+          {
+            status: "Toner Hampir Habis",
+            kioskNumber: "K2300015",
+            location: "Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur",
+            errorTime: new Date("2024-05-29"),
+            numberOfErrors: 10,
+          },
+          {
+            status: "Kertas Hampir Habis",
+            kioskNumber: "K2300016",
+            location: "Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur",
+            errorTime: new Date("2024-05-28"),
+            numberOfErrors: 10,
+          },
+          // ... more data entries
+        ];
+
+        const monthNames = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+
+        // Function to filter data based on location and timeframe
+        function filterData(location, timeframe) {
+          const now = new Date();
+          return chartData.filter((entry) => {
+            const isLocationMatch =
+              location === "all" || entry.location === location;
+            const isTimeframeMatch =
+              timeframe === "weekly"
+                ? (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 7
+                : (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 30;
+            return isLocationMatch && isTimeframeMatch;
+          });
+        }
+
+        // Function to group data by month
+        function groupDataByMonth(data) {
+          const groupedData = Array(12).fill(0);
+          data.forEach((entry) => {
+            const month = entry.errorTime.getMonth();
+            groupedData[month] += entry.numberOfErrors;
+          });
+          return groupedData;
+        }
+
+        // Function to generate chart options
+        function getChartOptions(data) {
+          const seriesData = groupDataByMonth(data);
+          return {
+            chart: {
+              type: "bar",
+            },
+            series: [
+              {
+                name: "Jumlah Error",
+                data: seriesData,
+              },
             ],
-          },
-          // Add more options as needed
-        };
-
-        // Function to retrieve data from table
-       
-
-        function getDataFromTable() {
-          const tableRows = document.querySelectorAll("#data-table1 tbody tr");
-          const data = [];
-          tableRows.forEach((row) => {
-            const rowData = {
-              status: row.cells[0].innerText,
-              nomorKiosk: row.cells[1].innerText,
-              lokasi: row.cells[2].innerText,
-              waktuError: row.cells[3].innerText,
-              jumlahError: parseInt(row.cells[4].innerText),
-            };
-            data.push(rowData);
-          });
-          return data;
+            xaxis: {
+              categories: monthNames,
+            },
+            yaxis: {
+              title: {
+                text: "Jumlah Error",
+              },
+            },
+            title: {
+              text: `Number of Errors by Month - ${locationFilter.value}`,
+            },
+            dataLabels: {
+              enabled: false, // Optional: disable data labels on bars
+            },
+          };
         }
 
-        //Function to filter data based on location
-        function filterDataByLocation(data, lokasi) {
-          return data.filter((entry) => entry.lokasi === lokasi);
-        }
+        // Location dropdown population (replace with your data source)
+        const locations = [
+          "Pilih Lokasi",
+          "Kantor Pertanahan Kota Administratif Jakarta Pusat",
+          "Kantor Pertanahan Kota Surabaya I",
+          "Kantor Pertanahan Kota Surabaya II",
+          "Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur",
+        ];
+        const locationFilter = document.getElementById("location-filter");
+        locations.forEach((location) => {
+          const option = document.createElement("option");
+          option.value = location;
+          option.text = location;
+          locationFilter.appendChild(option);
+        });
 
-        // Function to filter data based on error filter (weekly or monthly)
-        function filterDataByErrorFilter(data, filterType) {
-          if (filterType === "weekly") {
-            const filteredData = data.filter((entry) => {
-              const errorDate = new Date(entry.errorDate);
-              const dayOfWeek = errorDate.getDay(); // 0 for Sunday, 1 for Monday, ..., 6 for Saturday
-              return dayOfWeek === 0; // Include entries where the error date is a Sunday (start of the week)
-            });
-            return filteredData;
-          } else if (filterType === "monthly") {
-            const currentDate = new Date();
-            const currentMonth = currentDate.getMonth();
-            const currentYear = currentDate.getFullYear();
-            const filteredData = data.filter((entry) => {
-              const errorDate = new Date(entry.errorDate);
-              const errorMonth = errorDate.getMonth();
-              const errorYear = errorDate.getFullYear();
-              return errorMonth === currentMonth && errorYear === currentYear; // Include entries from the current month
-            });
-            return filteredData;
-          }
-          return data;
-        }
+        // Initial chart render
+        const initialData = filterData("all", "weekly");
+        const chart = new ApexCharts(
+          document.getElementById("chart"),
+          getChartOptions(initialData)
+        );
+        chart.render();
 
-        // Function to render the chart
-        function renderChart(data) {
-          const jumlahError = data.map((entry) => entry.jumlahError);
-          const chart = new ApexCharts(document.querySelector("#chart"), {
-            ...chartOptions,
-            series: [{ data: jumlahError }],
-          });
-          chart.render();
-        }
+        // Filter buttons functionality
+        const filterWeeklyButton = document.getElementById("filter-weekly");
+        const filterMonthlyButton = document.getElementById("filter-monthly");
 
-        // Function to update the chart based on filters
-        function updateChart(lokasi, errorFilter) {
-          const data = getDataFromTable();
-          let filteredData = filterDataByLocation(data, lokasi);
-          filteredData = filterDataByErrorFilter(filteredData, errorFilter);
-          renderChart(filteredData);
-        }
+        filterWeeklyButton.addEventListener("click", () => {
+          const filteredData = filterData(locationFilter.value, "weekly");
+          chart.updateOptions(getChartOptions(filteredData));
+          filterWeeklyButton.classList.add("active");
+          filterMonthlyButton.classList.remove("active");
+        });
 
-        // Initial render of the chart
-        updateChart("Location 1", "weekly"); // Default values
+        filterMonthlyButton.addEventListener("click", () => {
+          const filteredData = filterData(locationFilter.value, "monthly");
+          chart.updateOptions(getChartOptions(filteredData));
+          filterMonthlyButton.classList.add("active");
+          filterWeeklyButton.classList.remove("active");
+        });
 
-        // Event listeners for filter changes
-        document
-          .getElementById("locationFilter")
-          .addEventListener("change", function () {
-            const lokasi = this.value;
-            const errorFilter = document.getElementById("errorFilter").value;
-            updateChart(lokasi, errorFilter);
-          });
-
-        document
-          .getElementById("errorFilter")
-          .addEventListener("change", function () {
-            const errorFilter = this.value;
-            const lokasi = document.getElementById("locationFilter").value;
-            updateChart(lokasi, errorFilter);
-          });
+        // Location filter change handler
+        locationFilter.addEventListener("change", () => {
+          const filteredData = filterData(
+            locationFilter.value,
+            filterWeeklyButton.classList.contains("active")
+              ? "weekly"
+              : "monthly"
+          );
+          chart.updateOptions(getChartOptions(filteredData));
+        });
       });
     </script>
   </body>

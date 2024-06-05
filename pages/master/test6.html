@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Statistics Chart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.27.1/apexcharts.css">
+    <style>
+        .time-toggle {
+            margin: 0 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .time-toggle.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="location">Location:</label>
+        <select id="location">
+            <option value="All">All</option>
+            <option value="Location1">Location 1</option>
+            <option value="Location2">Location 2</option>
+            <!-- Add more locations as needed -->
+        </select>
+
+        <label for="timeFilter">Time Filter:</label>
+        <div>
+            <button id="weekly" class="time-toggle active">Weekly</button>
+            <button id="monthly" class="time-toggle">Monthly</button>
+        </div>
+    </div>
+
+    <div id="chart"></div>
+
+    <!-- Table containing data -->
+    <table id="dataTable" style="display: none;">
+        <thead>
+            <tr>
+                <th>Row Status</th>
+                <th>Kiosk Number</th>
+                <th>Location</th>
+                <th>Error Time</th>
+                <th>Number of Errors</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add rows dynamically or manually -->
+            <tr>
+                <td>Active</td>
+                <td>1</td>
+                <td>Location1</td>
+                <td>2024-05-30T10:00:00</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Inactive</td>
+                <td>2</td>
+                <td>Location2</td>
+                <td>2024-06-03T14:00:00</td>
+                <td>3</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.27.1/apexcharts.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Function to get data from the table
+            function getData() {
+                const data = [];
+                $('#dataTable tbody tr').each(function () {
+                    const row = $(this);
+                    data.push({
+                        rowStatus: row.find('td:nth-child(1)').text(),
+                        kioskNumber: row.find('td:nth-child(2)').text(),
+                        location: row.find('td:nth-child(3)').text(),
+                        errorTime: new Date(row.find('td:nth-child(4)').text()),
+                        numberOfErrors: parseInt(row.find('td:nth-child(5)').text(), 10)
+                    });
+                });
+                console.log('Extracted Data:', data); // Debugging line
+                return data;
+            }
+
+            // Function to filter data based on location and time period
+            function filterData(data, location, timePeriod) {
+                const now = new Date();
+                const filteredData = data.filter(item => {
+                    const matchesLocation = location === 'All' || item.location === location;
+                    const matchesTimePeriod = timePeriod === 'weekly'
+                        ? (now - item.errorTime) / (1000 * 60 * 60 * 24) <= 7
+                        : (now - item.errorTime) / (1000 * 60 * 60 * 24) <= 30;
+                    return matchesLocation && matchesTimePeriod;
+                });
+                console.log('Filtered Data:', filteredData); // Debugging line
+                return filteredData;
+            }
+
+            // Function to prepare chart data
+            function prepareChartData(data) {
+                const chartData = {};
+                data.forEach(item => {
+                    if (!chartData[item.kioskNumber]) {
+                        chartData[item.kioskNumber] = 0;
+                    }
+                    chartData[item.kioskNumber] += item.numberOfErrors;
+                });
+
+                const categories = Object.keys(chartData);
+                const seriesData = categories.map(kioskNumber => chartData[kioskNumber]);
+
+                console.log('Chart Data Categories:', categories); // Debugging line
+                console.log('Chart Data Series:', seriesData); // Debugging line
+
+                return {
+                    categories,
+                    seriesData
+                };
+            }
+
+            // Function to render chart
+            function renderChart(categories, seriesData) {
+                const options = {
+                    chart: {
+                        type: 'bar',
+                        height: 350
+                    },
+                    series: [{
+                        name: 'Errors',
+                        data: seriesData
+                    }],
+                    xaxis: {
+                        categories: categories
+                    }
+                };
+
+                // Clear previous chart if exists
+                if (window.ApexCharts && window.chart) {
+                    window.chart.destroy();
+                }
+
+                // Create a new chart
+                window.chart = new ApexCharts(document.querySelector("#chart"), options);
+                window.chart.render();
+                console.log('Chart Rendered'); // Debugging line
+            }
+
+            // Initial data load and chart rendering
+            const data = getData();
+            let filteredData = filterData(data, $('#location').val(), 'weekly');
+            let chartData = prepareChartData(filteredData);
+            renderChart(chartData.categories, chartData.seriesData);
+
+            // Event listeners for filters
+            $('#location').change(function () {
+                const timePeriod = $('.time-toggle.active').attr('id');
+                filteredData = filterData(data, $('#location').val(), timePeriod);
+                chartData = prepareChartData(filteredData);
+                renderChart(chartData.categories, chartData.seriesData);
+            });
+
+            $('.time-toggle').click(function () {
+                $('.time-toggle').removeClass('active');
+                $(this).addClass('active');
+                const timePeriod = $(this).attr('id');
+                filteredData = filterData(data, $('#location').val(), timePeriod);
+                chartData = prepareChartData(filteredData);
+                renderChart(chartData.categories, chartData.seriesData);
+            });
+        });
+    </script>
+</body>
+</html>

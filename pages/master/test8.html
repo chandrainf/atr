@@ -34,8 +34,6 @@
       // ... more data entries
     ];
 
-    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
     // Function to filter data based on location and timeframe
     function filterData(location, timeframe) {
       const now = new Date();
@@ -48,37 +46,21 @@
       });
     }
 
-    // Function to group data by month
-    function groupDataByMonth(data) {
-      const groupedData = Array(12).fill(0);
-      data.forEach(entry => {
-        const month = entry.errorTime.getMonth();
-        groupedData[month] += entry.numberOfErrors;
-      });
-      return groupedData;
-    }
-
     // Function to generate chart options
     function getChartOptions(data) {
-      const seriesData = groupDataByMonth(data);
       return {
         chart: {
           type: "bar",
         },
         series: [{
           name: "Number of Errors",
-          data: seriesData,
+          data: data.map((entry) => entry.numberOfErrors),
         }],
         xaxis: {
-          categories: monthNames,
-        },
-        yaxis: {
-          title: {
-            text: "Number of Errors"
-          }
+          categories: data.map((entry) => entry.kioskNumber),
         },
         title: {
-          text: `Number of Errors by Month - ${locationFilter.value}`,
+          text: `Number of Errors by Kiosk - ${locationFilter.value}`,
         },
         dataLabels: {
           enabled: false, // Optional: disable data labels on bars
