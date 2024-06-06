@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
 
     <link
       rel="shortcut icon"
@@ -18,13 +17,15 @@
 
     <title>Tambah Kiosk</title>
 
-
     <link rel="stylesheet" href="/assets/compiled/css/app.css" />
     <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
     <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
 
-    <link rel="stylesheet" href="/assets/extensions/simple-datatables/style.css">
-    <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css">
+    <link
+      rel="stylesheet"
+      href="/assets/extensions/simple-datatables/style.css"
+    />
+    <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css" />
     <script src="/assets/static/js/initTheme.js"></script>
 
     <style>
@@ -34,8 +35,6 @@
         background-image: url(/assets/compiled/svg/bgKiosks.svg);
         background-size: auto;
         background-repeat: no-repeat;
-        
-      
       }
 
       .navbar {
@@ -60,8 +59,6 @@
 
       .navbar-logo {
         height: 50px;
-     
-        
       }
 
       .navbar-list {
@@ -160,13 +157,10 @@
         border: 0;
       }
     </style>
-  
   </head>
 
   <body>
-    
     <div id="app">
-      
       <div id="main" class="layout-horizontal">
         <nav class="navbar">
           <div class="navbar-content">
@@ -181,7 +175,7 @@
             </a>
             <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
             <ul class="navbar-list">
-              <li class="navbar-item ">
+              <li class="navbar-item">
                 <a href="beranda.html" class="navbar-link"
                   ><i class="me-2"
                     ><img
@@ -232,62 +226,114 @@
             </ul>
           </div>
         </nav>
-        <div class="content-wrapper container"  style="margin-top: 100px; " >
+        <div class="content-wrapper container" style="margin-top: 100px">
           <div class="page-heading">
             <h1 class="text-white">Tambah Kiosk</h1>
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="">
+            <nav
+              style="--bs-breadcrumb-divider: '>'"
+              aria-label="breadcrumb"
+              class=""
+            >
               <ol class="breadcrumb">
-                <li class="breadcrumb-item text-white">Master Kiosk</a></li>
-                <li class="breadcrumb-item active text-white" aria-current="page">Tambah Kiosk</li>
+                <li class="breadcrumb-item text-white">Master Kiosk</li>
+                <li
+                  class="breadcrumb-item active text-white"
+                  aria-current="page"
+                >
+                  Tambah Kiosk
+                </li>
               </ol>
             </nav>
           </div>
-          <div class="page-content" >
+          <div class="page-content">
             <div class="container">
               <div class="card mt-5 border">
                 <div class="card-header">
-                  <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconDetail.svg" alt="" height="40" width="40"></i>Detail Kiosk</span>
-
+                  <span class=""
+                    ><i class="me-2"
+                      ><img
+                        src="/assets/compiled/svg/iconDetail.svg"
+                        alt=""
+                        height="40"
+                        width="40" /></i
+                    >Detail Kiosk</span
+                  >
                 </div>
                 <hr />
                 <div class="card-body">
                   <div class="col-10">
                     <div class="form-group row align-items-center">
                       <div class="col-4">
-                        <label class="col-form-label" for="no_kiosk">Nomor Kiosk*</label>
+                        <label class="col-form-label" for="no_kiosk"
+                          >Nomor Kiosk*</label
+                        >
                       </div>
                       <div class="col-8">
-                        <input type="text" id="no_kiosk" class="form-control" name="no_kiosk" placeholder="" value="" />
+                        <input
+                          type="text"
+                          id="no_kiosk"
+                          class="form-control"
+                          name="no_kiosk"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
                       <div class="col-4">
-                        <label class="col-form-label" for="versi_app">Versi Aplikasi*</label>
+                        <label class="col-form-label" for="versi_app"
+                          >Versi Aplikasi*</label
+                        >
                       </div>
                       <div class="col-8">
-                        <input type="text" id="versi_app" class="form-control" name="versi_app" placeholder=""  value=""/>
+                        <input
+                          type="text"
+                          id="versi_app"
+                          class="form-control"
+                          name="versi_app"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
                       <div class="col-4">
-                        <label class="col-form-label" for="sts_kiosk">Status Kiosk</label>
+                        <label class="col-form-label" for="sts_kiosk"
+                          >Status Kiosk</label
+                        >
                       </div>
                       <div class="col-8">
-                        <input type="text" id="sts_kiosk" class="form-control" name="sts_kiosk" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="sts_kiosk"
+                          class="form-control"
+                          name="sts_kiosk"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
                       <div class="col-4">
-                        <label class="col-form-label" for="lokasi">Lokasi</label>
+                        <label class="col-form-label" for="lokasi"
+                          >Lokasi</label
+                        >
                       </div>
                       <div class="col-8">
-                        <input type="text" id="lokasi" class="form-control" name="lokasi" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="lokasi"
+                          class="form-control"
+                          name="lokasi"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -295,10 +341,19 @@
                   <div class="col-10">
                     <div class="form-group row align-items-center">
                       <div class="col-4">
-                        <label class="col-form-label" for="latitude">Latitide*</label>
+                        <label class="col-form-label" for="latitude"
+                          >Latitide*</label
+                        >
                       </div>
                       <div class="col-8">
-                        <input type="text" id="latitude" class="form-control" name="latitude" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="latitude"
+                          class="form-control"
+                          name="latitude"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -306,103 +361,188 @@
                   <div class="col-10">
                     <div class="form-group row align-items-center">
                       <div class="col-4">
-                        <label class="col-form-label" for="longitude">Longitude</label>
+                        <label class="col-form-label" for="longitude"
+                          >Longitude</label
+                        >
                       </div>
                       <div class="col-8">
-                        <input type="text" id="longitude" class="form-control" name="longitude" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="longitude"
+                          class="form-control"
+                          name="longitude"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-            <div class="card mt-5 border">
-              <div class="card-header">
-                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconPrinter.svg" alt="" height="40" width="40"></i>Printer</span>
-
-              </div>
-              <hr />
-              <div class="card-body">
-                
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="nama_printer">Nama Printer*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="nama_printer" class="form-control" name="nama_printer" placeholder="" value="" />
-                    </div>
-                  </div>
-                </div>
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="versi_printer">Versi Printer*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="versi_printer" class="form-control" name="versi_printer" placeholder=""  value=""/>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="sts_printer">Status Printer</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="sts_printer" class="form-control" name="sts_printer" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="sts_kertas">Status Kertas</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="sts_kertas" class="form-control" name="sts_kertas" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="sts_toner">Status Toner*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="sts_toner" class="form-control" name="sts_toner" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="sts_pencetakan">Status Pencetakan*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="sts_pencetakan" class="form-control" name="sts_pencetakan" placeholder="" value=""/>
                     </div>
                   </div>
                 </div>
               </div>
-          </div>
 
               <div class="card mt-5 border">
                 <div class="card-header">
-                  <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconCPU.svg" alt="" height="40" width="40"></i>CPU</span>
-
+                  <span class=""
+                    ><i class="me-2"
+                      ><img
+                        src="/assets/compiled/svg/iconPrinter.svg"
+                        alt=""
+                        height="40"
+                        width="40" /></i
+                    >Printer</span
+                  >
                 </div>
                 <hr />
                 <div class="card-body">
                   <div class="col-10">
                     <div class="form-group row align-items-center">
                       <div class="col-4">
-                        <label class="col-form-label" for="processor">Processor*</label>
+                        <label class="col-form-label" for="nama_printer"
+                          >Nama Printer*</label
+                        >
                       </div>
                       <div class="col-8">
-                        <input type="text" id="processor" class="form-control" name="processor" placeholder="" value="" />
+                        <input
+                          type="text"
+                          id="nama_printer"
+                          class="form-control"
+                          name="nama_printer"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="versi_printer"
+                          >Versi Printer*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="versi_printer"
+                          class="form-control"
+                          name="versi_printer"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="sts_printer"
+                          >Status Printer</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="sts_printer"
+                          class="form-control"
+                          name="sts_printer"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="sts_kertas"
+                          >Status Kertas</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="sts_kertas"
+                          class="form-control"
+                          name="sts_kertas"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="sts_toner"
+                          >Status Toner*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="sts_toner"
+                          class="form-control"
+                          name="sts_toner"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="sts_pencetakan"
+                          >Status Pencetakan*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="sts_pencetakan"
+                          class="form-control"
+                          name="sts_pencetakan"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mt-5 border">
+                <div class="card-header">
+                  <span class=""
+                    ><i class="me-2"
+                      ><img
+                        src="/assets/compiled/svg/iconCPU.svg"
+                        alt=""
+                        height="40"
+                        width="40" /></i
+                    >CPU</span
+                  >
+                </div>
+                <hr />
+                <div class="card-body">
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="processor"
+                          >Processor*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="processor"
+                          class="form-control"
+                          name="processor"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -412,7 +552,14 @@
                         <label class="col-form-label" for="RAM">RAM*</label>
                       </div>
                       <div class="col-8">
-                        <input type="text" id="RAM" class="form-control" name="RAM" placeholder=""  value=""/>
+                        <input
+                          type="text"
+                          id="RAM"
+                          class="form-control"
+                          name="RAM"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -422,7 +569,14 @@
                         <label class="col-form-label" for="VGA">VGA*</label>
                       </div>
                       <div class="col-8">
-                        <input type="text" id="VGA" class="form-control" name="VGA" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="VGA"
+                          class="form-control"
+                          name="VGA"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -432,7 +586,14 @@
                         <label class="col-form-label" for="SSD">SSD*</label>
                       </div>
                       <div class="col-8">
-                        <input type="text" id="SSD" class="form-control" name="SSD" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="SSD"
+                          class="form-control"
+                          name="SSD"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -443,7 +604,14 @@
                         <label class="col-form-label" for="HDD">HDD*</label>
                       </div>
                       <div class="col-8">
-                        <input type="text" id="HDD" class="form-control" name="HDD" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="HDD"
+                          class="form-control"
+                          name="HDD"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -454,7 +622,14 @@
                         <label class="col-form-label" for="PSU">PSU*</label>
                       </div>
                       <div class="col-8">
-                        <input type="text" id="PSU" class="form-control" name="PSU" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="PSU"
+                          class="form-control"
+                          name="PSU"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
@@ -462,14 +637,22 @@
                   <div class="col-10">
                     <div class="form-group row align-items-center">
                       <div class="col-4">
-                        <label class="col-form-label" for="networking">Networking*</label>
+                        <label class="col-form-label" for="networking"
+                          >Networking*</label
+                        >
                       </div>
                       <div class="col-8">
-                        <input type="text" id="networking" class="form-control" name="networking" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="networking"
+                          class="form-control"
+                          name="networking"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
-
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
@@ -477,669 +660,394 @@
                         <label class="col-form-label" for="OS">OS*</label>
                       </div>
                       <div class="col-8">
-                        <input type="text" id="OS" class="form-control" name="OS" placeholder="" value=""/>
+                        <input
+                          type="text"
+                          id="OS"
+                          class="form-control"
+                          name="OS"
+                          placeholder=""
+                          value=""
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div class="card mt-5 border">
+                <div class="card-header">
+                  <span class=""
+                    ><i class="me-2"
+                      ><img
+                        src="/assets/compiled/svg/iconWebcam.svg"
+                        alt=""
+                        height="40"
+                        width="40" /></i
+                    >Webcam</span
+                  >
+                </div>
+                <hr />
+                <div class="card-body">
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="nama_webcam"
+                          >Nama*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="nama_webcam"
+                          class="form-control"
+                          name="nama_webcam"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="port">Port*</label>
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="port"
+                          class="form-control"
+                          name="port"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="max_resolution"
+                          >Max Resolution*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="max_resolution"
+                          class="form-control"
+                          name="max_resolution"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="focus_type"
+                          >Focus Type*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="focus_type"
+                          class="form-control"
+                          name="focus_type"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="lens_technology"
+                          >Lens Technology*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="lens_technology"
+                          class="form-control"
+                          name="lens_technology"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="built-in-mic"
+                          >Built-in-mic*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="built-in-mic"
+                          class="form-control"
+                          name="built-in-mic"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="networking"
+                          >Networking*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="networking"
+                          class="form-control"
+                          name="networking"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="fov">FoV*</label>
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="fov"
+                          class="form-control"
+                          name="fov"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card mt-5 border">
+                <div class="card-header">
+                  <span class=""
+                    ><i class="me-2"
+                      ><img
+                        src="/assets/compiled/svg/iconUtil.svg"
+                        alt=""
+                        height="40"
+                        width="40" /></i
+                    >Utilization</span
+                  >
+                </div>
+                <hr />
+                <div class="card-body">
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="cpu_util"
+                          >CPU Utilization*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="cpu_util"
+                          class="form-control"
+                          name="cpu_util"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="ram_util"
+                          >RAM Utilization*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="ram_util"
+                          class="form-control"
+                          name="ram_util"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="storage"
+                          >Storage*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="storage"
+                          class="form-control"
+                          name="storage"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="sts_webcam"
+                          >Status Webcam*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="sts_webcam"
+                          class="form-control"
+                          name="sts_webcam"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="sts_camera_ocr"
+                          >Status Camera OCR*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="sts_camera_ocr"
+                          class="form-control"
+                          name="sts_camera_ocr"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="sts_ereader"
+                          >Status E-KTP rEADER*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="sts_ereader"
+                          class="form-control"
+                          name="sts_ereader"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="api_connection"
+                          >API Connection*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="api_connection"
+                          class="form-control"
+                          name="api_connection"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="internet_connection"
+                          >Internet Comnnection*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="internet_connection"
+                          class="form-control"
+                          name="internet_connection"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-10">
+                    <div class="form-group row align-items-center">
+                      <div class="col-4">
+                        <label class="col-form-label" for="bandwith_internet"
+                          >Bandwith Internet*</label
+                        >
+                      </div>
+                      <div class="col-8">
+                        <input
+                          type="text"
+                          id="bandwith_internet"
+                          class="form-control"
+                          name="bandwith_internet"
+                          placeholder=""
+                          value=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <div class="d-flex justify-content-end gap-2 mb-5">
+                    <a href="#" class="btn btn-outline-primary">Batalkan</a>
+                    <a href="#" class="btn btn-primary">Simpan</a>
+                  </div>
+                </div>
+              </div>
+
+
+
             </div>
-
-            <div class="card mt-5 border">
-              <div class="card-header">
-                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconWebcam.svg" alt="" height="40" width="40"></i>Webcam</span>
-
-              </div>
-              <hr />
-              <div class="card-body">
-                
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="nama_webcam">Nama*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="nama_webcam" class="form-control" name="nama_webcam" placeholder="" value="" />
-                    </div>
-                  </div>
-                </div>
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="port">Port*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="port" class="form-control" name="port" placeholder=""  value=""/>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="max_resolution">Max Resolution*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="max_resolution" class="form-control" name="max_resolution" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="focus_type">Focus Type*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="focus_type" class="form-control" name="focus_type" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="lens_technology">Lens Technology*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="lens_technology" class="form-control" name="lens_technology" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="built-in-mic">Built-in-mic*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="built-in-mic" class="form-control" name="built-in-mic" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="networking">Networking*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="networking" class="form-control" name="networking" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="fov">FoV*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="fov" class="form-control" name="fov" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-          </div>
-
-
-            <div class="card mt-5 border">
-              <div class="card-header">
-                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconUtil.svg" alt="" height="40" width="40"></i>Utilization</span>
-
-              </div>
-              <hr />
-              <div class="card-body">
-               
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="cpu_util">CPU Utilization*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="cpu_util" class="form-control" name="cpu_util" placeholder="" value="" />
-                    </div>
-                  </div>
-                </div>
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="ram_util">RAM Utilization*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="ram_util" class="form-control" name="ram_util" placeholder=""  value=""/>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="storage">Storage*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="storage" class="form-control" name="storage" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="sts_webcam">Status Webcam*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="sts_webcam" class="form-control" name="sts_webcam" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="sts_camera_ocr">Status Camera OCR*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="sts_camera_ocr" class="form-control" name="sts_camera_ocr" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="sts_ereader">Status E-KTP rEADER*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="sts_ereader" class="form-control" name="sts_ereader" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="api_connection">API Connection*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="api_connection" class="form-control" name="api_connection" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="internet_connection">Internet Comnnection*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="internet_connection" class="form-control" name="internet_connection" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="col-10">
-                  <div class="form-group row align-items-center">
-                    <div class="col-4">
-                      <label class="col-form-label" for="bandwith_internet">Bandwith Internet*</label>
-                    </div>
-                    <div class="col-8">
-                      <input type="text" id="bandwith_internet" class="form-control" name="bandwith_internet" placeholder="" value=""/>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-
-
-           
-
-          </div>
-        </div>
-      </div>
-      </div>
-    </div>
-
-                 
-
-
-                  
-
-                 
-
-                  <!-- Fullscreen Modal -->
-                    <div class="modal modal-fullscreen" id="fullscreenModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-fullscreen" id="modal-detail">
-                        <div class="modal-content modal-content-fullscreen ">
-                          <div class="modal-header" style="background:linear-gradient(#0052D4, #4364F7, #6FB1FC); color: #FFFFFF;">
-                            <h5 class="modal-title text-white" id="exampleModalLabel">Kebaktian Minggu 1</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <div id="modalDetail">
-                              <div class="card border">
-                              
-                                <div class="card-content">
-                                  <div class="col-12">
-                                    <div class="card-body">
-                                      <p>Detail Kebaktian</p>
-                                      <hr />
-      
-                                      <div class="row">
-                                        <div class="col-5">
-                                          <p>Tanggal Kebaktian</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-6">
-                                          Minggu, 24 Maret 2024
-                                          
-                                        </div>
-  
-                                        <div class="col-5">
-                                          <p>Jam Kebaktian</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-6">
-                                          06:30
-                                          
-                                        </div>
-  
-                                        <div class="col-5">
-                                          <p>Tema Kebaktian</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-6">
-                                          Samabutlah Sang Raja Damai
-                                          
-                                        </div>
-  
-                                        <div class="col-5">
-                                          <p>Jenis Kebaktian</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-6">
-                                          Onsite
-                                          
-                                        </div>
-  
-                                        <div class="col-5">
-                                          <p>Metode Kebaktian Online</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-6">
-                                          -
-                                          
-                                        </div>
-  
-                                        <div class="col-5">
-                                          <p>Link Kebaktian Kebaktian</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-6">
-                                          -
-                                          
-                                        </div>
-      
-                                      </div>
-      
-                                    </div>
-                                  </div>
-                                
-  
-                                </div>
-                                
-                              </div>
-                              <div class="card border">
-                                
-                                <div class="card-content">
-                                  <div class="card-body">
-                                    <div class="row">
-                                      <p>Tugas Pelayanan</p>
-                                      <hr />
-                                        <div class="col-4">
-                                          <p>Panatua</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-7">
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          
-                                        </div>
-  
-                                        <div class="col-4">
-                                          <p>Pelayan Firman</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-7">
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          
-                                        </div>
-  
-                                        <div class="col-4">
-                                          <p>Pengisi Pujian</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-7">
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          
-                                        </div>
-  
-                                        <div class="col-4">
-                                          <p>Pemusik</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-7">
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          
-                                        </div>
-  
-                                        <div class="col-4">
-                                          <p>Pemandu Pujian</p>
-      
-                                        </div>
-                                        <div class="col-1">
-                                          :
-                                          
-                                        </div>
-                                        <div class="col-7">
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          <li>test</li>
-                                          
-                                        </div>
-                                    </div>
-
-                                    <hr />
-
-                                    <div class="d-flex align-items-end flex-column">
-                                      <a href="#" class="btn btn-outline-primary icon icon-left" id="editBtn"></i>Edit</a>
-        
-                                    </div>
-                                    
-                                  </div>
-  
-                                </div>
-                                
-                              </div>
-                            </div>
-
-                            <div id="modalEdit" style="display: none;">
-                              <div class="card border">
-                                
-                                <div class="card-content">
-                                  <div class="col-12">
-                                    <div class="card-body">
-                                      <p>Detail Kebaktian</p>
-                                      <hr />
-      
-                                      <div class="row">
-                                          <div class="col-12">
-                                            <div class="form-group">
-                                              <label for="tanggalInput">Tanggal Kebaktian</label>
-                                              <input
-                                                type="date"
-                                                class="form-control"
-                                                id="basicInput"
-                                                placeholder=""
-                                                
-                                              />
-                                            </div>
-                                          </div>
-    
-                                          <div class="col-12">
-                                            <div class="form-group">
-                                              <label for="tanggalInput">Jam Kebaktian</label>
-                                              <input
-                                                type="text"
-                                                class="form-control"
-                                                id="basicInput"
-                                                placeholder=""
-                                                
-                                              />
-                                            </div>
-                                          </div>
-    
-                                          <div class="col-12">
-                                            <div class="form-group">
-                                              <label for="tanggalInput">Tema Kebaktian</label>
-                                              <input
-                                                type="text"
-                                                class="form-control"
-                                                id="basicInput"
-                                                placeholder=""
-                                                
-                                                
-                                              />
-                                            </div>
-                                          </div>
-                                          
-                                          <div class="col-12">
-                                            <div class="form-group">
-                                              <label for="tanggalInput">Catatan Sipil</label>
-                                              <input
-                                                type="text"
-                                                class="form-control"
-                                                id="basicInput"
-                                                placeholder=""
-                                                
-                                              />
-                                            </div>
-                                          </div>
-    
-                                          <div class="col-12">
-                                            <div class="form-group">
-                                              <label for="tanggalInput">Jenis Kebaktian</label>
-                                              <input
-                                                type="date"
-                                                class="form-control"
-                                                id="basicInput"
-                                                placeholder=""
-                                                
-                                              />
-                                            </div>
-                                          </div>
-    
-    
-                                          <div class="col-12">
-                                            <div class="form-group">
-                                              <label for="tanggalInput">Metode Kebaktian Online</label>
-                                              <input
-                                                type="date"
-                                                class="form-control"
-                                                id="basicInput"
-                                                placeholder=""
-                                                
-                                              />
-                                            </div>
-                                          </div>
-    
-                                          <div class="col-12">
-                                            <div class="form-group">
-                                              <label for="tanggalInput">Link Kebaktian Online</label>
-                                              <input
-                                                type="text"
-                                                class="form-control"
-                                                id="basicInput"
-                                                placeholder=""
-                                                
-                                              />
-                                            </div>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="card border">
-                                <div class="card-content">
-                                  <div class="card-body">
-                                    <div class="row">
-                                      <div class="col-12">
-                                        <div class="form-group">
-                                          <label for="tanggalInput">Tugas Pelayanan</label>
-                                          <input
-                                            type="text"
-                                            class="form-control"
-                                            id="basicInput"
-                                            placeholder=""
-                                            
-                                          />
-                                        </div>
-                                      </div>
-    
-                                      <div class="col-12">
-                                        <div class="form-group">
-                                          <label for="tanggalInput">Panatua</label>
-                                          <input
-                                            type="text"
-                                            class="form-control"
-                                            id="basicInput"
-                                            placeholder=""
-                                            
-                                          />
-                                        </div>
-                                      </div>
-    
-                                      <div class="col-12">
-                                        <div class="form-group">
-                                          <label for="tanggalInput">Pelayan Firman</label>
-                                          <input
-                                            type="text"
-                                            class="form-control"
-                                            id="basicInput"
-                                            placeholder=""
-                                            
-                                            
-                                          />
-                                        </div>
-                                      </div>
-                                      
-                                      <div class="col-12">
-                                        <div class="form-group">
-                                          <label for="tanggalInput">Pengisi Pujian</label>
-                                          <input
-                                            type="text"
-                                            class="form-control"
-                                            id="basicInput"
-                                            placeholder=""
-                                            
-                                          />
-                                        </div>
-                                      </div>
-    
-                                      <div class="col-12">
-                                        <div class="form-group">
-                                          <label for="tanggalInput">Pemusik</label>
-                                          <input
-                                            type="text"
-                                            class="form-control"
-                                            id="basicInput"
-                                            placeholder=""
-                                            
-                                          />
-                                        </div>
-                                      </div>
-    
-    
-                                      <div class="col-12">
-                                        <div class="form-group">
-                                          <label for="tanggalInput">Pemandu Pujian</label>
-                                          <input
-                                            type="text"
-                                            class="form-control"
-                                            id="basicInput"
-                                            placeholder=""
-                                            
-                                          />
-                                        </div>
-                                      </div>
-    
-                                      
-                                  </div>
-                                  <hr />
-                                  <div class="d-flex justify-content-end gap-2">
-                                    <a href="#" class="btn btn-outline-primary">Batalkan</a>
-                                    <a href="#" class="btn btn-primary">Simpan</a>
-        
-                                  </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                 
-              </div>
-                  
-              </div>
-                 
-                  </div>
-                  </div>
-              </div>
-                    </div>
-              </div>
-          <!-- </section> -->
           </div>
         </div>
       </div>
@@ -1147,8 +1055,6 @@
 
     <script src="/assets/static/js/components/dark.js"></script>
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
-    
 
     <script src="/assets/static/js/pages/horizontal-layout.js"></script>
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
@@ -1158,21 +1064,17 @@
     <script src="/assets/static/js/pages/dashboard.js"></script>
 
     <script>
-      document.getElementById('editBtn').addEventListener('click', function() {
+      document.getElementById("editBtn").addEventListener("click", function () {
         // Toggle between initial and edit card content
-        document.getElementById('modalDetail').style.display = 'none';
-        document.getElementById('modalEdit').style.display = 'block';
+        document.getElementById("modalDetail").style.display = "none";
+        document.getElementById("modalEdit").style.display = "block";
       });
     </script>
     <script src="/assets/static/js/components/dark.js"></script>
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
-    
+
     <script src="assets/compiled/js/app.js"></script>
     <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="/assets/static/js/pages/simple-datatables.js"></script>
-
-
-
   </body>
 </html>

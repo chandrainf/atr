@@ -24,6 +24,8 @@
       href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
     />
 
+    <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+
     <!-- <link
       rel="stylesheet"
       href="/assets/extensions/simple-datatables/style.css"
@@ -273,10 +275,10 @@
         border-radius: 5px;
       }
 
-      .active {
+      /* .active {
         background-color: #007bff;
         color: white;
-      }
+      } */
 
       .toggle-container {
         border-radius: 4.818px;
@@ -291,7 +293,7 @@
         padding: 6px;
       }
 
-      .toggle-option {
+      /* .toggle-option {
         font-feature-settings: "clig" off, "liga" off;
         font-family: Inter, sans-serif;
         margin: auto 0;
@@ -308,6 +310,25 @@
         background-color: #002845;
         color: #fff;
         font-weight: 500;
+      } */
+
+      .filter-buttons button {
+        margin-right: 10px;
+        padding: 10px;
+        /* border-radius: 4.818px;
+        background-color: #edf2f8;
+        display: flex;
+        gap: 12px;
+        font-size: 13px;
+        white-space: nowrap;
+        text-align: center;
+        line-height: 114%;
+        justify-content: space-between;
+        padding: 6px; */
+      }
+      .toggle-container button.active {
+        background-color: #002845;
+        color: white;
       }
 
       /* .timeline-item:nth-child(even) .timeline-content {
@@ -492,8 +513,8 @@
             <div class="row">
               <div class="col-12 mt-5">
                 <!-- <section class="section" style="align-self: center;"> -->
-                  <div class="card border">
-                    <div class="card-header d-flex justify-content-between">
+                <div class="card border">
+                  <div class="card-header d-flex justify-content-between">
                     <h3>List Transaksi Kiosk</h3>
                     <div>
                       <label for="filter-date1">Filter by Date:</label>
@@ -667,26 +688,38 @@
               <div class="col-12 mt-5">
                 <!-- <section class="section" style="align-self: center;"> -->
                 <div class="card border">
-                  <div class="card-header">
-                    <h3>Total Keseluruhan Transaksi</h3>
+                  <div
+                    class="card-header d-flex justify-content-between"
+                    style="align-items: center; justify-content: center"
+                  >
+                    <div><h3>Total Keseluruhan Transaksi</h3></div>
                     <div>
-                      <label for="location-filter"></label>
-                      <select id="location-filter">
-                        <!-- Options will be dynamically added -->
+                      <label for="locationFilter">Lokasi:</label>
+                      <select id="locationFilter" onchange="updateChart()">
+                        <option value="all">Semua Lokasi</option>
+                        <option value="location1">Location 1</option>
+                        <option value="location2">Location 2</option>
+                        <!-- Add more locations as needed -->
                       </select>
-                      
                     </div>
+
                     <div class="toggle-container">
-  
-                      <button id="filter-weekly" class="active" style="border-radius: 4.818px;">Mingguan</button>
-                      <button id="filter-monthly" style="border-radius: 4.818px;">Bulanan</button>
-                      <!-- <span class="toggle-option option-inactive" tabindex="0" role="button">Mingguan</span>
-                      <span class="toggle-option option-active" tabindex="0">Bulanan</span> -->
+                      <button
+                        id="monthlyBtn"
+                        class="active"
+                        onclick="setTimePeriod('monthly')"
+                        style="border-radius: 4.818px;"
+                      >
+                        Monthly
+                      </button>
+                      <button id="weeklyBtn" onclick="setTimePeriod('weekly')" style="border-radius: 4.818px;">
+                        Weekly
+                      </button>
                     </div>
                   </div>
                   <div class="card-body">
                     <div id="chart"></div>
-  
+
                     <!-- <div id="chart-profile-visit"></div> -->
                   </div>
                 </div>
@@ -695,21 +728,127 @@
               </div>
             </div>
 
+            <table id="dataTable1" style="display: none">
+              <tr>
+                <th>Location</th>
+                <th>Machine Number</th>
+                <th>Printed Certificates</th>
+                <th>Verifications</th>
+                <th>Total</th>
+                <th>Transaction Date</th>
+              </tr>
+              <tr>
+                <td>location1</td>
+                <td>1</td>
+                <td>50</td>
+                <td>30</td>
+                <td>80</td>
+                <td>2024-01-15</td>
+              </tr>
+              <tr>
+                <td>location1</td>
+                <td>2</td>
+                <td>20</td>
+                <td>10</td>
+                <td>30</td>
+                <td>2024-02-20</td>
+              </tr>
+              <tr>
+                <td>location2</td>
+                <td>3</td>
+                <td>70</td>
+                <td>50</td>
+                <td>120</td>
+                <td>2024-03-10</td>
+              </tr>
+              <tr>
+                <td>location2</td>
+                <td>4</td>
+                <td>10</td>
+                <td>5</td>
+                <td>15</td>
+                <td>2024-04-05</td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </table>
+
             <div class="row">
               <div class="col-12 mt-5">
                 <!-- <section class="section" style="align-self: center;"> -->
                 <div class="card border">
-                  <div class="card-header">
-                    <h3>Statistik Waktu Transaksi</h3>
+                  <div  class="card-header d-flex justify-content-between"
+                  style="align-items: center; justify-content: center">
+                    <div><h3>Rata-rata Waktu Transaksi Terpadat</h3></div>
+                    <div>
+                      <label for="locationFilter1">Lokasi:</label>
+                      <select id="locationFilter1" onchange="updateChart1()">
+                          <option value="all">Semua Lokasi</option>
+                          <option value="location1">Location 1</option>
+                          <option value="location2">Location 2</option>
+                          <!-- Add more locations as needed -->
+                      </select>
+                  </div>
+                    <div class="toggle-container">
+                      <button id="monthlyBtn1" class="active" onclick="setTimePeriod1('monthly1')" style="border-radius: 4.818px;">Monthly</button>
+                      <button id="weeklyBtn1" onclick="setTimePeriod1('weekly1')" style="border-radius: 4.818px;">Weekly</button>
+                  </div>
                   </div>
                   <div class="card-body">
-                    <div id="statistik-waktu-transaksi"></div>
+                    <div id="chart1"></div>
+                    <!-- <div id="statistik-waktu-transaksi"></div> -->
                   </div>
                 </div>
 
                 <!-- </section> -->
               </div>
             </div>
+
+            <table id="dataTable2" style="display: none;">
+              <tr>
+                  <th>Location</th>
+                  <th>Machine Number</th>
+                  <th>Transaction DateTime</th>
+                  <th>Printed Certificates</th>
+                  <th>Verifications</th>
+                  <th>Total</th>
+              </tr>
+              <tr>
+                  <td>location1</td>
+                  <td>1</td>
+                  <td>2024-01-15T10:30:00</td>
+                  <td>50</td>
+                  <td>30</td>
+                  <td>80</td>
+              </tr>
+              <tr>
+                  <td>location1</td>
+                  <td>2</td>
+                  <td>2024-02-20T14:45:00</td>
+                  <td>20</td>
+                  <td>10</td>
+                  <td>30</td>
+              </tr>
+              <tr>
+                  <td>location2</td>
+                  <td>3</td>
+                  <td>2024-03-10T09:15:00</td>
+                  <td>70</td>
+                  <td>50</td>
+                  <td>120</td>
+              </tr>
+              <tr>
+                  <td>location2</td>
+                  <td>4</td>
+                  <td>2024-04-05T16:00:00</td>
+                  <td>10</td>
+                  <td>5</td>
+                  <td>15</td>
+              </tr>
+              <!-- Add more rows as needed -->
+          </table>
+
+
+
           </div>
         </div>
       </div>
@@ -737,194 +876,224 @@
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <script>
-      $(document).ready(function () {
+      // $(document).ready(function () {
         // Initialize Simple-DataTables for each table
         var table1 = $("#example1").DataTable();
 
-        const chartData = [
-          {
-            status: "Kertas Hampir Habis",
-            kioskNumber: "K2300012",
-            location: "Kantor Pertanahan Kota Administratif Jakarta Pusat",
-            errorTime: new Date("2024-06-03"),
-            numberOfErrors: 10,
-          },
-          {
-            status: "Kertas Hampir Habis",
-            kioskNumber: "K2300013",
-            location: "Kantor Pertanahan Kota Surabaya I",
-            errorTime: new Date("2024-06-04"),
-            numberOfErrors: 10,
-          },
-          {
-            status: "Kertas Hampir Habis",
-            kioskNumber: "K2300014",
-            location: "Kantor Pertanahan Kota Surabaya II",
-            errorTime: new Date("2024-06-01"),
-            numberOfErrors: 10,
-          },
-          {
-            status: "Toner Hampir Habis",
-            kioskNumber: "K2300015",
-            location: "Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur",
-            errorTime: new Date("2024-05-29"),
-            numberOfErrors: 10,
-          },
-          {
-            status: "Kertas Hampir Habis",
-            kioskNumber: "K2300016",
-            location: "Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur",
-            errorTime: new Date("2024-05-28"),
-            numberOfErrors: 10,
-          },
-          // ... more data entries
-        ];
+        var timePeriod = 'monthly';
 
-        const monthNames = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ];
-
-        // Function to filter data based on location and timeframe
-        function filterData(location, timeframe) {
-          const now = new Date();
-          return chartData.filter((entry) => {
-            const isLocationMatch =
-              location === "all" || entry.location === location;
-            const isTimeframeMatch =
-              timeframe === "weekly"
-                ? (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 7
-                : (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 30;
-            return isLocationMatch && isTimeframeMatch;
-          });
-        }
-
-        // Function to group data by month
-        function groupDataByMonth(data) {
-          const groupedData = Array(12).fill(0);
-          data.forEach((entry) => {
-            const month = entry.errorTime.getMonth();
-            groupedData[month] += entry.numberOfErrors;
-          });
-          return groupedData;
-        }
-
-        // Function to generate chart options
-        function getChartOptions(data) {
-          const seriesData = groupDataByMonth(data);
-          return {
+        // Initialize the chart
+        var options = {
             chart: {
-              type: "bar",
+                type: 'bar'
             },
-            series: [
-              {
-                name: "Jumlah Error",
-                data: seriesData,
-              },
-            ],
+            series: [{
+                name: 'Cetak Sertifikat',
+                data: [],
+                color: '#377DFF'
+            }, {
+                name: 'Verifikasi Sentuh Tanahku',
+                data: [],
+                color: '#BF37FF'
+            }],
             xaxis: {
-              categories: monthNames,
-            },
-            yaxis: {
-              title: {
-                text: "Jumlah Error",
-              },
-            },
-            title: {
-              text: `Number of Errors by Month - ${locationFilter.value}`,
-            },
-            dataLabels: {
-              enabled: false, // Optional: disable data labels on bars
-            },
-          };
-        }
+              categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+            }
+        };
 
-        // Location dropdown population (replace with your data source)
-        const locations = [
-          "Pilih Lokasi",
-          "Kantor Pertanahan Kota Administratif Jakarta Pusat",
-          "Kantor Pertanahan Kota Surabaya I",
-          "Kantor Pertanahan Kota Surabaya II",
-          "Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur",
-        ];
-        const locationFilter = document.getElementById("location-filter");
-        locations.forEach((location) => {
-          const option = document.createElement("option");
-          option.value = location;
-          option.text = location;
-          locationFilter.appendChild(option);
-        });
-
-        // Initial chart render
-        const initialData = filterData("all", "weekly");
-        const chart = new ApexCharts(
-          document.getElementById("chart"),
-          getChartOptions(initialData)
-        );
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 
-        // Filter buttons functionality
-        const filterWeeklyButton = document.getElementById("filter-weekly");
-        const filterMonthlyButton = document.getElementById("filter-monthly");
+        // Function to set the time period and update the chart
+        function setTimePeriod(period) {
+            timePeriod = period;
+            document.getElementById('monthlyBtn').classList.remove('active');
+            document.getElementById('weeklyBtn').classList.remove('active');
+            if (period === 'monthly') {
+                document.getElementById('monthlyBtn').classList.add('active');
+            } else {
+                document.getElementById('weeklyBtn').classList.add('active');
+            }
+            updateChart();
+        }
 
-        filterWeeklyButton.addEventListener("click", () => {
-          const filteredData = filterData(locationFilter.value, "weekly");
-          chart.updateOptions(getChartOptions(filteredData));
-          filterWeeklyButton.classList.add("active");
-          filterMonthlyButton.classList.remove("active");
-        });
+        // Function to update the chart based on filters
+        function updateChart() {
+            var locationFilter = document.getElementById('locationFilter').value;
 
-        filterMonthlyButton.addEventListener("click", () => {
-          const filteredData = filterData(locationFilter.value, "monthly");
-          chart.updateOptions(getChartOptions(filteredData));
-          filterMonthlyButton.classList.add("active");
-          filterWeeklyButton.classList.remove("active");
-        });
+            var dataTable = document.getElementById('dataTable1');
+            var printedCertificates = Array(12).fill(0);
+            var verifications = Array(12).fill(0);
 
-        // Location filter change handler
-        locationFilter.addEventListener("change", () => {
-          const filteredData = filterData(
-            locationFilter.value,
-            filterWeeklyButton.classList.contains("active")
-              ? "weekly"
-              : "monthly"
-          );
-          chart.updateOptions(getChartOptions(filteredData));
-        });
+            var now = new Date();
+            var currentYear = now.getFullYear();
+
+            for (var i = 1; i < dataTable.rows.length; i++) {
+                var row = dataTable.rows[i];
+                var location = row.cells[0].innerText;
+                var printed = parseInt(row.cells[2].innerText);
+                var verified = parseInt(row.cells[3].innerText);
+                var transactionDate = new Date(row.cells[5].innerText);
+
+                // Apply filters
+                if (locationFilter === 'all' || location === locationFilter) {
+                    if (transactionDate.getFullYear() === currentYear) {
+                        var month = transactionDate.getMonth(); // 0 = January, 1 = February, etc.
+                        printedCertificates[month] += printed;
+                        verifications[month] += verified;
+                    }
+                }
+            }
+
+            if (timePeriod === 'weekly') {
+                printedCertificates = Array(12).fill(0);
+                verifications = Array(12).fill(0);
+                var startOfWeek = new Date(now.setDate(now.getDate() - now.getDay() + 1));
+                var endOfWeek = new Date(now.setDate(now.getDate() - now.getDay() + 7));
+
+                for (var i = 1; i < dataTable.rows.length; i++) {
+                    var row = dataTable.rows[i];
+                    var location = row.cells[0].innerText;
+                    var printed = parseInt(row.cells[2].innerText);
+                    var verified = parseInt(row.cells[3].innerText);
+                    var transactionDate = new Date(row.cells[5].innerText);
+
+                    if (locationFilter === 'all' || location === locationFilter) {
+                        if (transactionDate >= startOfWeek && transactionDate <= endOfWeek) {
+                            var month = transactionDate.getMonth();
+                            printedCertificates[month] += printed;
+                            verifications[month] += verified;
+                        }
+                    }
+                }
+            }
+
+            chart.updateSeries([{
+                name: 'Cetak Sertifikat',
+                data: printedCertificates
+            }, {
+                name: 'Verifikasi Sentuh Tanahku',
+                data: verifications
+            }]);
+        }
+
+        // Initial chart update
+        updateChart();
 
 
 
 
 
-      });
-
-      $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-          if (settings.nTable.id !== "example1") {
-            return true;
-          }
-          var filterDate = $("#filter-date1").val();
-          var tableDate = data[3];
-          if (!filterDate || tableDate === filterDate) {
-            return true;
-          }
-          return false;
-        });
 
 
-      // Event listener for the dropdown
-      $("#dateFilter1").on("change", function () {
-        table1.draw();
-      });
+
+
+
+        //Statistik Waktu Transaksi
+
+        var timePeriod1 = 'monthly1';
+
+        // Initialize the chart
+        var options1 = {
+            chart: {
+                type: 'bar'
+            },
+            series: [{
+                name: 'Accumulated Total',
+                data: []
+            }],
+            xaxis: {
+              categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+                // categories: []
+            },
+            tooltip: {
+                custom: function({ series, seriesIndex, dataPointIndex, w }) {
+                    var dataTable2 = document.getElementById('dataTable2');
+                    var row = dataTable2.rows[dataPointIndex + 1]; // Adding 1 because of table header row
+                    var transactionDateTime = new Date(row.cells[2].innerText);
+                    var hour = transactionDateTime.getHours();
+                    return '<div class="arrow_box">' +
+                            '<span>Jumlah Transaksi: ' + series[seriesIndex][dataPointIndex] + '</span><br>' +
+                            '<span>Rata-rata jam: ' + hour + ':00</span>' +
+                            '</div>';
+                }
+            }
+        };
+
+        var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+        chart1.render();
+
+        // Function to set the time period and update the chart
+        function setTimePeriod1(period) {
+            timePeriod1 = period;
+            document.getElementById('monthlyBtn1').classList.remove('active');
+            document.getElementById('weeklyBtn1').classList.remove('active');
+            if (period === 'monthly1') {
+                document.getElementById('monthlyBtn1').classList.add('active');
+            } else {
+                document.getElementById('weeklyBtn1').classList.add('active');
+            }
+            updateChart1();
+        }
+
+        // Function to update the chart based on filters
+        function updateChart1() {
+            var locationFilter1 = document.getElementById('locationFilter1').value;
+
+            var dataTable2 = document.getElementById('dataTable2');
+            var accumulatedTotal = Array(12).fill(0);
+            var now = new Date();
+            var currentYear = now.getFullYear();
+
+            var weeklyData = {
+                accumulatedTotal: Array(12).fill(0)
+            };
+
+            // Helper function to get the week of the year
+            function getWeekOfYear(date) {
+                var start = new Date(date.getFullYear(), 0, 1);
+                var diff = (date - start + (start.getTimezoneOffset() - date.getTimezoneOffset()) * 60000) / 86400000;
+                return Math.ceil((diff + start.getDay() + 1) / 7);
+            }
+
+            for (var i = 1; i < dataTable2.rows.length; i++) {
+                var row = dataTable2.rows[i];
+                var location = row.cells[0].innerText;
+                var printed = parseInt(row.cells[3].innerText);
+                var verified = parseInt(row.cells[4].innerText);
+                var total = printed + verified;
+                var transactionDate = new Date(row.cells[2].innerText);
+
+                // Apply filters
+                if (locationFilter1 === 'all' || location === locationFilter1) {
+                    var month = transactionDate.getMonth();
+                    if (transactionDate.getFullYear() === currentYear) {
+                        accumulatedTotal[month] += total;
+
+                        if (timePeriod1 === 'weekly1') {
+                            var week = getWeekOfYear(transactionDate);
+                            if (week === getWeekOfYear(now)) {
+                                weeklyData.accumulatedTotal[month] += total;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (timePeriod1 === 'weekly1') {
+                accumulatedTotal = weeklyData.accumulatedTotal;
+            }
+
+            chart1.updateSeries([{
+                name: 'Accumulated Total',
+                data: accumulatedTotal
+            }]);
+        }
+
+        // Initial chart update
+        updateChart1();
+        
+      // });
     </script>
   </body>
 </html>
