@@ -261,7 +261,7 @@
         color: white;
       }
 
-      .toggle-container {
+      /* .toggle-container {
         border-radius: 4.818px;
         background-color: #edf2f8;
         display: flex;
@@ -291,6 +291,31 @@
         background-color: #002845;
         color: #fff;
         font-weight: 500;
+      } */
+
+      #filters {
+        /* margin-bottom: 20px; */
+        border-radius: 4.818px;
+        background-color: #edf2f8;
+        /* display: flex; */
+        gap: 12px;
+        font-size: 13px;
+        white-space: nowrap;
+        /* text-align: center; */
+        line-height: 114%;
+        /* justify-content: space-between; */
+        padding: 6px;
+      }
+      /* #filters select,
+      #filters button {
+        margin-right: 10px;
+      } */
+      #data-table {
+        display: none;
+      }
+      .active {
+        background-color: #007bff;
+        color: white;
       }
     </style>
   </head>
@@ -1119,21 +1144,21 @@
             <div class="col-12 mt-5">
               <!-- <section class="section" style="align-self: center;"> -->
               <div class="card border">
-                <div class="card-header d-flex justify-content-between">
+                <div
+                  class="card-header d-flex justify-content-between"
+                  style="align-items: center; justify-content: center"
+                >
                   <h3>Total Kiosk Error</h3>
-                  <div>
-                    <label for="location-filter"></label>
-                    <select id="location-filter">
-                      <!-- Options will be dynamically added -->
-                    </select>
-                    
-                  </div>
-                  <div class="toggle-container">
 
-                    <button id="filter-weekly" class="active" style="border-radius: 4.818px;">Mingguan</button>
-                    <button id="filter-monthly" style="border-radius: 4.818px;">Bulanan</button>
-                    <!-- <span class="toggle-option option-inactive" tabindex="0" role="button">Mingguan</span>
-                    <span class="toggle-option option-active" tabindex="0">Bulanan</span> -->
+                  <div>
+                    <select id="locationFilter">
+                      <option value="">Semua Lokasi</option>
+                    </select>
+                  </div>
+
+                  <div id="filters" >
+                    <button id="weeklyFilter" style="border-radius: 4.818px;">Mingguan</button>
+                    <button id="monthlyFilter" style="border-radius: 4.818px;">Bulanan</button>
                   </div>
                 </div>
                 <div class="card-body">
@@ -1145,9 +1170,117 @@
                 <!-- </section> -->
               </div>
             </div>
-
-            
           </div>
+
+          <table id="data-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Kiosk Number</th>
+                <th>Location</th>
+                <th>Error Time</th>
+                <th>Number of Errors</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Blanko Sertifikat Habis</td>
+                <td>K2300012</td>
+                <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
+                <td>2024-01-15T10:00:00Z</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>Kertas Hampir Habis</td>
+                <td>K2300013</td>
+                <td>Kantor Pertanahan Kota Surabaya I</td>
+                <td>2024-02-16T11:00:00Z</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>Kertas Hampir Habis</td>
+                <td>K2300014</td>
+                <td>Kantor Pertanahan Kota Surabaya II</td>
+                <td>2024-03-17T12:00:00Z</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>Blanko Sertifikat Habis</td>
+                <td>K2300015</td>
+                <td>
+                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
+                  Timur
+                </td>
+                <td>2024-04-18T13:00:00Z</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>Printer Tidak Terdeteksi</td>
+                <td>K2300016</td>
+                <td>
+                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
+                  Timur
+                </td>
+                <td>2024-05-19T14:00:00Z</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>Printer Tidak Terdeteksi</td>
+                <td>K2300017</td>
+                <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
+                <td>2024-06-20T15:00:00Z</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>Server Error</td>
+                <td>K2300018</td>
+                <td>Kantor Pertanahan Kota Surabaya I</td>
+                <td>2024-07-21T16:00:00Z</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>Server Error</td>
+                <td>K2300019</td>
+                <td>Kantor Pertanahan Kota Surabaya II</td>
+                <td>2024-08-22T17:00:00Z</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Server Error</td>
+                <td>K2300020</td>
+                <td>
+                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
+                  Timur
+                </td>
+                <td>2024-09-23T18:00:00Z</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td>Printer Tidak Terdeteksi</td>
+                <td>K2300021</td>
+                <td>
+                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
+                  Timur
+                </td>
+                <td>2024-10-24T19:00:00Z</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>Printer Tidak Terdeteksi</td>
+                <td>K2300022</td>
+                <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
+                <td>2024-11-25T20:00:00Z</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>Blanko Sertifikat Habis</td>
+                <td>K2300023</td>
+                <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
+                <td>2024-12-26T21:00:00Z</td>
+                <td>4</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -1234,168 +1367,133 @@
         $("#filter-lokasi3").on("input", function () {
           table3.column(1).search(this.value).draw();
         });
+      });
 
-        // Data (replace with your actual data fetching logic)
-        const chartData = [
-          {
-            status: "Kertas Hampir Habis",
-            kioskNumber: "K2300012",
-            location: "Kantor Pertanahan Kota Administratif Jakarta Pusat",
-            errorTime: new Date("2024-06-03"),
-            numberOfErrors: 10,
-          },
-          {
-            status: "Kertas Hampir Habis",
-            kioskNumber: "K2300013",
-            location: "Kantor Pertanahan Kota Surabaya I",
-            errorTime: new Date("2024-06-04"),
-            numberOfErrors: 10,
-          },
-          {
-            status: "Kertas Hampir Habis",
-            kioskNumber: "K2300014",
-            location: "Kantor Pertanahan Kota Surabaya II",
-            errorTime: new Date("2024-06-01"),
-            numberOfErrors: 10,
-          },
-          {
-            status: "Toner Hampir Habis",
-            kioskNumber: "K2300015",
-            location: "Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur",
-            errorTime: new Date("2024-05-29"),
-            numberOfErrors: 10,
-          },
-          {
-            status: "Kertas Hampir Habis",
-            kioskNumber: "K2300016",
-            location: "Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur",
-            errorTime: new Date("2024-05-28"),
-            numberOfErrors: 10,
-          },
-          // ... more data entries
-        ];
+      document.addEventListener("DOMContentLoaded", () => {
+        const dataTable = document.getElementById("data-table");
+        let data = [];
 
-        const monthNames = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ];
+        const parseTableData = () => {
+          const rows = dataTable.querySelectorAll("tbody tr");
+          rows.forEach((row) => {
+            const cells = row.querySelectorAll("td");
+            data.push({
+              status: cells[0].textContent,
+              kioskNumber: cells[1].textContent,
+              location: cells[2].textContent,
+              errorTime: cells[3].textContent,
+              numberOfErrors: parseInt(cells[4].textContent),
+            });
+          });
+        };
 
-        // Function to filter data based on location and timeframe
-        function filterData(location, timeframe) {
+        let filteredData = [...data];
+        const locationFilter = document.getElementById("locationFilter");
+        const weeklyFilterButton = document.getElementById("weeklyFilter");
+        const monthlyFilterButton = document.getElementById("monthlyFilter");
+
+        const initializeLocationFilter = () => {
+          const locations = [...new Set(data.map((item) => item.location))];
+          locations.forEach((location) => {
+            const option = document.createElement("option");
+            option.value = location;
+            option.textContent = location;
+            locationFilter.appendChild(option);
+          });
+        };
+
+        const filterData = () => {
+          const selectedLocation = locationFilter.value;
           const now = new Date();
-          return chartData.filter((entry) => {
-            const isLocationMatch =
-              location === "all" || entry.location === location;
-            const isTimeframeMatch =
-              timeframe === "weekly"
-                ? (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 7
-                : (now - entry.errorTime) / (1000 * 60 * 60 * 24) <= 30;
-            return isLocationMatch && isTimeframeMatch;
-          });
-        }
+          let startOfWeek = new Date(
+            now.setDate(now.getDate() - now.getDay() + 1)
+          ); // Start of the week (Monday)
+          let endOfWeek = new Date(
+            now.setDate(now.getDate() - now.getDay() + 7)
+          ); // End of the week (Sunday)
+          const oneMonthAgo = new Date(now);
+          oneMonthAgo.setMonth(now.getMonth() - 1);
 
-        // Function to group data by month
-        function groupDataByMonth(data) {
-          const groupedData = Array(12).fill(0);
-          data.forEach((entry) => {
-            const month = entry.errorTime.getMonth();
-            groupedData[month] += entry.numberOfErrors;
-          });
-          return groupedData;
-        }
+          // Reset to start of week and end of week if weekly filter is active
+          if (weeklyFilterButton.classList.contains("active")) {
+            startOfWeek = new Date();
+            startOfWeek.setDate(
+              startOfWeek.getDate() - startOfWeek.getDay() + 1
+            );
+            endOfWeek = new Date(startOfWeek);
+            endOfWeek.setDate(startOfWeek.getDate() + 6);
+          }
 
-        // Function to generate chart options
-        function getChartOptions(data) {
-          const seriesData = groupDataByMonth(data);
-          return {
-            chart: {
-              type: "bar",
-            },
+          filteredData = data.filter((item) => {
+            const errorTime = new Date(item.errorTime);
+            if (selectedLocation && item.location !== selectedLocation)
+              return false;
+            if (
+              weeklyFilterButton.classList.contains("active") &&
+              (errorTime < startOfWeek || errorTime > endOfWeek)
+            )
+              return false;
+            if (
+              monthlyFilterButton.classList.contains("active") &&
+              errorTime < oneMonthAgo
+            )
+              return false;
+            return true;
+          });
+
+          updateChart();
+        };
+
+        const updateChart = () => {
+          const monthlyErrors = Array(12).fill(0);
+          filteredData.forEach((item) => {
+            const month = new Date(item.errorTime).getMonth();
+            monthlyErrors[month] += item.numberOfErrors;
+          });
+
+          const options = {
             series: [
               {
-                name: "Jumlah Error",
-                data: seriesData,
+                name: "Errors",
+                data: monthlyErrors,
               },
             ],
-            xaxis: {
-              categories: monthNames,
+            chart: {
+              type: "bar",
+              height: 350,
             },
-            yaxis: {
-              title: {
-                text: "Jumlah Error",
+            plotOptions: {
+              bar: {
+                horizontal: false,
               },
             },
-            title: {
-              text: `Number of Errors by Month - ${locationFilter.value}`,
-            },
-            dataLabels: {
-              enabled: false, // Optional: disable data labels on bars
+            xaxis: {
+              categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
             },
           };
-        }
 
-        // Location dropdown population (replace with your data source)
-        const locations = [
-          "Pilih Lokasi",
-          "Kantor Pertanahan Kota Administratif Jakarta Pusat",
-          "Kantor Pertanahan Kota Surabaya I",
-          "Kantor Pertanahan Kota Surabaya II",
-          "Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan Timur",
-        ];
-        const locationFilter = document.getElementById("location-filter");
-        locations.forEach((location) => {
-          const option = document.createElement("option");
-          option.value = location;
-          option.text = location;
-          locationFilter.appendChild(option);
-        });
-
-        // Initial chart render
-        const initialData = filterData("all", "weekly");
-        const chart = new ApexCharts(
-          document.getElementById("chart"),
-          getChartOptions(initialData)
-        );
-        chart.render();
-
-        // Filter buttons functionality
-        const filterWeeklyButton = document.getElementById("filter-weekly");
-        const filterMonthlyButton = document.getElementById("filter-monthly");
-
-        filterWeeklyButton.addEventListener("click", () => {
-          const filteredData = filterData(locationFilter.value, "weekly");
-          chart.updateOptions(getChartOptions(filteredData));
-          filterWeeklyButton.classList.add("active");
-          filterMonthlyButton.classList.remove("active");
-        });
-
-        filterMonthlyButton.addEventListener("click", () => {
-          const filteredData = filterData(locationFilter.value, "monthly");
-          chart.updateOptions(getChartOptions(filteredData));
-          filterMonthlyButton.classList.add("active");
-          filterWeeklyButton.classList.remove("active");
-        });
-
-        // Location filter change handler
-        locationFilter.addEventListener("change", () => {
-          const filteredData = filterData(
-            locationFilter.value,
-            filterWeeklyButton.classList.contains("active")
-              ? "weekly"
-              : "monthly"
+          const chart = new ApexCharts(
+            document.querySelector("#chart"),
+            options
           );
-          chart.updateOptions(getChartOptions(filteredData));
+          chart.render();
+        };
+
+        locationFilter.addEventListener("change", filterData);
+        weeklyFilterButton.addEventListener("click", () => {
+          weeklyFilterButton.classList.add("active");
+          monthlyFilterButton.classList.remove("active");
+          filterData();
         });
+        monthlyFilterButton.addEventListener("click", () => {
+          monthlyFilterButton.classList.add("active");
+          weeklyFilterButton.classList.remove("active");
+          filterData();
+        });
+
+        parseTableData();
+        initializeLocationFilter();
+        filterData(); // Initial chart render
       });
     </script>
   </body>
