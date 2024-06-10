@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Earthquake Effect Markers in Indonesia</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      #map {
+        height: 600px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      // Initialize the map centered on Indonesia
+      var map = L.map("map").setView([-2.5, 118.0], 5); // Central coordinates of Indonesia
+
+      // Add the base layer from OpenStreetMap
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      // Custom icon using data URL for the SVG
+      var earthquakeIcon = L.icon({
+        iconUrl:
+          'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="red"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>',
+        iconSize: [20, 20],
+        iconAnchor: [10, 10], // Center the icon
+      });
+
+      // Function to extract earthquake locations from the table
+      function extractEarthquakeLocationsFromTable() {
+        var earthquakeLocations = [];
+        var tableRows = document.querySelectorAll("#earthquakeTable tbody tr");
+        tableRows.forEach(function (row) {
+          var cells = row.querySelectorAll("td");
+          var latitude = parseFloat(cells[0].textContent);
+          var longitude = parseFloat(cells[1].textContent);
+          var magnitude = parseFloat(cells[2].textContent);
+          var location = cells[3].textContent;
+          earthquakeLocations.push({
+            lat: latitude,
+            lng: longitude,
+            magnitude: magnitude,
+            location: location,
+          });
+        });
+        return earthquakeLocations;
+      }
+
+      // Add earthquake markers to the map
+      function addEarthquakeMarkers() {
+        var earthquakeLocations = extractEarthquakeLocationsFromTable();
+        earthquakeLocations.forEach(function (earthquake) {
+          var earthquakeMarker = L.marker([earthquake.lat, earthquake.lng], {
+            icon: earthquakeIcon,
+          }).addTo(map);
+
+          // Bind a popup to each marker
+          earthquakeMarker.bindPopup(
+            "Earthquake Location: " +
+              earthquake.location +
+              "<br>Magnitude: " +
+              earthquake.magnitude
+          );
+        });
+      }
+
+      // Call the function to add markers when the page loads
+      window.onload = addEarthquakeMarkers;
+    </script>
+
+    <!-- Table containing earthquake locations -->
+    <table id="earthquakeTable" style="display: none">
+      <thead>
+        <tr>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Magnitude</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>-6.2088</td>
+          <td>106.8456</td>
+          <td>5.0</td>
+          <td>Jakarta</td>
+        </tr>
+        <tr>
+          <td>-7.7972</td>
+          <td>110.3705</td>
+          <td>4.8</td>
+          <td>Yogyakarta</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </body>
+</html>
