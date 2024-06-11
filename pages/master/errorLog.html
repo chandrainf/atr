@@ -6,7 +6,7 @@
     <title>Error Log</title>
     <link
       rel="stylesheet"
-      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
+      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
     />
 
     <link rel="stylesheet" href="/assets/compiled/css/app.css" />
@@ -29,9 +29,7 @@
         background-color: #132144;
         z-index: 1000;
         display: flex;
-        /* justify-content: center;
-        align-items: center; */
-        padding: 10px 0; /* Add padding to increase navbar height if needed */
+        padding: 10px 0;
       }
 
       .navbar-content {
@@ -39,8 +37,8 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        max-width: 1200px; /* Adjust this value to fit your design */
-        padding: 0 20px; /* Add padding to the content area for spacing */
+        max-width: 1200px;
+        padding: 0 20px;
       }
 
       .navbar-logo {
@@ -111,7 +109,6 @@
       }
 
       .dropdown-link {
-        /* color: white; */
         padding: 12px 16px;
         text-decoration: none;
         display: block;
@@ -131,10 +128,7 @@
 
       .map-container {
         width: 100%;
-        height: calc(
-          100vh - 90px
-        ); /* Adjust based on the height of the navbar and additional margin */
-        /* margin-top: 90px; Height of the fixed navbar + additional space */
+        height: calc(100vh - 90px);
       }
 
       iframe {
@@ -145,7 +139,6 @@
       .timeline {
         position: relative;
         margin: 0 auto;
-        /* padding: 40px 0; */
         width: 100%;
         max-width: 900px;
       }
@@ -175,7 +168,6 @@
         content: "";
         position: absolute;
         top: 0;
-        /* left: 50%; */
         transform: translateX(-50%);
         width: 20px;
         height: 20px;
@@ -188,7 +180,6 @@
       .timeline-grey {
         position: relative;
         margin: 20px 0;
-        /* padding-left: 10%; */
         clear: both;
       }
 
@@ -196,7 +187,6 @@
         content: "";
         position: absolute;
         top: 0;
-        /* left: 50%; */
         transform: translateX(-50%);
         width: 20px;
         height: 20px;
@@ -209,8 +199,6 @@
       .timeline-yellow {
         position: relative;
         margin: 20px 0;
-
-        /* padding-left: 10%; */
         clear: both;
       }
 
@@ -218,12 +206,11 @@
         content: "";
         position: absolute;
         top: 0;
-        /* left: 50%; */
+
         transform: translateX(-50%);
         width: 20px;
         height: 20px;
 
-        /* border-radius: 50%; */
         background: #ff8533;
         border: 4px solid white;
         z-index: 1;
@@ -232,7 +219,6 @@
       .timeline-green {
         position: relative;
         margin: 20px 0;
-        /* padding-left: 10%; */
         clear: both;
       }
 
@@ -240,7 +226,6 @@
         content: "";
         position: absolute;
         top: 0;
-        /* left: 50%; */
         transform: translateX(-50%);
         width: 20px;
         height: 20px;
@@ -252,8 +237,6 @@
 
       .timeline-content {
         padding: 20px;
-        /* background: #f8f9fa; */
-        /* border: 1px solid #e9ecef; */
         border-radius: 5px;
       }
       .active {
@@ -261,61 +244,65 @@
         color: white;
       }
 
-      /* .toggle-container {
-        border-radius: 4.818px;
-        background-color: #edf2f8;
-        display: flex;
-        gap: 12px;
-        font-size: 13px;
-        white-space: nowrap;
-        text-align: center;
-        line-height: 114%;
-        justify-content: space-between;
-        padding: 6px;
-      }
-
-      .toggle-option {
-        font-feature-settings: "clig" off, "liga" off;
-        font-family: Inter, sans-serif;
-        margin: auto 0;
-        padding: 6px;
-      }
-
-      .option-inactive {
-        color: #9291a5;
-        font-weight: 400;
-      }
-
-      .option-active {
-        border-radius: 4.818px;
-        background-color: #002845;
-        color: #fff;
-        font-weight: 500;
-      } */
-
       #filters {
-        /* margin-bottom: 20px; */
         border-radius: 4.818px;
         background-color: #edf2f8;
-        /* display: flex; */
         gap: 12px;
         font-size: 13px;
         white-space: nowrap;
-        /* text-align: center; */
         line-height: 114%;
-        /* justify-content: space-between; */
         padding: 6px;
       }
-      /* #filters select,
-      #filters button {
-        margin-right: 10px;
-      } */
+
       #data-table {
         display: none;
       }
       .active {
         background-color: #007bff;
         color: white;
+      }
+
+      .circle {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 8px;
+      }
+      .red-circle {
+        background-color: red;
+      }
+      .yellow-circle {
+        background-color: yellow;
+      }
+      .blue-circle {
+        background-color: blue;
+      }
+
+      .badge-warning {
+        border: 1px solid rgba(255, 142, 66, 1);
+        border-radius: 5px;
+        background-color: #fff0e5;
+        color: #ff8e42;
+        font: 400 16px;
+     
+      }
+      .badge-danger {
+        border-radius: 5px;
+        border: 1px solid rgba(255, 66, 66, 1);
+        background-color: #ffe5e5;
+        color: #ff4242;
+        font: 400 16px;
+      
+      }
+
+      .badge-primary {
+        border-radius: 5px;
+        border: 1px solid #377dff;
+        background-color: #ffe5e5;
+        color: #377dff;
+        font: 400 16px;
+       
       }
     </style>
   </head>
@@ -416,7 +403,7 @@
                         <th>Lokasi</th>
                         <th>Waktu Error</th>
                         <th>Status Pengerjaan</th>
-                        <!-- <th>Action</th> -->
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -427,183 +414,49 @@
                           Kantor Pertanahan Kota Administratif Jakarta Pusat
                         </td>
                         <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-warning" style="opacity: 70%"
-                            >Dalam Perbaikan</span
-                          >
-                        </td>
-                        <!-- <td>
-                          <a
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight"
-                            aria-controls="offcanvasRight"
-                            >Detail</a
-                          >
-                        </td> -->
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
                       </tr>
                       <tr>
                         <td>Blanko Sertifikat Habis</td>
                         <td>K2300013</td>
                         <td>Kantor Pertanahan Kota Surabaya I</td>
                         <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-danger" style="opacity: 70%"
-                            >Dalam Antrian</span
-                          >
-                        </td>
-                        <!-- <td><a href="detailKiosk.html">Detail</a></td> -->
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
                       </tr>
                       <tr>
                         <td>Printer Tidak Terdeteksi</td>
                         <td>K2300014</td>
                         <td>Kantor Pertanahan Kota Surabaya II</td>
                         <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-warning" style="opacity: 70%"
-                            >Dalam Perbaikan</span
-                          >
-                        </td>
-                        <!-- <td><a href="detailKiosk.html">Detail</a></td> -->
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
                       </tr>
                       <tr>
-                        <td>Kertas Hampir Habis</td>
+                        <td>Kertas Habis</td>
                         <td>K2300015</td>
                         <td>
                           Kantor Wilayah Badan Pertanahan Nasional Provinsi
                           Kalimantan Timur
                         </td>
                         <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-warning" style="opacity: 70%"
-                            >Dalam Perbaikan</span
-                          >
-                        </td>
-                        <!-- <td><a href="detailKiosk.html">Detail</a></td> -->
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
                       </tr>
                       <tr>
-                        <td>Toner Hampir Habis</td>
+                        <td>Toner Habis</td>
                         <td>K2300016</td>
                         <td>
                           Kantor Wilayah Badan Pertanahan Nasional Provinsi
                           Kalimantan Timur
                         </td>
                         <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-danger" style="opacity: 70%"
-                            >Dalam Antrian</span
-                          >
-                        </td>
-                        <!-- <td><a href="detailKiosk.html">Detail</a></td> -->
-                      </tr>
-                      <tr>
-                        <td>Server Error</td>
-                        <td>K2300012</td>
-                        <td>
-                          Kantor Pertanahan Kota Administratif Jakarta Pusat
-                        </td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-warning" style="opacity: 70%"
-                            >Dalam Perbaikan</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Blanko Sertifikat Habis</td>
-                        <td>K2300013</td>
-                        <td>Kantor Pertanahan Kota Surabaya I</td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-danger">Dalam Antrian</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Printer Tidak Terdeteksi</td>
-                        <td>K2300014</td>
-                        <td>Kantor Pertanahan Kota Surabaya II</td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Kertas Hampir Habis</td>
-                        <td>K2300015</td>
-                        <td>
-                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                          Kalimantan Timur
-                        </td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Toner Hampir Habis</td>
-                        <td>K2300016</td>
-                        <td>
-                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                          Kalimantan Timur
-                        </td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-danger">Dalam Antrian</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Server Error</td>
-                        <td>K2300012</td>
-                        <td>
-                          Kantor Pertanahan Kota Administratif Jakarta Pusat
-                        </td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Blanko Sertifikat Habis</td>
-                        <td>K2300013</td>
-                        <td>Kantor Pertanahan Kota Surabaya I</td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-danger">Dalam Antrian</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Printer Tidak Terdeteksi</td>
-                        <td>K2300014</td>
-                        <td>Kantor Pertanahan Kota Surabaya II</td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Kertas Hampir Habis</td>
-                        <td>K2300015</td>
-                        <td>
-                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                          Kalimantan Timur
-                        </td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Toner Hampir Habis</td>
-                        <td>K2300016</td>
-                        <td>
-                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                          Kalimantan Timur
-                        </td>
-                        <td>2024-05-05</td>
-                        <td>
-                          <span class="badge bg-danger">Dalam Antrian</span>
-                        </td>
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
                       </tr>
                     </tbody>
+                    <p></p>
                   </table>
                 </div>
               </div>
@@ -634,62 +487,46 @@
                         <th>Lokasi</th>
                         <th>Waktu Error</th>
                         <th>Status Pengerjaan</th>
-                        <!-- <th>Action</th> -->
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Server Error</td>
+                        <td>Kertas Hampir Habis</td>
                         <td>K2300012</td>
                         <td>
                           Kantor Pertanahan Kota Administratif Jakarta Pusat
                         </td>
                         <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-warning" style="opacity: 70%"
-                            >Dalam Perbaikan</span
-                          >
-                        </td>
-                        <!-- <td><a href="detailKiosk.html">Detail</a></td> -->
-                      </tr>
-                      <tr>
-                        <td>Blanko Sertifikat Habis</td>
-                        <td>K2300013</td>
-                        <td>Kantor Pertanahan Kota Surabaya I</td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-danger" style="opacity: 70%"
-                            >Dalam Antrian</span
-                          >
-                        </td>
-                        <!-- <td><a href="detailKiosk.html">Detail</a></td> -->
-                      </tr>
-                      <tr>
-                        <td>Printer Tidak Terdeteksi</td>
-                        <td>K2300014</td>
-                        <td>Kantor Pertanahan Kota Surabaya II</td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-warning" style="opacity: 70%"
-                            >Dalam Perbaikan</span
-                          >
-                        </td>
-                        <!-- <td><a href="detailKiosk.html">Detail</a></td> -->
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
                       </tr>
                       <tr>
                         <td>Kertas Hampir Habis</td>
+                        <td>K2300013</td>
+                        <td>Kantor Pertanahan Kota Surabaya I</td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Toner Hampir Habis</td>
+                        <td>K2300014</td>
+                        <td>Kantor Pertanahan Kota Surabaya II</td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Toner Hampir Habis</td>
                         <td>K2300015</td>
                         <td>
                           Kantor Wilayah Badan Pertanahan Nasional Provinsi
                           Kalimantan Timur
                         </td>
                         <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-warning" style="opacity: 70%"
-                            >Dalam Perbaikan</span
-                          >
-                        </td>
-                        <!-- <td><a href="detailKiosk.html">Detail</a></td> -->
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
                       </tr>
                       <tr>
                         <td>Toner Hampir Habis</td>
@@ -699,127 +536,14 @@
                           Kalimantan Timur
                         </td>
                         <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-danger" style="opacity: 70%"
-                            >Dalam Antrian</span
-                          >
-                        </td>
-                        <!-- <td><a href="detailKiosk.html">Detail</a></td> -->
-                      </tr>
-                      <tr>
-                        <td>Server Error</td>
-                        <td>K2300012</td>
-                        <td>
-                          Kantor Pertanahan Kota Administratif Jakarta Pusat
-                        </td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-warning" style="opacity: 70%"
-                            >Dalam Perbaikan</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Blanko Sertifikat Habis</td>
-                        <td>K2300013</td>
-                        <td>Kantor Pertanahan Kota Surabaya I</td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-danger">Dalam Antrian</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Printer Tidak Terdeteksi</td>
-                        <td>K2300014</td>
-                        <td>Kantor Pertanahan Kota Surabaya II</td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Kertas Hampir Habis</td>
-                        <td>K2300015</td>
-                        <td>
-                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                          Kalimantan Timur
-                        </td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Toner Hampir Habis</td>
-                        <td>K2300016</td>
-                        <td>
-                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                          Kalimantan Timur
-                        </td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-danger">Dalam Antrian</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Server Error</td>
-                        <td>K2300012</td>
-                        <td>
-                          Kantor Pertanahan Kota Administratif Jakarta Pusat
-                        </td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Blanko Sertifikat Habis</td>
-                        <td>K2300013</td>
-                        <td>Kantor Pertanahan Kota Surabaya I</td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-danger">Dalam Antrian</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Printer Tidak Terdeteksi</td>
-                        <td>K2300014</td>
-                        <td>Kantor Pertanahan Kota Surabaya II</td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Kertas Hampir Habis</td>
-                        <td>K2300015</td>
-                        <td>
-                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                          Kalimantan Timur
-                        </td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-warning">Dalam Perbaikan</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Toner Hampir Habis</td>
-                        <td>K2300016</td>
-                        <td>
-                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                          Kalimantan Timur
-                        </td>
-                        <td>20 Maret 2024</td>
-                        <td>
-                          <span class="badge bg-danger">Dalam Antrian</span>
-                        </td>
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
 
-              <!-- </section> -->
             </div>
           </div>
 
@@ -998,147 +722,8 @@
                   </table>
                 </div>
               </div>
-
-              <!-- </section> -->
             </div>
           </div>
-
-          <!-- <table id="data-table1" style="display: none">
-            <thead>
-              <tr>
-                <th>Status Error</th>
-                <th>Nomor Kiosk</th>
-                <th>Lokasi</th>
-                <th>Waktu Error</th>
-                <th>Jumlah Error</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Server Error</td>
-                <td>K2300012</td>
-                <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
-                <td>2024-01-01</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>Blanko Sertifikat Habis</td>
-                <td>K2300013</td>
-                <td>Kantor Pertanahan Kota Surabaya I</td>
-                <td>2024-02-02</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>Printer Tidak Terdeteksi</td>
-                <td>K2300014</td>
-                <td>Kantor Pertanahan Kota Surabaya II</td>
-                <td>2024-03-03</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>Kertas Hampir Habis</td>
-                <td>K2300015</td>
-                <td>
-                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
-                  Timur
-                </td>
-                <td>2024-04-14</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>Toner Hampir Habis</td>
-                <td>K2300016</td>
-                <td>
-                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
-                  Timur
-                </td>
-                <td>2024-05-20</td>
-                <td>15</td>
-              </tr>
-              <tr>
-                <td>Server Error</td>
-                <td>K2300012</td>
-                <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
-                <td>2024-05-16</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Blanko Sertifikat Habis</td>
-                <td>K2300013</td>
-                <td>Kantor Pertanahan Kota Surabaya I</td>
-                <td>2024-05-11</td>
-                <td>6</td>
-              </tr>
-              <tr>
-                <td>Printer Tidak Terdeteksi</td>
-                <td>K2300014</td>
-                <td>Kantor Pertanahan Kota Surabaya II</td>
-                <td>2024-05-05</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <td>Kertas Hampir Habis</td>
-                <td>K2300015</td>
-                <td>
-                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
-                  Timur
-                </td>
-                <td>2024-05-05</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>Toner Hampir Habis</td>
-                <td>K2300016</td>
-                <td>
-                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
-                  Timur
-                </td>
-                <td>2024-06-01</td>
-                <td>8</td>
-              </tr>
-              <tr>
-                <td>Server Error</td>
-                <td>K2300012</td>
-                <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
-                <td>2024-05-05</td>
-                <td>22</td>
-              </tr>
-              <tr>
-                <td>Blanko Sertifikat Habis</td>
-                <td>K2300013</td>
-                <td>Kantor Pertanahan Kota Surabaya I</td>
-                <td>2024-02-05</td>
-                <td>4</td>
-              </tr>
-              <tr>
-                <td>Printer Tidak Terdeteksi</td>
-                <td>K2300014</td>
-                <td>Kantor Pertanahan Kota Surabaya II</td>
-                <td>2024-05-05</td>
-                <td>8</td>
-              </tr>
-              <tr>
-                <td>Kertas Hampir Habis</td>
-                <td>K2300015</td>
-                <td>
-                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
-                  Timur
-                </td>
-                <td>2024-04-24</td>
-                <td>2</td>
-              </tr>
-              <tr>
-                <td>Toner Hampir Habis</td>
-                <td>K2300016</td>
-                <td>
-                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
-                  Timur
-                </td>
-                <td>2024-03-14</td>
-                <td>3</td>
-              </tr>
-            </tbody>
-          </table> -->
 
           <div class="row">
             <div class="col-12 mt-5">
@@ -1156,9 +741,13 @@
                     </select>
                   </div>
 
-                  <div id="filters" >
-                    <button id="weeklyFilter" style="border-radius: 4.818px;">Mingguan</button>
-                    <button id="monthlyFilter" style="border-radius: 4.818px;">Bulanan</button>
+                  <div id="filters">
+                    <button id="weeklyFilter" style="border-radius: 4.818px">
+                      Mingguan
+                    </button>
+                    <button id="monthlyFilter" style="border-radius: 4.818px">
+                      Bulanan
+                    </button>
                   </div>
                 </div>
                 <div class="card-body">
@@ -1281,6 +870,79 @@
               </tr>
             </tbody>
           </table>
+
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasRight"
+            aria-labelledby="offcanvasRightLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 id="offcanvasRightLabel">K2300012</h5>
+              <button
+                type="button"
+                class="btn-close text-reset"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="offcanvas-body">
+              <div class="container">
+                <div class="timeline">
+                  <div class="timeline-red">
+                    <div class="timeline-content">
+                      <h4>Server Error</h4>
+                      <p>
+                        Sistem mendeteksi adanya “Server Error” pada Kiosk.
+                        Pemberitahuan otomatis telah dikirim ke tim teknis untuk
+                        penanganan lebih lanjut
+                      </p>
+
+                      <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                    </div>
+                  </div>
+                  <div class="timeline-grey">
+                    <div class="timeline-content">
+                      <h4>Pemberitahuan Diterima oleh Tim Teknis</h4>
+                      <p>
+                        Tim Teknis telah menerima pemberitahuan dan akan
+                        melakukan penanganan.
+                      </p>
+
+                      <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                    </div>
+                  </div>
+                  <div class="timeline-yellow">
+                    <div class="timeline-content">
+                      <h4
+                        class="text-white"
+                        style="background-color: #ff8533; border-radius: 5px"
+                      >
+                        Dalam Perbaikan
+                      </h4>
+                      <p>Status pengerjaan diperbarui.</p>
+
+                      <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                    </div>
+                  </div>
+                  <div class="timeline-green">
+                    <div class="timeline-content">
+                      <h4>Perbaikan Selesai</h4>
+                      <p>
+                        Perbaikan telah selesai. Kiosk telah dapat digunakan
+                        dengan normal.
+                      </p>
+
+                      <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                    </div>
+                  </div>
+                  <!-- Add more timeline items as needed -->
+                </div>
+                ...
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1296,13 +958,88 @@
     <!-- <script src="/assets/static/js/pages/dashboard.js"></script> -->
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script>
       $(document).ready(function () {
         // Initialize DataTables for each table
         var table1 = $("#example1").DataTable();
         var table2 = $("#example2").DataTable();
         var table3 = $("#example3").DataTable();
+
+
+        function addStatusCirclesAndLogic() {
+          $("#example1 tbody tr").each(function () {
+            var statusText = $(this).find("td").eq(0).text().toLowerCase();
+            var workStatusText = $(this).find("td").eq(4).text().toLowerCase();
+
+            var circleClass = "";
+            var statusClass = "";
+
+            if (
+              statusText.includes("server error") ||
+              statusText.includes("blanko sertifikat habis") ||
+              statusText.includes("printer tidak terdeteksi")||
+              statusText.includes("kertas habis")||
+              statusText.includes("toner habis")
+            ) {
+              circleClass = "red-circle";
+            } else if (
+              statusText.includes("kertas hampir habis") ||
+              statusText.includes("toner hampir habis")
+            ) {
+              circleClass = "yellow-circle";
+            } else if (statusText.includes("normal")) {
+              circleClass = "blue-circle";
+            }
+
+            if (workStatusText.includes("dalam perbaikan")) {
+              statusClass = "yellow-outline";
+            } else if (workStatusText.includes("dalam antrian")) {
+              statusClass = "red-outline";
+            }
+
+            if (workStatusText.includes("dalam perbaikan")) {
+              statusClass = "badge badge-warning";
+            } else if (workStatusText.includes("dalam antrian")) {
+              statusClass = "badge badge-danger";
+            } else if (workStatusText.includes("normal")) {
+              statusClass = "badge badge-primary";
+            }
+
+            if (circleClass) {
+              var circle = $("<span>").addClass("circle").addClass(circleClass);
+              $(this).find("td").eq(0).prepend(circle);
+            }
+
+            if (statusClass) {
+              $(this).find("td").eq(4).addClass(statusClass);
+            }
+          });
+        }
+
+        // Call the function to add status circles and logic
+        addStatusCirclesAndLogic();
+
+        // Function to add dynamic "Details" link to each row
+        function addDetailsLinks() {
+          $("#example1 tbody tr").each(function () {
+            var detailsLink = $("<a>")
+              .attr({
+                href: "#",
+                "data-bs-toggle": "offcanvas",
+                "data-bs-target": "#offcanvasRight",
+                "aria-controls": "offcanvasRight",
+              })
+              .text("Details");
+
+            // Append the dynamic "Details" link to the last cell in each row
+            $(this).find(".details-cell").html(detailsLink);
+          });
+        }
+
+        // Call the function to add dynamic "Details" links
+        addDetailsLinks();
+      
 
         // Filter functions for the first table
 
@@ -1322,6 +1059,11 @@
           return false;
         });
 
+
+
+
+        
+
         // Filter functions for the second table
 
         $("#filter-date2").on("change", function () {
@@ -1339,6 +1081,80 @@
           }
           return false;
         });
+
+
+        function addStatusCirclesAndLogic1() {
+          $("#example2 tbody tr").each(function () {
+            var statusText1 = $(this).find("td").eq(0).text().toLowerCase();
+            var workStatusText1 = $(this).find("td").eq(4).text().toLowerCase();
+
+            var circleClass1 = "";
+            var statusClass1 = "";
+
+            if (
+              statusText1.includes("server error") ||
+              statusText1.includes("blanko sertifikat habis") ||
+              statusText1.includes("printer tidak terdeteksi")||
+              statusText1.includes("kertas habis")||
+              statusText1.includes("toner habis")
+            ) {
+              circleClass1 = "red-circle";
+            } else if (
+              statusText1.includes("kertas hampir habis") ||
+              statusText1.includes("toner hampir habis")
+            ) {
+              circleClass1 = "yellow-circle";
+            } else if (statusText1.includes("normal")) {
+              circleClass1 = "blue-circle";
+            }
+
+            if (workStatusText1.includes("dalam perbaikan")) {
+              statusClass1 = "yellow-outline";
+            } else if (workStatusText1.includes("dalam antrian")) {
+              statusClass1 = "red-outline";
+            }
+
+            if (workStatusText1.includes("dalam perbaikan")) {
+              statusClass1 = "badge badge-warning";
+            } else if (workStatusText1.includes("dalam antrian")) {
+              statusClass1 = "badge badge-danger";
+            } else if (workStatusText1.includes("normal")) {
+              statusClass1 = "badge badge-primary";
+            }
+
+            if (circleClass1) {
+              var circle1 = $("<span>").addClass("circle").addClass(circleClass1);
+              $(this).find("td").eq(0).prepend(circle1);
+            }
+
+            if (statusClass1) {
+              $(this).find("td").eq(4).addClass(statusClass1);
+            }
+          });
+        }
+
+        // Call the function to add status circles and logic
+        addStatusCirclesAndLogic1();
+
+        // Function to add dynamic "Details" link to each row
+        function addDetailsLinks1() {
+          $("#example2 tbody tr").each(function () {
+            var detailsLink1 = $("<a>")
+              .attr({
+                href: "#",
+                "data-bs-toggle": "offcanvas",
+                "data-bs-target": "#offcanvasRight",
+                "aria-controls": "offcanvasRight",
+              })
+              .text("Details");
+
+            // Append the dynamic "Details" link to the last cell in each row
+            $(this).find(".details-cell").html(detailsLink1);
+          });
+        }
+
+        // Call the function to add dynamic "Details" links
+        addDetailsLinks1();
 
         // Filter functions for the third table
         $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
@@ -1468,7 +1284,20 @@
               },
             },
             xaxis: {
-              categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+              categories: [
+                "Januari",
+                "Februari",
+                "Maret",
+                "April",
+                "Mei",
+                "Juni",
+                "Juli",
+                "Agustus",
+                "September",
+                "Oktober",
+                "November",
+                "Desember",
+              ],
             },
           };
 

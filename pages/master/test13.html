@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge Example</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet">
+    <style>
+        .badge-primary {
+            border-radius: 5px;
+            border: 1px solid rgba(255, 66, 66, 1);
+            background-color: #ffe5e5;
+            color: rgba(55, 125, 255, 1);
+            font: 400 16px "Inter", sans-serif;
+            margin-top: 3px;
+            padding: 0.25em 0.4em;
+            box-sizing: border-box;
+        }
+        /* Hide the Tanggal Transaksi column */
+        th:nth-child(5),
+        td:nth-child(5) {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Cetak Sertipikat</h5>
+                        <p class="card-text" id="totalCetakSertipikat">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Verifikasi Sentuh Tanahku</h5>
+                        <p class="card-text" id="totalVerifikasiSentuhTanahku">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Combined Total</h5>
+                        <p class="card-text" id="combinedTotal">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Table structure here -->
+        <table id="example1" class="display">
+            <thead>
+                <tr>
+                    <th>Nomor Mesin</th>
+                    <th>Lokasi</th>
+                    <th>Cetak Sertipikat</th>
+                    <th>Verifikasi Sentuh Tanahku</th>
+                    <th>Tanggal Transaksi</th>
+                    <th>Total Transaksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows go here -->
+                <tr>
+                    <td>K2300012</td>
+                    <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>2024-06-11</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>K2300013</td>
+                    <td>Kantor Pertanahan Kota Surabaya I</td>
+                    <td>20</td>
+                    <td>10</td>
+                    <td>2024-06-11</td>
+                    <td></td>
+                </tr>
+                <!-- More rows -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example1').DataTable();
+            
+            function updateTotalTransaksi() {
+                const rows = document.querySelectorAll('#example1 tbody tr');
+                
+                let totalCetakSertipikat = 0;
+                let totalVerifikasiSentuhTanahku = 0;
+
+                rows.forEach(row => {
+                    const cetakSertipikat = parseInt(row.children[2].innerText) || 0;
+                    const verifikasiSentuhTanahku = parseInt(row.children[3].innerText) || 0;
+                    const totalTransaksi = cetakSertipikat + verifikasiSentuhTanahku;
+
+                    row.children[5].innerText = totalTransaksi;
+
+                    const date = row.children[4].innerText;
+                    const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+                    if (date === today) {
+                        totalCetakSertipikat += cetakSertipikat;
+                        totalVerifikasiSentuhTanahku += verifikasiSentuhTanahku;
+                    }
+                });
+
+                document.getElementById('totalCetakSertipikat').innerText = totalCetakSertipikat;
+                document.getElementById('totalVerifikasiSentuhTanahku').innerText = totalVerifikasiSentuhTanahku;
+                document.getElementById('combinedTotal').innerText = totalCetakSertipikat + totalVerifikasiSentuhTanahku;
+            }
+
+            // Call the function when the document is loaded
+            updateTotalTransaksi();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiosk Work Status Table</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <style>
+        .circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .red-circle { background-color: red; }
+        .yellow-circle { background-color: yellow; }
+        .blue-circle { background-color: blue; }
+        .yellow-outline {
+            border: 2px solid yellow;
+            background-color: yellow;
+            opacity: 0.5;
+        }
+        .red-outline {
+            border: 2px solid red;
+            background-color: red;
+            opacity: 0.5;
+        }
+        .badge-outline-primary {
+            color: #007bff;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Kiosk Work Status Table</h1>
+        <table id="statusTable" class="display">
+            <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Kiosk Number</th>
+                    <th>Work Status</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody id="statusTableBody">
+                <!-- Rows will be dynamically added here -->
+                <tr>
+                    <td>Server has an error</td>
+                    <td>1</td>
+                    <td><span class="badge badge-outline-primary center">Under Repair</span></td>
+                    <td class="details-cell"></td> <!-- Empty cell for dynamic Details link -->
+                </tr>
+                <tr>
+                    <td>Certificate form is out</td>
+                    <td>2</td>
+                    <td>In Queue</span></td>
+                    <td class="details-cell"></td> <!-- Empty cell for dynamic Details link -->
+                </tr>
+                <tr>
+                    <td>Paper almost used up</td>
+                    <td>3</td>
+                    <td><span class="badge badge-outline-primary center">Normal</span></td>
+                    <td class="details-cell"></td> <!-- Empty cell for dynamic Details link -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable
+            var table = $('#statusTable').DataTable();
+
+            // Function to add status circles and work status badge
+            function addStatusCirclesAndBadge() {
+                $('#statusTable tbody tr').each(function() {
+                    var statusText = $(this).find('td').eq(0).text().toLowerCase();
+                    var workStatusText = $(this).find('td').eq(2).text().toLowerCase();
+
+                    var circleClass = '';
+                    var statusClass = '';
+
+                    if (statusText.includes('server has an error') || statusText.includes('certificate form is out') || statusText.includes('printer not detected')) {
+                        circleClass = 'red-circle';
+                    } else if (statusText.includes('paper almost used up') || statusText.includes('toner almost used up')) {
+                        circleClass = 'yellow-circle';
+                    } else if (statusText.includes('normal')) {
+                        circleClass = 'blue-circle';
+                    }
+
+                    if (workStatusText.includes('under repair')) {
+                        statusClass = 'badge badge-outline-primary';
+                    } else if (workStatusText.includes('in queue')) {
+                        statusClass = 'badge badge-outline-primary';
+                    }
+
+                    if (circleClass) {
+                        var circle = $('<span>').addClass('circle').addClass(circleClass);
+                        $(this).find('td').eq(0).prepend(circle);
+                    }
+
+                    if (statusClass) {
+                        var badge = $('<span>').addClass(statusClass).text(workStatusText);
+                        $(this).find('td').eq(2).html(badge);
+                    }
+                });
+            }
+
+            // Call the function to add status circles and badge
+            addStatusCirclesAndBadge();
+
+
+            // Function to add dynamic "Details" link to each row
+            function addDetailsLinks() {
+                $('#statusTableBody tr').each(function() {
+                    var detailsLink = $('<a>').attr({
+                        'href': '#',
+                        'data-bs-toggle': 'offcanvas',
+                        'data-bs-target': '#offcanvasRight',
+                        'aria-controls': 'offcanvasRight'
+                    }).text('Details');
+
+                    // Append the dynamic "Details" link to the last cell in each row
+                    $(this).find('.details-cell').html(detailsLink);
+                });
+            }
+
+            // Call the function to add dynamic "Details" links
+            addDetailsLinks();
+
+            // Add logic to add new rows with details link
+            $('#addRowBtn').on('click', function() {
+                table.row.add([
+                    'New Status',
+                    'New Kiosk',
+                    'New Work Status',
+                    '<a href="details.html">Details</a>'
+                ]).draw(false);
+
+                // Reapply status circles and badge after adding new row
+                addStatusCirclesAndBadge();
+            });
+        });
+    </script>
+</body>
+</html>

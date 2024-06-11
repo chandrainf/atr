@@ -20,9 +20,14 @@
     <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
 
     <link
+      href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- <link
       rel="stylesheet"
       href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
-    />
+    /> -->
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
 
@@ -47,9 +52,8 @@
         background-color: #132144;
         z-index: 1000;
         display: flex;
-        /* justify-content: center;
-        align-items: center; */
-        padding: 10px 0; /* Add padding to increase navbar height if needed */
+
+        padding: 10px 0;
       }
 
       .navbar-content {
@@ -57,8 +61,8 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        max-width: 1200px; /* Adjust this value to fit your design */
-        padding: 0 20px; /* Add padding to the content area for spacing */
+        max-width: 1200px;
+        padding: 0 20px;
       }
 
       .navbar-logo {
@@ -129,7 +133,6 @@
       }
 
       .dropdown-link {
-        /* color: white; */
         padding: 12px 16px;
         text-decoration: none;
         display: block;
@@ -149,10 +152,7 @@
 
       .map-container {
         width: 100%;
-        height: calc(
-          100vh - 90px
-        ); /* Adjust based on the height of the navbar and additional margin */
-        /* margin-top: 90px; Height of the fixed navbar + additional space */
+        height: calc(100vh - 90px);
       }
 
       iframe {
@@ -163,7 +163,6 @@
       .timeline {
         position: relative;
         margin: 0 auto;
-        /* padding: 40px 0; */
         width: 100%;
         max-width: 900px;
       }
@@ -172,12 +171,9 @@
         content: "";
         position: absolute;
         top: 0;
-        /* left: 50%; */
         transform: translateX(-50%);
         border-style: dotted;
         border-width: 3px;
-        /* width: 4px; */
-        /* border-style: dotted ; */
         height: 100%;
         background: #ccc;
       }
@@ -185,7 +181,6 @@
       .timeline-red {
         position: relative;
         margin: 20px 0;
-        /* padding-left: 10%; */
         clear: both;
       }
 
@@ -193,7 +188,6 @@
         content: "";
         position: absolute;
         top: 0;
-        /* left: 50%; */
         transform: translateX(-50%);
         width: 20px;
         height: 20px;
@@ -206,7 +200,6 @@
       .timeline-grey {
         position: relative;
         margin: 20px 0;
-        /* padding-left: 10%; */
         clear: both;
       }
 
@@ -214,7 +207,6 @@
         content: "";
         position: absolute;
         top: 0;
-        /* left: 50%; */
         transform: translateX(-50%);
         width: 20px;
         height: 20px;
@@ -227,8 +219,6 @@
       .timeline-yellow {
         position: relative;
         margin: 20px 0;
-
-        /* padding-left: 10%; */
         clear: both;
       }
 
@@ -236,12 +226,11 @@
         content: "";
         position: absolute;
         top: 0;
-        /* left: 50%; */
+
         transform: translateX(-50%);
         width: 20px;
         height: 20px;
 
-        /* border-radius: 50%; */
         background: #ff8533;
         border: 4px solid white;
         z-index: 1;
@@ -250,7 +239,7 @@
       .timeline-green {
         position: relative;
         margin: 20px 0;
-        /* padding-left: 10%; */
+
         clear: both;
       }
 
@@ -258,7 +247,7 @@
         content: "";
         position: absolute;
         top: 0;
-        /* left: 50%; */
+
         transform: translateX(-50%);
         width: 20px;
         height: 20px;
@@ -270,15 +259,9 @@
 
       .timeline-content {
         padding: 20px;
-        /* background: #f8f9fa; */
-        /* border: 1px solid #e9ecef; */
+
         border-radius: 5px;
       }
-
-      /* .active {
-        background-color: #007bff;
-        color: white;
-      } */
 
       .toggle-container {
         border-radius: 4.818px;
@@ -293,52 +276,19 @@
         padding: 6px;
       }
 
-      /* .toggle-option {
-        font-feature-settings: "clig" off, "liga" off;
-        font-family: Inter, sans-serif;
-        margin: auto 0;
-        padding: 6px;
-      }
-
-      .option-inactive {
-        color: #9291a5;
-        font-weight: 400;
-      }
-
-      .option-active {
-        border-radius: 4.818px;
-        background-color: #002845;
-        color: #fff;
-        font-weight: 500;
-      } */
-
       .filter-buttons button {
         margin-right: 10px;
         padding: 10px;
-        /* border-radius: 4.818px;
-        background-color: #edf2f8;
-        display: flex;
-        gap: 12px;
-        font-size: 13px;
-        white-space: nowrap;
-        text-align: center;
-        line-height: 114%;
-        justify-content: space-between;
-        padding: 6px; */
       }
       .toggle-container button.active {
         background-color: #002845;
         color: white;
       }
 
-      /* .timeline-item:nth-child(even) .timeline-content {
-            margin-left: -50%;
-            text-align: left;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            text-align: right;
-        } */
+      #example1 th:nth-child(5),
+      #example1 td:nth-child(5) {
+        display: none;
+      }
     </style>
   </head>
 
@@ -426,7 +376,7 @@
                       <div class="row">
                         <div class="col-9">
                           <h6>Total Transaksi</h6>
-                          <h1>20</h1>
+                          <h1 id="combinedTotal"></h1>
                         </div>
 
                         <div class="col-3 d-flex justify-content-center">
@@ -455,7 +405,7 @@
                       <div class="row">
                         <div class="col-9">
                           <h6>Total Cetak Sertipikat</h6>
-                          <h1>15</h1>
+                          <h1 id="totalCetakSertipikat"></h1>
                         </div>
 
                         <div class="col-3 d-flex justify-content-center">
@@ -484,7 +434,7 @@
                       <div class="row">
                         <div class="col-9">
                           <h6>Total Verifikasi Sentuh Tanahku</h6>
-                          <h1>5</h1>
+                          <h1 id="totalVerifikasiSentuhTanahku"></h1>
                         </div>
 
                         <div class="col-3 d-flex justify-content-center">
@@ -533,6 +483,7 @@
                           <th>Lokasi</th>
                           <th>Cetak Sertipikat</th>
                           <th>Verifikasi Sentuh Tanahku</th>
+                          <th>Tanggal Transaksi</th>
                           <th>Total Transaksi</th>
                         </tr>
                       </thead>
@@ -544,21 +495,24 @@
                           </td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300013</td>
                           <td>Kantor Pertanahan Kota Surabaya I</td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300014</td>
                           <td>Kantor Pertanahan Kota Surabaya II</td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300015</td>
@@ -568,7 +522,8 @@
                           </td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300016</td>
@@ -578,23 +533,26 @@
                           </td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                           <td>K2300012</td>
                           <td>
                             Kantor Pertanahan Kota Administratif Jakarta Pusat
                           </td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300013</td>
                           <td>Kantor Pertanahan Kota Surabaya I</td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
 
                         <tr>
@@ -604,21 +562,23 @@
                           </td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300013</td>
                           <td>Kantor Pertanahan Kota Surabaya I</td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300014</td>
                           <td>Kantor Pertanahan Kota Surabaya II</td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300015</td>
@@ -628,7 +588,8 @@
                           </td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300016</td>
@@ -638,7 +599,8 @@
                           </td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300012</td>
@@ -647,25 +609,26 @@
                           </td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
                           <td>K2300013</td>
                           <td>Kantor Pertanahan Kota Surabaya I</td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
-                          <td>Printer Tidak Terdeteksi</td>
                           <td>K2300014</td>
                           <td>Kantor Pertanahan Kota Surabaya II</td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
+                          <td>2024-06-11</td>
+                          <td></td>
                         </tr>
                         <tr>
-                          <td>Kertas Hampir Habis</td>
                           <td>K2300015</td>
                           <td>
                             Kantor Wilayah Badan Pertanahan Nasional Provinsi
@@ -673,8 +636,9 @@
                           </td>
                           <td>20</td>
                           <td>10</td>
-                          <td>60</td>
-                        </tr>
+                          <td>2024-06-11</td>
+                          <td></td>
+                        </tr> -->
                       </tbody>
                     </table>
                   </div>
@@ -708,11 +672,15 @@
                         id="monthlyBtn"
                         class="active"
                         onclick="setTimePeriod('monthly')"
-                        style="border-radius: 4.818px;"
+                        style="border-radius: 4.818px"
                       >
                         Monthly
                       </button>
-                      <button id="weeklyBtn" onclick="setTimePeriod('weekly')" style="border-radius: 4.818px;">
+                      <button
+                        id="weeklyBtn"
+                        onclick="setTimePeriod('weekly')"
+                        style="border-radius: 4.818px"
+                      >
                         Weekly
                       </button>
                     </div>
@@ -776,22 +744,37 @@
               <div class="col-12 mt-5">
                 <!-- <section class="section" style="align-self: center;"> -->
                 <div class="card border">
-                  <div  class="card-header d-flex justify-content-between"
-                  style="align-items: center; justify-content: center">
+                  <div
+                    class="card-header d-flex justify-content-between"
+                    style="align-items: center; justify-content: center"
+                  >
                     <div><h3>Rata-rata Waktu Transaksi Terpadat</h3></div>
                     <div>
                       <label for="locationFilter1">Lokasi:</label>
                       <select id="locationFilter1" onchange="updateChart1()">
-                          <option value="all">Semua Lokasi</option>
-                          <option value="location1">Location 1</option>
-                          <option value="location2">Location 2</option>
-                          <!-- Add more locations as needed -->
+                        <option value="all">Semua Lokasi</option>
+                        <option value="location1">Location 1</option>
+                        <option value="location2">Location 2</option>
+                        <!-- Add more locations as needed -->
                       </select>
-                  </div>
+                    </div>
                     <div class="toggle-container">
-                      <button id="monthlyBtn1" class="active" onclick="setTimePeriod1('monthly1')" style="border-radius: 4.818px;">Monthly</button>
-                      <button id="weeklyBtn1" onclick="setTimePeriod1('weekly1')" style="border-radius: 4.818px;">Weekly</button>
-                  </div>
+                      <button
+                        id="monthlyBtn1"
+                        class="active"
+                        onclick="setTimePeriod1('monthly1')"
+                        style="border-radius: 4.818px"
+                      >
+                        Monthly
+                      </button>
+                      <button
+                        id="weeklyBtn1"
+                        onclick="setTimePeriod1('weekly1')"
+                        style="border-radius: 4.818px"
+                      >
+                        Weekly
+                      </button>
+                    </div>
                   </div>
                   <div class="card-body">
                     <div id="chart1"></div>
@@ -803,52 +786,49 @@
               </div>
             </div>
 
-            <table id="dataTable2" style="display: none;">
+            <table id="dataTable2" style="display: none">
               <tr>
-                  <th>Location</th>
-                  <th>Machine Number</th>
-                  <th>Transaction DateTime</th>
-                  <th>Printed Certificates</th>
-                  <th>Verifications</th>
-                  <th>Total</th>
+                <th>Location</th>
+                <th>Machine Number</th>
+                <th>Transaction DateTime</th>
+                <th>Printed Certificates</th>
+                <th>Verifications</th>
+                <th>Total</th>
               </tr>
               <tr>
-                  <td>location1</td>
-                  <td>1</td>
-                  <td>2024-01-15T10:30:00</td>
-                  <td>50</td>
-                  <td>30</td>
-                  <td>80</td>
+                <td>location1</td>
+                <td>1</td>
+                <td>2024-01-15T10:30:00</td>
+                <td>50</td>
+                <td>30</td>
+                <td>80</td>
               </tr>
               <tr>
-                  <td>location1</td>
-                  <td>2</td>
-                  <td>2024-02-20T14:45:00</td>
-                  <td>20</td>
-                  <td>10</td>
-                  <td>30</td>
+                <td>location1</td>
+                <td>2</td>
+                <td>2024-02-20T14:45:00</td>
+                <td>20</td>
+                <td>10</td>
+                <td>30</td>
               </tr>
               <tr>
-                  <td>location2</td>
-                  <td>3</td>
-                  <td>2024-03-10T09:15:00</td>
-                  <td>70</td>
-                  <td>50</td>
-                  <td>120</td>
+                <td>location2</td>
+                <td>3</td>
+                <td>2024-03-10T09:15:00</td>
+                <td>70</td>
+                <td>50</td>
+                <td>120</td>
               </tr>
               <tr>
-                  <td>location2</td>
-                  <td>4</td>
-                  <td>2024-04-05T16:00:00</td>
-                  <td>10</td>
-                  <td>5</td>
-                  <td>15</td>
+                <td>location2</td>
+                <td>4</td>
+                <td>2024-04-05T16:00:00</td>
+                <td>10</td>
+                <td>5</td>
+                <td>15</td>
               </tr>
               <!-- Add more rows as needed -->
-          </table>
-
-
-
+            </table>
           </div>
         </div>
       </div>
@@ -856,244 +836,317 @@
 
     <script src="/assets/static/js/pages/horizontal-layout.js"></script>
 
-    <!-- <script>
-      document.getElementById('editBtn').addEventListener('click', function() {
-        // Toggle between initial and edit card content
-        document.getElementById('modalDetail').style.display = 'none';
-        document.getElementById('modalEdit').style.display = 'block';
-      });
-    </script> -->
     <script src="/assets/static/js/components/dark.js"></script>
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="/assets/compiled/js/app.js"></script>
-    <!-- <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="/assets/static/js/pages/simple-datatables.js"></script> -->
+
     <script src="/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="/assets/static/js/pages/dashboard.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
     <script>
       // $(document).ready(function () {
-        // Initialize Simple-DataTables for each table
-        var table1 = $("#example1").DataTable();
+      // Initialize Simple-DataTables for each table
 
-        var timePeriod = 'monthly';
+      $(document).ready(function () {
+        $("#example1").DataTable();
 
-        // Initialize the chart
-        var options = {
-            chart: {
-                type: 'bar'
-            },
-            series: [{
-                name: 'Cetak Sertifikat',
-                data: [],
-                color: '#377DFF'
-            }, {
-                name: 'Verifikasi Sentuh Tanahku',
-                data: [],
-                color: '#BF37FF'
-            }],
-            xaxis: {
-              categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+        function updateTotalTransaksi() {
+          const rows = document.querySelectorAll("#example1 tbody tr");
+
+          let totalCetakSertipikat = 0;
+          let totalVerifikasiSentuhTanahku = 0;
+
+          rows.forEach((row) => {
+            const cetakSertipikat = parseInt(row.children[2].innerText) || 0;
+            const verifikasiSentuhTanahku =
+              parseInt(row.children[3].innerText) || 0;
+            const totalTransaksi = cetakSertipikat + verifikasiSentuhTanahku;
+
+            row.children[5].innerText = totalTransaksi;
+
+            const date = row.children[4].innerText;
+            const today = new Date().toISOString().split("T")[0]; // Get today's date in YYYY-MM-DD format
+            if (date === today) {
+              totalCetakSertipikat += cetakSertipikat;
+              totalVerifikasiSentuhTanahku += verifikasiSentuhTanahku;
             }
-        };
+          });
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
-
-        // Function to set the time period and update the chart
-        function setTimePeriod(period) {
-            timePeriod = period;
-            document.getElementById('monthlyBtn').classList.remove('active');
-            document.getElementById('weeklyBtn').classList.remove('active');
-            if (period === 'monthly') {
-                document.getElementById('monthlyBtn').classList.add('active');
-            } else {
-                document.getElementById('weeklyBtn').classList.add('active');
-            }
-            updateChart();
+          document.getElementById("totalCetakSertipikat").innerText =
+            totalCetakSertipikat;
+          document.getElementById("totalVerifikasiSentuhTanahku").innerText =
+            totalVerifikasiSentuhTanahku;
+          document.getElementById("combinedTotal").innerText =
+            totalCetakSertipikat + totalVerifikasiSentuhTanahku;
         }
 
-        // Function to update the chart based on filters
-        function updateChart() {
-            var locationFilter = document.getElementById('locationFilter').value;
+        // Call the function when the document is loaded
+        updateTotalTransaksi();
+      
 
-            var dataTable = document.getElementById('dataTable1');
-            var printedCertificates = Array(12).fill(0);
-            var verifications = Array(12).fill(0);
+      var table1 = $("#example1").DataTable();
 
-            var now = new Date();
-            var currentYear = now.getFullYear();
+      var timePeriod = "monthly";
 
-            for (var i = 1; i < dataTable.rows.length; i++) {
-                var row = dataTable.rows[i];
-                var location = row.cells[0].innerText;
-                var printed = parseInt(row.cells[2].innerText);
-                var verified = parseInt(row.cells[3].innerText);
-                var transactionDate = new Date(row.cells[5].innerText);
+      // Initialize the chart
+      var options = {
+        chart: {
+          type: "bar",
+        },
+        series: [
+          {
+            name: "Cetak Sertifikat",
+            data: [],
+            color: "#377DFF",
+          },
+          {
+            name: "Verifikasi Sentuh Tanahku",
+            data: [],
+            color: "#BF37FF",
+          },
+        ],
+        xaxis: {
+          categories: [
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember",
+          ],
+        },
+      };
 
-                // Apply filters
-                if (locationFilter === 'all' || location === locationFilter) {
-                    if (transactionDate.getFullYear() === currentYear) {
-                        var month = transactionDate.getMonth(); // 0 = January, 1 = February, etc.
-                        printedCertificates[month] += printed;
-                        verifications[month] += verified;
-                    }
-                }
-            }
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      chart.render();
 
-            if (timePeriod === 'weekly') {
-                printedCertificates = Array(12).fill(0);
-                verifications = Array(12).fill(0);
-                var startOfWeek = new Date(now.setDate(now.getDate() - now.getDay() + 1));
-                var endOfWeek = new Date(now.setDate(now.getDate() - now.getDay() + 7));
-
-                for (var i = 1; i < dataTable.rows.length; i++) {
-                    var row = dataTable.rows[i];
-                    var location = row.cells[0].innerText;
-                    var printed = parseInt(row.cells[2].innerText);
-                    var verified = parseInt(row.cells[3].innerText);
-                    var transactionDate = new Date(row.cells[5].innerText);
-
-                    if (locationFilter === 'all' || location === locationFilter) {
-                        if (transactionDate >= startOfWeek && transactionDate <= endOfWeek) {
-                            var month = transactionDate.getMonth();
-                            printedCertificates[month] += printed;
-                            verifications[month] += verified;
-                        }
-                    }
-                }
-            }
-
-            chart.updateSeries([{
-                name: 'Cetak Sertifikat',
-                data: printedCertificates
-            }, {
-                name: 'Verifikasi Sentuh Tanahku',
-                data: verifications
-            }]);
+      // Function to set the time period and update the chart
+      function setTimePeriod(period) {
+        timePeriod = period;
+        document.getElementById("monthlyBtn").classList.remove("active");
+        document.getElementById("weeklyBtn").classList.remove("active");
+        if (period === "monthly") {
+          document.getElementById("monthlyBtn").classList.add("active");
+        } else {
+          document.getElementById("weeklyBtn").classList.add("active");
         }
-
-        // Initial chart update
         updateChart();
+      }
 
+      // Function to update the chart based on filters
+      function updateChart() {
+        var locationFilter = document.getElementById("locationFilter").value;
 
+        var dataTable = document.getElementById("dataTable1");
+        var printedCertificates = Array(12).fill(0);
+        var verifications = Array(12).fill(0);
 
+        var now = new Date();
+        var currentYear = now.getFullYear();
 
+        for (var i = 1; i < dataTable.rows.length; i++) {
+          var row = dataTable.rows[i];
+          var location = row.cells[0].innerText;
+          var printed = parseInt(row.cells[2].innerText);
+          var verified = parseInt(row.cells[3].innerText);
+          var transactionDate = new Date(row.cells[5].innerText);
 
-
-
-
-
-
-        //Statistik Waktu Transaksi
-
-        var timePeriod1 = 'monthly1';
-
-        // Initialize the chart
-        var options1 = {
-            chart: {
-                type: 'bar'
-            },
-            series: [{
-                name: 'Accumulated Total',
-                data: []
-            }],
-            xaxis: {
-              categories: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
-                // categories: []
-            },
-            tooltip: {
-                custom: function({ series, seriesIndex, dataPointIndex, w }) {
-                    var dataTable2 = document.getElementById('dataTable2');
-                    var row = dataTable2.rows[dataPointIndex + 1]; // Adding 1 because of table header row
-                    var transactionDateTime = new Date(row.cells[2].innerText);
-                    var hour = transactionDateTime.getHours();
-                    return '<div class="arrow_box">' +
-                            '<span>Jumlah Transaksi: ' + series[seriesIndex][dataPointIndex] + '</span><br>' +
-                            '<span>Rata-rata jam: ' + hour + ':00</span>' +
-                            '</div>';
-                }
+          // Apply filters
+          if (locationFilter === "all" || location === locationFilter) {
+            if (transactionDate.getFullYear() === currentYear) {
+              var month = transactionDate.getMonth(); // 0 = January, 1 = February, etc.
+              printedCertificates[month] += printed;
+              verifications[month] += verified;
             }
+          }
+        }
+
+        if (timePeriod === "weekly") {
+          printedCertificates = Array(12).fill(0);
+          verifications = Array(12).fill(0);
+          var startOfWeek = new Date(
+            now.setDate(now.getDate() - now.getDay() + 1)
+          );
+          var endOfWeek = new Date(
+            now.setDate(now.getDate() - now.getDay() + 7)
+          );
+
+          for (var i = 1; i < dataTable.rows.length; i++) {
+            var row = dataTable.rows[i];
+            var location = row.cells[0].innerText;
+            var printed = parseInt(row.cells[2].innerText);
+            var verified = parseInt(row.cells[3].innerText);
+            var transactionDate = new Date(row.cells[5].innerText);
+
+            if (locationFilter === "all" || location === locationFilter) {
+              if (
+                transactionDate >= startOfWeek &&
+                transactionDate <= endOfWeek
+              ) {
+                var month = transactionDate.getMonth();
+                printedCertificates[month] += printed;
+                verifications[month] += verified;
+              }
+            }
+          }
+        }
+
+        chart.updateSeries([
+          {
+            name: "Cetak Sertifikat",
+            data: printedCertificates,
+          },
+          {
+            name: "Verifikasi Sentuh Tanahku",
+            data: verifications,
+          },
+        ]);
+      }
+
+      // Initial chart update
+      updateChart();
+
+      //Statistik Waktu Transaksi
+
+      var timePeriod1 = "monthly1";
+
+      // Initialize the chart
+      var options1 = {
+        chart: {
+          type: "bar",
+        },
+        series: [
+          {
+            name: "Accumulated Total",
+            data: [],
+          },
+        ],
+        xaxis: {
+          categories: [
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember",
+          ],
+          // categories: []
+        },
+        tooltip: {
+          custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+            var dataTable2 = document.getElementById("dataTable2");
+            var row = dataTable2.rows[dataPointIndex + 1]; // Adding 1 because of table header row
+            var transactionDateTime = new Date(row.cells[2].innerText);
+            var hour = transactionDateTime.getHours();
+            return (
+              '<div class="arrow_box">' +
+              "<span>Jumlah Transaksi: " +
+              series[seriesIndex][dataPointIndex] +
+              "</span><br>" +
+              "<span>Rata-rata jam: " +
+              hour +
+              ":00</span>" +
+              "</div>"
+            );
+          },
+        },
+      };
+
+      var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+      chart1.render();
+
+      // Function to set the time period and update the chart
+      function setTimePeriod1(period) {
+        timePeriod1 = period;
+        document.getElementById("monthlyBtn1").classList.remove("active");
+        document.getElementById("weeklyBtn1").classList.remove("active");
+        if (period === "monthly1") {
+          document.getElementById("monthlyBtn1").classList.add("active");
+        } else {
+          document.getElementById("weeklyBtn1").classList.add("active");
+        }
+        updateChart1();
+      }
+
+      // Function to update the chart based on filters
+      function updateChart1() {
+        var locationFilter1 = document.getElementById("locationFilter1").value;
+
+        var dataTable2 = document.getElementById("dataTable2");
+        var accumulatedTotal = Array(12).fill(0);
+        var now = new Date();
+        var currentYear = now.getFullYear();
+
+        var weeklyData = {
+          accumulatedTotal: Array(12).fill(0),
         };
 
-        var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
-        chart1.render();
-
-        // Function to set the time period and update the chart
-        function setTimePeriod1(period) {
-            timePeriod1 = period;
-            document.getElementById('monthlyBtn1').classList.remove('active');
-            document.getElementById('weeklyBtn1').classList.remove('active');
-            if (period === 'monthly1') {
-                document.getElementById('monthlyBtn1').classList.add('active');
-            } else {
-                document.getElementById('weeklyBtn1').classList.add('active');
-            }
-            updateChart1();
+        // Helper function to get the week of the year
+        function getWeekOfYear(date) {
+          var start = new Date(date.getFullYear(), 0, 1);
+          var diff =
+            (date -
+              start +
+              (start.getTimezoneOffset() - date.getTimezoneOffset()) * 60000) /
+            86400000;
+          return Math.ceil((diff + start.getDay() + 1) / 7);
         }
 
-        // Function to update the chart based on filters
-        function updateChart1() {
-            var locationFilter1 = document.getElementById('locationFilter1').value;
+        for (var i = 1; i < dataTable2.rows.length; i++) {
+          var row = dataTable2.rows[i];
+          var location = row.cells[0].innerText;
+          var printed = parseInt(row.cells[3].innerText);
+          var verified = parseInt(row.cells[4].innerText);
+          var total = printed + verified;
+          var transactionDate = new Date(row.cells[2].innerText);
 
-            var dataTable2 = document.getElementById('dataTable2');
-            var accumulatedTotal = Array(12).fill(0);
-            var now = new Date();
-            var currentYear = now.getFullYear();
+          // Apply filters
+          if (locationFilter1 === "all" || location === locationFilter1) {
+            var month = transactionDate.getMonth();
+            if (transactionDate.getFullYear() === currentYear) {
+              accumulatedTotal[month] += total;
 
-            var weeklyData = {
-                accumulatedTotal: Array(12).fill(0)
-            };
-
-            // Helper function to get the week of the year
-            function getWeekOfYear(date) {
-                var start = new Date(date.getFullYear(), 0, 1);
-                var diff = (date - start + (start.getTimezoneOffset() - date.getTimezoneOffset()) * 60000) / 86400000;
-                return Math.ceil((diff + start.getDay() + 1) / 7);
-            }
-
-            for (var i = 1; i < dataTable2.rows.length; i++) {
-                var row = dataTable2.rows[i];
-                var location = row.cells[0].innerText;
-                var printed = parseInt(row.cells[3].innerText);
-                var verified = parseInt(row.cells[4].innerText);
-                var total = printed + verified;
-                var transactionDate = new Date(row.cells[2].innerText);
-
-                // Apply filters
-                if (locationFilter1 === 'all' || location === locationFilter1) {
-                    var month = transactionDate.getMonth();
-                    if (transactionDate.getFullYear() === currentYear) {
-                        accumulatedTotal[month] += total;
-
-                        if (timePeriod1 === 'weekly1') {
-                            var week = getWeekOfYear(transactionDate);
-                            if (week === getWeekOfYear(now)) {
-                                weeklyData.accumulatedTotal[month] += total;
-                            }
-                        }
-                    }
+              if (timePeriod1 === "weekly1") {
+                var week = getWeekOfYear(transactionDate);
+                if (week === getWeekOfYear(now)) {
+                  weeklyData.accumulatedTotal[month] += total;
                 }
+              }
             }
-
-            if (timePeriod1 === 'weekly1') {
-                accumulatedTotal = weeklyData.accumulatedTotal;
-            }
-
-            chart1.updateSeries([{
-                name: 'Accumulated Total',
-                data: accumulatedTotal
-            }]);
+          }
         }
 
-        // Initial chart update
-        updateChart1();
-        
-      // });
+        if (timePeriod1 === "weekly1") {
+          accumulatedTotal = weeklyData.accumulatedTotal;
+        }
+
+        chart1.updateSeries([
+          {
+            name: "Accumulated Total",
+            data: accumulatedTotal,
+          },
+        ]);
+      }
+    });
+
+      // Initial chart update
+      updateChart1();
     </script>
   </body>
 </html>
