@@ -445,7 +445,7 @@
                 <td>110.3705</td>
                 <td>4.8</td>
                 <td>Yogyakarta</td>
-                <td>Kertas Hampir Habis</td>
+                <td>Maintenance</td>
                 <td>2024-06-12T18:00:00+07:00</td>
               </tr>
               <tr>
@@ -461,7 +461,7 @@
                 <td>100.3543</td>
                 <td>5.6</td>
                 <td>Padang</td>
-                <td>Server Error</td>
+                <td>Error</td>
                 <td>2024-05-12T18:00:00+07:00</td>
               </tr>
               <tr>
@@ -469,7 +469,7 @@
                 <td>104.7642</td>
                 <td>5.7/td></td>
                 <td>Palembang</td>
-                <td>Server Error</td>
+                <td>Error</td>
                 <td>2023-06-12T18:00:00+07:00</td>
               </tr>
               <tr>
@@ -477,7 +477,7 @@
                 <td>128.1900</td>
                 <td>5.4</td>
                 <td>Ambon</td>
-                <td>Server Error</td>
+                <td>Error</td>
                 <td>2023-06-12T18:00:00+07:00</td>
               </tr>
               <tr>
@@ -485,7 +485,7 @@
                 <td>119.4327</td>
                 <td>4.9</td>
                 <td>Makassar</td>
-                <td>Blanko Sertifikat Habis</td>
+                <td>Error</td>
                 <td>2023-06-12T18:00:00+07:00</td>
               </tr>
               <tr>
@@ -493,7 +493,7 @@
                 <td>98.6722</td>
                 <td>5.1</td>
                 <td>Medan</td>
-                <td>Blanko Sertifikat Habis</td>
+                <td>Error</td>
                 <td>2023-06-12T18:00:00+07:00</td>
               </tr>
               <tr>
@@ -501,7 +501,7 @@
                 <td>124.8486</td>
                 <td>5.5</td>
                 <td>Manado</td>
-                <td>Printer Tidak Terdeteksi</td>
+                <td>Error</td>
                 <td>2023-06-12T18:00:00+07:00</td>
               </tr>
               <tr>
@@ -509,7 +509,7 @@
                 <td>113.9213</td>
                 <td>5.2</td>
                 <td>Central Kalimantan</td>
-                <td>Printer Tidak Terdeteksi</td>
+                <td>Error</td>
                 <td>2023-06-12T18:00:00+07:00</td>
               </tr>
               <!-- Add more rows as needed -->
@@ -910,47 +910,15 @@
           var magnitude = parseFloat(cells[2].textContent);
           var location = cells[3].textContent;
           var status = cells[4].textContent.toLowerCase();
-          var datetime = cells[5].textContent;
           earthquakeLocations.push({
             lat: latitude,
             lng: longitude,
             magnitude: magnitude,
             location: location,
             status: status,
-            datetime: datetime,
           });
         });
         return earthquakeLocations;
-      }
-
-      // Function to calculate relative time from the current date
-      // Function to calculate relative time from the current date in Indonesia West Time (WIB)
-      function timeSince(date) {
-        // Adjusting for Indonesia West Time (WIB) UTC+7
-        var localDate = new Date(new Date(date).getTime() + 7 * 3600 * 1000);
-        var seconds = Math.floor((new Date() - localDate) / 1000);
-        var interval = seconds / 31536000;
-
-        if (interval > 1) {
-          return Math.floor(interval) + " tahun lalu";
-        }
-        interval = seconds / 2592000;
-        if (interval > 1) {
-          return Math.floor(interval) + " bulan lalu";
-        }
-        interval = seconds / 86400;
-        if (interval > 1) {
-          return Math.floor(interval) + " hari lalu";
-        }
-        interval = seconds / 3600;
-        if (interval > 1) {
-          return Math.floor(interval) + " jam lalu";
-        }
-        interval = seconds / 60;
-        if (interval > 1) {
-          return Math.floor(interval) + " menit lalu";
-        }
-        return Math.floor(seconds) + " detik lalu";
       }
 
       // Add earthquake markers to the map
@@ -958,33 +926,20 @@
         var earthquakeLocations = extractEarthquakeLocationsFromTable();
         earthquakeLocations.forEach(function (earthquake) {
           var iconUrl;
-
-          // if (earthquake.status === "Server Error" || earthquake.status === "Blanko Sertifikat Habis" || earthquake.status === "Printer Tidak Terdeteksi"){
-          //   iconUrl =
-          //     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="red"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
-          // } else if (earthquake.status ==="Kertas Hampir Habis" || earthquake.status ==="Toner Hampir Habis"){
-          //   iconUrl =
-          //     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="yellow"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
-          // } else {
-          //   iconUrl =
-          //     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="blue"></circle></svg>';
-          // }
-
-          // switch (earthquake.status) {
-          //   case "error":
-          //     iconUrl =
-          //       'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="red"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
-          //     break;
-
-          //   case "maintenance":
-          //     iconUrl =
-          //       'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="yellow"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
-          //     break;
-          //   default:
-          //     iconUrl =
-          //       'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="blue"></circle></svg>';
-          //     break;
-          // }
+          switch (earthquake.status) {
+            case "error":
+              iconUrl =
+                'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="red"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
+              break;
+            case "maintenance":
+              iconUrl =
+                'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="yellow"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
+              break;
+            default:
+              iconUrl =
+                'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="blue"></circle></svg>';
+              break;
+          }
 
           var earthquakeIcon = L.icon({
             iconUrl: iconUrl,
@@ -996,90 +951,15 @@
             icon: earthquakeIcon,
           }).addTo(map);
 
-          // var popupContent =
-          //   earthquake.status +
-          //   "<br>" +
-          //   "" +
-          //   earthquake.location +
-          //   "<br>" +
-          //   timeSince(earthquake.datetime);
-
-          var popupContent =
-            "<div class='popup-card text-white' style='background-color: #002845;'>" +
-            "<div class='popup-header'>" +
-            "<div class='status-icon'>" +
-            "<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20'>" +
-            "<circle cx='10' cy='10' r='8' fill='" +
-            (earthquake.status === "Server Error"
-              ? "red"
-              : earthquake.status === "Kertas Hampir Habis"
-              ? "yellow"
-              : "blue") +
-            "'>" +
-            "</circle>" +
-            "</svg>" +
-            earthquake.status +
-            "<br>" +
-            "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='12' height='12' viewBox='0 0 256 256' xml:space='preserve'><defs></defs><g style='stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;' transform='translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)' ><path d='M 45 90 c -1.415 0 -2.725 -0.748 -3.444 -1.966 l -4.385 -7.417 C 28.167 65.396 19.664 51.02 16.759 45.189 c -2.112 -4.331 -3.175 -8.955 -3.175 -13.773 C 13.584 14.093 27.677 0 45 0 c 17.323 0 31.416 14.093 31.416 31.416 c 0 4.815 -1.063 9.438 -3.157 13.741 c -0.025 0.052 -0.053 0.104 -0.08 0.155 c -2.961 5.909 -11.41 20.193 -20.353 35.309 l -4.382 7.413 C 47.725 89.252 46.415 90 45 90 z' style='stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(4,136,219); fill-rule: nonzero; opacity: 1;' transform=' matrix(1 0 0 1 0 0) ' stroke-linecap='round' /><path d='M 45 45.678 c -8.474 0 -15.369 -6.894 -15.369 -15.368 S 36.526 14.941 45 14.941 c 8.474 0 15.368 6.895 15.368 15.369 S 53.474 45.678 45 45.678 z' style='stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;' transform=' matrix(1 0 0 1 0 0) ' stroke-linecap='round' /></g></svg>" +
-            earthquake.location +
-            "</span>" +
-            "</div>" +
-            "</div>" +
-            // "<div class='popup-body'>" +
-
-            // "</div>" +
-            "<hr />" +
-            "<p class='since-time'>" +
-            timeSince(earthquake.datetime) +
-            "</p>" +
-            "</div>" +
-            "</div>";
-
-          // var popupContent =
-          //   "<div class='popup-card'>" +
-          //   "<div class='popup-header'>" +
-          //   "<div class='status-icon'>" +
-          //   "<svg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 20 20'>" +
-          //   "<circle cx='10' cy='10' r='8' fill='" +
-          //   (earthquake.status === "error"
-          //     ? "red"
-          //     : earthquake.status === "maintenance"
-          //     ? "yellow"
-          //     : "blue") +
-          //   "'>" +
-          //   "<animate attributeName='r' from='8' to='12' dur='1s' repeatCount='indefinite' />" +
-          //   "<animate attributeName='opacity' from='1' to='0' dur='1s' repeatCount='indefinite' />" +
-          //   "</circle>" +
-          //   "</svg>" +
-          //   "<span class='location-icon'><img src='location-icon.png' class='location-icon-img'></span>" +
-          //   "<span class='location'>" +
-          //   earthquake.location +
-          //   "</span>" +
-          //   "</div>" +
-          //   "</div>" +
-          //   "<div class='popup-body'>" +
-          //   "<p>Status: " +
-          //   earthquake.status +
-          //   "</p>" +
-          //   "</div>" +
-          //   "<div class='popup-footer'>" +
-          //   "<p class='since-time'>" +
-          //   timeSince(earthquake.datetime) +
-          //   "</p>" +
-          //   "</div>" +
-          //   "</div>";
-
-          earthquakeMarker.bindPopup(popupContent);
-
-          // Open the popup on mouseover
-          earthquakeMarker.on("mouseover", function (e) {
-            this.openPopup();
-          });
-
-          // Close the popup on mouseout
-          earthquakeMarker.on("mouseout", function (e) {
-            this.closePopup();
-          });
+          // Bind a popup to each marker
+          earthquakeMarker.bindPopup(
+            "Earthquake Location: " +
+              earthquake.location +
+              "<br>Magnitude: " +
+              earthquake.magnitude +
+              "<br>Status: " +
+              earthquake.status
+          );
         });
       }
 
@@ -1091,28 +971,11 @@
 
       legend.onAdd = function (map) {
         var div = L.DomUtil.create("div", "legend");
-        var earthquakeLocations = extractEarthquakeLocationsFromTable();
-        var errorTime = timeSince(
-          earthquakeLocations.find((eq) => eq.status === "Server Error")
-            .datetime
-        );
-        var maintenanceTime = timeSince(
-          earthquakeLocations.find((eq) => eq.status === "maintenance").datetime
-        );
-        var normalTime = timeSince(
-          earthquakeLocations.find((eq) => eq.status === "normal").datetime
-        );
         div.innerHTML =
           "<h4>Legend</h4>" +
-          "<div class='legend-item'><span class='legend-color' style='background-color: red;'></span> Error<div class='tooltip'>" +
-          errorTime +
-          "</div></div>" +
-          "<div class='legend-item'><span class='legend-color' style='background-color: yellow;'></span> Maintenance<div class='tooltip'>" +
-          maintenanceTime +
-          "</div></div>" +
-          "<div class='legend-item'><span class='legend-color' style='background-color: blue;'></span> Normal<div class='tooltip'>" +
-          normalTime +
-          "</div></div>";
+          "<div class='legend-item'><span class='legend-color' style='background-color: red;'></span> Error</div>" +
+          "<div class='legend-item'><span class='legend-color' style='background-color: yellow;'></span> Maintenance</div>" +
+          "<div class='legend-item'><span class='legend-color' style='background-color: blue;'></span> Normal</div>";
         return div;
       };
 

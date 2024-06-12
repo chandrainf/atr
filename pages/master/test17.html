@@ -55,49 +55,28 @@
       </thead>
       <tbody>
         <tr>
-          <td>-6.200000</td>
-          <td>106.816666</td>
-          <td>4.5</td>
+          <td>-6.2</td>
+          <td>106.8</td>
+          <td>5.3</td>
           <td>Jakarta</td>
-          <td>normal</td>
-          <td>2024-06-12T19:44:00+07:00</td>
-          <!-- 1 hour ago -->
+          <td>Error</td>
+          <td>2024-06-12T08:34:56Z</td>
         </tr>
         <tr>
-          <td>-8.340539</td>
-          <td>115.092217</td>
-          <td>5.2</td>
-          <td>Bali</td>
-          <td>maintenance</td>
-          <td>2024-06-12T18:00:00+07:00</td>
-          <!-- 2 hours ago -->
-        </tr>
-        <tr>
-          <td>-7.250445</td>
-          <td>112.768845</td>
-          <td>6.0</td>
-          <td>Surabaya</td>
-          <td>error</td>
-          <td>2024-06-11T18:00:00+07:00</td>
-          <!-- 1 day ago -->
-        </tr>
-        <tr>
-          <td>-7.795580</td>
-          <td>110.369490</td>
+          <td>-7.8</td>
+          <td>110.4</td>
           <td>4.8</td>
           <td>Yogyakarta</td>
-          <td>normal</td>
-          <td>2024-05-12T18:00:00+07:00</td>
-          <!-- 1 month ago -->
+          <td>Maintenance</td>
+          <td>2024-06-11T14:23:45Z</td>
         </tr>
         <tr>
-          <td>-3.597031</td>
-          <td>128.262122</td>
-          <td>5.5</td>
-          <td>Ambon</td>
-          <td>maintenance</td>
-          <td>2023-06-12T18:00:00+07:00</td>
-          <!-- 1 year ago -->
+          <td>-8.6</td>
+          <td>115.2</td>
+          <td>6.1</td>
+          <td>Bali</td>
+          <td>Normal</td>
+          <td>2024-06-10T16:12:34Z</td>
         </tr>
       </tbody>
     </table>
@@ -123,8 +102,7 @@
           var magnitude = parseFloat(cells[2].textContent);
           var location = cells[3].textContent;
           var status = cells[4].textContent.toLowerCase();
-          var datetime = new Date(cells[5].textContent);
-          datetime.setHours(datetime.getHours() + 7); // Convert to WIB
+          var datetime = cells[5].textContent;
           earthquakeLocations.push({
             lat: latitude,
             lng: longitude,
@@ -137,42 +115,34 @@
         return earthquakeLocations;
       }
 
+      // Function to calculate relative time from the current date
+      // Function to calculate relative time from the current date in Indonesia West Time (WIB)
       function timeSince(date) {
-        var now = new Date();
-        var wibOffset = 7 * 60 * 60 * 1000; // WIB is UTC+7, so 7 hours ahead in milliseconds
-        var localNow = now.getTime() + wibOffset; // Convert current time to WIB
+        // Adjusting for Indonesia West Time (WIB) UTC+7
+        var localDate = new Date(new Date(date).getTime() + 7 * 3600 * 1000);
+        var seconds = Math.floor((new Date() - localDate) / 1000);
+        var interval = seconds / 31536000;
 
-        var datetime = new Date(date).getTime();
-        var timeDifference = localNow - datetime;
-
-        var seconds = Math.floor(timeDifference / 1000);
-
-        var interval = Math.floor(seconds / 31536000);
-        if (interval >= 1) {
-          return interval + " year" + (interval > 1 ? "s" : "") + " ago";
+        if (interval > 1) {
+          return Math.floor(interval) + " years ago";
         }
-
-        interval = Math.floor(seconds / 2592000);
-        if (interval >= 1) {
-          return interval + " month" + (interval > 1 ? "s" : "") + " ago";
+        interval = seconds / 2592000;
+        if (interval > 1) {
+          return Math.floor(interval) + " months ago";
         }
-
-        interval = Math.floor(seconds / 86400);
-        if (interval >= 1) {
-          return interval + " day" + (interval > 1 ? "s" : "") + " ago";
+        interval = seconds / 86400;
+        if (interval > 1) {
+          return Math.floor(interval) + " days ago";
         }
-
-        interval = Math.floor(seconds / 3600);
-        if (interval >= 1) {
-          return interval + " hour" + (interval > 1 ? "s" : "") + " ago";
+        interval = seconds / 3600;
+        if (interval > 1) {
+          return Math.floor(interval) + " hours ago";
         }
-
-        interval = Math.floor(seconds / 60);
-        if (interval >= 1) {
-          return interval + " minute" + (interval > 1 ? "s" : "") + " ago";
+        interval = seconds / 60;
+        if (interval > 1) {
+          return Math.floor(interval) + " minutes ago";
         }
-
-        return "Just now";
+        return Math.floor(seconds) + " seconds ago";
       }
 
       // Add earthquake markers to the map

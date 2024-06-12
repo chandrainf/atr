@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Earthquake Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map { height: 500px; }
+        .legend { background: white; padding: 10px; }
+        .legend-item { display: flex; align-items: center; margin-bottom: 5px; position: relative; }
+        .legend-color { width: 20px; height: 20px; margin-right: 5px; }
+        .legend-item:hover .tooltip {
+            display: block;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            margin-left: 10px;
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <table id="earthquakeTable" style="display: none;">
+        <thead>
+            <tr>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Magnitude</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Datetime</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>-6.2</td>
+                <td>106.8</td>
+                <td>5.3</td>
+                <td>Jakarta</td>
+                <td>Error</td>
+                <td>2024-06-12T11:04:56Z</td>
+            </tr>
+            <tr>
+                <td>-7.8</td>
+                <td>110.4</td>
+                <td>4.8</td>
+                <td>Yogyakarta</td>
+                <td>Maintenance</td>
+                <td>2024-06-11T14:23:45Z</td>
+            </tr>
+            <tr>
+                <td>-8.6</td>
+                <td>115.2</td>
+                <td>6.1</td>
+                <td>Bali</td>
+                <td>Normal</td>
+                <td>2024-06-10T16:12:34Z</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map centered on Indonesia
+        var map = L.map("map").setView([-2.5, 118.0], 5); // Central coordinates of Indonesia
+
+        // Add the base layer from OpenStreetMap
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "&copy; OpenStreetMap contributors",
+        }).addTo(map);
+
+        // Function to extract earthquake locations from the table
+        function extractEarthquakeLocationsFromTable() {
+            var earthquakeLocations = [];
+            var tableRows = document.querySelectorAll("#earthquakeTable tbody tr");
+            tableRows.forEach(function (row) {
+                var cells = row.querySelectorAll("td");
+                var latitude = parseFloat(cells[0].textContent);
+                var longitude = parseFloat(cells[1].textContent);
+                var magnitude = parseFloat(cells[2].textContent);
+                var location = cells[3].textContent;
+                var status = cells[4].textContent.toLowerCase();
+                var datetime = new Date(cells[5].textContent);
+                datetime.setHours(datetime.getHours() + 7); // Convert to WIB
+                earthquakeLocations.push({
+                    lat: latitude,
+                    lng: longitude,
+                    magnitude: magnitude,
+                    location: location,
+                    status: status,
+                    datetime: datetime
+                });
+            });
+            return earthquakeLocations;
+        }
+
+        // Function to calculate relative time from the current date
+        function timeSince(date) {
+            var seconds = Math.floor((new Date() - new Date(date)) / 1000);
+            var interval = seconds / 31536000;
+
+            if (interval > 1) {
+                return Math.floor(interval) + " years ago";
+            }
+            interval = seconds / 2592000;
+            if (interval > 1) {
+                return Math.floor(interval) + " months ago";
+            }
+            interval = seconds / 86400;
+            if (interval > 1) {
+                return Math.floor(interval) + " days ago";
+            }
+            interval = seconds / 3600;
+            if (interval > 1) {
+                return Math.floor(interval) + " hours ago";
+            }
+            interval = seconds / 60;
+            if (interval > 1) {
+                return Math.floor(interval) + " minutes ago";
+            }
+            return "Just now";
+        }
+
+        // Add earthquake markers to the map
+        function addEarthquakeMarkers() {
+            var earthquakeLocations = extractEarthquakeLocationsFromTable();
+            earthquakeLocations.forEach(function (earthquake) {
+                var iconUrl;
+                switch (earthquake.status) {
+                    case "error":
+                        iconUrl =
+                            'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="red"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
+                        break;
+                    case "maintenance":
+                        iconUrl =
+                            'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="yellow"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
+                        break;
+                    default:
+                        iconUrl =
+                            'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="blue"></circle></svg>';
+                        break;
+                }
+
+                var earthquakeIcon = L.icon({
+                    iconUrl: iconUrl,
+                    iconSize: [20, 20],
+                    iconAnchor: [10, 10], // Center the icon
+                });
+
+                var earthquakeMarker = L.marker([earthquake.lat, earthquake.lng], {
+                    icon: earthquakeIcon,
+                }).addTo(map);
+
+                var popupContent = 
+                    "Earthquake Location: " +
+                    earthquake.location +
+                    "<br>Magnitude: " +
+                    earthquake.magnitude +
+                    "<br>Status: " +
+                    earthquake.status +
+                    "<br>" + timeSince(earthquake.datetime);
+
+                earthquakeMarker.bindPopup(popupContent);
+
+                // Open the popup on mouseover
+                earthquakeMarker.on('mouseover', function (e) {
+                    this.openPopup();
+                });
+
+                // Close the popup on mouseout
+                earthquakeMarker.on('mouseout', function (e) {
+                    this.closePopup();
+                });
+            });
+        }
+
+        // Call the function to add markers when the page loads
+        window.onload = addEarthquakeMarkers;
+
+        // Add legend to the map
+        var legend = L.control({ position: "bottomleft" });
+
+        legend.onAdd = function (map) {
+            var div = L.DomUtil.create("div", "legend");
+            var earthquakeLocations = extractEarthquakeLocationsFromTable();
+
+            var errorEvent = earthquakeLocations.find(eq => eq.status === 'error');
+            var maintenanceEvent = earthquakeLocations.find(eq => eq.status === 'maintenance');
+            var normalEvent = earthquakeLocations.find(eq => eq.status === 'normal');
+
+            var errorTime = errorEvent ? timeSince(errorEvent.datetime) : 'No recent events';
+            var maintenanceTime = maintenanceEvent ? timeSince(maintenanceEvent.datetime) : 'No recent events';
+            var normalTime = normalEvent ? timeSince(normalEvent.datetime) : 'No recent events';
+
+            div.innerHTML =
+                "<h4>Legend</h4>" +
+                "<div class='legend-item'><span class='legend-color' style='background-color: red;'></span> Error<div class='tooltip'>" + errorTime + "</div></div>" +
+                "<div class='legend-item'><span class='legend-color' style='background-color: yellow;'></span> Maintenance<div class='tooltip'>" + maintenanceTime + "</div></div>" +
+                "<div class='legend-item'><span class='legend-color' style='background-color: blue;'></span> Normal<div class='tooltip'>" + normalTime + "</div></div>";
+            return div;
+        };
+
+        legend.addTo(map);
+    </script>
+</body>
+</html>
