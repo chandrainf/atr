@@ -1,780 +1,704 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      rel="shortcut icon"
-      href="/assets/compiled/svg/favicon.svg"
-      type="image/x-icon"
-    />
-    <link
-      rel="shortcut icon"
-      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAYAAADRcLDBAAAEs2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249IjMzIgogICBleGlmOlBpeGVsWURpbWVuc2lvbj0iMzQiCiAgIGV4aWY6Q29sb3JTcGFjZT0iMSIKICAgdGlmZjpJbWFnZVdpZHRoPSIzMyIKICAgdGlmZjpJbWFnZUxlbmd0aD0iMzQiCiAgIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiCiAgIHRpZmY6WFJlc29sdXRpb249Ijk2LjAiCiAgIHRpZmY6WVJlc29sdXRpb249Ijk2LjAiCiAgIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiCiAgIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiCiAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJwcm9kdWNlZCIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWZmaW5pdHkgRGVzaWduZXIgMS4xMC4xIgogICAgICBzdEV2dDp3aGVuPSIyMDIyLTAzLTMxVDEwOjUwOjIzKzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz5V57uAAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rRFEUxz9maORHo1hYKC9hISNGTWwsRn4VFmOUX5uZZ36oeTOv954kW2WrKLHxa8FfwFZZK0WkZClrYoOe87ypmWTO7dzzud97z+nec8ETzaiaWd4NWtYyIiNhZWZ2TvE946WZSjqoj6mmPjE1HKWkfdxR5sSbgFOr9Ll/rXoxYapQVik8oOqGJTwqPL5i6Q5vCzeo6dii8KlwpyEXFL519LjLLw6nXP5y2IhGBsFTJ6ykijhexGra0ITl5bRqmWU1fx/nJTWJ7PSUxBbxJkwijBBGYYwhBgnRQ7/MIQIE6ZIVJfK7f/MnyUmuKrPOKgZLpEhj0SnqslRPSEyKnpCRYdXp/9++msneoFu9JgwVT7b91ga+LfjetO3PQ9v+PgLvI1xkC/m5A+h7F32zoLXug38dzi4LWnwHzjeg8UGPGbFfySvuSSbh9QRqZ6H+Gqrm3Z7l9zm+h+iafNUV7O5Bu5z3L/wAdthn7QIme0YAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJTSURBVFiF7Zi9axRBGIefEw2IdxFBRQsLWUTBaywSK4ubdSGVIY1Y6HZql8ZKCGIqwX/AYLmCgVQKfiDn7jZeEQMWfsSAHAiKqPiB5mIgELWYOW5vzc3O7niHhT/YZvY37/swM/vOzJbIqVq9uQ04CYwCI8AhYAlYAB4Dc7HnrOSJWcoJcBS4ARzQ2F4BZ2LPmTeNuykHwEWgkQGAet9QfiMZjUSt3hwD7psGTWgs9pwH1hC1enMYeA7sKwDxBqjGnvNdZzKZjqmCAKh+U1kmEwi3IEBbIsugnY5avTkEtIAtFhBrQCX2nLVehqyRqFoCAAwBh3WGLAhbgCRIYYinwLolwLqKUwwi9pxV4KUlxKKKUwxC6ZElRCPLYAJxGfhSEOCz6m8HEXvOB2CyIMSk6m8HoXQTmMkJcA2YNTHm3congOvATo3tE3A29pxbpnFzQSiQPcB55IFmFNgFfEQeahaAGZMpsIJIAZWAHcDX2HN+2cT6r39GxmvC9aPNwH5gO1BOPFuBVWAZue0vA9+A12EgjPadnhCuH1WAE8ivYAQ4ohKaagV4gvxi5oG7YSA2vApsCOH60WngKrA3R9IsvQUuhIGY00K4flQG7gHH/mLytB4C42EgfrQb0mV7us8AAMeBS8mGNMR4nwHamtBB7B4QRNdaS0M8GxDEog7iyoAguvJ0QYSBuAOcAt71Kfl7wA8DcTvZ2KtOlJEr+ByyQtqqhTyHTIeB+ONeqi3brh+VgIN0fohUgWGggizZFTplu12yW8iy/YLOGWMpDMTPXnl+Az9vj2HERYqPAAAAAElFTkSuQmCC"
-      type="image/png"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/assets/compiled/css/app.css" />
-    <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
-    <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
+  <link rel="shortcut icon" href="/assets/compiled/svg/favicon.svg" type="image/x-icon" />
+  <link rel="shortcut icon"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAYAAADRcLDBAAAEs2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249IjMzIgogICBleGlmOlBpeGVsWURpbWVuc2lvbj0iMzQiCiAgIGV4aWY6Q29sb3JTcGFjZT0iMSIKICAgdGlmZjpJbWFnZVdpZHRoPSIzMyIKICAgdGlmZjpJbWFnZUxlbmd0aD0iMzQiCiAgIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiCiAgIHRpZmY6WFJlc29sdXRpb249Ijk2LjAiCiAgIHRpZmY6WVJlc29sdXRpb249Ijk2LjAiCiAgIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiCiAgIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiCiAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJwcm9kdWNlZCIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWZmaW5pdHkgRGVzaWduZXIgMS4xMC4xIgogICAgICBzdEV2dDp3aGVuPSIyMDIyLTAzLTMxVDEwOjUwOjIzKzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz5V57uAAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rRFEUxz9maORHo1hYKC9hISNGTWwsRn4VFmOUX5uZZ36oeTOv954kW2WrKLHxa8FfwFZZK0WkZClrYoOe87ypmWTO7dzzud97z+nec8ETzaiaWd4NWtYyIiNhZWZ2TvE946WZSjqoj6mmPjE1HKWkfdxR5sSbgFOr9Ll/rXoxYapQVik8oOqGJTwqPL5i6Q5vCzeo6dii8KlwpyEXFL519LjLLw6nXP5y2IhGBsFTJ6ykijhexGra0ITl5bRqmWU1fx/nJTWJ7PSUxBbxJkwijBBGYYwhBgnRQ7/MIQIE6ZIVJfK7f/MnyUmuKrPOKgZLpEhj0SnqslRPSEyKnpCRYdXp/9++msneoFu9JgwVT7b91ga+LfjetO3PQ9v+PgLvI1xkC/m5A+h7F32zoLXug38dzi4LWnwHzjeg8UGPGbFfySvuSSbh9QRqZ6H+Gqrm3Z7l9zm+h+iafNUV7O5Bu5z3L/wAdthn7QIme0YAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJTSURBVFiF7Zi9axRBGIefEw2IdxFBRQsLWUTBaywSK4ubdSGVIY1Y6HZql8ZKCGIqwX/AYLmCgVQKfiDn7jZeEQMWfsSAHAiKqPiB5mIgELWYOW5vzc3O7niHhT/YZvY37/swM/vOzJbIqVq9uQ04CYwCI8AhYAlYAB4Dc7HnrOSJWcoJcBS4ARzQ2F4BZ2LPmTeNuykHwEWgkQGAet9QfiMZjUSt3hwD7psGTWgs9pwH1hC1enMYeA7sKwDxBqjGnvNdZzKZjqmCAKh+U1kmEwi3IEBbIsugnY5avTkEtIAtFhBrQCX2nLVehqyRqFoCAAwBh3WGLAhbgCRIYYinwLolwLqKUwwi9pxV4KUlxKKKUwxC6ZElRCPLYAJxGfhSEOCz6m8HEXvOB2CyIMSk6m8HoXQTmMkJcA2YNTHm3congOvATo3tE3A29pxbpnFzQSiQPcB55IFmFNgFfEQeahaAGZMpsIJIAZWAHcDX2HN+2cT6r39GxmvC9aPNwH5gO1BOPFuBVWAZue0vA9+A12EgjPadnhCuH1WAE8ivYAQ4ohKaagV4gvxi5oG7YSA2vApsCOH60WngKrA3R9IsvQUuhIGY00K4flQG7gHH/mLytB4C42EgfrQb0mV7us8AAMeBS8mGNMR4nwHamtBB7B4QRNdaS0M8GxDEog7iyoAguvJ0QYSBuAOcAt71Kfl7wA8DcTvZ2KtOlJEr+ByyQtqqhTyHTIeB+ONeqi3brh+VgIN0fohUgWGggizZFTplu12yW8iy/YLOGWMpDMTPXnl+Az9vj2HERYqPAAAAAElFTkSuQmCC"
+    type="image/png" />
 
-    <!-- <link
+  <link rel="stylesheet" href="/assets/compiled/css/app.css" />
+  <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
+  <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
+
+  <link rel="stylesheet" href="/assets/compiled/css/style.css" />
+
+  <!-- <link
       rel="stylesheet"
       href="/assets/extensions/simple-datatables/style.css"
     />
     <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css" /> -->
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
-    />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-    />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-      }
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-      .navbar {
-        position: fixed;
-        width: 100%;
-        background-color: #132144;
-        z-index: 1000;
-        display: flex;
-        /* justify-content: center;
-        align-items: center; */
-        padding: 10px 0; /* Add padding to increase navbar height if needed */
-      }
+    .navbar {
+      position: fixed;
+      width: 100%;
+      background-color: #132144;
+      z-index: 1000;
+      display: flex;
+      padding: 10px 0;
+    }
 
-      .navbar-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1200px; /* Adjust this value to fit your design */
-        padding: 0 20px; /* Add padding to the content area for spacing */
-      }
+    .navbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 20px;
+    }
 
-      .navbar-logo {
-        height: 50px;
-      }
+    .navbar-logo {
+      height: 50px;
+    }
 
-      .navbar-list {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-grow: 1;
-        justify-content: end;
-      }
+    .navbar-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-grow: 1;
+      justify-content: end;
+    }
 
-      .navbar-item {
-        position: relative;
-      }
+    .navbar-item {
+      position: relative;
+    }
 
-      .navbar-link {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 20px;
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
+    .navbar-link {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
 
-      .navbar-item.active .navbar-link {
-        border-bottom: 2px solid yellow;
-      }
+    .navbar-item.active .navbar-link {
+      border-bottom: 2px solid yellow;
+    }
 
-      .navbar-link:hover {
-        color: yellow;
-      }
+    .navbar-link:hover {
+      color: yellow;
+    }
 
-      .navbar-link::before {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: yellow;
-        visibility: hidden;
-        transition: all 0.3s ease-in-out;
-      }
+    .navbar-link::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: yellow;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
 
-      .navbar-link:hover::before {
-        visibility: visible;
-        width: 100%;
-      }
+    .navbar-link:hover::before {
+      visibility: visible;
+      width: 100%;
+    }
 
-      /* Dropdown menu styling */
-      .dropdown-menu {
-        display: none;
-        position: absolute;
-        background-color: #ffffff;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        top: 100%;
-        left: 0;
-      }
+    /* Dropdown menu styling */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+    }
 
-      .dropdown-item {
-        width: 100%;
-      }
+    .dropdown-item {
+      width: 100%;
+    }
 
-      .dropdown-link {
-        /* color: white; */
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
+    .dropdown-link {
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-      .dropdown-link:hover {
-        background-color: #dde8f1;
-        color: rgb(0, 0, 0);
-      }
+    .dropdown-link:hover {
+      background-color: #dde8f1;
+      color: rgb(0, 0, 0);
+    }
 
-      /* Show the dropdown menu on hover */
-      .navbar-item.dropdown:hover .dropdown-menu {
-        display: block;
-      }
+    /* Show the dropdown menu on hover */
+    .navbar-item.dropdown:hover .dropdown-menu {
+      display: block;
+    }
 
-      #map {
-        height: 600px;
-      }
+    #map {
+      height: 600px;
+    }
 
-      .legend {
-        font-family: Arial, sans-serif;
-        background: white;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      }
+    .legend {
+      font-family: Arial, sans-serif;
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
 
-      .legend-item {
-        margin-bottom: 5px;
-      }
+    .legend-item {
+      margin-bottom: 5px;
+    }
 
-      .legend-color {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        margin-right: 10px;
-      }
+    .legend-color {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
 
-      .legend-item:hover .tooltip {
-        display: block;
-      }
-      .tooltip {
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 100%;
-        margin-left: 10px;
-        background: rgba(0, 0, 0, 0.75);
-        color: white;
-        padding: 5px;
-        border-radius: 3px;
-        white-space: nowrap;
-        z-index: 1000;
-      }
+    .legend-item:hover .tooltip {
+      display: block;
+    }
 
-      .timeline {
-        position: relative;
-        margin: 0 auto;
-        /* padding: 40px 0; */
-        width: 100%;
-        max-width: 900px;
-      }
+    .tooltip {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      margin-left: 10px;
+      /* Adjust as needed */
+      padding: 5px;
+      border-radius: 3px;
+      white-space: nowrap;
+      z-index: 1000;
+      background: #002845;
+    }
 
-      .timeline::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        /* left: 50%; */
-        transform: translateX(-50%);
-        border-style: dotted;
-        border-width: 3px;
-        /* width: 4px; */
-        /* border-style: dotted ; */
-        height: 100%;
-        background: #ccc;
-      }
+    .timeline {
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 900px;
+    }
 
-      .timeline-red {
-        position: relative;
-        margin: 20px 0;
-        /* padding-left: 10%; */
-        clear: both;
-      }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      border-style: dotted;
+      border-width: 3px;
+      height: 100%;
+      background: #ccc;
+    }
 
-      .timeline-red::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        /* left: 50%; */
-        transform: translateX(-50%);
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #007bff;
-        border: 4px solid white;
-        z-index: 1;
-      }
+    .timeline-red {
+      position: relative;
+      margin: 20px 0;
+      clear: both;
+    }
 
-      .timeline-grey {
-        position: relative;
-        margin: 20px 0;
-        /* padding-left: 10%; */
-        clear: both;
-      }
+    .timeline-red::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #007bff;
+      border: 4px solid white;
+      z-index: 1;
+    }
 
-      .timeline-grey::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        /* left: 50%; */
-        transform: translateX(-50%);
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #c9d9e9;
-        border: 4px solid white;
-        z-index: 1;
-      }
+    .timeline-grey {
+      position: relative;
+      margin: 20px 0;
+      clear: both;
+    }
 
-      .timeline-yellow {
-        position: relative;
-        margin: 20px 0;
+    .timeline-grey::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #c9d9e9;
+      border: 4px solid white;
+      z-index: 1;
+    }
 
-        /* padding-left: 10%; */
-        clear: both;
-      }
+    .timeline-yellow {
+      position: relative;
+      margin: 20px 0;
+      clear: both;
+    }
 
-      .timeline-yellow::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        /* left: 50%; */
-        transform: translateX(-50%);
-        width: 20px;
-        height: 20px;
+    .timeline-yellow::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: #ff8533;
+      border: 4px solid white;
+      z-index: 1;
+    }
 
-        /* border-radius: 50%; */
-        background: #ff8533;
-        border: 4px solid white;
-        z-index: 1;
-      }
+    .timeline-green {
+      position: relative;
+      margin: 20px 0;
 
-      .timeline-green {
-        position: relative;
-        margin: 20px 0;
-        /* padding-left: 10%; */
-        clear: both;
-      }
+      clear: both;
+    }
 
-      .timeline-green::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        /* left: 50%; */
-        transform: translateX(-50%);
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #00e525;
-        border: 4px solid white;
-        z-index: 1;
-      }
+    .timeline-green::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #00e525;
+      border: 4px solid white;
+      z-index: 1;
+    }
 
-      .timeline-content {
-        padding: 20px;
-        /* background: #f8f9fa; */
-        /* border: 1px solid #e9ecef; */
-        border-radius: 5px;
-      }
+    .timeline-content {
+      padding: 20px;
+      border-radius: 5px;
+    }
 
-      .circle {
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        display: inline-block;
-        margin-right: 8px;
-      }
-      .red-circle {
-        background-color: red;
-      }
-      .yellow-circle {
-        background-color: yellow;
-      }
-      .blue-circle {
-        background-color: blue;
-      }
+    .circle {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
 
-      .badge-warning {
-        border: 1px solid rgba(255, 142, 66, 1);
-        border-radius: 5px;
-        background-color: #fff0e5;
-        color: #ff8e42;
-        font: 400 16px;
-        margin-top: 3px;
-      }
-      .badge-danger {
-        border-radius: 5px;
-        border: 1px solid rgba(255, 66, 66, 1);
-        background-color: #ffe5e5;
-        color: #ff4242;
-        font: 400 16px;
-        margin-top: 3px;
-      }
+    .red-circle {
+      background-color: red;
+    }
 
-      .badge-primary {
-        border-radius: 5px;
-        border: 1px solid #377dff;
-        background-color: #ffe5e5;
-        color: #377dff;
-        font: 400 16px;
-        margin-top: 3px;
-      }
-    </style>
-  </head>
+    .yellow-circle {
+      background-color: yellow;
+    }
 
-  <body>
-    <script src="/assets/static/js/initTheme.js"></script>
-    <div id="app">
-      <div id="main" class="layout-horizontal">
-        <nav class="navbar">
-          <div class="navbar-content">
-            <a href="beranda.html" class="menu-link">
-              <img
-                class="navbar-logo"
-                src="/assets/compiled/svg/logoATR.svg"
-                alt="Logo"
-                height="46"
-                width="135"
-              />
-            </a>
-            <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
-            <ul class="navbar-list">
-              <li class="navbar-item active">
-                <a href="beranda.html" class="navbar-link"
-                  ><i class="me-2"
-                    ><img
-                      src="/assets/compiled/svg/iconDashboard.svg"
-                      alt=""
-                      height="20"
-                      width="20" /></i
-                  >Dashboard</a
-                >
-              </li>
-              <li class="navbar-item">
-                <a href="kiosk.html" class="navbar-link"
-                  ><i class="me-2"
-                    ><img
-                      src="/assets/compiled/svg/iconMaster.svg"
-                      alt=""
-                      height="20"
-                      width="20" /></i
-                  >Master</a
-                >
-              </li>
-              <li class="navbar-item dropdown">
-                <a href="#" class="navbar-link" id="report-link"
-                  ><i class="me-2"
-                    ><img
-                      src="/assets/compiled/svg/iconReport.svg"
-                      alt=""
-                      height="20"
-                      width="20" /></i
-                  >Report</a
-                >
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item">
-                    <a href="errorLog.html" class="dropdown-link">Error Log</a>
-                  </li>
-                  <li class="dropdown-item">
-                    <a href="transaksi.html" class="dropdown-link">
-                      Transaksi</a
-                    >
-                  </li>
-                  <li class="dropdown-item">
-                    <a href="kertasToner.html" class="dropdown-link">
-                      Kertas & Toner</a
-                    >
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
+    .blue-circle {
+      background-color: blue;
+    }
 
-        <div class="map-container" style="margin-top: 70px">
-          <div id="map"></div>
+    .badge-warning {
+      border: 1px solid rgba(255, 142, 66, 1);
+      border-radius: 5px;
+      background-color: #fff0e5;
+      color: #ff8e42;
+      font: 400 16px;
+      margin-top: 3px;
+    }
 
-          <table id="earthquakeTable" style="display: none">
-            <thead>
-              <tr>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>Magnitude</th>
-                <th>Location</th>
-                <th>Status</th>
-                <th>Datetime</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>-6.2088</td>
-                <td>106.8456</td>
-                <td>5.0</td>
-                <td>Jakarta</td>
-                <td>Error</td>
-                <td>2024-06-12T19:44:00+07:00</td>
-              </tr>
-              <tr>
-                <td>-7.7972</td>
-                <td>110.3705</td>
-                <td>4.8</td>
-                <td>Yogyakarta</td>
-                <td>Kertas Hampir Habis</td>
-                <td>2024-06-12T18:00:00+07:00</td>
-              </tr>
-              <tr>
-                <td>-8.3405</td>
-                <td>115.0920</td>
-                <td>5.3</td>
-                <td>Bali</td>
-                <td>Normal</td>
-                <td>2024-06-11T18:00:00+07:00</td>
-              </tr>
-              <tr>
-                <td>-0.8990</td>
-                <td>100.3543</td>
-                <td>5.6</td>
-                <td>Padang</td>
-                <td>Server Error</td>
-                <td>2024-05-12T18:00:00+07:00</td>
-              </tr>
-              <tr>
-                <td>-2.9814</td>
-                <td>104.7642</td>
-                <td>5.7/td></td>
-                <td>Palembang</td>
-                <td>Server Error</td>
-                <td>2023-06-12T18:00:00+07:00</td>
-              </tr>
-              <tr>
-                <td>-3.6557</td>
-                <td>128.1900</td>
-                <td>5.4</td>
-                <td>Ambon</td>
-                <td>Server Error</td>
-                <td>2023-06-12T18:00:00+07:00</td>
-              </tr>
-              <tr>
-                <td>-5.1477</td>
-                <td>119.4327</td>
-                <td>4.9</td>
-                <td>Makassar</td>
-                <td>Blanko Sertifikat Habis</td>
-                <td>2023-06-12T18:00:00+07:00</td>
-              </tr>
-              <tr>
-                <td>3.5952</td>
-                <td>98.6722</td>
-                <td>5.1</td>
-                <td>Medan</td>
-                <td>Blanko Sertifikat Habis</td>
-                <td>2023-06-12T18:00:00+07:00</td>
-              </tr>
-              <tr>
-                <td>1.4558</td>
-                <td>124.8486</td>
-                <td>5.5</td>
-                <td>Manado</td>
-                <td>Printer Tidak Terdeteksi</td>
-                <td>2023-06-12T18:00:00+07:00</td>
-              </tr>
-              <tr>
-                <td>-0.7893</td>
-                <td>113.9213</td>
-                <td>5.2</td>
-                <td>Central Kalimantan</td>
-                <td>Printer Tidak Terdeteksi</td>
-                <td>2023-06-12T18:00:00+07:00</td>
-              </tr>
-              <!-- Add more rows as needed -->
-            </tbody>
-          </table>
+    .badge-danger {
+      border-radius: 5px;
+      border: 1px solid rgba(255, 66, 66, 1);
+      background-color: #ffe5e5;
+      color: #ff4242;
+      font: 400 16px;
+      margin-top: 3px;
+    }
+
+    .badge-primary {
+      border-radius: 5px;
+      border: 1px solid #377dff;
+      background-color: #ffe5e5;
+      color: #377dff;
+      font: 400 16px;
+      margin-top: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/assets/static/js/initTheme.js"></script>
+  <div id="app">
+    <div id="main" class="layout-horizontal">
+      <nav class="navbar">
+        <div class="navbar-content">
+          <a href="beranda.html" class="menu-link">
+            <img class="navbar-logo" src="/assets/compiled/svg/logoATR.svg" alt="Logo" height="46" width="135" />
+          </a>
+          <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
+          <ul class="navbar-list">
+            <li class="navbar-item active">
+              <a href="beranda.html" class="navbar-link"><i class="me-2"><img
+                    src="/assets/compiled/svg/iconDashboard.svg" alt="" height="20" width="20" /></i>Dashboard</a>
+            </li>
+            <li class="navbar-item">
+              <a href="kiosk.html" class="navbar-link"><i class="me-2"><img src="/assets/compiled/svg/iconMaster.svg"
+                    alt="" height="20" width="20" /></i>Master</a>
+            </li>
+            <li class="navbar-item dropdown">
+              <a href="#" class="navbar-link" id="report-link"><i class="me-2"><img
+                    src="/assets/compiled/svg/iconReport.svg" alt="" height="20" width="20" /></i>Report</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item">
+                  <a href="errorLog.html" class="dropdown-link">Error Log</a>
+                </li>
+                <li class="dropdown-item">
+                  <a href="transaksi.html" class="dropdown-link">
+                    Transaksi</a>
+                </li>
+                <li class="dropdown-item">
+                  <a href="kertasToner.html" class="dropdown-link">
+                    Kertas & Toner</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
+      </nav>
 
-        <div class="row justify-content-center">
-          <div class="col-10 mt-5">
-            <!-- <section class="section" style="align-self: center;"> -->
-            <div class="card border">
-              <div class="card-header"></div>
-              <div class="card-body">
-                <table class="dislay" id="table1">
-                  <thead>
-                    <tr>
-                      <th>Status Error</th>
-                      <th>Nomor Kiosk</th>
-                      <th>Lokasi</th>
-                      <th>Waktu Error</th>
-                      <th>Status Pengerjaan</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Server Error</td>
-                      <td>K2300012</td>
-                      <td>
-                        Kantor Pertanahan Kota Administratif Jakarta Pusat
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Blanko Sertifikat Habis</td>
-                      <td>K2300013</td>
-                      <td>Kantor Pertanahan Kota Surabaya I</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Printer Tidak Terdeteksi</td>
-                      <td>K2300014</td>
-                      <td>Kantor Pertanahan Kota Surabaya II</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Kertas Hampir Habis</td>
-                      <td>K2300015</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Toner Hampir Habis</td>
-                      <td>K2300016</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Server Error</td>
-                      <td>K2300012</td>
-                      <td>
-                        Kantor Pertanahan Kota Administratif Jakarta Pusat
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Blanko Sertifikat Habis</td>
-                      <td>K2300013</td>
-                      <td>Kantor Pertanahan Kota Surabaya I</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Printer Tidak Terdeteksi</td>
-                      <td>K2300014</td>
-                      <td>Kantor Pertanahan Kota Surabaya II</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Kertas Hampir Habis</td>
-                      <td>K2300015</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Toner Hampir Habis</td>
-                      <td>K2300016</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Server Error</td>
-                      <td>K2300012</td>
-                      <td>
-                        Kantor Pertanahan Kota Administratif Jakarta Pusat
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Blanko Sertifikat Habis</td>
-                      <td>K2300013</td>
-                      <td>Kantor Pertanahan Kota Surabaya I</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Printer Tidak Terdeteksi</td>
-                      <td>K2300014</td>
-                      <td>Kantor Pertanahan Kota Surabaya II</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Kertas Hampir Habis</td>
-                      <td>K2300015</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Toner Hampir Habis</td>
-                      <td>K2300016</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="map-container" style="margin-top: 70px">
+        <div id="map"></div>
 
-        <div
-          class="offcanvas offcanvas-end"
-          tabindex="-1"
-          id="offcanvasRight"
-          aria-labelledby="offcanvasRightLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 id="offcanvasRightLabel">K2300012</h5>
-            <button
-              type="button"
-              class="btn-close text-reset"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
+        <table id="earthquakeTable" style="display: none">
+          <thead>
+            <tr>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Datetime</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>-6.2088</td>
+              <td>106.8456</td>
+              <td>Jakarta</td>
+              <td>Server Error</td>
+              <td>2024-06-12T19:44:00+07:00</td>
+            </tr>
+            <tr>
+              <td>-7.7972</td>
+              <td>110.3705</td>
+              <td>Yogyakarta</td>
+              <td>Kertas Hampir Habis</td>
+              <td>2024-06-12T18:00:00+07:00</td>
+            </tr>
+            <tr>
+              <td>-8.3405</td>
+              <td>115.0920</td>
+              <td>Bali</td>
+              <td>Normal</td>
+              <td>2024-06-11T18:00:00+07:00</td>
+            </tr>
+            <tr>
+              <td>-0.8990</td>
+              <td>100.3543</td>
+              <td>Padang</td>
+              <td>Server Error</td>
+              <td>2024-05-12T18:00:00+07:00</td>
+            </tr>
+            <tr>
+              <td>-2.9814</td>
+              <td>104.7642</td>
+              <td>Palembang</td>
+              <td>Server Error</td>
+              <td>2023-06-12T18:00:00+07:00</td>
+            </tr>
+            <tr>
+              <td>-3.6557</td>
+              <td>128.1900</td>
+              <td>Ambon</td>
+              <td>Server Error</td>
+              <td>2023-06-12T18:00:00+07:00</td>
+            </tr>
+            <tr>
+              <td>-5.1477</td>
+              <td>119.4327</td>
+              <td>Makassar</td>
+              <td>Blanko Sertifikat Habis</td>
+              <td>2023-06-12T18:00:00+07:00</td>
+            </tr>
+            <tr>
+              <td>3.5952</td>
+              <td>98.6722</td>
+              <td>Medan</td>
+              <td>Blanko Sertifikat Habis</td>
+              <td>2023-06-12T18:00:00+07:00</td>
+            </tr>
+            <tr>
+              <td>1.4558</td>
+              <td>124.8486</td>
+              <td>Manado</td>
+              <td>Printer Tidak Terdeteksi</td>
+              <td>2023-06-12T18:00:00+07:00</td>
+            </tr>
+            <tr>
+              <td>-0.7893</td>
+              <td>113.9213</td>
+              <td>Central Kalimantan</td>
+              <td>Printer Tidak Terdeteksi</td>
+              <td>2023-06-12T18:00:00+07:00</td>
+            </tr>
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+      </div>
 
-          <div class="offcanvas-body">
-            <div class="container">
-              <div class="timeline">
-                <div class="timeline-red">
-                  <div class="timeline-content">
-                    <h4>Server Error</h4>
-                    <p>
-                      Sistem mendeteksi adanya “Server Error” pada Kiosk.
-                      Pemberitahuan otomatis telah dikirim ke tim teknis untuk
-                      penanganan lebih lanjut
-                    </p>
-
-                    <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
-                  </div>
-                </div>
-                <div class="timeline-grey">
-                  <div class="timeline-content">
-                    <h4>Pemberitahuan Diterima oleh Tim Teknis</h4>
-                    <p>
-                      Tim Teknis telah menerima pemberitahuan dan akan melakukan
-                      penanganan.
-                    </p>
-
-                    <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
-                  </div>
-                </div>
-                <div class="timeline-yellow">
-                  <div class="timeline-content">
-                    <h4
-                      class="text-white"
-                      style="background-color: #ff8533; border-radius: 5px"
-                    >
-                      Dalam Perbaikan
-                    </h4>
-                    <p>Status pengerjaan diperbarui.</p>
-
-                    <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
-                  </div>
-                </div>
-                <div class="timeline-green">
-                  <div class="timeline-content">
-                    <h4>Perbaikan Selesai</h4>
-                    <p>
-                      Perbaikan telah selesai. Kiosk telah dapat digunakan
-                      dengan normal.
-                    </p>
-
-                    <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
-                  </div>
-                </div>
-                <!-- Add more timeline items as needed -->
-              </div>
-              ...
+      <div class="row justify-content-center">
+        <div class="col-10 mt-5">
+          <!-- <section class="section" style="align-self: center;"> -->
+          <div class="card border">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <table class="dislay" id="table1">
+                <thead>
+                  <tr>
+                    <th>Status Error</th>
+                    <th>Nomor Kiosk</th>
+                    <th>Lokasi</th>
+                    <th>Waktu Error</th>
+                    <th>Status Pengerjaan</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Server Error</td>
+                    <td>K2300012</td>
+                    <td>
+                      Kantor Pertanahan Kota Administratif Jakarta Pusat
+                    </td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Perbaikan</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Blanko Sertifikat Habis</td>
+                    <td>K2300013</td>
+                    <td>Kantor Pertanahan Kota Surabaya I</td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Antrian</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Printer Tidak Terdeteksi</td>
+                    <td>K2300014</td>
+                    <td>Kantor Pertanahan Kota Surabaya II</td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Perbaikan</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Kertas Hampir Habis</td>
+                    <td>K2300015</td>
+                    <td>
+                      Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                      Kalimantan Timur
+                    </td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Perbaikan</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Toner Hampir Habis</td>
+                    <td>K2300016</td>
+                    <td>
+                      Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                      Kalimantan Timur
+                    </td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Antrian</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Server Error</td>
+                    <td>K2300012</td>
+                    <td>
+                      Kantor Pertanahan Kota Administratif Jakarta Pusat
+                    </td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Perbaikan</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Blanko Sertifikat Habis</td>
+                    <td>K2300013</td>
+                    <td>Kantor Pertanahan Kota Surabaya I</td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Antrian</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Printer Tidak Terdeteksi</td>
+                    <td>K2300014</td>
+                    <td>Kantor Pertanahan Kota Surabaya II</td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Perbaikan</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Kertas Hampir Habis</td>
+                    <td>K2300015</td>
+                    <td>
+                      Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                      Kalimantan Timur
+                    </td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Perbaikan</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Toner Hampir Habis</td>
+                    <td>K2300016</td>
+                    <td>
+                      Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                      Kalimantan Timur
+                    </td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Antrian</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Server Error</td>
+                    <td>K2300012</td>
+                    <td>
+                      Kantor Pertanahan Kota Administratif Jakarta Pusat
+                    </td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Perbaikan</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Blanko Sertifikat Habis</td>
+                    <td>K2300013</td>
+                    <td>Kantor Pertanahan Kota Surabaya I</td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Antrian</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Printer Tidak Terdeteksi</td>
+                    <td>K2300014</td>
+                    <td>Kantor Pertanahan Kota Surabaya II</td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Perbaikan</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Kertas Hampir Habis</td>
+                    <td>K2300015</td>
+                    <td>
+                      Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                      Kalimantan Timur
+                    </td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Perbaikan</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                  <tr>
+                    <td>Toner Hampir Habis</td>
+                    <td>K2300016</td>
+                    <td>
+                      Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                      Kalimantan Timur
+                    </td>
+                    <td>20 Maret 2024</td>
+                    <td class="badge">Dalam Antrian</td>
+                    <td class="details-cell"></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-      <!-- </div> -->
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 id="offcanvasRightLabel">K2300012</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <div class="container">
+            <div class="timeline">
+              <div class="timeline-red">
+                <div class="timeline-content">
+                  <h4>Server Error</h4>
+                  <p>
+                    Sistem mendeteksi adanya “Server Error” pada Kiosk.
+                    Pemberitahuan otomatis telah dikirim ke tim teknis untuk
+                    penanganan lebih lanjut
+                  </p>
+
+                  <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                </div>
+              </div>
+              <div class="timeline-grey">
+                <div class="timeline-content">
+                  <h4>Pemberitahuan Diterima oleh Tim Teknis</h4>
+                  <p>
+                    Tim Teknis telah menerima pemberitahuan dan akan melakukan
+                    penanganan.
+                  </p>
+
+                  <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                </div>
+              </div>
+              <div class="timeline-yellow">
+                <div class="timeline-content">
+                  <h4 class="text-white" style="background-color: #ff8533; border-radius: 5px">
+                    Dalam Perbaikan
+                  </h4>
+                  <p>Status pengerjaan diperbarui.</p>
+
+                  <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                </div>
+              </div>
+              <div class="timeline-green">
+                <div class="timeline-content">
+                  <h4>Perbaikan Selesai</h4>
+                  <p>
+                    Perbaikan telah selesai. Kiosk telah dapat digunakan
+                    dengan normal.
+                  </p>
+
+                  <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+                </div>
+              </div>
+              <!-- Add more timeline items as needed -->
+            </div>
+            ...
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- </div> -->
+  </div>
 
-    <script src="/assets/static/js/components/dark.js"></script>
-    <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+  <script src="/assets/static/js/components/dark.js"></script>
+  <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
-    <script src="/assets/static/js/pages/horizontal-layout.js"></script>
-    <script src="/assets/compiled/js/app.js"></script>
+  <script src="/assets/static/js/pages/horizontal-layout.js"></script>
+  <script src="/assets/compiled/js/app.js"></script>
 
-    <!-- <script src="/assets/static/js/pages/dashboard.js"></script> -->
+  <!-- <script src="/assets/static/js/pages/dashboard.js"></script> -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <!-- <script>
+  <!-- <script>
       document.getElementById("editBtn").addEventListener("click", function () {
         // Toggle between initial and edit card content
         document.getElementById("modalDetail").style.display = "none";
@@ -782,347 +706,301 @@
       });
     </script> -->
 
-    <script>
-      $(document).ready(function () {
-        // Initialize DataTable
-        var table = $("#table1").DataTable();
+  <script>
+    $(document).ready(function () {
+      // Initialize DataTable
+      var table = $("#table1").DataTable();
 
-        // Function to add status circles and work status logic
-        function addStatusCirclesAndLogic() {
-          $("#table1 tbody tr").each(function () {
-            var statusText = $(this).find("td").eq(0).text().toLowerCase();
-            var workStatusText = $(this).find("td").eq(4).text().toLowerCase();
+      // Function to add status circles and work status logic
+      function addStatusCirclesAndLogic() {
+        $("#table1 tbody tr").each(function () {
+          var statusText = $(this).find("td").eq(0).text().toLowerCase();
+          var workStatusText = $(this).find("td").eq(4).text().toLowerCase();
 
-            var circleClass = "";
-            var statusClass = "";
+          var circleClass = "";
+          var statusClass = "";
 
-            if (
-              statusText.includes("server error") ||
-              statusText.includes("blanko sertifikat habis") ||
-              statusText.includes("printer tidak terdeteksi")
-            ) {
-              circleClass = "red-circle";
-            } else if (
-              statusText.includes("kertas hampir habis") ||
-              statusText.includes("toner hampir habis")
-            ) {
-              circleClass = "yellow-circle";
-            } else if (statusText.includes("normal")) {
-              circleClass = "blue-circle";
-            }
+          if (
+            statusText.includes("server error") ||
+            statusText.includes("blanko sertifikat habis") ||
+            statusText.includes("printer tidak terdeteksi")
+          ) {
+            circleClass = "red-circle";
+          } else if (
+            statusText.includes("kertas hampir habis") ||
+            statusText.includes("toner hampir habis")
+          ) {
+            circleClass = "yellow-circle";
+          } else if (statusText.includes("normal")) {
+            circleClass = "blue-circle";
+          }
 
-            if (workStatusText.includes("dalam perbaikan")) {
-              statusClass = "yellow-outline";
-            } else if (workStatusText.includes("dalam antrian")) {
-              statusClass = "red-outline";
-            }
+          if (workStatusText.includes("dalam perbaikan")) {
+            statusClass = "yellow-outline";
+          } else if (workStatusText.includes("dalam antrian")) {
+            statusClass = "red-outline";
+          }
 
-            if (workStatusText.includes("dalam perbaikan")) {
-              statusClass = "badge badge-warning";
-            } else if (workStatusText.includes("dalam antrian")) {
-              statusClass = "badge badge-danger";
-            } else if (workStatusText.includes("normal")) {
-              statusClass = "badge badge-primary";
-            }
+          if (workStatusText.includes("dalam perbaikan")) {
+            statusClass = "badge badge-warning";
+          } else if (workStatusText.includes("dalam antrian")) {
+            statusClass = "badge badge-danger";
+          } else if (workStatusText.includes("normal")) {
+            statusClass = "badge badge-primary";
+          }
 
-            if (circleClass) {
-              var circle = $("<span>").addClass("circle").addClass(circleClass);
-              $(this).find("td").eq(0).prepend(circle);
-            }
+          if (circleClass) {
+            var circle = $("<span>").addClass("circle").addClass(circleClass);
+            $(this).find("td").eq(0).prepend(circle);
+          }
 
-            if (statusClass) {
-              $(this).find("td").eq(4).addClass(statusClass);
-            }
-          });
-        }
+          if (statusClass) {
+            $(this).find("td").eq(4).addClass(statusClass);
+          }
+        });
+      }
 
-        // Call the function to add status circles and logic
-        addStatusCirclesAndLogic();
+      // Call the function to add status circles and logic
+      addStatusCirclesAndLogic();
 
-        // Function to add dynamic "Details" link to each row
-        function addDetailsLinks() {
-          $("#table1 tbody tr").each(function () {
-            var detailsLink = $("<a>")
-              .attr({
-                href: "#",
-                "data-bs-toggle": "offcanvas",
-                "data-bs-target": "#offcanvasRight",
-                "aria-controls": "offcanvasRight",
-              })
-              .text("Details");
+      // Function to add dynamic "Details" link to each row
+      function addDetailsLinks() {
+        $("#table1 tbody tr").each(function () {
+          var detailsLink = $("<a>")
+            .attr({
+              href: "#",
+              "data-bs-toggle": "offcanvas",
+              "data-bs-target": "#offcanvasRight",
+              "aria-controls": "offcanvasRight",
+            })
+            .text("Details");
 
-            // Append the dynamic "Details" link to the last cell in each row
-            $(this).find(".details-cell").html(detailsLink);
-          });
-        }
+          // Append the dynamic "Details" link to the last cell in each row
+          $(this).find(".details-cell").html(detailsLink);
+        });
+      }
 
-        // Call the function to add dynamic "Details" links
-        addDetailsLinks();
+      // Call the function to add dynamic "Details" links
+      addDetailsLinks();
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbarItems = document.querySelectorAll(".navbar-item");
+      const dropdownLink = document.getElementById("report-link");
+      const dropdownMenu = dropdownLink.nextElementSibling;
+
+      dropdownLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        dropdownMenu.classList.toggle("show");
+        dropdownLink.parentElement.classList.toggle("active");
       });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const navbarItems = document.querySelectorAll(".navbar-item");
-        const dropdownLink = document.getElementById("report-link");
-        const dropdownMenu = dropdownLink.nextElementSibling;
-
-        dropdownLink.addEventListener("click", function (event) {
-          event.preventDefault();
-          dropdownMenu.classList.toggle("show");
-          dropdownLink.parentElement.classList.toggle("active");
-        });
-
-        navbarItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            if (this.querySelector(".dropdown-menu")) {
-              this.classList.add("active");
-            } else {
-              this.classList.add("active");
-              dropdownMenu.classList.remove("show");
-            }
-          });
-        });
-
-        document.addEventListener("click", function (event) {
-          if (!event.target.closest(".navbar-item")) {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
+      navbarItems.forEach((item) => {
+        item.addEventListener("click", function () {
+          navbarItems.forEach((nav) => nav.classList.remove("active"));
+          if (this.querySelector(".dropdown-menu")) {
+            this.classList.add("active");
+          } else {
+            this.classList.add("active");
             dropdownMenu.classList.remove("show");
           }
         });
       });
 
-      // Initialize the map centered on Indonesia
-      var map = L.map("map").setView([-2.5, 118.0], 5); // Central coordinates of Indonesia
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".navbar-item")) {
+          navbarItems.forEach((nav) => nav.classList.remove("active"));
+          dropdownMenu.classList.remove("show");
+        }
+      });
+    });
 
-      // Add the base layer from OpenStreetMap
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
-      }).addTo(map);
+    // Initialize the map centered on Indonesia
+    var map = L.map("map").setView([-2.5, 118.0], 5); // Central coordinates of Indonesia
 
-      // Function to extract earthquake locations from the table
-      function extractEarthquakeLocationsFromTable() {
-        var earthquakeLocations = [];
-        var tableRows = document.querySelectorAll("#earthquakeTable tbody tr");
-        tableRows.forEach(function (row) {
-          var cells = row.querySelectorAll("td");
-          var latitude = parseFloat(cells[0].textContent);
-          var longitude = parseFloat(cells[1].textContent);
-          var magnitude = parseFloat(cells[2].textContent);
-          var location = cells[3].textContent;
-          var status = cells[4].textContent.toLowerCase();
-          var datetime = cells[5].textContent;
-          earthquakeLocations.push({
-            lat: latitude,
-            lng: longitude,
-            magnitude: magnitude,
-            location: location,
-            status: status,
-            datetime: datetime,
-          });
+    // Add the base layer from OpenStreetMap
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "&copy; OpenStreetMap contributors",
+    }).addTo(map);
+
+    // Function to extract earthquake locations from the table
+    function extractEarthquakeLocationsFromTable() {
+      var earthquakeLocations = [];
+      var tableRows = document.querySelectorAll("#earthquakeTable tbody tr");
+      tableRows.forEach(function (row) {
+        var cells = row.querySelectorAll("td");
+        var latitude = parseFloat(cells[0].textContent);
+        var longitude = parseFloat(cells[1].textContent);
+        var location = cells[2].textContent;
+        var status = cells[3].textContent;  // No need to lowercase
+        var datetime = cells[4].textContent;
+        earthquakeLocations.push({
+          lat: latitude,
+          lng: longitude,
+          location: location,
+          status: status,
+          datetime: datetime,
         });
-        return earthquakeLocations;
+      });
+      return earthquakeLocations;
+    }
+
+    // Function to calculate relative time from the current date in Indonesia West Time (WIB)
+    function timeSince(date) {
+      var localDate = new Date(new Date(date).getTime() + 7 * 3600 * 1000);
+      var seconds = Math.floor((new Date() - localDate) / 1000);
+      var interval = seconds / 31536000;
+
+      if (interval > 1) {
+        return Math.floor(interval) + " tahun lalu";
       }
-
-      // Function to calculate relative time from the current date
-      // Function to calculate relative time from the current date in Indonesia West Time (WIB)
-      function timeSince(date) {
-        // Adjusting for Indonesia West Time (WIB) UTC+7
-        var localDate = new Date(new Date(date).getTime() + 7 * 3600 * 1000);
-        var seconds = Math.floor((new Date() - localDate) / 1000);
-        var interval = seconds / 31536000;
-
-        if (interval > 1) {
-          return Math.floor(interval) + " tahun lalu";
-        }
-        interval = seconds / 2592000;
-        if (interval > 1) {
-          return Math.floor(interval) + " bulan lalu";
-        }
-        interval = seconds / 86400;
-        if (interval > 1) {
-          return Math.floor(interval) + " hari lalu";
-        }
-        interval = seconds / 3600;
-        if (interval > 1) {
-          return Math.floor(interval) + " jam lalu";
-        }
-        interval = seconds / 60;
-        if (interval > 1) {
-          return Math.floor(interval) + " menit lalu";
-        }
-        return Math.floor(seconds) + " detik lalu";
+      interval = seconds / 2592000;
+      if (interval > 1) {
+        return Math.floor(interval) + " bulan lalu";
       }
+      interval = seconds / 86400;
+      if (interval > 1) {
+        return Math.floor(interval) + " hari lalu";
+      }
+      interval = seconds / 3600;
+      if (interval > 1) {
+        return Math.floor(interval) + " jam lalu";
+      }
+      interval = seconds / 60;
+      if (interval > 1) {
+        return Math.floor(interval) + " menit lalu";
+      }
+      return Math.floor(seconds) + " detik lalu";
+    }
 
-      // Add earthquake markers to the map
-      function addEarthquakeMarkers() {
-        var earthquakeLocations = extractEarthquakeLocationsFromTable();
-        earthquakeLocations.forEach(function (earthquake) {
-          var iconUrl;
+    // Add earthquake markers to the map
+    function addEarthquakeMarkers() {
+      var earthquakeLocations = extractEarthquakeLocationsFromTable();
+      earthquakeLocations.forEach(function (earthquake) {
+        var iconUrl;
 
-          // if (earthquake.status === "Server Error" || earthquake.status === "Blanko Sertifikat Habis" || earthquake.status === "Printer Tidak Terdeteksi"){
-          //   iconUrl =
-          //     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="red"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
-          // } else if (earthquake.status ==="Kertas Hampir Habis" || earthquake.status ==="Toner Hampir Habis"){
-          //   iconUrl =
-          //     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="yellow"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
-          // } else {
-          //   iconUrl =
-          //     'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="blue"></circle></svg>';
-          // }
+        if (earthquake.status === "Server Error" || earthquake.status === "Blanko Sertifikat Habis" || earthquake.status === "Printer Tidak Terdeteksi") {
+          iconUrl =
+            'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="red"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>');
+        } else if (earthquake.status === "Kertas Hampir Habis" || earthquake.status === "Toner Hampir Habis") {
+          iconUrl =
+            'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="yellow"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>');
+        } else {
+          iconUrl =
+            'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="blue"></circle></svg>');
+        }
 
-          // switch (earthquake.status) {
-          //   case "error":
-          //     iconUrl =
-          //       'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="red"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
-          //     break;
+        var earthquakeIcon = L.icon({
+          iconUrl: iconUrl,
+          iconSize: [20, 20],
+          iconAnchor: [10, 10], // Center the icon
+        });
 
-          //   case "maintenance":
-          //     iconUrl =
-          //       'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="yellow"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>';
-          //     break;
-          //   default:
-          //     iconUrl =
-          //       'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="blue"></circle></svg>';
-          //     break;
-          // }
+        var earthquakeMarker = L.marker([earthquake.lat, earthquake.lng], {
+          icon: earthquakeIcon,
+        }).addTo(map);
 
-          var earthquakeIcon = L.icon({
-            iconUrl: iconUrl,
-            iconSize: [20, 20],
-            iconAnchor: [10, 10], // Center the icon
-          });
+        var popupContent =
+          "<div class='popup-card text-white m-auto' style='background-color: #002845;'>" +
+          "<div class='popup-header' style='margin-left: 5px;'>" +
 
-          var earthquakeMarker = L.marker([earthquake.lat, earthquake.lng], {
-            icon: earthquakeIcon,
-          }).addTo(map);
 
-          // var popupContent =
-          //   earthquake.status +
-          //   "<br>" +
-          //   "" +
-          //   earthquake.location +
-          //   "<br>" +
-          //   timeSince(earthquake.datetime);
-
-          var popupContent =
-            "<div class='popup-card text-white' style='background-color: #002845;'>" +
-            "<div class='popup-header'>" +
-            "<div class='status-icon'>" +
-            "<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20'>" +
-            "<circle cx='10' cy='10' r='8' fill='" +
-            (earthquake.status === "Server Error"
-              ? "red"
-              : earthquake.status === "Kertas Hampir Habis"
+          "<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20'>" +
+          "<circle cx='10' cy='10' r='8' fill='" +
+          (earthquake.status === "Server Error" || earthquake.status === "Blanko Sertifikat Habis" || earthquake.status === "Printer Tidak Terdeteksi"
+            ? "red"
+            : earthquake.status === "Kertas Hampir Habis" || earthquake.status === "Toner Hampir Habis"
               ? "yellow"
               : "blue") +
-            "'>" +
-            "</circle>" +
-            "</svg>" +
-            earthquake.status +
-            "<br>" +
-            "<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' width='12' height='12' viewBox='0 0 256 256' xml:space='preserve'><defs></defs><g style='stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;' transform='translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)' ><path d='M 45 90 c -1.415 0 -2.725 -0.748 -3.444 -1.966 l -4.385 -7.417 C 28.167 65.396 19.664 51.02 16.759 45.189 c -2.112 -4.331 -3.175 -8.955 -3.175 -13.773 C 13.584 14.093 27.677 0 45 0 c 17.323 0 31.416 14.093 31.416 31.416 c 0 4.815 -1.063 9.438 -3.157 13.741 c -0.025 0.052 -0.053 0.104 -0.08 0.155 c -2.961 5.909 -11.41 20.193 -20.353 35.309 l -4.382 7.413 C 47.725 89.252 46.415 90 45 90 z' style='stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(4,136,219); fill-rule: nonzero; opacity: 1;' transform=' matrix(1 0 0 1 0 0) ' stroke-linecap='round' /><path d='M 45 45.678 c -8.474 0 -15.369 -6.894 -15.369 -15.368 S 36.526 14.941 45 14.941 c 8.474 0 15.368 6.895 15.368 15.369 S 53.474 45.678 45 45.678 z' style='stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;' transform=' matrix(1 0 0 1 0 0) ' stroke-linecap='round' /></g></svg>" +
-            earthquake.location +
-            "</span>" +
-            "</div>" +
-            "</div>" +
-            // "<div class='popup-body'>" +
+          "'>" +
+          "</circle>" +
+          "</svg>" +
 
-            // "</div>" +
-            "<hr />" +
-            "<p class='since-time'>" +
-            timeSince(earthquake.datetime) +
-            "</p>" +
-            "</div>" +
-            "</div>";
+          "<span class='status-icon' style='margin-left: 5px;'>" +
+          earthquake.status +
+          "</span>" +
 
-          // var popupContent =
-          //   "<div class='popup-card'>" +
-          //   "<div class='popup-header'>" +
-          //   "<div class='status-icon'>" +
-          //   "<svg xmlns='http://www.w3.org/2000/svg' width='35' height='35' viewBox='0 0 20 20'>" +
-          //   "<circle cx='10' cy='10' r='8' fill='" +
-          //   (earthquake.status === "error"
-          //     ? "red"
-          //     : earthquake.status === "maintenance"
-          //     ? "yellow"
-          //     : "blue") +
-          //   "'>" +
-          //   "<animate attributeName='r' from='8' to='12' dur='1s' repeatCount='indefinite' />" +
-          //   "<animate attributeName='opacity' from='1' to='0' dur='1s' repeatCount='indefinite' />" +
-          //   "</circle>" +
-          //   "</svg>" +
-          //   "<span class='location-icon'><img src='location-icon.png' class='location-icon-img'></span>" +
-          //   "<span class='location'>" +
-          //   earthquake.location +
-          //   "</span>" +
-          //   "</div>" +
-          //   "</div>" +
-          //   "<div class='popup-body'>" +
-          //   "<p>Status: " +
-          //   earthquake.status +
-          //   "</p>" +
-          //   "</div>" +
-          //   "<div class='popup-footer'>" +
-          //   "<p class='since-time'>" +
-          //   timeSince(earthquake.datetime) +
-          //   "</p>" +
-          //   "</div>" +
-          //   "</div>";
+          "<br>" +
 
-          earthquakeMarker.bindPopup(popupContent);
+          "<svg width='12' height='12' viewBox='0 0 12 13' fill='none' xmlns='http://www.w3.org/2000/svg' style='margin-left: 5px;'>" +
+          "<path d='M6 1.625C4.13672 1.625 2.625 3.06383 2.625 4.83594C2.625 6.875 4.875 10.1063 5.70117 11.2224C5.73547 11.2695 5.78041 11.3079 5.83235 11.3343C5.88428 11.3607 5.94173 11.3745 6 11.3745C6.05827 11.3745 6.11572 11.3607 6.16765 11.3343C6.21959 11.3079 6.26453 11.2695 6.29883 11.2224C7.125 10.1068 9.375 6.87664 9.375 4.83594C9.375 3.06383 7.86328 1.625 6 1.625Z' stroke='white' stroke-linecap='round' stroke-linejoin='round'/>" +
+          "<path d='M6 6.125C6.62132 6.125 7.125 5.62132 7.125 5C7.125 4.37868 6.62132 3.875 6 3.875C5.37868 3.875 4.875 4.37868 4.875 5C4.875 5.62132 5.37868 6.125 6 6.125Z' stroke='white' stroke-linecap='round' stroke-linejoin='round'/>" +
+          "</svg>" +
 
-          // Open the popup on mouseover
-          earthquakeMarker.on("mouseover", function (e) {
-            this.openPopup();
-          });
+          "<span class='location-text'  style='margin-left: 5px;'>" +
+          earthquake.location +
+          "</span>" +
 
-          // Close the popup on mouseout
-          earthquakeMarker.on("mouseout", function (e) {
-            this.closePopup();
-          });
+          "</div>" + // Closing div for popup-header
+          "<hr />" +
+
+          "<div class='popup-footer align-items-end' style='display: flex; justify-content: space-between;'>" +
+          "<p class='since-time' style='margin: 0;'>" +
+          timeSince(earthquake.datetime) +
+          "</p>" +
+          "</div>" +
+          "</div>";
+
+
+
+
+
+        earthquakeMarker.bindPopup(popupContent);
+
+        // Open the popup on mouseover
+        earthquakeMarker.on("mouseover", function (e) {
+          this.openPopup();
         });
+
+        // Close the popup on mouseout
+        earthquakeMarker.on("mouseout", function (e) {
+          this.closePopup();
+        });
+      });
+    }
+
+    // Call the function to add markers when the page loads
+    window.onload = addEarthquakeMarkers;
+
+    // Add legend to the map
+    var legend = L.control({ position: "bottomleft" });
+
+    legend.onAdd = function (map) {
+      var div = L.DomUtil.create("div", "legend");
+      var earthquakeLocations = extractEarthquakeLocationsFromTable();
+
+      function getTimeSinceStatus(statuses) {
+        var earthquake = earthquakeLocations.find((eq) => statuses.includes(eq.status));
+        return earthquake ? timeSince(earthquake.datetime) : "N/A";
       }
 
-      // Call the function to add markers when the page loads
-      window.onload = addEarthquakeMarkers;
+      var errorTime = getTimeSinceStatus(["Server Error", "Blanko Sertifikat Habis", "Printer Tidak Terdeteksi"]);
+      var maintenanceTime = getTimeSinceStatus(["Kertas Hampir Habis", "Toner Hampir Habis"]);
+      var normalTime = getTimeSinceStatus(["Normal"]);
 
-      // Add legend to the map
-      var legend = L.control({ position: "bottomleft" });
+      div.innerHTML =
+        "<h4>Legend</h4>" +
+        "<div class='legend-item'><span class='legend-color' style='background-color: red;'></span> Error<div class='tooltip'>" +
+        errorTime +
+        "</div></div>" +
+        "<div class='legend-item'><span class='legend-color' style='background-color: yellow;'></span> Maintenance<div class='tooltip'>" +
+        maintenanceTime +
+        "</div></div>" +
+        "<div class='legend-item'><span class='legend-color' style='background-color: blue;'></span> Normal<div class='tooltip'>" +
+        normalTime +
+        "</div></div>";
+      return div;
+    };
 
-      legend.onAdd = function (map) {
-        var div = L.DomUtil.create("div", "legend");
-        var earthquakeLocations = extractEarthquakeLocationsFromTable();
-        var errorTime = timeSince(
-          earthquakeLocations.find((eq) => eq.status === "Server Error")
-            .datetime
-        );
-        var maintenanceTime = timeSince(
-          earthquakeLocations.find((eq) => eq.status === "maintenance").datetime
-        );
-        var normalTime = timeSince(
-          earthquakeLocations.find((eq) => eq.status === "normal").datetime
-        );
-        div.innerHTML =
-          "<h4>Legend</h4>" +
-          "<div class='legend-item'><span class='legend-color' style='background-color: red;'></span> Error<div class='tooltip'>" +
-          errorTime +
-          "</div></div>" +
-          "<div class='legend-item'><span class='legend-color' style='background-color: yellow;'></span> Maintenance<div class='tooltip'>" +
-          maintenanceTime +
-          "</div></div>" +
-          "<div class='legend-item'><span class='legend-color' style='background-color: blue;'></span> Normal<div class='tooltip'>" +
-          normalTime +
-          "</div></div>";
-        return div;
-      };
+    legend.addTo(map);
 
-      legend.addTo(map);
-    </script>
+  </script>
 
-    <script src="assets/compiled/js/app.js"></script>
-    <!-- <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+  <script src="assets/compiled/js/app.js"></script>
+  <!-- <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="/assets/static/js/pages/simple-datatables.js"></script> -->
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  </body>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</body>
+
 </html>
