@@ -87,9 +87,9 @@
         border-bottom: 2px solid yellow;
       }
 
-      .navbar-link:hover {
+      /* .navbar-link:hover {
         color: yellow;
-      }
+      } */
 
       .navbar-link::before {
         content: "";
@@ -154,20 +154,27 @@
         height: 600px;
       }
       .legend {
+        font-family: Arial, sans-serif;
         background: white;
-        line-height: 18px;
-        color: #333;
-        padding: 6px 8px;
-        font: 14px/16px Arial, Helvetica, sans-serif;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        padding: 10px;
         border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
       }
-      .legend i {
-        width: 18px;
-        height: 18px;
-        float: left;
-        margin-right: 8px;
-        opacity: 0.7;
+
+      .legend-item {
+        display: flex; /* Make legend items flex containers */
+        align-items: center; /* Vertically center items */
+        margin: 0; /* Remove margin to ensure no extra space */
+        padding: 0; /* Remove padding to ensure no extra space */
+      }
+
+      .legend-container {
+        display: flex; /* Make legend container a flex container */
+        flex-wrap: wrap; /* Allow wrapping if necessary */
+        align-items: center; /* Vertically center items */
+        gap: 10px; /* Space between flex items */
+        margin: 0; /* Remove margin to ensure no extra space */
+        padding: 0; /* Remove padding to ensure no extra space */
       }
     </style>
   </head>
@@ -419,7 +426,6 @@
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="/assets/static/js/pages/horizontal-layout.js"></script>
-    <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>

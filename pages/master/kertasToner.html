@@ -121,6 +121,8 @@
 
       .dropdown-item {
         width: 100%;
+        /* #377DFF */
+
       }
 
       .dropdown-link {
@@ -129,12 +131,23 @@
         text-decoration: none;
         display: block;
         text-align: left;
+       
         transition: background-color 0.3s ease, color 0.3s ease;
+
+        
       }
+
+     
+
 
       .dropdown-link:hover {
         background-color: #dde8f1;
         color: rgb(0, 0, 0);
+        border-radius: 8px;
+      }
+
+      .dropdown-link:active {
+        color: #dde8f1
       }
 
       /* Show the dropdown menu on hover */
@@ -342,7 +355,7 @@
                         Transaksi</a
                       >
                     </li>
-                    <li class="dropdown-item">
+                    <li class="dropdown-item active">
                       <a href="kertasToner.html" class="dropdown-link">
                         Kertas & Toner</a
                       >
@@ -981,7 +994,37 @@
     
 
     <script>
+     
       document.addEventListener("DOMContentLoaded", function () {
+
+        const navbarItems = document.querySelectorAll(".navbar-item");
+        const dropdownLink = document.getElementById("report-link");
+        const dropdownMenu = dropdownLink.nextElementSibling;
+
+        dropdownLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          dropdownMenu.classList.toggle("show");
+          dropdownLink.parentElement.classList.toggle("active");
+        });
+
+        navbarItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            navbarItems.forEach((nav) => nav.classList.remove("active"));
+            if (this.querySelector(".dropdown-menu")) {
+              this.classList.add("active");
+            } else {
+              this.classList.add("active");
+              dropdownMenu.classList.remove("show");
+            }
+          });
+        });
+
+        document.addEventListener("click", function (event) {
+          if (!event.target.closest(".navbar-item")) {
+            navbarItems.forEach((nav) => nav.classList.remove("active"));
+            dropdownMenu.classList.remove("show");
+          }
+        });
         // Initialize Simple-DataTables for each table
         const dataTable1 = new simpleDatatables.DataTable("#table1");
         const dataTable2 = new simpleDatatables.DataTable("#table2");

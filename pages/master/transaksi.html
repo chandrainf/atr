@@ -95,9 +95,9 @@
         border-bottom: 2px solid yellow;
       }
 
-      .navbar-link:hover {
+      /* .navbar-link:hover {
         color: yellow;
-      }
+      } */
 
       .navbar-link::before {
         content: "";
@@ -344,10 +344,10 @@
                   >Report</a
                 >
                 <ul class="dropdown-menu">
-                  <li class="dropdown-item">
+                  <li class="dropdown-item ">
                     <a href="errorLog.html" class="dropdown-link">Error Log</a>
                   </li>
-                  <li class="dropdown-item">
+                  <li class="dropdown-item active">
                     <a href="transaksi.html" class="dropdown-link">
                       Transaksi</a
                     >
@@ -850,6 +850,37 @@
     <script>
       // $(document).ready(function () {
       // Initialize Simple-DataTables for each table
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const navbarItems = document.querySelectorAll(".navbar-item");
+        const dropdownLink = document.getElementById("report-link");
+        const dropdownMenu = dropdownLink.nextElementSibling;
+
+        dropdownLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          dropdownMenu.classList.toggle("show");
+          dropdownLink.parentElement.classList.toggle("active");
+        });
+
+        navbarItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            navbarItems.forEach((nav) => nav.classList.remove("active"));
+            if (this.querySelector(".dropdown-menu")) {
+              this.classList.add("active");
+            } else {
+              this.classList.add("active");
+              dropdownMenu.classList.remove("show");
+            }
+          });
+        });
+
+        document.addEventListener("click", function (event) {
+          if (!event.target.closest(".navbar-item")) {
+            navbarItems.forEach((nav) => nav.classList.remove("active"));
+            dropdownMenu.classList.remove("show");
+          }
+        });
+      });
 
       $(document).ready(function () {
         $("#example1").DataTable();
