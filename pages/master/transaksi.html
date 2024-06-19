@@ -49,25 +49,14 @@
 
       .navbar {
         position: fixed;
+        top: 0;
         width: 100%;
         background-color: #132144;
         z-index: 1000;
         display: flex;
-
+        justify-content: center; /* Center the content horizontally */
         padding: 10px 0;
-      }
-
-      .navbar-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1200px;
-        padding: 0 20px;
-      }
-
-      .navbar-logo {
-        height: 50px;
+        box-sizing: border-box; /* Include padding in the width */
       }
 
       .navbar-list {
@@ -75,8 +64,8 @@
         margin: 0;
         padding: 0;
         display: flex;
-        flex-grow: 1;
-        justify-content: end;
+        justify-content: center; /* Center the navbar items */
+        align-items: center; /* Center items vertically if needed */
       }
 
       .navbar-item {
@@ -345,7 +334,7 @@
                   >Report</a
                 >
                 <ul class="dropdown-menu">
-                  <li class="dropdown-item ">
+                  <li class="dropdown-item">
                     <a href="errorLog.html" class="dropdown-link">Error Log</a>
                   </li>
                   <li class="dropdown-item active">
@@ -920,71 +909,98 @@
         updateTotalTransaksi();
       });
 
-        var table1 = $("#example1").DataTable();
+      var table1 = $("#example1").DataTable();
 
-        var timePeriod = "monthly";
+      var timePeriod = "monthly";
 
-        // Initialize the chart
-        var options = {
-          chart: {
-            type: "bar",
+      // Initialize the chart
+      var options = {
+        chart: {
+          type: "bar",
+        },
+        series: [
+          {
+            name: "Cetak Sertifikat",
+            data: [],
+            color: "#377DFF",
           },
-          series: [
-            {
-              name: "Cetak Sertifikat",
-              data: [],
-              color: "#377DFF",
-            },
-            {
-              name: "Verifikasi Sentuh Tanahku",
-              data: [],
-              color: "#BF37FF",
-            },
+          {
+            name: "Verifikasi Sentuh Tanahku",
+            data: [],
+            color: "#BF37FF",
+          },
+        ],
+        xaxis: {
+          categories: [
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember",
           ],
-          xaxis: {
-            categories: [
-              "Januari",
-              "Februari",
-              "Maret",
-              "April",
-              "Mei",
-              "Juni",
-              "Juli",
-              "Agustus",
-              "September",
-              "Oktober",
-              "November",
-              "Desember",
-            ],
-          },
-        };
+        },
+      };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      chart.render();
 
-        // Function to set the time period and update the chart
-        function setTimePeriod(period) {
-          timePeriod = period;
-          document.getElementById("monthlyBtn").classList.remove("active");
-          document.getElementById("weeklyBtn").classList.remove("active");
-          if (period === "monthly") {
-            document.getElementById("monthlyBtn").classList.add("active");
-          } else {
-            document.getElementById("weeklyBtn").classList.add("active");
+      // Function to set the time period and update the chart
+      function setTimePeriod(period) {
+        timePeriod = period;
+        document.getElementById("monthlyBtn").classList.remove("active");
+        document.getElementById("weeklyBtn").classList.remove("active");
+        if (period === "monthly") {
+          document.getElementById("monthlyBtn").classList.add("active");
+        } else {
+          document.getElementById("weeklyBtn").classList.add("active");
+        }
+        updateChart();
+      }
+
+      // Function to update the chart based on filters
+      function updateChart() {
+        var locationFilter = document.getElementById("locationFilter").value;
+
+        var dataTable = document.getElementById("dataTable1");
+        var printedCertificates = Array(12).fill(0);
+        var verifications = Array(12).fill(0);
+
+        var now = new Date();
+        var currentYear = now.getFullYear();
+
+        for (var i = 1; i < dataTable.rows.length; i++) {
+          var row = dataTable.rows[i];
+          var location = row.cells[0].innerText;
+          var printed = parseInt(row.cells[2].innerText);
+          var verified = parseInt(row.cells[3].innerText);
+          var transactionDate = new Date(row.cells[5].innerText);
+
+          // Apply filters
+          if (locationFilter === "all" || location === locationFilter) {
+            if (transactionDate.getFullYear() === currentYear) {
+              var month = transactionDate.getMonth(); // 0 = January, 1 = February, etc.
+              printedCertificates[month] += printed;
+              verifications[month] += verified;
+            }
           }
-          updateChart();
         }
 
-        // Function to update the chart based on filters
-        function updateChart() {
-          var locationFilter = document.getElementById("locationFilter").value;
-
-          var dataTable = document.getElementById("dataTable1");
-          var printedCertificates = Array(12).fill(0);
-          var verifications = Array(12).fill(0);
-
-          var now = new Date();
-          var currentYear = now.getFullYear();
+        if (timePeriod === "weekly") {
+          printedCertificates = Array(12).fill(0);
+          verifications = Array(12).fill(0);
+          var startOfWeek = new Date(
+            now.setDate(now.getDate() - now.getDay() + 1)
+          );
+          var endOfWeek = new Date(
+            now.setDate(now.getDate() - now.getDay() + 7)
+          );
 
           for (var i = 1; i < dataTable.rows.length; i++) {
             var row = dataTable.rows[i];
@@ -993,197 +1009,164 @@
             var verified = parseInt(row.cells[3].innerText);
             var transactionDate = new Date(row.cells[5].innerText);
 
-            // Apply filters
             if (locationFilter === "all" || location === locationFilter) {
-              if (transactionDate.getFullYear() === currentYear) {
-                var month = transactionDate.getMonth(); // 0 = January, 1 = February, etc.
+              if (
+                transactionDate >= startOfWeek &&
+                transactionDate <= endOfWeek
+              ) {
+                var month = transactionDate.getMonth();
                 printedCertificates[month] += printed;
                 verifications[month] += verified;
               }
             }
           }
-
-          if (timePeriod === "weekly") {
-            printedCertificates = Array(12).fill(0);
-            verifications = Array(12).fill(0);
-            var startOfWeek = new Date(
-              now.setDate(now.getDate() - now.getDay() + 1)
-            );
-            var endOfWeek = new Date(
-              now.setDate(now.getDate() - now.getDay() + 7)
-            );
-
-            for (var i = 1; i < dataTable.rows.length; i++) {
-              var row = dataTable.rows[i];
-              var location = row.cells[0].innerText;
-              var printed = parseInt(row.cells[2].innerText);
-              var verified = parseInt(row.cells[3].innerText);
-              var transactionDate = new Date(row.cells[5].innerText);
-
-              if (locationFilter === "all" || location === locationFilter) {
-                if (
-                  transactionDate >= startOfWeek &&
-                  transactionDate <= endOfWeek
-                ) {
-                  var month = transactionDate.getMonth();
-                  printedCertificates[month] += printed;
-                  verifications[month] += verified;
-                }
-              }
-            }
-          }
-
-          chart.updateSeries([
-            {
-              name: "Cetak Sertifikat",
-              data: printedCertificates,
-            },
-            {
-              name: "Verifikasi Sentuh Tanahku",
-              data: verifications,
-            },
-          ]);
         }
 
-        // Initial chart update
-        updateChart();
-
-        //Statistik Waktu Transaksi
-
-        var timePeriod1 = "monthly1";
-
-        // Initialize the chart
-        var options1 = {
-          chart: {
-            type: "bar",
+        chart.updateSeries([
+          {
+            name: "Cetak Sertifikat",
+            data: printedCertificates,
           },
-          series: [
-            {
-              name: "Accumulated Total",
-              data: [],
-            },
+          {
+            name: "Verifikasi Sentuh Tanahku",
+            data: verifications,
+          },
+        ]);
+      }
+
+      // Initial chart update
+      updateChart();
+
+      //Statistik Waktu Transaksi
+
+      var timePeriod1 = "monthly1";
+
+      // Initialize the chart
+      var options1 = {
+        chart: {
+          type: "bar",
+        },
+        series: [
+          {
+            name: "Accumulated Total",
+            data: [],
+          },
+        ],
+        xaxis: {
+          categories: [
+            "Januari",
+            "Februari",
+            "Maret",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Agustus",
+            "September",
+            "Oktober",
+            "November",
+            "Desember",
           ],
-          xaxis: {
-            categories: [
-              "Januari",
-              "Februari",
-              "Maret",
-              "April",
-              "Mei",
-              "Juni",
-              "Juli",
-              "Agustus",
-              "September",
-              "Oktober",
-              "November",
-              "Desember",
-            ],
-            // categories: []
+          // categories: []
+        },
+        tooltip: {
+          custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+            var dataTable2 = document.getElementById("dataTable2");
+            var row = dataTable2.rows[dataPointIndex + 1]; // Adding 1 because of table header row
+            var transactionDateTime = new Date(row.cells[2].innerText);
+            var hour = transactionDateTime.getHours();
+            return (
+              '<div class="arrow_box">' +
+              "<span>Jumlah Transaksi: " +
+              series[seriesIndex][dataPointIndex] +
+              "</span><br>" +
+              "<span>Rata-rata jam: " +
+              hour +
+              ":00</span>" +
+              "</div>"
+            );
           },
-          tooltip: {
-            custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-              var dataTable2 = document.getElementById("dataTable2");
-              var row = dataTable2.rows[dataPointIndex + 1]; // Adding 1 because of table header row
-              var transactionDateTime = new Date(row.cells[2].innerText);
-              var hour = transactionDateTime.getHours();
-              return (
-                '<div class="arrow_box">' +
-                "<span>Jumlah Transaksi: " +
-                series[seriesIndex][dataPointIndex] +
-                "</span><br>" +
-                "<span>Rata-rata jam: " +
-                hour +
-                ":00</span>" +
-                "</div>"
-              );
-            },
-          },
+        },
+      };
+
+      var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
+      chart1.render();
+
+      // Function to set the time period and update the chart
+      function setTimePeriod1(period) {
+        timePeriod1 = period;
+        document.getElementById("monthlyBtn1").classList.remove("active");
+        document.getElementById("weeklyBtn1").classList.remove("active");
+        if (period === "monthly1") {
+          document.getElementById("monthlyBtn1").classList.add("active");
+        } else {
+          document.getElementById("weeklyBtn1").classList.add("active");
+        }
+        updateChart1();
+      }
+
+      // Function to update the chart based on filters
+      function updateChart1() {
+        var locationFilter1 = document.getElementById("locationFilter1").value;
+
+        var dataTable2 = document.getElementById("dataTable2");
+        var accumulatedTotal = Array(12).fill(0);
+        var now = new Date();
+        var currentYear = now.getFullYear();
+
+        var weeklyData = {
+          accumulatedTotal: Array(12).fill(0),
         };
 
-        var chart1 = new ApexCharts(
-          document.querySelector("#chart1"),
-          options1
-        );
-        chart1.render();
-
-        // Function to set the time period and update the chart
-        function setTimePeriod1(period) {
-          timePeriod1 = period;
-          document.getElementById("monthlyBtn1").classList.remove("active");
-          document.getElementById("weeklyBtn1").classList.remove("active");
-          if (period === "monthly1") {
-            document.getElementById("monthlyBtn1").classList.add("active");
-          } else {
-            document.getElementById("weeklyBtn1").classList.add("active");
-          }
-          updateChart1();
+        // Helper function to get the week of the year
+        function getWeekOfYear(date) {
+          var start = new Date(date.getFullYear(), 0, 1);
+          var diff =
+            (date -
+              start +
+              (start.getTimezoneOffset() - date.getTimezoneOffset()) * 60000) /
+            86400000;
+          return Math.ceil((diff + start.getDay() + 1) / 7);
         }
 
-        // Function to update the chart based on filters
-        function updateChart1() {
-          var locationFilter1 =
-            document.getElementById("locationFilter1").value;
+        for (var i = 1; i < dataTable2.rows.length; i++) {
+          var row = dataTable2.rows[i];
+          var location = row.cells[0].innerText;
+          var printed = parseInt(row.cells[3].innerText);
+          var verified = parseInt(row.cells[4].innerText);
+          var total = printed + verified;
+          var transactionDate = new Date(row.cells[2].innerText);
 
-          var dataTable2 = document.getElementById("dataTable2");
-          var accumulatedTotal = Array(12).fill(0);
-          var now = new Date();
-          var currentYear = now.getFullYear();
+          // Apply filters
+          if (locationFilter1 === "all" || location === locationFilter1) {
+            var month = transactionDate.getMonth();
+            if (transactionDate.getFullYear() === currentYear) {
+              accumulatedTotal[month] += total;
 
-          var weeklyData = {
-            accumulatedTotal: Array(12).fill(0),
-          };
-
-          // Helper function to get the week of the year
-          function getWeekOfYear(date) {
-            var start = new Date(date.getFullYear(), 0, 1);
-            var diff =
-              (date -
-                start +
-                (start.getTimezoneOffset() - date.getTimezoneOffset()) *
-                  60000) /
-              86400000;
-            return Math.ceil((diff + start.getDay() + 1) / 7);
-          }
-
-          for (var i = 1; i < dataTable2.rows.length; i++) {
-            var row = dataTable2.rows[i];
-            var location = row.cells[0].innerText;
-            var printed = parseInt(row.cells[3].innerText);
-            var verified = parseInt(row.cells[4].innerText);
-            var total = printed + verified;
-            var transactionDate = new Date(row.cells[2].innerText);
-
-            // Apply filters
-            if (locationFilter1 === "all" || location === locationFilter1) {
-              var month = transactionDate.getMonth();
-              if (transactionDate.getFullYear() === currentYear) {
-                accumulatedTotal[month] += total;
-
-                if (timePeriod1 === "weekly1") {
-                  var week = getWeekOfYear(transactionDate);
-                  if (week === getWeekOfYear(now)) {
-                    weeklyData.accumulatedTotal[month] += total;
-                  }
+              if (timePeriod1 === "weekly1") {
+                var week = getWeekOfYear(transactionDate);
+                if (week === getWeekOfYear(now)) {
+                  weeklyData.accumulatedTotal[month] += total;
                 }
               }
             }
           }
-
-          if (timePeriod1 === "weekly1") {
-            accumulatedTotal = weeklyData.accumulatedTotal;
-          }
-
-          chart1.updateSeries([
-            {
-              name: "Accumulated Total",
-              data: accumulatedTotal,
-            },
-          ]);
         }
 
-        // Initial chart update
-        updateChart1();
-      
+        if (timePeriod1 === "weekly1") {
+          accumulatedTotal = weeklyData.accumulatedTotal;
+        }
+
+        chart1.updateSeries([
+          {
+            name: "Accumulated Total",
+            data: accumulatedTotal,
+          },
+        ]);
+      }
+
+      // Initial chart update
+      updateChart1();
     </script>
   </body>
 </html>
