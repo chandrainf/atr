@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixed Navbar Example</title>
+<style>
+  /* General reset for margin and padding */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #132144;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+
+  .navbar-logo {
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .navbar-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center the navbar items horizontally */
+    align-items: center; /* Center items vertically */
+    flex-grow: 1; /* Takes up remaining space */
+  }
+
+  .navbar-item {
+    margin: 0 10px;
+  }
+
+  .navbar-link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+  }
+
+  .navbar-link:hover {
+    color: #ffffff;
+  }
+
+  .content {
+    padding: 80px 20px 20px; /* Adjust top padding to accommodate fixed navbar */
+    text-align: center;
+  }
+
+  .section {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .section h2 {
+    margin-bottom: 10px;
+    color: #132144;
+  }
+
+  .section p {
+    color: #333333;
+    line-height: 1.6;
+  }
+
+  .footer {
+    background-color: #132144;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-logo">
+    Logo
+  </div>
+  <ul class="navbar-list">
+    <li class="navbar-item"><a href="#" class="navbar-link">Dashboard</a></li>
+    <li class="navbar-item"><a href="#" class="navbar-link">Master</a></li>
+    <li class="navbar-item"><a href="#" class="navbar-link">Transaction</a></li>
+  </ul>
+</nav>
+
+<div class="content">
+  <div class="section">
+    <h2>Dashboard Section</h2>
+    <p>This is the dashboard content section.</p>
+  </div>
+
+  <div class="section">
+    <h2>Master Section</h2>
+    <p>This is the master content section.</p>
+  </div>
+
+  <div class="section">
+    <h2>Transaction Section</h2>
+    <p>This is the transaction content section.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  &copy; 2024 Your Company. All rights reserved.
+</footer>
+
+</body>
+</html>

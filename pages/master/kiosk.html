@@ -43,10 +43,8 @@
         width: 100%;
         background-color: #132144;
         z-index: 1000;
-        display: flex;
-        /* justify-content: center;
-        align-items: center; */
-        padding: 10px 0; /* Add padding to increase navbar height if needed */
+        /* display: flex; */
+        padding: 10px 0;
       }
 
       .navbar-content {
@@ -54,8 +52,10 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        max-width: 1200px; /* Adjust this value to fit your design */
-        padding: 0 20px; /* Add padding to the content area for spacing */
+        /* max-width: 1200px; */
+        padding: 0 20px;
+        align-items: center;
+        box-sizing: border-box;
       }
 
       .navbar-logo {
@@ -63,12 +63,14 @@
       }
 
       .navbar-list {
+      
         list-style-type: none;
         margin: 0;
         padding: 0;
         display: flex;
-        flex-grow: 1;
-        justify-content: end;
+        justify-content: center; 
+        align-items: center; 
+        flex-grow: 1; 
       }
 
       .navbar-item {
