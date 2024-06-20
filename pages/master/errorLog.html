@@ -25,12 +25,23 @@
         color: #333333;
       }
 
+      h3{
+        color: #333333;
+      }
+
       .dataTable-custom td {
         color: #333333; /* Custom font color for table cells */
+        
+        
       }
 
       .dataTable-custom th {
         color: #333333; /* Custom font color for table cells */
+      }
+
+      .dataTable-custom thead {
+        background-color: #dde8f1;
+        border-radius: 10px;
       }
 
       .dataTable-wrapper .dataTable-dropdown label,
@@ -42,6 +53,10 @@
         .dataTable-wrapper .dataTable-input input {
             background-color: #ffffff; /* Custom font color */
         }
+
+      .card {
+        box-shadow: 3px 3px 3px 3px #DDE8F1;
+      }
 
       .navbar {
         position: fixed;
@@ -156,11 +171,7 @@
         height: calc(100vh - 90px);
       }
 
-      iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-      }
+    
       .timeline {
         position: relative;
         margin: 0 auto;
@@ -504,7 +515,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <table id="example2" class="display dislay dataTable-custom">
+                  <table id="example2" class="display dataTable-custom">
                     <thead>
                       <tr>
                         <th>Status Error</th>
@@ -595,7 +606,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <table id="example3" class="display dislay dataTable-custom">
+                  <table id="example3" class="display dataTable-custom">
                     <thead>
                       <tr>
                         <th>Nomor Kiosk</th>
@@ -757,7 +768,7 @@
                   class="card-header d-flex justify-content-between"
                   style="align-items: center; justify-content: center"
                 >
-                  <h3>Total Kiosk Error</h3>
+                  <h3 >Total Kiosk Error</h3>
 
                   <div>
                     <select id="locationFilter">
@@ -1074,6 +1085,8 @@
         // Call the function to add status circles and logic
         addStatusCirclesAndLogic();
 
+       
+
         // Function to add dynamic "Details" link to each row
         function addDetailsLinks() {
           $("#example1 tbody tr").each(function () {
@@ -1094,6 +1107,7 @@
         // Call the function to add dynamic "Details" links
         addDetailsLinks();
 
+       
         // Filter functions for the first table
 
         $("#filter-date1").on("change", function () {
@@ -1185,6 +1199,11 @@
         // Call the function to add status circles and logic
         addStatusCirclesAndLogic1();
 
+        table.on("draw.dt", function () {
+          addStatusCirclesAndLogic();
+          addStatusCirclesAndLogic1();
+        });
+
         // Function to add dynamic "Details" link to each row
         function addDetailsLinks1() {
           $("#example2 tbody tr").each(function () {
@@ -1204,6 +1223,11 @@
 
         // Call the function to add dynamic "Details" links
         addDetailsLinks1();
+
+        table.on("draw.dt", function () {
+          addDetailsLinks();
+          addDetailsLinks1();
+        });
 
         // Filter functions for the third table
         $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {

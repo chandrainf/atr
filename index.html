@@ -45,24 +45,33 @@
         color: #333333;
       }
 
+      .card {
+        box-shadow: 3px 3px 3px 3px #DDE8F1;
+      }
+
       .dataTable-custom td {
-        color: #333333;; /* Custom font color for table cells */
+        color: #333333; /* Custom font color for table cells */
       }
 
       .dataTable-custom th {
         color: #333333; /* Custom font color for table cells */
       }
 
+      .dataTable-custom thead {
+        background-color: #dde8f1;
+        border-radius: 10px;
+      }
+
       /* Custom styling for "Show entries" dropdown */
       .dataTable-wrapper .dataTable-dropdown label,
-        .dataTable-wrapper .dataTable-dropdown select {
-            color: #ffffff;; /* Custom font color */
-        }
-        /* Custom styling for "Search box" */
-        .dataTable-wrapper .dataTable-input label,
-        .dataTable-wrapper .dataTable-input input {
-            color: #ffffff; /* Custom font color */
-        }
+      .dataTable-wrapper .dataTable-dropdown select {
+        color: #ffffff; /* Custom font color */
+      }
+      /* Custom styling for "Search box" */
+      .dataTable-wrapper .dataTable-input label,
+      .dataTable-wrapper .dataTable-input input {
+        color: #ffffff; /* Custom font color */
+      }
 
       .navbar {
         position: fixed;
@@ -779,15 +788,38 @@
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <!-- <script>
-      document.getElementById("editBtn").addEventListener("click", function () {
-        // Toggle between initial and edit card content
-        document.getElementById("modalDetail").style.display = "none";
-        document.getElementById("modalEdit").style.display = "block";
-      });
-    </script> -->
-
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navbarItems = document.querySelectorAll(".navbar-item");
+        const dropdownLink = document.getElementById("report-link");
+        const dropdownMenu = dropdownLink.nextElementSibling;
+
+        dropdownLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          dropdownMenu.classList.toggle("show");
+          dropdownLink.parentElement.classList.toggle("active");
+        });
+
+        navbarItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            navbarItems.forEach((nav) => nav.classList.remove("active"));
+            if (this.querySelector(".dropdown-menu")) {
+              this.classList.add("active");
+            } else {
+              this.classList.add("active");
+              dropdownMenu.classList.remove("show");
+            }
+          });
+        });
+
+        document.addEventListener("click", function (event) {
+          if (!event.target.closest(".navbar-item")) {
+            navbarItems.forEach((nav) => nav.classList.remove("active"));
+            dropdownMenu.classList.remove("show");
+          }
+        });
+      });
+
       $(document).ready(function () {
         // Initialize DataTable
         var table = $("#table1").DataTable();
@@ -844,6 +876,11 @@
         // Call the function to add status circles and logic
         addStatusCirclesAndLogic();
 
+        // Re-apply the function every time the table is redrawn
+        table.on("draw.dt", function () {
+          addStatusCirclesAndLogic();
+        });
+
         // Function to add dynamic "Details" link to each row
         function addDetailsLinks() {
           $("#table1 tbody tr").each(function () {
@@ -863,36 +900,9 @@
 
         // Call the function to add dynamic "Details" links
         addDetailsLinks();
-      });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const navbarItems = document.querySelectorAll(".navbar-item");
-        const dropdownLink = document.getElementById("report-link");
-        const dropdownMenu = dropdownLink.nextElementSibling;
-
-        dropdownLink.addEventListener("click", function (event) {
-          event.preventDefault();
-          dropdownMenu.classList.toggle("show");
-          dropdownLink.parentElement.classList.toggle("active");
-        });
-
-        navbarItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            if (this.querySelector(".dropdown-menu")) {
-              this.classList.add("active");
-            } else {
-              this.classList.add("active");
-              dropdownMenu.classList.remove("show");
-            }
-          });
-        });
-
-        document.addEventListener("click", function (event) {
-          if (!event.target.closest(".navbar-item")) {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            dropdownMenu.classList.remove("show");
-          }
+        table.on("draw.dt", function () {
+          addDetailsLinks();
         });
       });
 
@@ -953,90 +963,6 @@
         }
         return Math.floor(seconds) + " detik lalu";
       }
-
-      // // Add kiosk markers to the map
-      // function addKioskMarkers() {
-      //   var kioskLocations = extractKioskLocationsFromTable();
-      //   kioskLocations.forEach(function (kiosk) {
-      //     var iconUrl;
-
-      //     if (kiosk.status === "Server Error" || kiosk.status === "Blanko Sertifikat Habis" || kiosk.status === "Printer Tidak Terdeteksi") {
-      //       iconUrl =
-      //         'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="red"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>');
-      //     } else if (kiosk.status === "Kertas Hampir Habis" || kiosk.status === "Toner Hampir Habis") {
-      //       iconUrl =
-      //         'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="yellow"><animate attributeName="r" from="8" to="12" dur="1s" repeatCount="indefinite" /><animate attributeName="opacity" from="1" to="0" dur="1s" repeatCount="indefinite" /></circle></svg>');
-      //     } else {
-      //       iconUrl =
-      //         'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="blue"></circle></svg>');
-      //     }
-
-      //     var kioskIcon = L.icon({
-      //       iconUrl: iconUrl,
-      //       iconSize: [20, 20],
-      //       iconAnchor: [10, 10], // Center the icon
-      //     });
-
-      //     var kioskMarker = L.marker([kiosk.lat, kiosk.lng], {
-      //       icon: kioskIcon,
-      //     }).addTo(map);
-
-      //     var popupContent =
-      //       "<div class='popup-card text-white m-auto' style='background-color: #002845;'>" +
-      //       "<div class='popup-header' style='margin-left: 5px;'>" +
-
-      //       "<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 20 20'>" +
-      //       "<circle cx='10' cy='10' r='8' fill='" +
-      //       (kiosk.status === "Server Error" || kiosk.status === "Blanko Sertifikat Habis" || kiosk.status === "Printer Tidak Terdeteksi"
-      //         ? "red"
-      //         : kiosk.status === "Kertas Hampir Habis" || kiosk.status === "Toner Hampir Habis"
-      //           ? "yellow"
-      //           : "blue") +
-      //       "'>" +
-      //       "</circle>" +
-      //       "</svg>" +
-
-      //       "<span class='status-icon' style='margin-left: 5px;'>" +
-      //       kiosk.status +
-      //       "</span>" +
-
-      //       "<br>" +
-
-      //       "<svg width='12' height='12' viewBox='0 0 12 13' fill='none' xmlns='http://www.w3.org/2000/svg' style='margin-left: 5px;'>" +
-      //       "<path d='M6 1.625C4.13672 1.625 2.625 3.06383 2.625 4.83594C2.625 6.875 4.875 10.1063 5.70117 11.2224C5.73547 11.2695 5.78041 11.3079 5.83235 11.3343C5.88428 11.3607 5.94173 11.3745 6 11.3745C6.05827 11.3745 6.11572 11.3607 6.16765 11.3343C6.21959 11.3079 6.26453 11.2695 6.29883 11.2224C7.125 10.1068 9.375 6.87664 9.375 4.83594C9.375 3.06383 7.86328 1.625 6 1.625Z' stroke='white' stroke-linecap='round' stroke-linejoin='round'/>" +
-      //       "<path d='M6 6.125C6.62132 6.125 7.125 5.62132 7.125 5C7.125 4.37868 6.62132 3.875 6 3.875C5.37868 3.875 4.875 4.37868 4.875 5C4.875 5.62132 5.37868 6.125 6 6.125Z' stroke='white' stroke-linecap='round' stroke-linejoin='round'/>" +
-      //       "</svg>" +
-
-      //       "<span class='location-text'  style='margin-left: 5px;'>" +
-      //       kiosk.location +
-      //       "</span>" +
-
-      //       "</div>" + // Closing div for popup-header
-      //       "<hr />" +
-
-      //       "<div class='popup-footer align-items-end' style='display: flex; justify-content: space-between;'>" +
-      //       "<p class='since-time' style='margin: 0;'>" +
-      //       timeSince(kiosk.datetime) +
-      //       "</p>" +
-      //       "</div>" +
-      //       "</div>";
-
-      //     kioskMarker.bindPopup(popupContent);
-
-      //     // Open the popup on mouseover
-      //     kioskMarker.on("mouseover", function (e) {
-      //       this.openPopup();
-      //     });
-
-      //     // Close the popup on mouseout
-      //     kioskMarker.on("mouseout", function (e) {
-      //       this.closePopup();
-      //     });
-      //   });
-      // }
-
-      // // Call the function to add markers when the page loads
-      // window.onload = addKioskMarkers;
 
       function addKioskMarkers() {
         var kioskLocations = extractKioskLocationsFromTable();
@@ -1157,19 +1083,6 @@
           "Toner Hampir Habis",
         ]);
         var normalTime = getTimeSinceStatus(["Normal"]);
-
-        // div.innerHTML =
-        //   "<h4>Legend</h4>" +
-        //   "<div class='legend-item'><span class='legend-color' style='background-color: red;'></span> Error<div class='tooltip'>" +
-        //   errorTime +
-        //   "</div>" +
-        //   "<div class='legend-item'><span class='legend-color' style='background-color: yellow;'></span> Maintenance<div class='tooltip'>" +
-        //   maintenanceTime +
-        //   "</div>" +
-        //   "<div class='legend-item'><span class='legend-color' style='background-color: blue;'></span> Normal<div class='tooltip'>" +
-        //   normalTime +
-        //   "</div>";
-        // return div;
 
         div.innerHTML =
           "<h4>Legend</h4>" +

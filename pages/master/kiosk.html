@@ -20,11 +20,14 @@
     <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
     <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
 
-    <link
+    <!-- <link
       rel="stylesheet"
       href="/assets/extensions/simple-datatables/style.css"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
     />
-    <link rel="stylesheet" href="/assets/compiled/css/table-datatable.css" />
 
     <link
       rel="stylesheet"
@@ -36,15 +39,23 @@
         margin: 0;
         font-family: Arial, sans-serif;
         background-color: #ffffff;
-       color: #333333;
+        color: #333333;
       }
 
       .dataTable-custom td {
-       color: #333333; /* Custom font color for table cells */
+        color: #333333; /* Custom font color for table cells */
       }
 
       .dataTable-custom th {
-       color: #333333; /* Custom font color for table cells */
+        color: #333333; /* Custom font color for table cells */
+      }
+      .dataTable-custom thead {
+        background-color: #dde8f1;
+        border-radius: 10px;
+      }
+
+      .card {
+        box-shadow: 3px 3px 3px 3px #dde8f1;
       }
 
       .navbar {
@@ -72,14 +83,13 @@
       }
 
       .navbar-list {
-      
         list-style-type: none;
         margin: 0;
         padding: 0;
         display: flex;
-        justify-content: center; 
-        align-items: center; 
-        flex-grow: 1; 
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
       }
 
       .navbar-item {
@@ -367,7 +377,7 @@
                 >
               </div>
               <div class="card-body">
-                <table class="table" id="table1">
+                <table class="display dataTable-custom" id="table1">
                   <thead>
                     <tr>
                       <th>Nomor Kiosk</th>
@@ -444,41 +454,6 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const dataTable = new simpleDatatables.DataTable("#example");
-
-        // Create custom buttons
-        const buttonsContainer = document.createElement("div");
-        buttonsContainer.innerHTML = `
-          <button id="export-csv" class="btn btn-primary">Export CSV</button>
-          <button id="export-pdf" class="btn btn-danger">Export PDF</button>
-          <button id="custom-action" class="btn btn-secondary">Custom Action</button>
-      `;
-
-        // Add buttons to the table
-        const tableWrapper = document.querySelector(".dataTable-wrapper");
-        tableWrapper.insertBefore(buttonsContainer, tableWrapper.firstChild);
-
-        // CSV export functionality
-        document
-          .getElementById("export-csv")
-          .addEventListener("click", function () {
-            dataTable.exportToCSV("datatable-export");
-          });
-
-        // PDF export functionality
-        document
-          .getElementById("export-pdf")
-          .addEventListener("click", function () {
-            dataTable.exportToPDF("datatable-export");
-          });
-
-        // Custom button action
-        document
-          .getElementById("custom-action")
-          .addEventListener("click", function () {
-            alert("Custom action triggered");
-          });
-
         const navbarItems = document.querySelectorAll(".navbar-item");
         const dropdownLink = document.getElementById("report-link");
         const dropdownMenu = dropdownLink.nextElementSibling;
@@ -507,6 +482,10 @@
             dropdownMenu.classList.remove("show");
           }
         });
+      });
+
+      $(document).ready(function () {
+        var table = $("#table1").DataTable();
       });
 
       // Initialize the map
@@ -591,10 +570,11 @@
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
     <script src="assets/compiled/js/app.js"></script>
-    <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="/assets/static/js/pages/simple-datatables.js"></script>
-
+    <!-- <script src="/assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/assets/static/js/pages/simple-datatables.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   </body>
 </html>

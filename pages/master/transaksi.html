@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
 
     <link
-      href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"
       rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
     />
 
     <!-- <link
@@ -47,6 +47,14 @@
         background-color: #ffffff;
         color: #333333;
       }
+      .card {
+        box-shadow: 3px 3px 3px 3px #DDE8F1;
+      }
+
+      h3{
+        color: #333333;
+      }p
+
       .dataTable-custom td {
         color: #333333; /* Custom font color for table cells */
       }
@@ -55,15 +63,21 @@
         color: #333333; /* Custom font color for table cells */
       }
 
+      .dataTable-custom thead {
+        background-color: #dde8f1;
+        border-radius: 10px;
+      }
+
+
       .dataTable-wrapper .dataTable-dropdown label,
-        .dataTable-wrapper .dataTable-dropdown select {
-          background-color: #ffffff; /* Custom font color */
-        }
-        /* Custom styling for "Search box" */
-        .dataTable-wrapper .dataTable-input label,
-        .dataTable-wrapper .dataTable-input input {
-          background-color: #ffffff; /* Custom font color */
-        }
+      .dataTable-wrapper .dataTable-dropdown select {
+        background-color: #ffffff; /* Custom font color */
+      }
+      /* Custom styling for "Search box" */
+      .dataTable-wrapper .dataTable-input label,
+      .dataTable-wrapper .dataTable-input input {
+        background-color: #ffffff; /* Custom font color */
+      }
 
       .navbar {
         position: fixed;
@@ -90,14 +104,13 @@
       }
 
       .navbar-list {
-      
         list-style-type: none;
         margin: 0;
         padding: 0;
         display: flex;
-        justify-content: center; 
-        align-items: center; 
-        flex-grow: 1; 
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
       }
 
       .navbar-item {
@@ -498,7 +511,7 @@
                     </div>
                   </div>
                   <div class="card-body">
-                    <table id="example1" class="dislay dataTable-custom ">
+                    <table id="example1" class="dislay dataTable-custom">
                       <thead>
                         <tr>
                           <th>Nomor Mesin</th>
@@ -866,8 +879,8 @@
     <script src="/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="/assets/static/js/pages/dashboard.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
     <script>
       // $(document).ready(function () {
