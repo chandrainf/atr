@@ -46,7 +46,7 @@
       }
 
       .card {
-        box-shadow: 3px 3px 3px 3px #DDE8F1;
+        box-shadow: 3px 3px 3px 3px #dde8f1;
       }
 
       .dataTable-custom td {
@@ -829,6 +829,15 @@
           $("#table1 tbody tr").each(function () {
             var statusText = $(this).find("td").eq(0).text().toLowerCase();
             var workStatusText = $(this).find("td").eq(4).text().toLowerCase();
+
+            var statusCell = $(this).find("td").eq(0);
+            var workStatusCell = $(this).find("td").eq(4);
+
+            // Clear previous circles and badges
+            statusCell.find(".circle").remove();
+            workStatusCell.removeClass(
+              "badge badge-warning badge-danger badge-primary"
+            );
 
             var circleClass = "";
             var statusClass = "";
