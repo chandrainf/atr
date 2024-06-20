@@ -25,14 +25,12 @@
         color: #333333;
       }
 
-      h3{
+      h3 {
         color: #333333;
       }
 
       .dataTable-custom td {
         color: #333333; /* Custom font color for table cells */
-        
-        
       }
 
       .dataTable-custom th {
@@ -45,17 +43,17 @@
       }
 
       .dataTable-wrapper .dataTable-dropdown label,
-        .dataTable-wrapper .dataTable-dropdown select {
-            background-color: #ffffff; /* Custom font color */
-        }
-        /* Custom styling for "Search box" */
-        .dataTable-wrapper .dataTable-input label,
-        .dataTable-wrapper .dataTable-input input {
-            background-color: #ffffff; /* Custom font color */
-        }
+      .dataTable-wrapper .dataTable-dropdown select {
+        background-color: #ffffff; /* Custom font color */
+      }
+      /* Custom styling for "Search box" */
+      .dataTable-wrapper .dataTable-input label,
+      .dataTable-wrapper .dataTable-input input {
+        background-color: #ffffff; /* Custom font color */
+      }
 
       .card {
-        box-shadow: 3px 3px 3px 3px #DDE8F1;
+        box-shadow: 3px 3px 3px 3px #dde8f1;
       }
 
       .navbar {
@@ -177,7 +175,6 @@
         height: calc(100vh - 90px);
       }
 
-    
       .timeline {
         position: relative;
         margin: 0 auto;
@@ -277,7 +274,7 @@
         border-radius: 5px;
       }
       .active {
-        background-color: #007bff; 
+        background-color: #007bff;
         color: white;
       }
 
@@ -294,7 +291,6 @@
       #data-table {
         display: none;
       }
-      
 
       .circle {
         width: 16px;
@@ -313,12 +309,17 @@
         background-color: blue;
       }
 
+      .badge {
+        color: #333333;
+      }
+
       .badge-warning {
         border: 1px solid rgba(255, 142, 66, 1);
         border-radius: 5px;
         background-color: #fff0e5;
         color: #ff8e42;
         font: 400 16px;
+        display: inline-block;
       }
       .badge-danger {
         border-radius: 5px;
@@ -326,6 +327,7 @@
         background-color: #ffe5e5;
         color: #ff4242;
         font: 400 16px;
+        display: inline-block;
       }
 
       .badge-primary {
@@ -334,6 +336,14 @@
         background-color: #ffe5e5;
         color: #377dff;
         font: 400 16px;
+        display: inline-block;
+      }
+
+      .td-center {
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+        height: 100%;
       }
     </style>
   </head>
@@ -407,12 +417,11 @@
 
         <!-- <div class="container" style="margin-top: 100px"> -->
 
-          <div class="row justify-content-center" style="margin-top: 100px;">
-            <div class="col-10">
-              <h3 class="text-white">Error Log</h3>
-            </div>
-          <div class="row justify-content-center" >
-            
+        <div class="row justify-content-center" style="margin-top: 100px">
+          <div class="col-10">
+            <h3 class="text-white">Error Log</h3>
+          </div>
+          <div class="row justify-content-center">
             <div class="col-10 mt-5">
               <!-- <section class="section" style="align-self: center;"> -->
               <div class="card border">
@@ -448,7 +457,11 @@
                           Kantor Pertanahan Kota Administratif Jakarta Pusat
                         </td>
                         <td>2024-05-05</td>
-                        <td class="badge">Dalam Perbaikan</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Perbaikan</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                       <tr>
@@ -456,7 +469,11 @@
                         <td>K2300013</td>
                         <td>Kantor Pertanahan Kota Surabaya I</td>
                         <td>2024-05-05</td>
-                        <td class="badge">Dalam Antrian</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Antrian</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                       <tr>
@@ -464,7 +481,11 @@
                         <td>K2300014</td>
                         <td>Kantor Pertanahan Kota Surabaya II</td>
                         <td>2024-05-05</td>
-                        <td class="badge">Dalam Perbaikan</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Perbaikan</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                       <tr>
@@ -475,7 +496,11 @@
                           Kalimantan Timur
                         </td>
                         <td>2024-05-05</td>
-                        <td class="badge">Dalam Perbaikan</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Perbaikan</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                       <tr>
@@ -486,7 +511,11 @@
                           Kalimantan Timur
                         </td>
                         <td>2024-05-05</td>
-                        <td class="badge">Dalam Antrian</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Antrian</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                     </tbody>
@@ -532,7 +561,11 @@
                           Kantor Pertanahan Kota Administratif Jakarta Pusat
                         </td>
                         <td>20 Maret 2024</td>
-                        <td class="badge">Dalam Perbaikan</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Perbaikan</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                       <tr>
@@ -540,7 +573,11 @@
                         <td>K2300013</td>
                         <td>Kantor Pertanahan Kota Surabaya I</td>
                         <td>20 Maret 2024</td>
-                        <td class="badge">Dalam Antrian</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Antrian</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                       <tr>
@@ -548,7 +585,11 @@
                         <td>K2300014</td>
                         <td>Kantor Pertanahan Kota Surabaya II</td>
                         <td>20 Maret 2024</td>
-                        <td class="badge">Dalam Perbaikan</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Perbaikan</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                       <tr>
@@ -559,7 +600,11 @@
                           Kalimantan Timur
                         </td>
                         <td>20 Maret 2024</td>
-                        <td class="badge">Dalam Perbaikan</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Perbaikan</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                       <tr>
@@ -570,7 +615,11 @@
                           Kalimantan Timur
                         </td>
                         <td>20 Maret 2024</td>
-                        <td class="badge">Dalam Antrian</td>
+                        <td>
+                          <div class="td-center">
+                            <span class="badge">Dalam Antrian</span>
+                          </div>
+                        </td>
                         <td class="details-cell"></td>
                       </tr>
                     </tbody>
@@ -766,7 +815,7 @@
                   class="card-header d-flex justify-content-between"
                   style="align-items: center; justify-content: center"
                 >
-                  <h3 >Total Kiosk Error</h3>
+                  <h3>Total Kiosk Error</h3>
 
                   <div>
                     <select id="locationFilter">
@@ -976,7 +1025,8 @@
               </div>
             </div>
           </div>
-        <!-- </div> -->
+          <!-- </div> -->
+        </div>
       </div>
     </div>
 
@@ -1044,7 +1094,6 @@
               "badge badge-warning badge-danger badge-primary"
             );
 
-
             var circleClass = "";
             var statusClass = "";
 
@@ -1093,8 +1142,6 @@
         // Call the function to add status circles and logic
         addStatusCirclesAndLogic();
 
-       
-
         // Function to add dynamic "Details" link to each row
         function addDetailsLinks() {
           $("#example1 tbody tr").each(function () {
@@ -1115,7 +1162,6 @@
         // Call the function to add dynamic "Details" links
         addDetailsLinks();
 
-       
         // Filter functions for the first table
 
         $("#filter-date1").on("change", function () {
@@ -1165,7 +1211,6 @@
             workStatusCell1.removeClass(
               "badge badge-warning badge-danger badge-primary"
             );
-
 
             var circleClass1 = "";
             var statusClass1 = "";
