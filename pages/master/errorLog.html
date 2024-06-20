@@ -1162,6 +1162,10 @@
         // Call the function to add dynamic "Details" links
         addDetailsLinks();
 
+        table1.on("draw.dt", function () {
+          addDetailsLinks();
+        });
+
         // Filter functions for the first table
 
         $("#filter-date1").on("change", function () {
@@ -1180,6 +1184,10 @@
           return false;
         });
 
+        
+        
+        
+        
         // Filter functions for the second table
 
         $("#filter-date2").on("change", function () {
@@ -1287,8 +1295,7 @@
         // Call the function to add dynamic "Details" links
         addDetailsLinks1();
 
-        table.on("draw.dt", function () {
-          addDetailsLinks();
+        table2.on("draw.dt", function () {
           addDetailsLinks1();
         });
 
