@@ -1281,8 +1281,18 @@
               $(this).find("td").eq(0).prepend(circle1);
             }
 
+            // if (statusClass1) {
+            //   $(this).find("td").eq(4).addClass(statusClass1);
+            // }
+
             if (statusClass1) {
-              $(this).find("td").eq(4).addClass(statusClass1);
+              workStatusCell1.html(
+                '<div class="td-center"><span class="' +
+                  statusClass1 +
+                  '">' +
+                  workStatusCell1.text() +
+                  "</span></div>"
+              );
             }
 
             

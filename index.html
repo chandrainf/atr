@@ -892,8 +892,17 @@
               $(this).find("td").eq(0).prepend(circle);
             }
 
+            // if (statusClass) {
+            //   $(this).find("td").eq(4).addClass(statusClass);
+            // }
             if (statusClass) {
-              $(this).find("td").eq(4).addClass(statusClass);
+              workStatusCell.html(
+                '<div class="td-center"><span class="' +
+                  statusClass +
+                  '">' +
+                  workStatusCell.text() +
+                  "</span></div>"
+              );
             }
           });
         }
