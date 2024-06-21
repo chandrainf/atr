@@ -24,8 +24,6 @@
       href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
     />
 
-    
-
     <style>
       body {
         margin: 0;
@@ -37,13 +35,16 @@
         color: #333333;
       }
       .card {
-        box-shadow: 3px 3px 3px 3px #DDE8F1;
+        box-shadow: 3px 3px 3px 3px #dde8f1;
       }
 
-      h1, h3, h6, p, label{
+      h1,
+      h3,
+      h6,
+      p,
+      label {
         color: #333333;
       }
-      
 
       .dataTable-custom td {
         color: #333333; /* Custom font color for table cells */
@@ -58,23 +59,22 @@
         border-radius: 10px;
       }
 
-
       .dataTables_wrapper .dataTables_filter input {
-            color: #000000 !important; /* Text color for search box */
-            background-color: #ffffff !important; /* Background color for search box */
-            border: 1px solid #ccc !important; /* Add a border for better visibility */
-            padding: 5px !important; /* Add padding for better appearance */
-            border-radius: 3px !important; /* Add border-radius for rounded corners */
-        }
+        color: #000000 !important; /* Text color for search box */
+        background-color: #ffffff !important; /* Background color for search box */
+        border: 1px solid #ccc !important; /* Add a border for better visibility */
+        padding: 5px !important; /* Add padding for better appearance */
+        border-radius: 3px !important; /* Add border-radius for rounded corners */
+      }
 
-        .dataTables_wrapper .dataTables_length select {
-            color: #000000 !important; /* Text color for dropdown */
-            background-color: #ffffff !important; /* Background color for dropdown */
-            border: 1px solid #ccc !important; /* Add a border for better visibility */
-            padding: 5px !important; /* Add padding for better appearance */
-            border-radius: 3px !important; /* Add border-radius for rounded corners */
-        }
-        
+      .dataTables_wrapper .dataTables_length select {
+        color: #000000 !important; /* Text color for dropdown */
+        background-color: #ffffff !important; /* Background color for dropdown */
+        border: 1px solid #ccc !important; /* Add a border for better visibility */
+        padding: 5px !important; /* Add padding for better appearance */
+        border-radius: 3px !important; /* Add border-radius for rounded corners */
+      }
+
       .navbar {
         position: fixed;
         width: 100%;
@@ -324,7 +324,6 @@
   </head>
 
   <body>
-    
     <div id="app">
       <div id="main" class="layout-horizontal">
         <!-- <div class="header-top"  style="background-color: #132144;"> -->
@@ -811,7 +810,9 @@
       });
 
       $(document).ready(function () {
-        $("#example1").DataTable();
+        var table = $("#example1").DataTable();
+
+        // $("#example1").DataTable();
 
         function updateTotalTransaksi() {
           const rows = document.querySelectorAll("#example1 tbody tr");
