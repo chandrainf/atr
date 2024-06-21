@@ -654,7 +654,7 @@
                     <input
                       type="text"
                       id="filter-lokasi3"
-                      placeholder="Enter location"
+                      placeholder="Cari lokasi"
                     />
                   </div>
                   <div>
@@ -1333,33 +1333,7 @@
           addDetailsLinks1();
         });
 
-        // Filter functions for the third table
-        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-          var filterValue = $("#dateFilter3").val();
-          var startDate = new Date(data[4]); // Assuming the date is in the 5th column (index 4)
-
-          if (filterValue === "") {
-            return true; // No filter
-          } else if (filterValue === "1_week") {
-            var oneWeekAgo = new Date();
-            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
-            return startDate >= oneWeekAgo;
-          } else if (filterValue === "1_month") {
-            var oneMonthAgo = new Date();
-            oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-            return startDate >= oneMonthAgo;
-          }
-          return true;
-        });
-
-        // Event listener for the dropdown
-        $("#dateFilter3").on("change", function () {
-          table3.draw();
-        });
-
-        $("#filter-lokasi3").on("input", function () {
-          table3.column(1).search(this.value).draw();
-        });
+        
       });
 
       document.addEventListener("DOMContentLoaded", () => {
@@ -1500,6 +1474,37 @@
         parseTableData();
         initializeLocationFilter();
         filterData(); // Initial chart render
+
+
+        // Filter functions for the third table
+        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+          var filterValue = $("#dateFilter3").val();
+          var startDate = new Date(data[4]); // Assuming the date is in the 5th column (index 4)
+
+          if (filterValue === "") {
+            return true; // No filter
+          } else if (filterValue === "1_week") {
+            var oneWeekAgo = new Date();
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            return startDate >= oneWeekAgo;
+          } else if (filterValue === "1_month") {
+            var oneMonthAgo = new Date();
+            oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+            return startDate >= oneMonthAgo;
+          }
+          return true;
+        });
+
+        var table3 = $("#example3").DataTable();
+
+        // Event listener for the dropdown
+        $("#dateFilter3").on("change", function () {
+          table3.draw();
+        });
+
+        $("#filter-lokasi3").on("input", function () {
+          table3.column(1).search(this.value).draw();
+        });
       });
     </script>
   </body>
