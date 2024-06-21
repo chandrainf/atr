@@ -62,33 +62,29 @@
         border-radius: 10px;
       }
 
-      /* .dataTable-wrapper .dataTable-dropdown label,
-      .dataTable-wrapper .dataTable-dropdown select {
-        color: #ffffff; 
-      }
-     
-      .dataTable-wrapper .dataTable-input label {
-        color: #ffffff;
-       
-      }
-      
-
-
-      .dataTable-wrapper .dataTable-input input {
-        color: #ffffff; 
-        background-color: #ffffff;
-      } */
-
-      .dataTable-wrapper .dataTable-input label {
-        color: #ffffff; /* Custom font color for label */
-      }
-
-      .dataTable-wrapper .dataTable-input input {
-        color: #000000; /* Custom font color for search box text */
-        background-color: #ffffff; /* Background color for search box */
+      /* Override search box styles */
+      .dataTable-wrapper .dataTables_filter input {
+        color: #000000 !important; /* Text color for search box */
+        background-color: #ffffff !important; /* Background color for search box */
         border: 1px solid #ccc; /* Optional: Add a border for better visibility */
         padding: 5px; /* Optional: Add padding for better appearance */
         border-radius: 3px; /* Optional: Add border-radius for rounded corners */
+      }
+
+      /* Override entries dropdown styles */
+      .dataTable-wrapper .dataTables_length select {
+        color: #000000 !important; /* Text color for dropdown */
+        background-color: #ffffff !important; /* Background color for dropdown */
+        border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+        padding: 5px; /* Optional: Add padding for better appearance */
+        border-radius: 3px; /* Optional: Add border-radius for rounded corners */
+      }
+
+      /* General table styles */
+      .dataTable-wrapper table.dataTable {
+        color: #000000 !important; /* Text color for table data */
+        background-color: #ffffff !important; /* Background color for table */
+        border: 1px solid #ccc; /* Optional: Add a border for better visibility */
       }
 
       .navbar {
