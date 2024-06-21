@@ -51,15 +51,33 @@
         border-radius: 10px;
       }
 
-      .dataTable-wrapper .dataTable-dropdown label,
-      .dataTable-wrapper .dataTable-dropdown select {
-        background-color: #ffffff; /* Custom font color */
+      /* Override search box styles */
+      .dataTable-wrapper .dataTables-custom input {
+        color: #000000 !important; /* Text color for search box */
+        background-color: #ffffff !important; /* Background color for search box */
+        border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+        padding: 5px; /* Optional: Add padding for better appearance */
+        border-radius: 3px; /* Optional: Add border-radius for rounded corners */
       }
-      /* Custom styling for "Search box" */
+
+      /* Override entries dropdown styles */
+      .dataTable-wrapper .dataTables-custom select {
+        color: #000000 !important; /* Text color for dropdown */
+        background-color: #ffffff !important; /* Background color for dropdown */
+        border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+        padding: 5px; /* Optional: Add padding for better appearance */
+        border-radius: 3px; /* Optional: Add border-radius for rounded corners */
+      }
+
+      /* .dataTable-wrapper .dataTable-dropdown label,
+      .dataTable-wrapper .dataTable-dropdown select {
+        background-color: #ffffff; 
+      }
+     
       .dataTable-wrapper .dataTable-input label,
       .dataTable-wrapper .dataTable-input input {
-        background-color: #ffffff; /* Custom font color */
-      }
+        background-color: #ffffff;
+      } */
 
       .card {
         box-shadow: 3px 3px 3px 3px #dde8f1;

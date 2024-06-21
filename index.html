@@ -45,7 +45,7 @@
         color: #333333;
       }
 
-      h3, p, label, h5, h4, p {
+      h3, p, label, h5, h6, h4, p {
         color: #333333;
       }
 
@@ -71,7 +71,7 @@
       }
 
       /* Override search box styles */
-      .dataTable-wrapper .dataTables_filter input {
+      .dataTable-wrapper .dataTables-custom input {
         color: #000000 !important; /* Text color for search box */
         background-color: #ffffff !important; /* Background color for search box */
         border: 1px solid #ccc; /* Optional: Add a border for better visibility */
@@ -80,7 +80,7 @@
       }
 
       /* Override entries dropdown styles */
-      .dataTable-wrapper .dataTables_length select {
+      .dataTable-wrapper .dataTables-custom select {
         color: #000000 !important; /* Text color for dropdown */
         background-color: #ffffff !important; /* Background color for dropdown */
         border: 1px solid #ccc; /* Optional: Add a border for better visibility */
@@ -89,11 +89,11 @@
       }
 
       /* General table styles */
-      .dataTable-wrapper table.dataTable {
-        color: #000000 !important; /* Text color for table data */
-        background-color: #ffffff !important; /* Background color for table */
-        border: 1px solid #ccc; /* Optional: Add a border for better visibility */
-      }
+      /* .dataTable-wrapper table.dataTable {
+        color: #000000 !important; 
+        background-color: #ffffff !important; 
+        border: 1px solid #ccc; 
+      } */
 
       .navbar {
         position: fixed;
@@ -207,6 +207,8 @@
         padding: 10px;
         border-radius: 5px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        font-size: medium;
+       
       }
 
       .legend-item {
@@ -230,6 +232,7 @@
         align-items: center; /* Vertically center items */
         margin: 0; /* Remove margin to ensure no extra space */
         padding: 0; /* Remove padding to ensure no extra space */
+        
       }
 
       .leaflet-tooltip.custom-tooltip {
@@ -1121,11 +1124,9 @@
           "<div class='legend-item'><span class='legend-color' style='background-color: red;'></span> <h6>Error</h6><div class='tooltip'>" +
           errorTime +
           "</div></div>" +
-          "<br>" +
           "<div class='legend-item'><span class='legend-color' style='background-color: yellow;'></span> <h6>Maintenance</h6><div class='tooltip'>" +
           maintenanceTime +
           "</div></div>" +
-          "<br>" +
           "<div class='legend-item'><span class='legend-color' style='background-color: blue;'></span> <h6>Normal</h6><div class='tooltip'>" +
           normalTime +
           "</div></div>" +
