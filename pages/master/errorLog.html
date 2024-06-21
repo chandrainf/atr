@@ -1166,6 +1166,10 @@
         // Call the function to add status circles and logic
         addStatusCirclesAndLogic();
 
+        table1.on("draw.dt", function () {
+          addStatusCirclesAndLogic();
+        });
+
         // Function to add dynamic "Details" link to each row
         function addDetailsLinks() {
           $("#example1 tbody tr").each(function () {
@@ -1294,18 +1298,13 @@
                   "</span></div>"
               );
             }
-
-            
-
-            
           });
         }
 
         // Call the function to add status circles and logic
         addStatusCirclesAndLogic1();
 
-        table.on("draw.dt", function () {
-          addStatusCirclesAndLogic();
+        table2.on("draw.dt", function () {
           addStatusCirclesAndLogic1();
         });
 
