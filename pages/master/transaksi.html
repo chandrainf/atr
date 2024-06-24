@@ -379,6 +379,21 @@
           display: none;
         }
       }
+
+      .filterActive {
+        background-color: #132144;
+        color: white;
+      }
+
+      #filters {
+        border-radius: 4.818px;
+        background-color: #edf2f8;
+        gap: 12px;
+        font-size: 13px;
+        white-space: nowrap;
+        line-height: 114%;
+        padding: 6px;
+      }
     </style>
   </head>
 
@@ -399,7 +414,7 @@
               />
             </a>
             <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
-            <ul class="navbar-list">
+            <ul class="navbar-list gap-4">
               <li class="navbar-item">
                 <a href="/index.html" class="navbar-link"
                   ><i class="me-2"
@@ -650,29 +665,17 @@
                     <div><h3>Total Keseluruhan Transaksi</h3></div>
                     <div>
                       <label for="locationFilter">Lokasi:</label>
-                      <select id="locationFilter" onchange="updateChart()">
+                      <select id="locationFilter">
                         <option value="all">Semua Lokasi</option>
-                        <option value="location1">Location 1</option>
-                        <option value="location2">Location 2</option>
-                        <!-- Add more locations as needed -->
                       </select>
                     </div>
 
-                    <div class="toggle-container">
-                      <button
-                        id="monthlyBtn"
-                        class="aktifkan"
-                        onclick="setTimePeriod('monthly')"
-                        style="border-radius: 4.818px"
-                      >
-                        Monthly
+                    <div id="filters">
+                      <button id="weeklyBtn" style="border-radius: 4.818px">
+                        Mingguan
                       </button>
-                      <button
-                        id="weeklyBtn"
-                        onclick="setTimePeriod('weekly')"
-                        style="border-radius: 4.818px"
-                      >
-                        Weekly
+                      <button id="monthlyBtn" style="border-radius: 4.818px">
+                        Bulanan
                       </button>
                     </div>
                   </div>
@@ -742,28 +745,16 @@
                     <div><h3>Rata-rata Waktu Transaksi Terpadat</h3></div>
                     <div>
                       <label for="locationFilter1">Lokasi:</label>
-                      <select id="locationFilter1" onchange="updateChart1()">
+                      <select id="locationFilter1">
                         <option value="all">Semua Lokasi</option>
-                        <option value="location1">Location 1</option>
-                        <option value="location2">Location 2</option>
-                        <!-- Add more locations as needed -->
                       </select>
                     </div>
-                    <div class="toggle-container">
-                      <button
-                        id="monthlyBtn1"
-                        class="aktifkan"
-                        onclick="setTimePeriod1('monthly1')"
-                        style="border-radius: 4.818px"
-                      >
-                        Monthly
+                    <div id="filters">
+                      <button id="weeklyBtn1" style="border-radius: 4.818px">
+                        Mingguan
                       </button>
-                      <button
-                        id="weeklyBtn1"
-                        onclick="setTimePeriod1('weekly1')"
-                        style="border-radius: 4.818px"
-                      >
-                        Weekly
+                      <button id="monthlyBtn1" style="border-radius: 4.818px">
+                        Bulanan
                       </button>
                     </div>
                   </div>
@@ -787,7 +778,7 @@
                 <th>Total</th>
               </tr>
               <tr>
-                <td>location1</td>
+                <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
                 <td>1</td>
                 <td>2024-01-15T10:30:00</td>
                 <td>50</td>
@@ -795,7 +786,7 @@
                 <td>80</td>
               </tr>
               <tr>
-                <td>location1</td>
+                <td>Kantor Pertanahan Kota Surabaya I</td>
                 <td>2</td>
                 <td>2024-02-20T14:45:00</td>
                 <td>20</td>
@@ -803,7 +794,7 @@
                 <td>30</td>
               </tr>
               <tr>
-                <td>location2</td>
+                <td>Kantor Pertanahan Kota Surabaya II</td>
                 <td>3</td>
                 <td>2024-03-10T09:15:00</td>
                 <td>70</td>
@@ -811,7 +802,10 @@
                 <td>120</td>
               </tr>
               <tr>
-                <td>location2</td>
+                <td>
+                  Kantor Wilayah Badan Pertanahan Nasional Provinsi Kalimantan
+                  Timur
+                </td>
                 <td>4</td>
                 <td>2024-04-05T16:00:00</td>
                 <td>10</td>
@@ -914,9 +908,8 @@
 
       var table1 = $("#example1").DataTable();
 
-      var timePeriod = "monthly";
+      // var timePeriod = "monthly";
 
-      // Initialize the chart
       var options = {
         chart: {
           type: "bar",
@@ -954,76 +947,72 @@
       var chart = new ApexCharts(document.querySelector("#chart"), options);
       chart.render();
 
-      // Function to set the time period and update the chart
-      function setTimePeriod(period) {
-        timePeriod = period;
-        document.getElementById("monthlyBtn").classList.remove("aktifkan");
-        document.getElementById("weeklyBtn").classList.remove("aktifkan");
-        if (period === "monthly") {
-          document.getElementById("monthlyBtn").classList.add("aktifkan");
-        } else {
-          document.getElementById("weeklyBtn").classList.add("aktifkan");
+      const locationFilter = document.getElementById("locationFilter");
+      const weeklyFilterButton = document.getElementById("weeklyBtn");
+      const monthlyFilterButton = document.getElementById("monthlyBtn");
+      const dataTable = document.getElementById("dataTable1");
+
+      const initializeLocationFilter = () => {
+        const locations = new Set();
+        for (let i = 1; i < dataTable.rows.length; i++) {
+          const location = dataTable.rows[i].cells[0].innerText;
+          locations.add(location);
         }
-        updateChart();
-      }
+        locations.forEach((location) => {
+          const option = document.createElement("option");
+          option.value = location;
+          option.textContent = location;
+          locationFilter.appendChild(option);
+        });
+      };
 
-      // Function to update the chart based on filters
-      function updateChart() {
-        var locationFilter = document.getElementById("locationFilter").value;
+      const filterData = () => {
+        const selectedLocation = locationFilter.value;
+        const now = new Date();
+        const oneWeekAgo = new Date(now);
+        oneWeekAgo.setDate(now.getDate() - 7);
 
-        var dataTable = document.getElementById("dataTable1");
-        var printedCertificates = Array(12).fill(0);
-        var verifications = Array(12).fill(0);
+        let filteredData = [];
+        for (let i = 1; i < dataTable.rows.length; i++) {
+          const row = dataTable.rows[i];
+          const location = row.cells[0].innerText;
+          const printed = parseInt(row.cells[2].innerText);
+          const verified = parseInt(row.cells[3].innerText);
+          const transactionDate = new Date(row.cells[5].innerText);
 
-        var now = new Date();
-        var currentYear = now.getFullYear();
+          if (selectedLocation !== "all" && location !== selectedLocation)
+            continue;
+          if (
+            weeklyFilterButton.classList.contains("filterActive") &&
+            transactionDate < oneWeekAgo
+          )
+            continue;
+          if (
+            monthlyFilterButton.classList.contains("filterActive") &&
+            transactionDate.getFullYear() !== now.getFullYear()
+          )
+            continue;
 
-        for (var i = 1; i < dataTable.rows.length; i++) {
-          var row = dataTable.rows[i];
-          var location = row.cells[0].innerText;
-          var printed = parseInt(row.cells[2].innerText);
-          var verified = parseInt(row.cells[3].innerText);
-          var transactionDate = new Date(row.cells[5].innerText);
+          filteredData.push({ location, printed, verified, transactionDate });
+        }
 
-          // Apply filters
-          if (locationFilter === "all" || location === locationFilter) {
-            if (transactionDate.getFullYear() === currentYear) {
-              var month = transactionDate.getMonth(); // 0 = January, 1 = February, etc.
-              printedCertificates[month] += printed;
-              verifications[month] += verified;
-            }
+        updateChart(filteredData);
+      };
+
+      const updateChart = (filteredData) => {
+        let printedCertificates = Array(12).fill(0);
+        let verifications = Array(12).fill(0);
+        const now = new Date();
+        const currentYear = now.getFullYear();
+
+        filteredData.forEach((item) => {
+          const transactionDate = new Date(item.transactionDate);
+          if (transactionDate.getFullYear() === currentYear) {
+            const month = transactionDate.getMonth();
+            printedCertificates[month] += item.printed;
+            verifications[month] += item.verified;
           }
-        }
-
-        if (timePeriod === "weekly") {
-          printedCertificates = Array(12).fill(0);
-          verifications = Array(12).fill(0);
-          var startOfWeek = new Date(
-            now.setDate(now.getDate() - now.getDay() + 1)
-          );
-          var endOfWeek = new Date(
-            now.setDate(now.getDate() - now.getDay() + 7)
-          );
-
-          for (var i = 1; i < dataTable.rows.length; i++) {
-            var row = dataTable.rows[i];
-            var location = row.cells[0].innerText;
-            var printed = parseInt(row.cells[2].innerText);
-            var verified = parseInt(row.cells[3].innerText);
-            var transactionDate = new Date(row.cells[5].innerText);
-
-            if (locationFilter === "all" || location === locationFilter) {
-              if (
-                transactionDate >= startOfWeek &&
-                transactionDate <= endOfWeek
-              ) {
-                var month = transactionDate.getMonth();
-                printedCertificates[month] += printed;
-                verifications[month] += verified;
-              }
-            }
-          }
-        }
+        });
 
         chart.updateSeries([
           {
@@ -1035,10 +1024,33 @@
             data: verifications,
           },
         ]);
-      }
+      };
+
+      const setTimePeriod = (period) => {
+        if (period === "monthly") {
+          monthlyFilterButton.classList.add("filterActive");
+          weeklyFilterButton.classList.remove("filterActive");
+        } else {
+          weeklyFilterButton.classList.add("filterActive");
+          monthlyFilterButton.classList.remove("filterActive");
+        }
+        filterData();
+      };
+
+      // Initialize filters
+      initializeLocationFilter();
+
+      // Add event listeners
+      locationFilter.addEventListener("change", filterData);
+      weeklyFilterButton.addEventListener("click", () => {
+        setTimePeriod("weekly");
+      });
+      monthlyFilterButton.addEventListener("click", () => {
+        setTimePeriod("monthly");
+      });
 
       // Initial chart update
-      updateChart();
+      filterData();
 
       //Statistik Waktu Transaksi
 
@@ -1070,7 +1082,6 @@
             "November",
             "Desember",
           ],
-          // categories: []
         },
         tooltip: {
           custom: function ({ series, seriesIndex, dataPointIndex, w }) {
@@ -1080,10 +1091,10 @@
             var hour = transactionDateTime.getHours();
             return (
               '<div class="arrow_box">' +
-              "<span>Jumlah Transaksi: " +
+              "<span>Total Transactions: " +
               series[seriesIndex][dataPointIndex] +
               "</span><br>" +
-              "<span>Rata-rata jam: " +
+              "<span>Average Hour: " +
               hour +
               ":00</span>" +
               "</div>"
@@ -1095,69 +1106,83 @@
       var chart1 = new ApexCharts(document.querySelector("#chart1"), options1);
       chart1.render();
 
-      // Function to set the time period and update the chart
-      function setTimePeriod1(period) {
-        timePeriod1 = period;
-        document.getElementById("monthlyBtn1").classList.remove("aktifkan");
-        document.getElementById("weeklyBtn1").classList.remove("aktifkan");
-        if (period === "monthly1") {
-          document.getElementById("monthlyBtn1").classList.add("aktifkan");
-        } else {
-          document.getElementById("weeklyBtn1").classList.add("aktifkan");
+      const locationFilter1 = document.getElementById("locationFilter1");
+      const weeklyFilterButton1 = document.getElementById("weeklyBtn1");
+      const monthlyFilterButton1 = document.getElementById("monthlyBtn1");
+      const dataTable2 = document.getElementById("dataTable2");
+
+      const initializeLocationFilter1 = () => {
+        const locations = new Set();
+        for (let i = 1; i < dataTable2.rows.length; i++) {
+          const location = dataTable2.rows[i].cells[0].innerText;
+          locations.add(location);
         }
-        updateChart1();
-      }
+        locations.forEach((location) => {
+          const option = document.createElement("option");
+          option.value = location;
+          option.textContent = location;
+          locationFilter1.appendChild(option);
+        });
+      };
 
-      // Function to update the chart based on filters
-      function updateChart1() {
-        var locationFilter1 = document.getElementById("locationFilter1").value;
+      const filterData1 = () => {
+        const selectedLocation = locationFilter1.value;
+        const now = new Date();
+        const oneWeekAgo = new Date(now);
+        oneWeekAgo.setDate(now.getDate() - 7);
 
-        var dataTable2 = document.getElementById("dataTable2");
-        var accumulatedTotal = Array(12).fill(0);
-        var now = new Date();
-        var currentYear = now.getFullYear();
+        let filteredData = [];
+        for (let i = 1; i < dataTable2.rows.length; i++) {
+          const row = dataTable2.rows[i];
+          const location = row.cells[0].innerText;
+          const printed = parseInt(row.cells[3].innerText);
+          const verified = parseInt(row.cells[4].innerText);
+          const transactionDate = new Date(row.cells[2].innerText);
 
-        var weeklyData = {
-          accumulatedTotal: Array(12).fill(0),
-        };
+          if (selectedLocation !== "all" && location !== selectedLocation)
+            continue;
+          if (
+            weeklyFilterButton1.classList.contains("filterActive") &&
+            transactionDate < oneWeekAgo
+          )
+            continue;
+          if (
+            monthlyFilterButton1.classList.contains("filterActive") &&
+            transactionDate.getFullYear() !== now.getFullYear()
+          )
+            continue;
 
-        // Helper function to get the week of the year
-        function getWeekOfYear(date) {
-          var start = new Date(date.getFullYear(), 0, 1);
-          var diff =
-            (date -
-              start +
-              (start.getTimezoneOffset() - date.getTimezoneOffset()) * 60000) /
-            86400000;
-          return Math.ceil((diff + start.getDay() + 1) / 7);
+          filteredData.push({ location, printed, verified, transactionDate });
         }
 
-        for (var i = 1; i < dataTable2.rows.length; i++) {
-          var row = dataTable2.rows[i];
-          var location = row.cells[0].innerText;
-          var printed = parseInt(row.cells[3].innerText);
-          var verified = parseInt(row.cells[4].innerText);
-          var total = printed + verified;
-          var transactionDate = new Date(row.cells[2].innerText);
+        updateChart1(filteredData);
+      };
 
-          // Apply filters
-          if (locationFilter1 === "all" || location === locationFilter1) {
-            var month = transactionDate.getMonth();
-            if (transactionDate.getFullYear() === currentYear) {
-              accumulatedTotal[month] += total;
+      const updateChart1 = (filteredData) => {
+        let accumulatedTotal = Array(12).fill(0);
+        const now = new Date();
+        const currentYear = now.getFullYear();
 
-              if (timePeriod1 === "weekly1") {
-                var week = getWeekOfYear(transactionDate);
-                if (week === getWeekOfYear(now)) {
-                  weeklyData.accumulatedTotal[month] += total;
-                }
-              }
-            }
+        filteredData.forEach((item) => {
+          const transactionDate = new Date(item.transactionDate);
+          if (transactionDate.getFullYear() === currentYear) {
+            const month = transactionDate.getMonth();
+            accumulatedTotal[month] += item.printed + item.verified;
           }
-        }
+        });
 
-        if (timePeriod1 === "weekly1") {
-          accumulatedTotal = weeklyData.accumulatedTotal;
+        if (weeklyFilterButton1.classList.contains("filterActive")) {
+          accumulatedTotal.fill(0);
+          const oneWeekAgo = new Date(now);
+          oneWeekAgo.setDate(now.getDate() - 7);
+
+          filteredData.forEach((item) => {
+            const transactionDate = new Date(item.transactionDate);
+            if (transactionDate >= oneWeekAgo && transactionDate <= now) {
+              const month = transactionDate.getMonth();
+              accumulatedTotal[month] += item.printed + item.verified;
+            }
+          });
         }
 
         chart1.updateSeries([
@@ -1166,10 +1191,33 @@
             data: accumulatedTotal,
           },
         ]);
-      }
+      };
+
+      const setTimePeriod1 = (period) => {
+        if (period === "monthly1") {
+          monthlyFilterButton1.classList.add("filterActive");
+          weeklyFilterButton1.classList.remove("filterActive");
+        } else {
+          weeklyFilterButton1.classList.add("filterActive");
+          monthlyFilterButton1.classList.remove("filterActive");
+        }
+        filterData1();
+      };
+
+      // Initialize filters
+      initializeLocationFilter1();
+
+      // Add event listeners
+      locationFilter1.addEventListener("change", filterData1);
+      weeklyFilterButton1.addEventListener("click", () => {
+        setTimePeriod1("weekly1");
+      });
+      monthlyFilterButton1.addEventListener("click", () => {
+        setTimePeriod1("monthly1");
+      });
 
       // Initial chart update
-      updateChart1();
+      filterData1();
     </script>
   </body>
 </html>
