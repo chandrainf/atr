@@ -45,22 +45,25 @@
         color: #333333;
       }
 
-      h3, p, label, h5, h6, h4, p {
+      h3,
+      p,
+      label,
+      h5,
+      h6,
+      h4,
+      p {
         color: #333333;
       }
 
       span {
-        color: #8C98A4;
+        color: #8c98a4;
       }
 
       .card {
         box-shadow: 3px 3px 3px 3px #dde8f1;
       }
 
-      .dataTable-custom td {
-        color: #333333; /* Custom font color for table cells */
-      }
-
+      .dataTable-custom td,
       .dataTable-custom th {
         color: #333333; /* Custom font color for table cells */
       }
@@ -71,20 +74,20 @@
       }
 
       .dataTables_wrapper .dataTables_filter input {
-            color: #000000 !important; /* Text color for search box */
-            background-color: #ffffff !important; /* Background color for search box */
-            border: 1px solid #ccc !important; /* Add a border for better visibility */
-            padding: 5px !important; /* Add padding for better appearance */
-            border-radius: 3px !important; /* Add border-radius for rounded corners */
-        }
+        color: #000000 !important; /* Text color for search box */
+        background-color: #ffffff !important; /* Background color for search box */
+        border: 1px solid #ccc !important; /* Add a border for better visibility */
+        padding: 5px !important; /* Add padding for better appearance */
+        border-radius: 3px !important; /* Add border-radius for rounded corners */
+      }
 
-        .dataTables_wrapper .dataTables_length select {
-            color: #000000 !important; /* Text color for dropdown */
-            background-color: #ffffff !important; /* Background color for dropdown */
-            border: 1px solid #ccc !important; /* Add a border for better visibility */
-            padding: 5px !important; /* Add padding for better appearance */
-            border-radius: 3px !important; /* Add border-radius for rounded corners */
-        }
+      .dataTables_wrapper .dataTables_length select {
+        color: #000000 !important; /* Text color for dropdown */
+        background-color: #ffffff !important; /* Background color for dropdown */
+        border: 1px solid #ccc !important; /* Add a border for better visibility */
+        padding: 5px !important; /* Add padding for better appearance */
+        border-radius: 3px !important; /* Add border-radius for rounded corners */
+      }
 
       .navbar {
         position: fixed;
@@ -199,7 +202,6 @@
         border-radius: 5px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         font-size: medium;
-       
       }
 
       .legend-item {
@@ -223,7 +225,6 @@
         align-items: center; /* Vertically center items */
         margin: 0; /* Remove margin to ensure no extra space */
         padding: 0; /* Remove padding to ensure no extra space */
-        
       }
 
       .leaflet-tooltip.custom-tooltip {
@@ -377,6 +378,83 @@
         color: #377dff;
         font: 400 16px;
         margin-top: 3px;
+      }
+
+      /* Custom dataTables */
+
+      .dataTable-custom thead {
+        background-color: #dde8f1;
+        border-radius: 10px;
+      }
+
+      .dataTables_wrapper .dataTables_filter input {
+        color: #000000 !important; /* Text color for search box */
+        background-color: #ffffff !important; /* Background color for search box */
+        border: 1px solid #ccc !important; /* Add a border for better visibility */
+        padding: 5px !important; /* Add padding for better appearance */
+        border-radius: 3px !important; /* Add border-radius for rounded corners */
+      }
+
+      .dataTables_wrapper .dataTables_length select {
+        color: #000000 !important; /* Text color for dropdown */
+        background-color: #ffffff !important; /* Background color for dropdown */
+        border: 1px solid #ccc !important; /* Add a border for better visibility */
+        padding: 5px !important; /* Add padding for better appearance */
+        border-radius: 3px !important; /* Add border-radius for rounded corners */
+      }
+
+      .table-responsive {
+        overflow-x: auto;
+      }
+
+      .dataTable-custom {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .dataTable-custom th,
+      .dataTable-custom td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        color: #333333;
+      }
+
+      .dataTable-custom th {
+        background-color: #dde8f1;
+      }
+
+      /* Small screens (max-width: 600px) */
+      @media (max-width: 600px) {
+        .dataTable-custom thead {
+          display: none;
+        }
+        .dataTable-custom tr {
+          display: block;
+          margin-bottom: 10px;
+        }
+        .dataTable-custom td {
+          display: block;
+          text-align: right;
+          position: relative;
+          padding-left: 50%;
+        }
+        .dataTable-custom td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          /* width: 50%; */
+          padding-left: 15px;
+          font-weight: bold;
+          text-align: left;
+        }
+      }
+
+      /* Medium screens (max-width: 992px) */
+      @media (max-width: 992px) {
+        .dataTable-custom td:nth-of-type(4),
+        .dataTable-custom th:nth-of-type(4) {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -548,169 +626,171 @@
         </div>
 
         <div class="row justify-content-center">
-          <div class="col-10 mt-5">
+          <div class="col-12 mt-5 px-5">
             <!-- <section class="section" style="align-self: center;"> -->
             <div class="card border">
               <div class="card-header"></div>
               <div class="card-body">
-                <table class="dislay dataTable-custom" id="table1">
-                  <thead>
-                    <tr>
-                      <th>Status Error</th>
-                      <th>Nomor Kiosk</th>
-                      <th>Lokasi</th>
-                      <th>Waktu Error</th>
-                      <th>Status Pengerjaan</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Server Error</td>
-                      <td>K2300012</td>
-                      <td>
-                        Kantor Pertanahan Kota Administratif Jakarta Pusat
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Blanko Sertifikat Habis</td>
-                      <td>K2300013</td>
-                      <td>Kantor Pertanahan Kota Surabaya I</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Printer Tidak Terdeteksi</td>
-                      <td>K2300014</td>
-                      <td>Kantor Pertanahan Kota Surabaya II</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Kertas Hampir Habis</td>
-                      <td>K2300015</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Toner Hampir Habis</td>
-                      <td>K2300016</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Server Error</td>
-                      <td>K2300012</td>
-                      <td>
-                        Kantor Pertanahan Kota Administratif Jakarta Pusat
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Blanko Sertifikat Habis</td>
-                      <td>K2300013</td>
-                      <td>Kantor Pertanahan Kota Surabaya I</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Printer Tidak Terdeteksi</td>
-                      <td>K2300014</td>
-                      <td>Kantor Pertanahan Kota Surabaya II</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Kertas Hampir Habis</td>
-                      <td>K2300015</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Toner Hampir Habis</td>
-                      <td>K2300016</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Server Error</td>
-                      <td>K2300012</td>
-                      <td>
-                        Kantor Pertanahan Kota Administratif Jakarta Pusat
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Blanko Sertifikat Habis</td>
-                      <td>K2300013</td>
-                      <td>Kantor Pertanahan Kota Surabaya I</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Printer Tidak Terdeteksi</td>
-                      <td>K2300014</td>
-                      <td>Kantor Pertanahan Kota Surabaya II</td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Kertas Hampir Habis</td>
-                      <td>K2300015</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Perbaikan</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                    <tr>
-                      <td>Toner Hampir Habis</td>
-                      <td>K2300016</td>
-                      <td>
-                        Kantor Wilayah Badan Pertanahan Nasional Provinsi
-                        Kalimantan Timur
-                      </td>
-                      <td>20 Maret 2024</td>
-                      <td class="badge">Dalam Antrian</td>
-                      <td class="details-cell"></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="dislay dataTable-custom" id="table1">
+                    <thead>
+                      <tr>
+                        <th>Status Error</th>
+                        <th>Nomor Kiosk</th>
+                        <th>Lokasi</th>
+                        <th>Waktu Error</th>
+                        <th>Status Pengerjaan</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Server Error</td>
+                        <td>K2300012</td>
+                        <td>
+                          Kantor Pertanahan Kota Administratif Jakarta Pusat
+                        </td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Blanko Sertifikat Habis</td>
+                        <td>K2300013</td>
+                        <td>Kantor Pertanahan Kota Surabaya I</td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Printer Tidak Terdeteksi</td>
+                        <td>K2300014</td>
+                        <td>Kantor Pertanahan Kota Surabaya II</td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Kertas Hampir Habis</td>
+                        <td>K2300015</td>
+                        <td>
+                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                          Kalimantan Timur
+                        </td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Toner Hampir Habis</td>
+                        <td>K2300016</td>
+                        <td>
+                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                          Kalimantan Timur
+                        </td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Server Error</td>
+                        <td>K2300012</td>
+                        <td>
+                          Kantor Pertanahan Kota Administratif Jakarta Pusat
+                        </td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Blanko Sertifikat Habis</td>
+                        <td>K2300013</td>
+                        <td>Kantor Pertanahan Kota Surabaya I</td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Printer Tidak Terdeteksi</td>
+                        <td>K2300014</td>
+                        <td>Kantor Pertanahan Kota Surabaya II</td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Kertas Hampir Habis</td>
+                        <td>K2300015</td>
+                        <td>
+                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                          Kalimantan Timur
+                        </td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Toner Hampir Habis</td>
+                        <td>K2300016</td>
+                        <td>
+                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                          Kalimantan Timur
+                        </td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Server Error</td>
+                        <td>K2300012</td>
+                        <td>
+                          Kantor Pertanahan Kota Administratif Jakarta Pusat
+                        </td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Blanko Sertifikat Habis</td>
+                        <td>K2300013</td>
+                        <td>Kantor Pertanahan Kota Surabaya I</td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Printer Tidak Terdeteksi</td>
+                        <td>K2300014</td>
+                        <td>Kantor Pertanahan Kota Surabaya II</td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Kertas Hampir Habis</td>
+                        <td>K2300015</td>
+                        <td>
+                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                          Kalimantan Timur
+                        </td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Perbaikan</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                      <tr>
+                        <td>Toner Hampir Habis</td>
+                        <td>K2300016</td>
+                        <td>
+                          Kantor Wilayah Badan Pertanahan Nasional Provinsi
+                          Kalimantan Timur
+                        </td>
+                        <td>20 Maret 2024</td>
+                        <td class="badge">Dalam Antrian</td>
+                        <td class="details-cell"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>

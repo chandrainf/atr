@@ -3,152 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom DataTable with Centered Badges</title>
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <!-- Bootstrap CSS for badges -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Custom CSS -->
+    <title>Responsive Table Example</title>
     <style>
-        .circle {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin-right: 5px;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
         }
-        .red-circle {
-            background-color: red;
+
+        .table-responsive {
+            overflow-x: auto;
         }
-        .yellow-circle {
-            background-color: yellow;
+
+        .responsive-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .blue-circle {
-            background-color: blue;
+
+        .responsive-table th, .responsive-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
         }
-        /* Custom styles for table header */
-        .dataTable-custom thead {
-            background-color: #4CAF50; /* Change this to your desired color */
-            color: white; /* Text color */
+
+        .responsive-table th {
+            background-color: #f4f4f4;
         }
-        /* Additional custom styles for badges */
-        .badge-warning {
-            border: 1px solid rgba(255, 142, 66, 1);
-            border-radius: 5px;
-            background-color: #fff0e5;
-            color: #ff8e42;
-            font: 400 16px;
-            display: inline-block;
-            padding: 5px 10px; /* Add some padding for better appearance */
+
+        /* Small screens (max-width: 600px) */
+        @media (max-width: 600px) {
+            .responsive-table thead {
+                display: none;
+            }
+            .responsive-table tr {
+                display: block;
+                margin-bottom: 10px;
+            }
+            .responsive-table td {
+                display: block;
+                text-align: right;
+                position: relative;
+                padding-left: 50%;
+            }
+            .responsive-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 15px;
+                font-weight: bold;
+                text-align: left;
+            }
         }
-        /* Flexbox styling for centering the content within td */
-        .td-center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%; /* Ensure it takes the full height of the td */
+
+        /* Medium screens (max-width: 992px) */
+        @media (max-width: 992px) {
+            .responsive-table td:nth-of-type(4),
+            .responsive-table th:nth-of-type(4) {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Custom DataTable with Centered Badges</h1>
-        <table id="table1" class="display dataTable-custom" style="width:100%">
+    <div class="table-responsive">
+        <table class="responsive-table">
             <thead>
                 <tr>
-                    <th>Status</th>
-                    <th>Column 2</th>
-                    <th>Column 3</th>
-                    <th>Column 4</th>
-                    <th>Work Status</th>
+                    <th>Header 1</th>
+                    <th>Header 2</th>
+                    <th>Header 3</th>
+                    <th>Header 4</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Server Error</td>
-                    <td>Value 2</td>
-                    <td>Value 3</td>
-                    <td>Value 4</td>
-                    <td><div class="td-center"><span class="badge badge-warning">Dalam Perbaikan</span></div></td>
+                    <td data-label="Header 1">Data 1</td>
+                    <td data-label="Header 2">Data 2</td>
+                    <td data-label="Header 3">Data 3</td>
+                    <td data-label="Header 4">Data 4</td>
                 </tr>
                 <tr>
-                    <td>Normal</td>
-                    <td>Value 2</td>
-                    <td>Value 3</td>
-                    <td>Value 4</td>
-                    <td><div class="td-center"><span class="badge badge-primary">Normal</span></div></td>
+                    <td data-label="Header 1">Data 5</td>
+                    <td data-label="Header 2">Data 6</td>
+                    <td data-label="Header 3">Data 7</td>
+                    <td data-label="Header 4">Data 8</td>
                 </tr>
-                <!-- Add more rows as needed -->
+                <tr>
+                    <td data-label="Header 1">Data 9</td>
+                    <td data-label="Header 2">Data 10</td>
+                    <td data-label="Header 3">Data 11</td>
+                    <td data-label="Header 4">Data 12</td>
+                </tr>
             </tbody>
         </table>
     </div>
-
-    <!-- jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- DataTables JavaScript -->
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <!-- Initialization Script -->
-    <script>
-        $(document).ready(function() {
-            var table = $('#table1').DataTable();
-
-            function addStatusCirclesAndLogic() {
-                $("#table1 tbody tr").each(function () {
-                    var statusCell = $(this).find("td").eq(0);
-                    var workStatusCell = $(this).find("td").eq(4);
-
-                    // Clear previous circles and badges
-                    statusCell.find(".circle").remove();
-                    workStatusCell.find(".badge").removeClass("badge-warning badge-danger badge-primary");
-
-                    var statusText = statusCell.text().toLowerCase();
-                    var workStatusText = workStatusCell.text().toLowerCase();
-
-                    var circleClass = "";
-                    var statusClass = "";
-
-                    if (
-                        statusText.includes("server error") ||
-                        statusText.includes("blanko sertifikat habis") ||
-                        statusText.includes("printer tidak terdeteksi")
-                    ) {
-                        circleClass = "red-circle";
-                    } else if (
-                        statusText.includes("kertas hampir habis") ||
-                        statusText.includes("toner hampir habis")
-                    ) {
-                        circleClass = "yellow-circle";
-                    } else if (statusText.includes("normal")) {
-                        circleClass = "blue-circle";
-                    }
-
-                    if (workStatusText.includes("dalam perbaikan")) {
-                        statusClass = "badge badge-warning";
-                    } else if (workStatusText.includes("dalam antrian")) {
-                        statusClass = "badge badge-danger";
-                    } else if (workStatusText.includes("normal")) {
-                        statusClass = "badge badge-primary";
-                    }
-
-                    if (circleClass) {
-                        var circle = $("<span>").addClass("circle").addClass(circleClass);
-                        statusCell.prepend(circle);
-                    }
-
-                    if (statusClass) {
-                        workStatusCell.html('<div class="td-center"><span class="' + statusClass + '">' + workStatusCell.text() + '</span></div>');
-                    }
-                });
-            }
-
-            // Call the function initially to add circles and badges
-            addStatusCirclesAndLogic();
-
-            // Re-apply the function every time the table is redrawn
-            table.on('draw.dt', function() {
-                addStatusCirclesAndLogic();
-            });
-        });
-    </script>
 </body>
 </html>
