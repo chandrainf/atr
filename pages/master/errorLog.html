@@ -143,7 +143,6 @@
         text-decoration: none;
         display: block;
         text-align: left;
-
         transition: background-color 0.3s ease, color 0.3s ease;
       }
 
@@ -265,10 +264,17 @@
         padding: 20px;
         border-radius: 5px;
       }
-      .active {
+      /* .active {
+        background-color: #007bff;
+        color: white;
+      } */
+
+      .filter-active {
         background-color: #007bff;
         color: white;
       }
+
+
 
       #filters {
         border-radius: 4.818px;
@@ -454,7 +460,7 @@
                   >Master</a
                 >
               </li>
-              <li class="navbar-item dropdown">
+              <li class="navbar-item active dropdown">
                 <a href="#" class="navbar-link" id="report-link"
                   ><i class="me-2"
                     ><img
@@ -1440,7 +1446,7 @@
           oneMonthAgo.setMonth(now.getMonth() - 1);
 
           // Reset to start of week and end of week if weekly filter is active
-          if (weeklyFilterButton.classList.contains("active")) {
+          if (weeklyFilterButton.classList.contains("filter-active")) {
             startOfWeek = new Date();
             startOfWeek.setDate(
               startOfWeek.getDate() - startOfWeek.getDay() + 1
@@ -1454,12 +1460,12 @@
             if (selectedLocation && item.location !== selectedLocation)
               return false;
             if (
-              weeklyFilterButton.classList.contains("active") &&
+              weeklyFilterButton.classList.contains("filter-active") &&
               (errorTime < startOfWeek || errorTime > endOfWeek)
             )
               return false;
             if (
-              monthlyFilterButton.classList.contains("active") &&
+              monthlyFilterButton.classList.contains("filter-active") &&
               errorTime < oneMonthAgo
             )
               return false;
@@ -1519,13 +1525,13 @@
 
         locationFilter.addEventListener("change", filterData);
         weeklyFilterButton.addEventListener("click", () => {
-          weeklyFilterButton.classList.add("active");
-          monthlyFilterButton.classList.remove("active");
+          weeklyFilterButton.classList.add("filter-active");
+          monthlyFilterButton.classList.remove("filter-active");
           filterData();
         });
         monthlyFilterButton.addEventListener("click", () => {
-          monthlyFilterButton.classList.add("active");
-          weeklyFilterButton.classList.remove("active");
+          monthlyFilterButton.classList.add("filter-active");
+          weeklyFilterButton.classList.remove("filter-active");
           filterData();
         });
 
