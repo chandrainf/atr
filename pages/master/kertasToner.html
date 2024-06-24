@@ -48,7 +48,6 @@
         width: 100%;
         background-color: #132144;
         z-index: 1000;
-        /* display: flex; */
         padding: 10px 0;
       }
 
@@ -57,9 +56,7 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        /* max-width: 1200px; */
         padding: 0 20px;
-        align-items: center;
         box-sizing: border-box;
       }
 
@@ -129,33 +126,38 @@
 
       .dropdown-item {
         width: 100%;
-
-        /* #377DFF */
+        
       }
 
       .dropdown-link:active {
         color: #dde8f1;
+        
       }
 
       .dropdown-link {
-        /* color: white; */
         padding: 12px 16px;
         text-decoration: none;
         display: block;
         text-align: left;
         transition: background-color 0.3s ease, color 0.3s ease;
         color: #333333;
+        
       }
 
       .dropdown-link:hover {
         background-color: #dde8f1;
-        /* color: rgb(0, 0, 0); */
         border-radius: 8px;
       }
 
-      .dropdown-item.active {
-        background-color: #ffffff;
+      .dropdown-item.active .dropdown-link {
+       
         color: #377dff;
+        cursor: default; /* Prevents the pointer (hand) cursor */
+        
+      }
+
+      .dropdown-item.active .dropdown-link:hover {
+        background-color: transparent; 
       }
 
       /* Show the dropdown menu on hover */
@@ -302,7 +304,7 @@
                       Transaksi</a
                     >
                   </li>
-                  <li class="dropdown-item active">
+                  <li class="dropdown-item active" style="background-color: #ffffff;">
                     <a href="kertasToner.html" class="dropdown-link">
                       Kertas & Toner</a
                     >
