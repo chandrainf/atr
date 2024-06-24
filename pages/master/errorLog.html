@@ -130,11 +130,17 @@
         z-index: 1000;
         top: 100%;
         left: 0;
+        
       }
 
       .dropdown-item {
         width: 100%;
+        
         /* #377DFF */
+      }
+
+      .dropdown-link:active {
+        color: #dde8f1;
       }
 
       .dropdown-link {
@@ -144,16 +150,21 @@
         display: block;
         text-align: left;
         transition: background-color 0.3s ease, color 0.3s ease;
+        color: #333333;;
+      
+
       }
 
       .dropdown-link:hover {
         background-color: #dde8f1;
-        color: rgb(0, 0, 0);
+        /* color: rgb(0, 0, 0); */
         border-radius: 8px;
+        
       }
 
-      .dropdown-link:active {
-        color: #dde8f1;
+      .dropdown-item.active {
+        background-color: #ffffff;
+        color: #377DFF;
       }
 
       /* Show the dropdown menu on hover */
@@ -161,10 +172,10 @@
         display: block;
       }
 
-      .map-container {
+      /* .map-container {
         width: 100%;
         height: calc(100vh - 90px);
-      }
+      } */
 
       .timeline {
         position: relative;
@@ -264,13 +275,10 @@
         padding: 20px;
         border-radius: 5px;
       }
-      /* .active {
-        background-color: #007bff;
-        color: white;
-      } */
+      
 
-      .filter-active {
-        background-color: #007bff;
+      .filterActive {
+        background-color: #132144;
         color: white;
       }
 
@@ -1446,7 +1454,7 @@
           oneMonthAgo.setMonth(now.getMonth() - 1);
 
           // Reset to start of week and end of week if weekly filter is active
-          if (weeklyFilterButton.classList.contains("filter-active")) {
+          if (weeklyFilterButton.classList.contains("filterActive")) {
             startOfWeek = new Date();
             startOfWeek.setDate(
               startOfWeek.getDate() - startOfWeek.getDay() + 1
@@ -1460,12 +1468,12 @@
             if (selectedLocation && item.location !== selectedLocation)
               return false;
             if (
-              weeklyFilterButton.classList.contains("filter-active") &&
+              weeklyFilterButton.classList.contains("filterActive") &&
               (errorTime < startOfWeek || errorTime > endOfWeek)
             )
               return false;
             if (
-              monthlyFilterButton.classList.contains("filter-active") &&
+              monthlyFilterButton.classList.contains("filterActive") &&
               errorTime < oneMonthAgo
             )
               return false;
@@ -1525,13 +1533,13 @@
 
         locationFilter.addEventListener("change", filterData);
         weeklyFilterButton.addEventListener("click", () => {
-          weeklyFilterButton.classList.add("filter-active");
-          monthlyFilterButton.classList.remove("filter-active");
+          weeklyFilterButton.classList.add("filterActive");
+          monthlyFilterButton.classList.remove("filterActive");
           filterData();
         });
         monthlyFilterButton.addEventListener("click", () => {
-          monthlyFilterButton.classList.add("filter-active");
-          weeklyFilterButton.classList.remove("filter-active");
+          monthlyFilterButton.classList.add("filterActive");
+          weeklyFilterButton.classList.remove("filterActive");
           filterData();
         });
 

@@ -129,7 +129,12 @@
 
       .dropdown-item {
         width: 100%;
+
         /* #377DFF */
+      }
+
+      .dropdown-link:active {
+        color: #dde8f1;
       }
 
       .dropdown-link {
@@ -139,16 +144,18 @@
         display: block;
         text-align: left;
         transition: background-color 0.3s ease, color 0.3s ease;
+        color: #333333;
       }
 
       .dropdown-link:hover {
         background-color: #dde8f1;
-        color: rgb(0, 0, 0);
+        /* color: rgb(0, 0, 0); */
         border-radius: 8px;
       }
 
-      .dropdown-link:active {
-        color: #dde8f1;
+      .dropdown-item.active {
+        background-color: #ffffff;
+        color: #377dff;
       }
 
       /* Show the dropdown menu on hover */

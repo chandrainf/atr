@@ -97,9 +97,9 @@
         border-bottom: 2px solid yellow;
       }
 
-      /* .navbar-link:hover {
+      .navbar-link:hover {
         color: yellow;
-      } */
+      }
 
       .navbar-link::before {
         content: "";
@@ -132,19 +132,33 @@
 
       .dropdown-item {
         width: 100%;
+
+        /* #377DFF */
+      }
+
+      .dropdown-link:active {
+        color: #dde8f1;
       }
 
       .dropdown-link {
+        /* color: white; */
         padding: 12px 16px;
         text-decoration: none;
         display: block;
         text-align: left;
         transition: background-color 0.3s ease, color 0.3s ease;
+        color: #333333;
       }
 
       .dropdown-link:hover {
         background-color: #dde8f1;
-        color: rgb(0, 0, 0);
+        /* color: rgb(0, 0, 0); */
+        border-radius: 8px;
+      }
+
+      .dropdown-item.active {
+        background-color: #ffffff;
+        color: #377dff;
       }
 
       /* Show the dropdown menu on hover */
@@ -282,7 +296,7 @@
         margin-right: 10px;
         padding: 10px;
       }
-      .toggle-container button.active {
+      .toggle-container button.aktifkan {
         background-color: #002845;
         color: white;
       }
@@ -647,7 +661,7 @@
                     <div class="toggle-container">
                       <button
                         id="monthlyBtn"
-                        class="active"
+                        class="aktifkan"
                         onclick="setTimePeriod('monthly')"
                         style="border-radius: 4.818px"
                       >
@@ -738,7 +752,7 @@
                     <div class="toggle-container">
                       <button
                         id="monthlyBtn1"
-                        class="active"
+                        class="aktifkan"
                         onclick="setTimePeriod1('monthly1')"
                         style="border-radius: 4.818px"
                       >
@@ -943,12 +957,12 @@
       // Function to set the time period and update the chart
       function setTimePeriod(period) {
         timePeriod = period;
-        document.getElementById("monthlyBtn").classList.remove("active");
-        document.getElementById("weeklyBtn").classList.remove("active");
+        document.getElementById("monthlyBtn").classList.remove("aktifkan");
+        document.getElementById("weeklyBtn").classList.remove("aktifkan");
         if (period === "monthly") {
-          document.getElementById("monthlyBtn").classList.add("active");
+          document.getElementById("monthlyBtn").classList.add("aktifkan");
         } else {
-          document.getElementById("weeklyBtn").classList.add("active");
+          document.getElementById("weeklyBtn").classList.add("aktifkan");
         }
         updateChart();
       }
@@ -1084,12 +1098,12 @@
       // Function to set the time period and update the chart
       function setTimePeriod1(period) {
         timePeriod1 = period;
-        document.getElementById("monthlyBtn1").classList.remove("active");
-        document.getElementById("weeklyBtn1").classList.remove("active");
+        document.getElementById("monthlyBtn1").classList.remove("aktifkan");
+        document.getElementById("weeklyBtn1").classList.remove("aktifkan");
         if (period === "monthly1") {
-          document.getElementById("monthlyBtn1").classList.add("active");
+          document.getElementById("monthlyBtn1").classList.add("aktifkan");
         } else {
-          document.getElementById("weeklyBtn1").classList.add("active");
+          document.getElementById("weeklyBtn1").classList.add("aktifkan");
         }
         updateChart1();
       }
