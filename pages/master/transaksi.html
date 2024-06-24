@@ -842,36 +842,36 @@
       // $(document).ready(function () {
       // Initialize Simple-DataTables for each table
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const navbarItems = document.querySelectorAll(".navbar-item");
-        const dropdownLink = document.getElementById("report-link");
-        const dropdownMenu = dropdownLink.nextElementSibling;
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const navbarItems = document.querySelectorAll(".navbar-item");
+      //   const dropdownLink = document.getElementById("report-link");
+      //   const dropdownMenu = dropdownLink.nextElementSibling;
 
-        dropdownLink.addEventListener("click", function (event) {
-          event.preventDefault();
-          dropdownMenu.classList.toggle("show");
-          dropdownLink.parentElement.classList.toggle("active");
-        });
+      //   dropdownLink.addEventListener("click", function (event) {
+      //     event.preventDefault();
+      //     dropdownMenu.classList.toggle("show");
+      //     dropdownLink.parentElement.classList.toggle("active");
+      //   });
 
-        navbarItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            if (this.querySelector(".dropdown-menu")) {
-              this.classList.add("active");
-            } else {
-              this.classList.add("active");
-              dropdownMenu.classList.remove("show");
-            }
-          });
-        });
+      //   navbarItems.forEach((item) => {
+      //     item.addEventListener("click", function () {
+      //       navbarItems.forEach((nav) => nav.classList.remove("active"));
+      //       if (this.querySelector(".dropdown-menu")) {
+      //         this.classList.add("active");
+      //       } else {
+      //         this.classList.add("active");
+      //         dropdownMenu.classList.remove("show");
+      //       }
+      //     });
+      //   });
 
-        document.addEventListener("click", function (event) {
-          if (!event.target.closest(".navbar-item")) {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            dropdownMenu.classList.remove("show");
-          }
-        });
-      });
+      //   document.addEventListener("click", function (event) {
+      //     if (!event.target.closest(".navbar-item")) {
+      //       navbarItems.forEach((nav) => nav.classList.remove("active"));
+      //       dropdownMenu.classList.remove("show");
+      //     }
+      //   });
+      // });
 
       $(document).ready(function () {
         var table = $("#example1").DataTable();

@@ -127,18 +127,14 @@
         top: 100%;
         left: 0;
         color: #333333;
-        
       }
 
       .dropdown-item {
         width: 100%;
-        
-        
       }
 
       .dropdown-link:active {
         color: #dde8f1;
-        
       }
 
       .dropdown-link {
@@ -148,7 +144,6 @@
         text-align: left;
         transition: background-color 0.3s ease, color 0.3s ease;
         color: #333333;
-        
       }
 
       .dropdown-link:hover {
@@ -157,14 +152,12 @@
       }
 
       .dropdown-item.active .dropdown-link {
-       
         color: #377dff;
         cursor: default; /* Prevents the pointer (hand) cursor */
-        
       }
 
       .dropdown-item.active .dropdown-link:hover {
-        background-color: transparent; 
+        background-color: transparent;
       }
 
       /* Show the dropdown menu on hover */
@@ -470,8 +463,11 @@
                       width="20" /></i
                   >Report</a
                 >
-                <ul class="dropdown-menu" style="color: #333333;">
-                  <li class="dropdown-item active" style="background-color: #ffffff;">
+                <ul class="dropdown-menu" style="color: #333333">
+                  <li
+                    class="dropdown-item active"
+                    style="background-color: #ffffff"
+                  >
                     <a href="errorLog.html" class="dropdown-link">Error Log</a>
                   </li>
                   <li class="dropdown-item">
@@ -1124,36 +1120,36 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const navbarItems = document.querySelectorAll(".navbar-item");
-        const dropdownLink = document.getElementById("report-link");
-        const dropdownMenu = dropdownLink.nextElementSibling;
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const navbarItems = document.querySelectorAll(".navbar-item");
+      //   const dropdownLink = document.getElementById("report-link");
+      //   const dropdownMenu = dropdownLink.nextElementSibling;
 
-        dropdownLink.addEventListener("click", function (event) {
-          event.preventDefault();
-          dropdownMenu.classList.toggle("show");
-          dropdownLink.parentElement.classList.toggle("active");
-        });
+      //   dropdownLink.addEventListener("click", function (event) {
+      //     event.preventDefault();
+      //     dropdownMenu.classList.toggle("show");
+      //     dropdownLink.parentElement.classList.toggle("active");
+      //   });
 
-        navbarItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            if (this.querySelector(".dropdown-menu")) {
-              this.classList.add("active");
-            } else {
-              this.classList.add("active");
-              dropdownMenu.classList.remove("show");
-            }
-          });
-        });
+      //   navbarItems.forEach((item) => {
+      //     item.addEventListener("click", function () {
+      //       navbarItems.forEach((nav) => nav.classList.remove("active"));
+      //       if (this.querySelector(".dropdown-menu")) {
+      //         this.classList.add("active");
+      //       } else {
+      //         this.classList.add("active");
+      //         dropdownMenu.classList.remove("show");
+      //       }
+      //     });
+      //   });
 
-        document.addEventListener("click", function (event) {
-          if (!event.target.closest(".navbar-item")) {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            dropdownMenu.classList.remove("show");
-          }
-        });
-      });
+      //   document.addEventListener("click", function (event) {
+      //     if (!event.target.closest(".navbar-item")) {
+      //       navbarItems.forEach((nav) => nav.classList.remove("active"));
+      //       dropdownMenu.classList.remove("show");
+      //     }
+      //   });
+      // });
 
       $(document).ready(function () {
         // Initialize DataTables for each table
@@ -1399,14 +1395,7 @@
           addDetailsLinks1();
         });
 
-
         //Event
-
-
-
-
-
-
       });
 
       document.addEventListener("DOMContentLoaded", () => {
@@ -1532,13 +1521,27 @@
           chart.render();
         };
 
+        // locationFilter.addEventListener("change", filterData);
+        // weeklyFilterButton.addEventListener("click", () => {
+        //   weeklyFilterButton.classList.add("filterActive");
+        //   monthlyFilterButton.classList.remove("filterActive");
+        //   filterData();
+        // });
+        // monthlyFilterButton.addEventListener("click", () => {
+        //   monthlyFilterButton.classList.add("filterActive");
+        //   weeklyFilterButton.classList.remove("filterActive");
+        //   filterData();
+        // });
+
         locationFilter.addEventListener("change", filterData);
-        weeklyFilterButton.addEventListener("click", () => {
+        weeklyFilterButton.addEventListener("click", (event) => {
+          event.preventDefault(); // Prevent default link behavior
           weeklyFilterButton.classList.add("filterActive");
           monthlyFilterButton.classList.remove("filterActive");
           filterData();
         });
-        monthlyFilterButton.addEventListener("click", () => {
+        monthlyFilterButton.addEventListener("click", (event) => {
+          event.preventDefault(); // Prevent default link behavior
           monthlyFilterButton.classList.add("filterActive");
           weeklyFilterButton.classList.remove("filterActive");
           filterData();
