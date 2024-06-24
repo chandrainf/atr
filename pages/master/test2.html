@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/compiled/svg/favicon.svg" type="image/x-icon" />
+    <link rel="shortcut icon" href="data:image/png;base64,...(truncated)..." type="image/png" />
+    <link rel="stylesheet" href="/assets/compiled/css/app.css" />
+    <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
+    <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
+</head>
+<body>
+    <select id="locationFilter">
+        <option value="all">All</option>
+    </select>
+    <button id="weeklyBtn" class="filterButton">Weekly</button>
+    <button id="monthlyBtn" class="filterButton">Monthly</button>
+    <table id="dataTable1" style="display: none">
+        <tr>
+            <th>Location</th>
+            <th>Transaction Date</th>
+            <th>Printed Certificates</th>
+            <th>Verifications</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>location1</td>
+            <td>2024-01-15</td>
+            <td>50</td>
+            <td>30</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>location1</td>
+            <td>2024-02-20</td>
+            <td>20</td>
+            <td>10</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>location2</td>
+            <td>2024-03-10</td>
+            <td>70</td>
+            <td>50</td>
+            <td>120</td>
+        </tr>
+        <tr>
+            <td>location2</td>
+            <td>2024-04-05</td>
+            <td>10</td>
+            <td>5</td>
+            <td>15</td>
+        </tr>
+        <!-- Add more rows as needed -->
+    </table>
+    <div id="chart"></div>
+
+    <script src="/assets/static/js/pages/horizontal-layout.js"></script>
+    <script src="/assets/static/js/components/dark.js"></script>
+    <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/assets/compiled/js/app.js"></script>
+    <script src="/assets/extensions/apexcharts/apexcharts.min.js"></script>
+
+    <script>
+        var options = {
+            chart: {
+                type: "bar",
+            },
+            series: [
+                {
+                    name: "Printed Certificates",
+                    data: [],
+                    color: "#377DFF",
+                },
+                {
+                    name: "Verifications",
+                    data: [],
+                    color: "#BF37FF",
+                },
+            ],
+            xaxis: {
+                categories: [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December",
+                ],
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+        const locationFilter = document.getElementById("locationFilter");
+        const weeklyFilterButton = document.getElementById("weeklyBtn");
+        const monthlyFilterButton = document.getElementById("monthlyBtn");
+        const dataTable = document.getElementById("dataTable1");
+
+        const initializeLocationFilter = () => {
+            const locations = new Set();
+            for (let i = 1; i < dataTable.rows.length; i++) {
+                const location = dataTable.rows[i].cells[0].innerText;
+                locations.add(location);
+            }
+            locations.forEach((location) => {
+                const option = document.createElement("option");
+                option.value = location;
+                option.textContent = location;
+                locationFilter.appendChild(option);
+            });
+        };
+
+        const filterData = () => {
+            const selectedLocation = locationFilter.value;
+            const now = new Date();
+            const startOfWeek = new Date(now);
+            startOfWeek.setDate(now.getDate() - now.getDay() + 1); // Start of current week (Monday)
+            const endOfWeek = new Date(startOfWeek);
+            endOfWeek.setDate(startOfWeek.getDate() + 6); // End of current week (Sunday)
+            const oneMonthAgo = new Date(now);
+            oneMonthAgo.setMonth(now.getMonth() - 1);
+
+            let filteredData = [];
+            for (let i = 1; i < dataTable.rows.length; i++) {
+                const row = dataTable.rows[i];
+                const location = row.cells[0].innerText;
+                const printed = parseInt(row.cells[2].innerText);
+                const verified = parseInt(row.cells[3].innerText);
+                const transactionDate = new Date(row.cells[1].innerText);
+
+                if (selectedLocation !== "all" && location !== selectedLocation)
+                    continue;
+                if (weeklyFilterButton.classList.contains("filterActive") && (transactionDate < startOfWeek || transactionDate > endOfWeek))
+                    continue;
+                if (monthlyFilterButton.classList.contains("filterActive") && transactionDate < oneMonthAgo)
+                    continue;
+
+                filteredData.push({ location, printed, verified, transactionDate });
+            }
+
+            updateChart(filteredData);
+        };
+
+        const updateChart = (filteredData) => {
+            let printedCertificates = Array(12).fill(0);
+            let verifications = Array(12).fill(0);
+            const now = new Date();
+            const currentYear = now.getFullYear();
+
+            filteredData.forEach((item) => {
+                const transactionDate = new Date(item.transactionDate);
+                if (transactionDate.getFullYear() === currentYear) {
+                    const month = transactionDate.getMonth();
+                    printedCertificates[month] += item.printed;
+                    verifications[month] += item.verified;
+                }
+            });
+
+            chart.updateSeries([
+                {
+                    name: "Printed Certificates",
+                    data: printedCertificates,
+                },
+                {
+                    name: "Verifications",
+                    data: verifications,
+                },
+            ]);
+        };
+
+        const setTimePeriod = (period) => {
+            if (period === "monthly") {
+                monthlyFilterButton.classList.add("filterActive");
+                weeklyFilterButton.classList.remove("filterActive");
+            } else {
+                weeklyFilterButton.classList.add("filterActive");
+                monthlyFilterButton.classList.remove("filterActive");
+            }
+            filterData();
+        };
+
+        // Initialize filters
+        initializeLocationFilter();
+
+        // Add event listeners
+        locationFilter.addEventListener("change", filterData);
+        weeklyFilterButton.addEventListener("click", () => {
+            setTimePeriod("weekly");
+        });
+        monthlyFilterButton.addEventListener("click", () => {
+            setTimePeriod("monthly");
+        });
+
+        // Initial chart update
+        filterData();
+    </script>
+</body>
+</html>
