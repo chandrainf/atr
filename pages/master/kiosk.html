@@ -126,18 +126,14 @@
         top: 100%;
         left: 0;
         color: #333333;
-        
       }
 
       .dropdown-item {
         width: 100%;
-        
-        
       }
 
       .dropdown-link:active {
         color: #dde8f1;
-        
       }
 
       .dropdown-link {
@@ -147,7 +143,6 @@
         text-align: left;
         transition: background-color 0.3s ease, color 0.3s ease;
         color: #333333;
-        
       }
 
       .dropdown-link:hover {
@@ -156,14 +151,12 @@
       }
 
       .dropdown-item.active .dropdown-link {
-       
         color: #377dff;
         cursor: default; /* Prevents the pointer (hand) cursor */
-        
       }
 
       .dropdown-item.active .dropdown-link:hover {
-        background-color: transparent; 
+        background-color: transparent;
       }
 
       /* Show the dropdown menu on hover */
@@ -229,9 +222,9 @@
         border-radius: 3px !important; /* Add border-radius for rounded corners */
       }
 
-      .table-responsive {
+      /* .table-responsive {
         overflow-x: auto;
-      }
+      } */
 
       .dataTable-custom {
         width: 100%;
@@ -250,7 +243,7 @@
       }
 
       /* Small screens (max-width: 600px) */
-      @media (max-width: 600px) {
+      /* @media (max-width: 600px) {
         .dataTable-custom thead {
           display: none;
         }
@@ -268,20 +261,19 @@
           content: attr(data-label);
           position: absolute;
           left: 0;
-          /* width: 50%; */
           padding-left: 15px;
           font-weight: bold;
           text-align: left;
         }
-      }
+      } */
 
       /* Medium screens (max-width: 992px) */
-      @media (max-width: 992px) {
+      /* @media (max-width: 992px) {
         .dataTable-custom td:nth-of-type(4),
         .dataTable-custom th:nth-of-type(4) {
           display: none;
         }
-      }
+      } */
     </style>
   </head>
 
@@ -334,7 +326,7 @@
                       width="20" /></i
                   >Report</a
                 >
-                <ul class="dropdown-menu" style="color: #333333;">
+                <ul class="dropdown-menu" style="color: #333333">
                   <li class="dropdown-item">
                     <a href="errorLog.html" class="dropdown-link">Error Log</a>
                   </li>
@@ -575,13 +567,33 @@
       });
 
       // Initialize the map
-      var map = L.map("map").setView([-2.5489, 118.0149], 5);
+      var map = L.map("map");
 
       // Add a tile layer
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
+
+      // Function to adjust map view based on screen size
+      function setMapView() {
+        if (window.innerWidth <= 600) {
+          map.setView([-2.5, 118.0], 4); // Coordinates and zoom for small screens
+        } else if (window.innerWidth <= 992) {
+          map.setView([-2.5, 118.0], 5); // Coordinates and zoom for medium screens
+        } else {
+          map.setView([-2.5, 118.0], 6); // Coordinates and zoom for large screens
+        }
+      }
+
+      // Initial call to set the correct size
+      setMapView();
+
+      // Adjust the map view on window resize
+      window.addEventListener("resize", function () {
+        setMapView();
+        map.invalidateSize();
+      });
 
       // Parse the table data into a kiosks array
       var kiosks = [];
@@ -643,11 +655,20 @@
       legend.onAdd = function (map) {
         var div = L.DomUtil.create("div", "legend");
         div.innerHTML +=
-          "<b>Total Locations :</b> " + uniqueLocations.size + " Kiosk" + "<br>";
+          "<b>Total Locations :</b> " +
+          uniqueLocations.size +
+          " Kiosk" +
+          "<br>";
         div.innerHTML +=
-          "<b>Total Kiosks &emsp;&nbsp;:</b> " + totalKiosks + " Lokasi" + "<br>";
+          "<b>Total Kiosks &emsp;&nbsp;:</b> " +
+          totalKiosks +
+          " Lokasi" +
+          "<br>";
         div.innerHTML +=
-          "<b>Active Kiosks &nbsp;&nbsp:</b> " + activeKiosks + " Kiosk" + "<br>";
+          "<b>Active Kiosks &nbsp;&nbsp:</b> " +
+          activeKiosks +
+          " Kiosk" +
+          "<br>";
         return div;
       };
 

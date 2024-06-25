@@ -92,7 +92,6 @@
         justify-content: center;
         align-items: center;
         flex-grow: 1;
-        
       }
 
       .navbar-item {
@@ -144,18 +143,14 @@
         top: 100%;
         left: 0;
         color: #333333;
-        
       }
 
       .dropdown-item {
         width: 100%;
-        
-        
       }
 
       .dropdown-link:active {
         color: #dde8f1;
-        
       }
 
       .dropdown-link {
@@ -165,7 +160,6 @@
         text-align: left;
         transition: background-color 0.3s ease, color 0.3s ease;
         color: #333333;
-        
       }
 
       .dropdown-link:hover {
@@ -174,14 +168,12 @@
       }
 
       .dropdown-item.active .dropdown-link {
-       
         color: #377dff;
         cursor: default; /* Prevents the pointer (hand) cursor */
-        
       }
 
       .dropdown-item.active .dropdown-link:hover {
-        background-color: transparent; 
+        background-color: transparent;
       }
 
       /* Show the dropdown menu on hover */
@@ -189,8 +181,57 @@
         display: block;
       }
 
+      /* New styles for responsive navbar */
+      .hamburger {
+        display: none;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+      }
+
+      @media (max-width: 600px) {
+        .navbar-list {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
+        }
+
+        .navbar-list.active {
+          display: flex;
+          position: absolute;
+          top: 50px;
+          left: 0;
+          background-color: #132144;
+          z-index: 999;
+        }
+
+        .navbar-item {
+          width: 100%;
+        }
+
+        .hamburger {
+          display: block;
+        }
+      }
+
+      /* Map container with default height */
       #map {
-        height: 600px;
+        /* width: 100%; */
+        height: 600px; /* Default height */
+      }
+
+      /* Responsive height adjustments */
+      @media (max-width: 600px) {
+        #map {
+          height: 400px; /* Adjust height for smaller screens */
+        }
+      }
+
+      @media (min-width: 601px) and (max-width: 992px) {
+        #map {
+          height: 500px; /* Adjust height for medium screens */
+        }
       }
 
       .legend {
@@ -406,9 +447,9 @@
         border-radius: 3px !important; /* Add border-radius for rounded corners */
       }
 
-      .table-responsive {
+      /* .table-responsive {
         overflow-x: auto;
-      }
+      } */
 
       .dataTable-custom {
         width: 100%;
@@ -452,12 +493,12 @@
       } */
 
       /* Medium screens (max-width: 992px) */
-      @media (max-width: 992px) {
+      /* @media (max-width: 992px) {
         .dataTable-custom td:nth-of-type(4),
         .dataTable-custom th:nth-of-type(4) {
           display: none;
         }
-      }
+      } */
     </style>
   </head>
 
@@ -466,7 +507,7 @@
     <div id="app">
       <div id="main" class="layout-horizontal">
         <nav class="navbar">
-          <div class="navbar-content ">
+          <div class="navbar-content">
             <a href="index.html" class="menu-link">
               <img
                 class="navbar-logo"
@@ -476,6 +517,7 @@
                 width="135"
               />
             </a>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
             <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
             <ul class="navbar-list gap-4">
               <li class="navbar-item active">
@@ -871,7 +913,6 @@
           </div>
         </div>
       </div>
-      <!-- </div> -->
     </div>
 
     <script src="/assets/static/js/components/dark.js"></script>
@@ -917,6 +958,10 @@
           }
         });
       });
+      function toggleMenu() {
+        var navbarList = document.querySelector(".navbar-list");
+        navbarList.classList.toggle("active");
+      }
 
       $(document).ready(function () {
         // Initialize DataTable
@@ -1023,12 +1068,36 @@
       });
 
       // Initialize the map centered on Indonesia
-      var map = L.map("map").setView([-2.5, 118.0], 5); // Central coordinates of Indonesia
+      // var map = L.map("map").setView([-2.5, 118.0], 5); // Central coordinates of Indonesia
 
-      // Add the base layer from OpenStreetMap
+      // Initialize the map
+      var map = L.map("map");
+
+      // Add a tile layer
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; OpenStreetMap contributors",
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
+
+      // Function to adjust map view based on screen size
+      function setMapView() {
+        if (window.innerWidth <= 600) {
+          map.setView([-2.5, 118.0], 4); // Coordinates and zoom for small screens
+        } else if (window.innerWidth <= 992) {
+          map.setView([-2.5, 118.0], 5); // Coordinates and zoom for medium screens
+        } else {
+          map.setView([-2.5, 118.0], 6); // Coordinates and zoom for large screens
+        }
+      }
+
+      // Initial call to set the correct size
+      setMapView();
+
+      // Adjust the map view on window resize
+      window.addEventListener("resize", function () {
+        setMapView();
+        map.invalidateSize();
+      });
 
       // Function to extract kiosk locations from the table
       function extractKioskLocationsFromTable() {

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 10px 20px;
+      color: white;
+    }
+    .logo img {
+      height: 40px;
+    }
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .navbar-list {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar-list li {
+      margin-left: 20px;
+    }
+    .navbar-list li a {
+      color: white;
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      .navbar-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: #333;
+      }
+      .navbar-list.active {
+        display: flex;
+      }
+      .navbar-list li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <a href="index.html"><img src="./assets/compiled/svg/logo.svg" alt="Logo"></a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">
+      &#9776;
+    </div>
+    <ul class="navbar-list">
+      <li class="menu-item"><a href="index.html">Dashboard</a></li>
+      <li class="menu-item"><a href="component-accordion.html">Accordion</a></li>
+      <li class="menu-item"><a href="component-alert.html">Alert</a></li>
+      <li class="menu-item"><a href="component-badge.html">Badge</a></li>
+      <li class="menu-item"><a href="component-breadcrumb.html">Breadcrumb</a></li>
+      <li class="menu-item"><a href="component-button.html">Button</a></li>
+      <li class="menu-item"><a href="component-card.html">Card</a></li>
+      <li class="menu-item"><a href="component-carousel.html">Carousel</a></li>
+      <li class="menu-item"><a href="component-dropdown.html">Dropdown</a></li>
+      <li class="menu-item"><a href="component-list-group.html">List Group</a></li>
+      <li class="menu-item"><a href="component-modal.html">Modal</a></li>
+      <li class="menu-item"><a href="component-navs.html">Navs</a></li>
+      <li class="menu-item"><a href="component-navbar.html">Navbar</a></li>
+      <li class="menu-item"><a href="component-offcanvas.html">Offcanvas</a></li>
+      <li class="menu-item"><a href="component-pagination.html">Pagination</a></li>
+      <li class="menu-item"><a href="component-progress.html">Progress</a></li>
+      <li class="menu-item"><a href="component-spinner.html">Spinner</a></li>
+      <li class="menu-item"><a href="component-toast.html">Toast</a></li>
+      <li class="menu-item"><a href="component-tooltip.html">Tooltip</a></li>
+    </ul>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const navbarList = document.querySelector('.navbar-list');
+      navbarList.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
