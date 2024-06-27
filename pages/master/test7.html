@@ -71,6 +71,10 @@
         padding: 10px 0;
       }
 
+      .navbar.scrolled {
+        border-bottom: 3px solid yellow;
+      }
+
       .navbar-content {
         display: flex;
         align-items: center;
@@ -222,49 +226,21 @@
         }
         .map-container {
           position: relative;
-          z-index: 999;
         }
 
-        .card {
+        .map-container {
+          margin-top: 0; /* Initially no margin */
           position: relative;
         }
 
-
-        .has-sub .dropdown-menu {
-            display: none;
-            position: static;
-            top: auto;
-            left: auto;
-            background-color: transparent;
-            box-shadow: none;
-            color: #ffe5e5;
-        }
-        
-        .has-sub.active .dropdown-menu {
-            display: block;
-            margin-top: 0.5rem; /* Adjust spacing between items */
-        }
-        
-        .dropdown-item {
-            padding: 0.5rem 2rem;
-            /* background-color: #333; */
-            background-color: #132144;
-            
-            border-bottom: 1px solid #555;
-        }
-        
-        .dropdown-item:last-child {
-            border-bottom: none; /* Remove border on last item */
-        }
-
-        /* .dropdown-link:hover {
+        .dropdown-link:hover {
           padding: 12px 16px;
           text-decoration: none;
           display: block;
           text-align: left;
           transition: background-color 0.3s ease, color 0.3s ease;
           color: #333333;
-        } */
+        }
       }
 
       /* Map container with default height */
@@ -975,76 +951,58 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // const navbarItems = document.querySelectorAll(".navbar-item");
-        // const dropdownLink = document.getElementById("report-link");
-        // const dropdownMenu = dropdownLink.nextElementSibling;
+        const navbarItems = document.querySelectorAll(".navbar-item");
+        const dropdownLink = document.getElementById("report-link");
+        const dropdownMenu = dropdownLink.nextElementSibling;
 
-        // dropdownLink.addEventListener("click", function (event) {
-        //   event.preventDefault();
-        //   dropdownMenu.classList.toggle("show");
-        //   dropdownLink.parentElement.classList.toggle("active");
-        // });
+        dropdownLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          dropdownMenu.classList.toggle("show");
+          dropdownLink.parentElement.classList.toggle("active");
+        });
 
-        // navbarItems.forEach((item) => {
-        //   item.addEventListener("click", function () {
-        //     navbarItems.forEach((nav) => nav.classList.remove("active"));
-        //     if (this.querySelector(".dropdown-menu")) {
-        //       this.classList.add("active");
-        //     } else {
-        //       this.classList.add("active");
-        //       dropdownMenu.classList.remove("show");
-        //     }
-        //   });
-        // });
-
-        // document.addEventListener("click", function (event) {
-        //   if (!event.target.closest(".navbar-item")) {
-        //     navbarItems.forEach((nav) => nav.classList.remove("active"));
-        //     dropdownMenu.classList.remove("show");
-        //   }
-        // });
-
-        const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
-            if (window.innerWidth > 600) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.addEventListener('mouseenter', function() {
-                        this.classList.add('active');
-                    });
-                    dropdown.addEventListener('mouseleave', function() {
-                        this.classList.remove('active');
-                    });
-                });
+        navbarItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            navbarItems.forEach((nav) => nav.classList.remove("active"));
+            if (this.querySelector(".dropdown-menu")) {
+              this.classList.add("active");
             } else {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.add('has-sub');
-                    const link = dropdown.querySelector('.navbar-link');
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                    });
-                });
+              this.classList.add("active");
+              dropdownMenu.classList.remove("show");
             }
+          });
+        });
+
+        document.addEventListener("click", function (event) {
+          if (!event.target.closest(".navbar-item")) {
+            navbarItems.forEach((nav) => nav.classList.remove("active"));
+            dropdownMenu.classList.remove("show");
+          }
+        });
       });
 
-      function toggleMenu() {
-        var navbarList = document.querySelector(".navbar-list");
-        var mapContainer = document.querySelector(".map-container");
-        var card = document.querySelector(".card");
+      //   function toggleMenu() {
+      //     var navbarList = document.querySelector(".navbar-list");
+      //     var mapContainer = document.querySelector(".map-container");
+      //     // var card = document.querySelector(".card")
+      //     navbarList.classList.toggle("active");
 
-        navbarList.classList.toggle("active");
+      //     if (navbarList.classList.contains("active")) {
+      //       mapContainer.style.top = `${navbarList.clientHeight}px`;
+      //       card.style.top = `${navbarList.clientHeight}px`
+      //     } else {
+      //       mapContainer.style.top = "0";
+      //       card.style.top = "0";
+      //     }
+      //   }
 
-        if (navbarList.classList.contains("active")) {
-          mapContainer.style.top = `${navbarList.clientHeight}px`;
-          card.style.top = `${navbarList.clientHeight}px`;
-        } else {
-          mapContainer.style.top = "0";
-          card.style.top = "0";
-        }
-      }
+      
 
       $(document).ready(function () {
         // Initialize DataTable
         var table = $("#table1").DataTable();
+
+        
 
         // Function to add status circles and work status logic
         function addStatusCirclesAndLogic() {
