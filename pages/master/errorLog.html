@@ -92,11 +92,11 @@
       }
 
       .navbar-item.active .navbar-link {
-        border-bottom: 2px solid yellow;
+        border-bottom: 2px solid #FBCB1F;
       }
 
       .navbar-link:hover {
-        color: yellow;
+        color: #FBCB1F;
       }
 
       .navbar-link::before {
@@ -106,7 +106,7 @@
         height: 2px;
         bottom: 0;
         left: 0;
-        background-color: yellow;
+        background-color: #FBCB1F;
         visibility: hidden;
         transition: all 0.3s ease-in-out;
       }
@@ -152,8 +152,8 @@
       }
 
       .dropdown-item.active .dropdown-link {
-        color: #377dff;
         cursor: default; /* Prevents the pointer (hand) cursor */
+        color: #377DFF;
       }
 
       .dropdown-item.active .dropdown-link:hover {
@@ -427,6 +427,28 @@
 
       /* Custom dataTables */
 
+      .dataTable-custom {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      
+      @media (max-width: 576px) {
+        .dataTable-custom {
+          font-size: x-small;
+        }
+      }
+
+      .dataTable-custom th,
+      .dataTable-custom td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        color: #333333;
+      }
+
+      .dataTable-custom th {
+        background-color: #dde8f1;
+      }
+
       .dataTable-custom thead {
         background-color: #dde8f1;
         border-radius: 10px;
@@ -452,54 +474,6 @@
         overflow-x: auto;
       } */
 
-      .dataTable-custom {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      .dataTable-custom th,
-      .dataTable-custom td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        color: #333333;
-      }
-
-      .dataTable-custom th {
-        background-color: #dde8f1;
-      }
-
-      /* Small screens (max-width: 576px) */
-      /* @media (max-width: 576px) {
-        .dataTable-custom thead {
-          display: none;
-        }
-        .dataTable-custom tr {
-          display: block;
-          margin-bottom: 10px;
-        }
-        .dataTable-custom td {
-          display: block;
-          text-align: right;
-          position: relative;
-          padding-left: 50%;
-        }
-        .dataTable-custom td::before {
-          content: attr(data-label);
-          position: absolute;
-          left: 0;
-          padding-left: 15px;
-          font-weight: bold;
-          text-align: left;
-        }
-      } */
-
-      /* Medium screens (max-width: 992px) */
-      /* @media (max-width: 992px) {
-        .dataTable-custom td:nth-of-type(4),
-        .dataTable-custom th:nth-of-type(4) {
-          display: none;
-        }
-      } */
     </style>
   </head>
   <body>
@@ -541,7 +515,7 @@
                   >Master</a
                 >
               </li>
-              <li class="navbar-item dropdown">
+              <li class="navbar-item dropdown active">
                 <a href="#" class="navbar-link" id="report-link"
                   ><i class="me-2"
                     ><img
@@ -551,8 +525,8 @@
                       width="20" /></i
                   >Report</a
                 >
-                <ul class="dropdown-menu active">
-                  <li class="dropdown-item active">
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item active" style="background-color: transparent;">
                     <a href="/pages/master/errorLog.html" class="dropdown-link"
                       >Error Log</a
                     >

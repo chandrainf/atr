@@ -88,11 +88,11 @@
       }
 
       .navbar-item.active .navbar-link {
-        border-bottom: 2px solid yellow;
+        border-bottom: 2px solid #FBCB1F;
       }
 
       .navbar-link:hover {
-        color: yellow;
+        color: #FBCB1F;
       }
 
       .navbar-link::before {
@@ -102,7 +102,7 @@
         height: 2px;
         bottom: 0;
         left: 0;
-        background-color: yellow;
+        background-color: #FBCB1F;
         visibility: hidden;
         transition: all 0.3s ease-in-out;
       }
@@ -127,6 +127,7 @@
 
       .dropdown-item {
         width: 100%;
+        
       }
 
       .dropdown-link:active {
@@ -148,12 +149,14 @@
       }
 
       .dropdown-item.active .dropdown-link {
-        color: #377dff;
         cursor: default; /* Prevents the pointer (hand) cursor */
+        color: #377DFF;
+        
       }
 
       .dropdown-item.active .dropdown-link:hover {
         background-color: transparent;
+        
       }
 
       /* Show the dropdown menu on hover */
@@ -251,6 +254,28 @@
 
       /* Custom dataTables */
 
+      .dataTable-custom {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      @media (max-width: 576px) {
+        .dataTable-custom {
+          font-size: x-small;
+        }
+      }
+
+      .dataTable-custom th,
+      .dataTable-custom td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        color: #333333;
+      }
+
+      .dataTable-custom th {
+        background-color: #dde8f1;
+      }
+
       .dataTable-custom thead {
         background-color: #dde8f1;
         border-radius: 10px;
@@ -265,7 +290,7 @@
       }
 
       .dataTables_wrapper .dataTables_length select {
-        color: #000000 !important; /
+        color: #000000 !important; 
         background-color: #ffffff !important; 
         border: 1px solid #ccc !important; 
         padding: 5px !important; 
@@ -275,22 +300,6 @@
       /* .table-responsive {
         overflow-x: auto;
       } */
-
-      .dataTable-custom {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      .dataTable-custom th,
-      .dataTable-custom td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        color: #333333;
-      }
-
-      .dataTable-custom th {
-        background-color: #dde8f1;
-      }
 
       
     </style>
@@ -338,7 +347,7 @@
                     >Master</a
                   >
                 </li>
-                <li class="navbar-item dropdown">
+                <li class="navbar-item dropdown active">
                   <a href="#" class="navbar-link" id="report-link"
                     ><i class="me-2"
                       ><img
@@ -348,7 +357,7 @@
                         width="20" /></i
                     >Report</a
                   >
-                  <ul class="dropdown-menu active">
+                  <ul class="dropdown-menu">
                     <li class="dropdown-item">
                       <a href="/pages/master/errorLog.html" class="dropdown-link"
                         >Error Log</a
@@ -362,7 +371,7 @@
                         Transaksi</a
                       >
                     </li>
-                    <li class="dropdown-item active">
+                    <li class="dropdown-item active" style="background-color: transparent;">
                       <a
                         href="/pages/master/kertasToner.html"
                         class="dropdown-link"
