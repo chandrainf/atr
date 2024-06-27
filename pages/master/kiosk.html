@@ -172,7 +172,7 @@
         cursor: pointer;
       }
 
-      @media (max-width: 600px) {
+      @media (max-width: 576px) {
         .navbar-list {
           display: none;
           flex-direction: column;
@@ -259,7 +259,7 @@
       }
 
       /* Responsive height adjustments */
-      @media (max-width: 600px) {
+      @media (max-width: 576px) {
         #map {
           height: 400px; /* Adjust height for smaller screens */
         }
@@ -668,7 +668,7 @@
         //   }
         // });
         const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
-            if (window.innerWidth > 600) {
+            if (window.innerWidth > 576) {
                 dropdowns.forEach(dropdown => {
                     dropdown.addEventListener('mouseenter', function() {
                         this.classList.add('active');
@@ -720,7 +720,7 @@
 
       // Function to adjust map view based on screen size
       function setMapView() {
-        if (window.innerWidth <= 600) {
+        if (window.innerWidth <= 576) {
           map.setView([-2.5, 118.0], 4); // Coordinates and zoom for small screens
         } else if (window.innerWidth <= 992) {
           map.setView([-2.5, 118.0], 5); // Coordinates and zoom for medium screens

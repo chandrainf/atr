@@ -173,7 +173,7 @@
         cursor: pointer;
       }
 
-      @media (max-width: 600px) {
+      @media (max-width: 576px) {
         .navbar-list {
           display: none;
           flex-direction: column;
@@ -468,8 +468,8 @@
         background-color: #dde8f1;
       }
 
-      /* Small screens (max-width: 600px) */
-      /* @media (max-width: 600px) {
+      /* Small screens (max-width: 576px) */
+      /* @media (max-width: 576px) {
         .dataTable-custom thead {
           display: none;
         }
@@ -1206,7 +1206,7 @@
       document.addEventListener("DOMContentLoaded", function () {
 
       const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
-            if (window.innerWidth > 600) {
+            if (window.innerWidth > 576) {
                 dropdowns.forEach(dropdown => {
                     dropdown.addEventListener('mouseenter', function() {
                         this.classList.add('active');
