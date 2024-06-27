@@ -81,7 +81,7 @@
       .navbar-link {
         display: block;
         color: white;
-        text-align: center;
+        text-align: right;
         padding: 14px 20px;
         text-decoration: none;
         transition: color 0.3s ease;
@@ -122,16 +122,15 @@
         z-index: 1000;
         top: 100%;
         left: 0;
+        color: #333333;
       }
 
       .dropdown-item {
         width: 100%;
-        
       }
 
       .dropdown-link:active {
         color: #dde8f1;
-        
       }
 
       .dropdown-link {
@@ -141,7 +140,6 @@
         text-align: left;
         transition: background-color 0.3s ease, color 0.3s ease;
         color: #333333;
-        
       }
 
       .dropdown-link:hover {
@@ -150,19 +148,105 @@
       }
 
       .dropdown-item.active .dropdown-link {
-       
         color: #377dff;
         cursor: default; /* Prevents the pointer (hand) cursor */
-        
       }
 
       .dropdown-item.active .dropdown-link:hover {
-        background-color: transparent; 
+        background-color: transparent;
       }
 
       /* Show the dropdown menu on hover */
       .navbar-item.dropdown:hover .dropdown-menu {
         display: block;
+      }
+
+      /* New styles for responsive navbar */
+      .hamburger {
+        display: none;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+      }
+
+      @media (max-width: 600px) {
+        .navbar-list {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          text-align: left;
+          padding-left: 20px; /* Add padding to align to the left */
+          align-items: flex-start; /* Align items to the left */
+          position: absolute;
+          top: 50px;
+          left: 0;
+          background-color: #132144;
+          z-index: 999;
+        }
+
+        .navbar-list.active {
+          display: flex;
+          margin-top: 10px;
+        }
+
+        .navbar-item {
+          width: 100%;
+        }
+
+        .hamburger {
+          display: block;
+          position: absolute;
+          top: 10px;
+          right: 20px;
+          z-index: 1001; /* Ensure it's above other content */
+        }
+        .map-container {
+          position: relative;
+          z-index: 999;
+        }
+
+        .card {
+          position: relative;
+        }
+
+
+        .has-sub .dropdown-menu {
+            display: none;
+            position: static;
+            top: auto;
+            left: auto;
+            background-color: transparent;
+            box-shadow: none;
+            color: #ffe5e5;
+        }
+        
+        .has-sub.active .dropdown-menu {
+            display: block;
+            margin-top: 0.5rem; /* Adjust spacing between items */
+            color: white;
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 2rem;
+            /* background-color: #333; */
+            background-color: #132144;
+            
+            
+            border-bottom: 1px solid #555;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none; /* Remove border on last item */
+        }
+
+        /* .dropdown-link:hover {
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+          transition: background-color 0.3s ease, color 0.3s ease;
+          color: #333333;
+        } */
       }
 
       /* Custom dataTables */
@@ -173,19 +257,19 @@
       }
 
       .dataTables_wrapper .dataTables_filter input {
-        color: #000000 !important; /* Text color for search box */
-        background-color: #ffffff !important; /* Background color for search box */
-        border: 1px solid #ccc !important; /* Add a border for better visibility */
-        padding: 5px !important; /* Add padding for better appearance */
-        border-radius: 3px !important; /* Add border-radius for rounded corners */
+        color: #000000 !important; 
+        background-color: #ffffff !important; 
+        border: 1px solid #ccc !important; 
+        padding: 5px !important; 
+        border-radius: 3px !important;
       }
 
       .dataTables_wrapper .dataTables_length select {
-        color: #000000 !important; /* Text color for dropdown */
-        background-color: #ffffff !important; /* Background color for dropdown */
-        border: 1px solid #ccc !important; /* Add a border for better visibility */
-        padding: 5px !important; /* Add padding for better appearance */
-        border-radius: 3px !important; /* Add border-radius for rounded corners */
+        color: #000000 !important; /
+        background-color: #ffffff !important; 
+        border: 1px solid #ccc !important; 
+        padding: 5px !important; 
+        border-radius: 3px !important; 
       }
 
       /* .table-responsive {
@@ -208,38 +292,7 @@
         background-color: #dde8f1;
       }
 
-      /* Small screens (max-width: 600px) */
-      /* @media (max-width: 600px) {
-        .dataTable-custom thead {
-          display: none;
-        }
-        .dataTable-custom tr {
-          display: block;
-          margin-bottom: 10px;
-        }
-        .dataTable-custom td {
-          display: block;
-          text-align: right;
-          position: relative;
-          padding-left: 50%;
-        }
-        .dataTable-custom td::before {
-          content: attr(data-label);
-          position: absolute;
-          left: 0;
-          padding-left: 15px;
-          font-weight: bold;
-          text-align: left;
-        }
-      } */
-
-      /* Medium screens (max-width: 992px) */
-      /* @media (max-width: 992px) {
-        .dataTable-custom td:nth-of-type(4),
-        .dataTable-custom th:nth-of-type(4) {
-          display: none;
-        }
-      } */
+      
     </style>
   </head>
 
@@ -920,35 +973,43 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const navbarItems = document.querySelectorAll(".navbar-item");
-        const dropdownLink = document.getElementById("report-link");
-        const dropdownMenu = dropdownLink.nextElementSibling;
-
-        dropdownLink.addEventListener("click", function (event) {
-          event.preventDefault();
-          dropdownMenu.classList.toggle("show");
-          dropdownLink.parentElement.classList.toggle("active");
-        });
-
-        navbarItems.forEach((item) => {
-          item.addEventListener("click", function () {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            if (this.querySelector(".dropdown-menu")) {
-              this.classList.add("active");
+        const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
+            if (window.innerWidth > 600) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('mouseenter', function() {
+                        this.classList.add('active');
+                    });
+                    dropdown.addEventListener('mouseleave', function() {
+                        this.classList.remove('active');
+                    });
+                });
             } else {
-              this.classList.add("active");
-              dropdownMenu.classList.remove("show");
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.add('has-sub');
+                    const link = dropdown.querySelector('.navbar-link');
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    });
+                });
             }
-          });
-        });
-
-        document.addEventListener("click", function (event) {
-          if (!event.target.closest(".navbar-item")) {
-            navbarItems.forEach((nav) => nav.classList.remove("active"));
-            dropdownMenu.classList.remove("show");
-          }
-        });
       });
+
+       function toggleMenu() {
+        var navbarList = document.querySelector(".navbar-list");
+        var mapContainer = document.querySelector(".map-container");
+        var card = document.querySelector(".card");
+
+        navbarList.classList.toggle("active");
+
+        if (navbarList.classList.contains("active")) {
+          mapContainer.style.top = `${navbarList.clientHeight}px`;
+          card.style.top = `${navbarList.clientHeight}px`;
+        } else {
+          mapContainer.style.top = "0";
+          card.style.top = "0";
+        }
+      }
 
       $(document).ready(function () {
         // Initialize DataTables for each table
