@@ -44,8 +44,6 @@
         font-weight: bold;
       }
       
-      
-
       .navbar {
         position: fixed;
         width: 100%;
@@ -84,7 +82,7 @@
       .navbar-link {
         display: block;
         color: white;
-        text-align: center;
+        text-align: right;
         padding: 14px 20px;
         text-decoration: none;
         transition: color 0.3s ease;
@@ -125,16 +123,15 @@
         z-index: 1000;
         top: 100%;
         left: 0;
+        color: #333333;
       }
 
       .dropdown-item {
         width: 100%;
-        
       }
 
       .dropdown-link:active {
         color: #dde8f1;
-        
       }
 
       .dropdown-link {
@@ -144,7 +141,6 @@
         text-align: left;
         transition: background-color 0.3s ease, color 0.3s ease;
         color: #333333;
-        
       }
 
       .dropdown-link:hover {
@@ -153,19 +149,105 @@
       }
 
       .dropdown-item.active .dropdown-link {
-       
         color: #377dff;
         cursor: default; /* Prevents the pointer (hand) cursor */
-        
       }
 
       .dropdown-item.active .dropdown-link:hover {
-        background-color: transparent; 
+        background-color: transparent;
       }
 
       /* Show the dropdown menu on hover */
       .navbar-item.dropdown:hover .dropdown-menu {
         display: block;
+      }
+
+      /* New styles for responsive navbar */
+      .hamburger {
+        display: none;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+      }
+
+      @media (max-width: 600px) {
+        .navbar-list {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          text-align: left;
+          padding-left: 20px; /* Add padding to align to the left */
+          align-items: flex-start; /* Align items to the left */
+          position: absolute;
+          top: 50px;
+          left: 0;
+          background-color: #132144;
+          z-index: 999;
+        }
+
+        .navbar-list.active {
+          display: flex;
+          margin-top: 10px;
+        }
+
+        .navbar-item {
+          width: 100%;
+        }
+
+        .hamburger {
+          display: block;
+          position: absolute;
+          top: 10px;
+          right: 20px;
+          z-index: 1001; /* Ensure it's above other content */
+        }
+        .map-container {
+          position: relative;
+          z-index: 999;
+        }
+
+        .card {
+          position: relative;
+        }
+
+
+        .has-sub .dropdown-menu {
+            display: none;
+            position: static;
+            top: auto;
+            left: auto;
+            background-color: transparent;
+            box-shadow: none;
+            color: #ffe5e5;
+        }
+        
+        .has-sub.active .dropdown-menu {
+            display: block;
+            margin-top: 0.5rem; /* Adjust spacing between items */
+            color: white;
+        }
+        
+        .dropdown-item {
+            padding: 0.5rem 2rem;
+            /* background-color: #333; */
+            background-color: #132144;
+            
+            
+            border-bottom: 1px solid #555;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none; /* Remove border on last item */
+        }
+
+        /* .dropdown-link:hover {
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+          transition: background-color 0.3s ease, color 0.3s ease;
+          color: #333333;
+        } */
       }
 
       .nav-tabs {
@@ -216,7 +298,7 @@
 
         <nav class="navbar">
           <div class="navbar-content">
-            <a href="/index.html" class="menu-link">
+            <a href="index.html" class="menu-link">
               <img
                 class="navbar-logo"
                 src="/assets/compiled/svg/logoATR.svg"
@@ -225,10 +307,11 @@
                 width="135"
               />
             </a>
-            <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+
             <ul class="navbar-list gap-4">
-              <li class="navbar-item ">
-                <a href="/index.html" class="navbar-link"
+              <li class="navbar-item active">
+                <a href="index.html" class="navbar-link"
                   ><i class="me-2"
                     ><img
                       src="/assets/compiled/svg/iconDashboard.svg"
@@ -238,8 +321,8 @@
                   >Dashboard</a
                 >
               </li>
-              <li class="navbar-item active">
-                <a href="kiosk.html" class="navbar-link"
+              <li class="navbar-item">
+                <a href="/pages/master/kiosk.html" class="navbar-link"
                   ><i class="me-2"
                     ><img
                       src="/assets/compiled/svg/iconMaster.svg"
@@ -259,17 +342,25 @@
                       width="20" /></i
                   >Report</a
                 >
-                <ul class="dropdown-menu" style="color: #333333;">
+                <ul class="dropdown-menu">
                   <li class="dropdown-item">
-                    <a href="errorLog.html" class="dropdown-link">Error Log</a>
+                    <a href="/pages/master/errorLog.html" class="dropdown-link"
+                      >Error Log</a
+                    >
                   </li>
                   <li class="dropdown-item">
-                    <a href="transaksi.html" class="dropdown-link">
+                    <a
+                      href="/pages/master/transaksi.html"
+                      class="dropdown-link"
+                    >
                       Transaksi</a
                     >
                   </li>
                   <li class="dropdown-item">
-                    <a href="kertasToner.html" class="dropdown-link">
+                    <a
+                      href="/pages/master/kertasToner.html"
+                      class="dropdown-link"
+                    >
                       Kertas & Toner</a
                     >
                   </li>
@@ -1241,6 +1332,50 @@
     <script src="/assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/assets/static/js/pages/horizontal-layout.js"></script>
     <script src="/assets/compiled/js/app.js"></script>
+
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function () {
+        const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
+            if (window.innerWidth > 600) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('mouseenter', function() {
+                        this.classList.add('active');
+                    });
+                    dropdown.addEventListener('mouseleave', function() {
+                        this.classList.remove('active');
+                    });
+                });
+            } else {
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.add('has-sub');
+                    const link = dropdown.querySelector('.navbar-link');
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    });
+                });
+            }
+      });
+
+      function toggleMenu() {
+        var navbarList = document.querySelector(".navbar-list");
+        var mapContainer = document.querySelector(".map-container");
+        var card = document.querySelector(".card");
+
+        navbarList.classList.toggle("active");
+
+        if (navbarList.classList.contains("active")) {
+          mapContainer.style.top = `${navbarList.clientHeight}px`;
+          card.style.top = `${navbarList.clientHeight}px`;
+        } else {
+          mapContainer.style.top = "0";
+          card.style.top = "0";
+        }
+      }
+
+    </script>
 
   </body>
 </html>

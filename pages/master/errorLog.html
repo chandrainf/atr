@@ -507,7 +507,7 @@
       <div id="main" class="layout-horizontal">
         <nav class="navbar">
           <div class="navbar-content">
-            <a href="/index.html" class="menu-link">
+            <a href="index.html" class="menu-link">
               <img
                 class="navbar-logo"
                 src="/assets/compiled/svg/logoATR.svg"
@@ -516,10 +516,11 @@
                 width="135"
               />
             </a>
-            <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+
             <ul class="navbar-list gap-4">
-              <li class="navbar-item">
-                <a href="/index.html" class="navbar-link"
+              <li class="navbar-item active">
+                <a href="index.html" class="navbar-link"
                   ><i class="me-2"
                     ><img
                       src="/assets/compiled/svg/iconDashboard.svg"
@@ -530,7 +531,7 @@
                 >
               </li>
               <li class="navbar-item">
-                <a href="kiosk.html" class="navbar-link"
+                <a href="/pages/master/kiosk.html" class="navbar-link"
                   ><i class="me-2"
                     ><img
                       src="/assets/compiled/svg/iconMaster.svg"
@@ -540,7 +541,7 @@
                   >Master</a
                 >
               </li>
-              <li class="navbar-item active dropdown">
+              <li class="navbar-item dropdown">
                 <a href="#" class="navbar-link" id="report-link"
                   ><i class="me-2"
                     ><img
@@ -550,20 +551,25 @@
                       width="20" /></i
                   >Report</a
                 >
-                <ul class="dropdown-menu" style="color: #333333">
-                  <li
-                    class="dropdown-item active"
-                    style="background-color: #ffffff"
-                  >
-                    <a href="errorLog.html" class="dropdown-link">Error Log</a>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item">
+                    <a href="/pages/master/errorLog.html" class="dropdown-link"
+                      >Error Log</a
+                    >
                   </li>
                   <li class="dropdown-item">
-                    <a href="transaksi.html" class="dropdown-link">
+                    <a
+                      href="/pages/master/transaksi.html"
+                      class="dropdown-link"
+                    >
                       Transaksi</a
                     >
                   </li>
                   <li class="dropdown-item">
-                    <a href="kertasToner.html" class="dropdown-link">
+                    <a
+                      href="/pages/master/kertasToner.html"
+                      class="dropdown-link"
+                    >
                       Kertas & Toner</a
                     >
                   </li>

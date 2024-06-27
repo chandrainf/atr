@@ -302,70 +302,79 @@
       <div id="main" class="layout-horizontal">
         <!-- <div class="header-top"  style="background-color: #132144;"> -->
 
-        <nav class="navbar">
-          <div class="navbar-content">
-            <a href="/index.html" class="menu-link">
-              <img
-                class="navbar-logo"
-                src="/assets/compiled/svg/logoATR.svg"
-                alt="Logo"
-                height="46"
-                width="135"
-              />
-            </a>
-            <!-- <img src="your-logo.png" alt="Logo" class="navbar-logo"> -->
-            <ul class="navbar-list gap-4">
-              <li class="navbar-item">
-                <a href="/index.html" class="navbar-link"
-                  ><i class="me-2"
-                    ><img
-                      src="/assets/compiled/svg/iconDashboard.svg"
-                      alt=""
-                      height="20"
-                      width="20" /></i
-                  >Dashboard</a
-                >
-              </li>
-              <li class="navbar-item">
-                <a href="kiosk.html" class="navbar-link"
-                  ><i class="me-2"
-                    ><img
-                      src="/assets/compiled/svg/iconMaster.svg"
-                      alt=""
-                      height="20"
-                      width="20" /></i
-                  >Master</a
-                >
-              </li>
-              <li class="navbar-item active dropdown">
-                <a href="#" class="navbar-link" id="report-link"
-                  ><i class="me-2"
-                    ><img
-                      src="/assets/compiled/svg/iconReport.svg"
-                      alt=""
-                      height="20"
-                      width="20" /></i
-                  >Report</a
-                >
-                <ul class="dropdown-menu" style="color: #333333;">
-                  <li class="dropdown-item">
-                    <a href="errorLog.html" class="dropdown-link">Error Log</a>
-                  </li>
-                  <li class="dropdown-item">
-                    <a href="transaksi.html" class="dropdown-link">
-                      Transaksi</a
-                    >
-                  </li>
-                  <li class="dropdown-item active" style="background-color: #ffffff;">
-                    <a href="kertasToner.html" class="dropdown-link">
-                      Kertas & Toner</a
-                    >
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
+          <nav class="navbar">
+            <div class="navbar-content">
+              <a href="index.html" class="menu-link">
+                <img
+                  class="navbar-logo"
+                  src="/assets/compiled/svg/logoATR.svg"
+                  alt="Logo"
+                  height="46"
+                  width="135"
+                />
+              </a>
+              <div class="hamburger" onclick="toggleMenu()">☰</div>
+  
+              <ul class="navbar-list gap-4">
+                <li class="navbar-item active">
+                  <a href="index.html" class="navbar-link"
+                    ><i class="me-2"
+                      ><img
+                        src="/assets/compiled/svg/iconDashboard.svg"
+                        alt=""
+                        height="20"
+                        width="20" /></i
+                    >Dashboard</a
+                  >
+                </li>
+                <li class="navbar-item">
+                  <a href="/pages/master/kiosk.html" class="navbar-link"
+                    ><i class="me-2"
+                      ><img
+                        src="/assets/compiled/svg/iconMaster.svg"
+                        alt=""
+                        height="20"
+                        width="20" /></i
+                    >Master</a
+                  >
+                </li>
+                <li class="navbar-item dropdown">
+                  <a href="#" class="navbar-link" id="report-link"
+                    ><i class="me-2"
+                      ><img
+                        src="/assets/compiled/svg/iconReport.svg"
+                        alt=""
+                        height="20"
+                        width="20" /></i
+                    >Report</a
+                  >
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                      <a href="/pages/master/errorLog.html" class="dropdown-link"
+                        >Error Log</a
+                      >
+                    </li>
+                    <li class="dropdown-item">
+                      <a
+                        href="/pages/master/transaksi.html"
+                        class="dropdown-link"
+                      >
+                        Transaksi</a
+                      >
+                    </li>
+                    <li class="dropdown-item">
+                      <a
+                        href="/pages/master/kertasToner.html"
+                        class="dropdown-link"
+                      >
+                        Kertas & Toner</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
 
         <div class="row justify-content-center" style="margin-top: 100px">
           <div class="col-12 px-5">
