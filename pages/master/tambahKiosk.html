@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
     <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
 
-   
     <script src="/assets/static/js/initTheme.js"></script>
 
     <style>
@@ -29,13 +28,13 @@
         margin: 0;
         font-family: Arial, sans-serif;
         background-image: url(/assets/compiled/svg/bgKiosks.svg);
-        background-size: contain;
+        background-size: auto;
         background-repeat: no-repeat;
         background-color: #ffffff;
         color: #333333;
       }
       .card {
-        box-shadow: 3px 3px 3px 3px #DDE8F1;
+        box-shadow: 3px 3px 3px 3px #dde8f1;
       }
 
       .form-group {
@@ -87,11 +86,11 @@
       }
 
       .navbar-item.active .navbar-link {
-        border-bottom: 2px solid #FBCB1F;
+        border-bottom: 2px solid #fbcb1f;
       }
 
       .navbar-link:hover {
-        color: #FBCB1F;
+        color: #fbcb1f;
       }
 
       .navbar-link::before {
@@ -101,7 +100,7 @@
         height: 2px;
         bottom: 0;
         left: 0;
-        background-color: #FBCB1F;
+        background-color: #fbcb1f;
         visibility: hidden;
         transition: all 0.3s ease-in-out;
       }
@@ -208,34 +207,32 @@
           position: relative;
         }
 
-
         .has-sub .dropdown-menu {
-            display: none;
-            position: static;
-            top: auto;
-            left: auto;
-            background-color: transparent;
-            box-shadow: none;
-            color: #ffe5e5;
+          display: none;
+          position: static;
+          top: auto;
+          left: auto;
+          background-color: transparent;
+          box-shadow: none;
+          color: #ffe5e5;
         }
-        
+
         .has-sub.active .dropdown-menu {
-            display: block;
-            margin-top: 0.5rem; /* Adjust spacing between items */
-            color: white;
+          display: block;
+          margin-top: 0.5rem; /* Adjust spacing between items */
+          color: white;
         }
-        
+
         .dropdown-item {
-            padding: 0.5rem 2rem;
-            /* background-color: #333; */
-            background-color: #132144;
-            
-            
-            border-bottom: 1px solid #555;
+          padding: 0.5rem 2rem;
+          /* background-color: #333; */
+          background-color: #132144;
+
+          border-bottom: 1px solid #555;
         }
-        
+
         .dropdown-item:last-child {
-            border-bottom: none; /* Remove border on last item */
+          border-bottom: none; /* Remove border on last item */
         }
 
         /* .dropdown-link:hover {
@@ -247,9 +244,6 @@
           color: #333333;
         } */
       }
-
-
-      
     </style>
   </head>
 
@@ -366,12 +360,10 @@
                 <div class="card-body">
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="no_kiosk"
-                          >Nomor Kiosk*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="no_kiosk"
+                        >Nomor Kiosk*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="no_kiosk"
@@ -385,12 +377,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="versi_app"
-                          >Versi Aplikasi*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="versi_app"
+                        >Versi Aplikasi*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="versi_app"
@@ -404,12 +394,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="sts_kiosk"
-                          >Status Kiosk</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="sts_kiosk"
+                        >Status Kiosk</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="sts_kiosk"
@@ -423,12 +411,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="lokasi"
-                          >Lokasi</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="lokasi"
+                        >Lokasi</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="lokasi"
@@ -443,12 +429,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="latitude"
-                          >Latitide*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="latitude"
+                        >Latitide*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="latitude"
@@ -463,12 +447,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="longitude"
-                          >Longitude</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="longitude"
+                        >Longitude</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="longitude"
@@ -499,12 +481,10 @@
                 <div class="card-body">
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="nama_printer"
-                          >Nama Printer*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="nama_printer"
+                        >Nama Printer*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="nama_printer"
@@ -518,12 +498,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="versi_printer"
-                          >Versi Printer*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="versi_printer"
+                        >Versi Printer*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="versi_printer"
@@ -537,12 +515,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="sts_printer"
-                          >Status Printer</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="sts_printer"
+                        >Status Printer</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="sts_printer"
@@ -556,12 +532,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="sts_kertas"
-                          >Status Kertas</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="sts_kertas"
+                        >Status Kertas</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="sts_kertas"
@@ -576,12 +550,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="sts_toner"
-                          >Status Toner*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="sts_toner"
+                        >Status Toner*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="sts_toner"
@@ -596,12 +568,12 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="sts_pencetakan"
-                          >Status Pencetakan*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label
+                        class="col-sm-4 col-form-label"
+                        for="sts_pencetakan"
+                        >Status Pencetakan*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="sts_pencetakan"
@@ -632,12 +604,10 @@
                 <div class="card-body">
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="processor"
-                          >Processor*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="processor"
+                        >Processor*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="processor"
@@ -651,10 +621,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="RAM">RAM*</label>
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="RAM"
+                        >RAM*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="RAM"
@@ -668,10 +638,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="VGA">VGA*</label>
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="VGA"
+                        >VGA*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="VGA"
@@ -685,10 +655,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="SSD">SSD*</label>
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="SSD"
+                        >SSD*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="SSD"
@@ -703,10 +673,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="HDD">HDD*</label>
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="HDD"
+                        >HDD*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="HDD"
@@ -721,10 +691,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="PSU">PSU*</label>
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="PSU"
+                        >PSU*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="PSU"
@@ -739,12 +709,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="networking"
-                          >Networking*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="networking"
+                        >Networking*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="networking"
@@ -759,10 +727,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="OS">OS*</label>
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="OS"
+                        >OS*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="OS"
@@ -793,12 +761,10 @@
                 <div class="card-body">
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="nama_webcam"
-                          >Nama*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="nama_webcam"
+                        >Nama*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="nama_webcam"
@@ -812,10 +778,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="port">Port*</label>
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="port"
+                        >Port*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="port"
@@ -829,12 +795,12 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="max_resolution"
-                          >Max Resolution*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label
+                        class="col-sm-4 col-form-label"
+                        for="max_resolution"
+                        >Max Resolution*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="max_resolution"
@@ -848,12 +814,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="focus_type"
-                          >Focus Type*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="focus_type"
+                        >Focus Type*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="focus_type"
@@ -868,12 +832,12 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="lens_technology"
-                          >Lens Technology*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label
+                        class="col-sm-4 col-form-label"
+                        for="lens_technology"
+                        >Lens Technology*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="lens_technology"
@@ -888,12 +852,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="built-in-mic"
-                          >Built-in-mic*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="built-in-mic"
+                        >Built-in-mic*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="built-in-mic"
@@ -908,12 +870,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="networking"
-                          >Networking*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="networking"
+                        >Networking*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="networking"
@@ -928,10 +888,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="fov">FoV*</label>
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="fov"
+                        >FoV*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="fov"
@@ -962,12 +922,10 @@
                 <div class="card-body">
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="cpu_util"
-                          >CPU Utilization*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="cpu_util"
+                        >CPU Utilization*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="cpu_util"
@@ -981,12 +939,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="ram_util"
-                          >RAM Utilization*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="ram_util"
+                        >RAM Utilization*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="ram_util"
@@ -1000,12 +956,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="storage"
-                          >Storage*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="storage"
+                        >Storage*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="storage"
@@ -1019,12 +973,10 @@
                   </div>
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="sts_webcam"
-                          >Status Webcam*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="sts_webcam"
+                        >Status Webcam*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="sts_webcam"
@@ -1039,12 +991,12 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="sts_camera_ocr"
-                          >Status Camera OCR*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label
+                        class="col-sm-4 col-form-label"
+                        for="sts_camera_ocr"
+                        >Status Camera OCR*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="sts_camera_ocr"
@@ -1059,12 +1011,10 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="sts_ereader"
-                          >Status E-KTP rEADER*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label class="col-sm-4 col-form-label" for="sts_ereader"
+                        >Status E-KTP Reader*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="sts_ereader"
@@ -1079,12 +1029,12 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="api_connection"
-                          >API Connection*</label
-                        >
-                      </div>
-                      <div class="col-8">
+                      <label
+                        class="col-sm-4 col-form-label"
+                        for="api_connection"
+                        >API Connection*</label
+                      >
+                      <div class="col-sm-8">
                         <input
                           type="text"
                           id="api_connection"
@@ -1099,57 +1049,54 @@
 
                   <div class="col-10">
                     <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="internet_connection"
-                          >Internet Comnnection*</label
-                        >
-                      </div>
-                      <div class="col-8">
-                        <input
-                          type="text"
-                          id="internet_connection"
-                          class="form-control"
-                          name="internet_connection"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
+                      <label
+                        class="col-sm-4 col-form-label"
+                        for="internet_connection"
+                        >Internet Comnnection*</label
+                      >
+                    </div>
+                    <div class="col-sm-8">
+                      <input
+                        type="text"
+                        id="internet_connection"
+                        class="form-control"
+                        name="internet_connection"
+                        placeholder=""
+                        value=""
+                      />
                     </div>
                   </div>
+                </div>
 
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <div class="col-4">
-                        <label class="col-form-label" for="bandwith_internet"
-                          >Bandwith Internet*</label
-                        >
-                      </div>
-                      <div class="col-8">
-                        <input
-                          type="text"
-                          id="bandwith_internet"
-                          class="form-control"
-                          name="bandwith_internet"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label
+                      class="col-sm-4 col-form-label"
+                      for="bandwith_internet"
+                      >Bandwith Internet*</label
+                    >
+                    <div class="col-sm-8">
+                      <input
+                        type="text"
+                        id="bandwith_internet"
+                        class="form-control"
+                        name="bandwith_internet"
+                        placeholder=""
+                        value=""
+                      />
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="row">
-                <div class="col">
-                  <div class="d-flex justify-content-end gap-2 mb-5">
-                    <a href="#" class="btn btn-outline-primary">Batalkan</a>
-                    <a href="#" class="btn btn-primary">Simpan</a>
-                  </div>
+            <div class="row">
+              <div class="col">
+                <div class="d-flex justify-content-end gap-2 mb-5">
+                  <a href="#" class="btn btn-outline-primary">Batalkan</a>
+                  <a href="#" class="btn btn-primary">Simpan</a>
                 </div>
               </div>
-
-
-
             </div>
           </div>
         </div>
@@ -1161,30 +1108,28 @@
     <script src="/assets/static/js/pages/horizontal-layout.js"></script>
     <script src="/assets/compiled/js/app.js"></script>
 
-   <script>
-     document.addEventListener("DOMContentLoaded", function () {
-      
-
-        const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
-            if (window.innerWidth > 576) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.addEventListener('mouseenter', function() {
-                        this.classList.add('active');
-                    });
-                    dropdown.addEventListener('mouseleave', function() {
-                        this.classList.remove('active');
-                    });
-                });
-            } else {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.add('has-sub');
-                    const link = dropdown.querySelector('.navbar-link');
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                    });
-                });
-            }
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropdowns = document.querySelectorAll(".navbar-item.dropdown");
+        if (window.innerWidth > 576) {
+          dropdowns.forEach((dropdown) => {
+            dropdown.addEventListener("mouseenter", function () {
+              this.classList.add("active");
+            });
+            dropdown.addEventListener("mouseleave", function () {
+              this.classList.remove("active");
+            });
+          });
+        } else {
+          dropdowns.forEach((dropdown) => {
+            dropdown.classList.add("has-sub");
+            const link = dropdown.querySelector(".navbar-link");
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+              dropdown.classList.toggle("active");
+            });
+          });
+        }
       });
 
       function toggleMenu() {
@@ -1202,8 +1147,6 @@
           card.style.top = "0";
         }
       }
-   </script>
-    
-   
+    </script>
   </body>
 </html>

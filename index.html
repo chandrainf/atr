@@ -329,6 +329,15 @@
         padding: 10px;
       }
 
+      @media (max-width: 575.98px) {
+        .legend-container {
+          font-size: small !important;
+        }
+
+      
+      }
+
+
       .timeline {
         position: relative;
         margin: 0 auto;
@@ -1359,19 +1368,25 @@
         ]);
         var normalTime = getTimeSinceStatus(["Normal"]);
 
-        div.innerHTML =
-          "<h4>Legend</h4>" +
-          "<div class='legend-container'>" +
-          "<div class='legend-item'><span class='legend-color' style='background-color: red;'></span> <h6>Error</h6><div class='tooltip'>" +
-          errorTime +
-          "</div></div>" +
-          "<div class='legend-item'><span class='legend-color' style='background-color: yellow;'></span> <h6>Maintenance</h6><div class='tooltip'>" +
-          maintenanceTime +
-          "</div></div>" +
-          "<div class='legend-item'><span class='legend-color' style='background-color: blue;'></span> <h6>Normal</h6><div class='tooltip'>" +
-          normalTime +
-          "</div></div>" +
-          "</div>";
+        div.innerHTML = `
+          <h4>Legend</h4>
+          <div class="legend-container">
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: red;"></span>
+              <h6>Error</h6>
+              <div class="tooltip">${errorTime}</div>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: yellow;"></span>
+              <h6>Maintenance</h6>
+              <div class="tooltip">${maintenanceTime}</div>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: blue;"></span>
+              <h6>Normal</h6>
+              <div class="tooltip">${normalTime}</div>
+            </div>
+          </div>`;
         return div;
       };
 
