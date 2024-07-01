@@ -328,6 +328,11 @@
         width: 100%;
         border-collapse: collapse;
       }
+      @media (max-width: 576px) {
+        .dataTable-custom {
+          font-size: 0.775rem;
+        }
+      }
 
       .dataTable-custom th,
       .dataTable-custom td {
@@ -340,38 +345,6 @@
         background-color: #dde8f1;
       }
 
-      /* Small screens (max-width: 600px) */
-      /* @media (max-width: 600px) {
-        .dataTable-custom thead {
-          display: none;
-        }
-        .dataTable-custom tr {
-          display: block;
-          margin-bottom: 10px;
-        }
-        .dataTable-custom td {
-          display: block;
-          text-align: right;
-          position: relative;
-          padding-left: 50%;
-        }
-        .dataTable-custom td::before {
-          content: attr(data-label);
-          position: absolute;
-          left: 0;
-          padding-left: 15px;
-          font-weight: bold;
-          text-align: left;
-        }
-      } */
-
-      /* Medium screens (max-width: 992px) */
-      /* @media (max-width: 992px) {
-        .dataTable-custom td:nth-of-type(4),
-        .dataTable-custom th:nth-of-type(4) {
-          display: none;
-        }
-      } */
     </style>
   </head>
 

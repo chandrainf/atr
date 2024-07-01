@@ -108,11 +108,11 @@
       }
 
       .navbar-item.active .navbar-link {
-        border-bottom: 2px solid #FBCB1F;
+        border-bottom: 2px solid #fbcb1f;
       }
 
       .navbar-link:hover {
-        color: #FBCB1F;
+        color: #fbcb1f;
       }
 
       .navbar-link::before {
@@ -122,7 +122,7 @@
         height: 2px;
         bottom: 0;
         left: 0;
-        background-color: #FBCB1F;
+        background-color: #fbcb1f;
         visibility: hidden;
         transition: all 0.3s ease-in-out;
       }
@@ -227,38 +227,34 @@
 
         .card {
           position: relative;
-          
-         
         }
-
 
         .has-sub .dropdown-menu {
-            display: none;
-            position: static;
-            top: auto;
-            left: auto;
-            background-color: transparent;
-            box-shadow: none;
-            color: #ffe5e5;
+          display: none;
+          position: static;
+          top: auto;
+          left: auto;
+          background-color: transparent;
+          box-shadow: none;
+          color: #ffe5e5;
         }
-        
+
         .has-sub.active .dropdown-menu {
-            display: block;
-            margin-top: 0.5rem; /* Adjust spacing between items */
-            color: white;
+          display: block;
+          margin-top: 0.5rem; /* Adjust spacing between items */
+          color: white;
         }
-        
+
         .dropdown-item {
-            padding: 0.5rem 2rem;
-            /* background-color: #333; */
-            background-color: #132144;
-            
-            
-            border-bottom: 1px solid #555;
+          padding: 0.5rem 2rem;
+          /* background-color: #333; */
+          background-color: #132144;
+
+          border-bottom: 1px solid #555;
         }
-        
+
         .dropdown-item:last-child {
-            border-bottom: none; /* Remove border on last item */
+          border-bottom: none; /* Remove border on last item */
         }
 
         /* .dropdown-link:hover {
@@ -338,6 +334,17 @@
         margin: 0 auto;
         width: 100%;
         max-width: 900px;
+      }
+
+      @media (max-width: 575.98px) {
+        .timeline-content h4 {
+          font-size: 1rem; /* Adjust this value as needed */
+        }
+
+        .timeline-content p,
+        .timeline-content span {
+          font-size: 0.875rem; /* Adjust this value as needed */
+        }
       }
 
       .timeline::before {
@@ -502,7 +509,7 @@
 
       @media (max-width: 576px) {
         .dataTable-custom {
-          font-size: x-small;
+          font-size: 0.775rem;
         }
       }
 
@@ -1008,26 +1015,26 @@
         //   }
         // });
 
-        const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
-            if (window.innerWidth > 576) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.addEventListener('mouseenter', function() {
-                        this.classList.add('active');
-                    });
-                    dropdown.addEventListener('mouseleave', function() {
-                        this.classList.remove('active');
-                    });
-                });
-            } else {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.add('has-sub');
-                    const link = dropdown.querySelector('.navbar-link');
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                    });
-                });
-            }
+        const dropdowns = document.querySelectorAll(".navbar-item.dropdown");
+        if (window.innerWidth > 576) {
+          dropdowns.forEach((dropdown) => {
+            dropdown.addEventListener("mouseenter", function () {
+              this.classList.add("active");
+            });
+            dropdown.addEventListener("mouseleave", function () {
+              this.classList.remove("active");
+            });
+          });
+        } else {
+          dropdowns.forEach((dropdown) => {
+            dropdown.classList.add("has-sub");
+            const link = dropdown.querySelector(".navbar-link");
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+              dropdown.classList.toggle("active");
+            });
+          });
+        }
       });
 
       function toggleMenu() {
