@@ -1,1086 +1,709 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      rel="shortcut icon"
-      href="/assets/compiled/svg/favicon.svg"
-      type="image/x-icon"
-    />
-    <link
-      rel="shortcut icon"
-      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAYAAADRcLDBAAAEs2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249IjMzIgogICBleGlmOlBpeGVsWURpbWVuc2lvbj0iMzQiCiAgIGV4aWY6Q29sb3JTcGFjZT0iMSIKICAgdGlmZjpJbWFnZVdpZHRoPSIzMyIKICAgdGlmZjpJbWFnZUxlbmd0aD0iMzQiCiAgIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiCiAgIHRpZmY6WFJlc29sdXRpb249Ijk2LjAiCiAgIHRpZmY6WVJlc29sdXRpb249Ijk2LjAiCiAgIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiCiAgIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiCiAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJwcm9kdWNlZCIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWZmaW5pdHkgRGVzaWduZXIgMS4xMC4xIgogICAgICBzdEV2dDp3aGVuPSIyMDIyLTAzLTMxVDEwOjUwOjIzKzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz5V57uAAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rRFEUxz9maORHo1hYKC9hISNGTWwsRn4VFmOUX5uZZ36oeTOv954kW2WrKLHxa8FfwFZZK0WkZClrYoOe87ypmWTO7dzzud97z+nec8ETzaiaWd4NWtYyIiNhZWZ2TvE946WZSjqoj6mmPjE1HKWkfdxR5sSbgFOr9Ll/rXoxYapQVik8oOqGJTwqPL5i6Q5vCzeo6dii8KlwpyEXFL519LjLLw6nXP5y2IhGBsFTJ6ykijhexGra0ITl5bRqmWU1fx/nJTWJ7PSUxBbxJkwijBBGYYwhBgnRQ7/MIQIE6ZIVJfK7f/MnyUmuKrPOKgZLpEhj0SnqslRPSEyKnpCRYdXp/9++msneoFu9JgwVT7b91ga+LfjetO3PQ9v+PgLvI1xkC/m5A+h7F32zoLXug38dzi4LWnwHzjeg8UGPGbFfySvuSSbh9QRqZ6H+Gqrm3Z7l9zm+h+iafNUV7O5Bu5z3L/wAdthn7QIme0YAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJTSURBVFiF7Zi9axRBGIefEw2IdxFBRQsLWUTBaywSK4ubdSGVIY1Y6HZql8ZKCGIqwX/AYLmCgVQKfiDn7jZeEQMWfsSAHAiKqPiB5mIgELWYOW5vzc3O7niHhT/YZvY37/swM/vOzJbIqVq9uQ04CYwCI8AhYAlYAB4Dc7HnrOSJWcoJcBS4ARzQ2F4BZ2LPmTeNuykHwEWgkQGAet9QfiMZjUSt3hwD7psGTWgs9pwH1hC1enMYeA7sKwDxBqjGnvNdZzKZjqmCAKh+U1kmEwi3IEBbIsugnY5avTkEtIAtFhBrQCX2nLVehqyRqFoCAAwBh3WGLAhbgCRIYYinwLolwLqKUwwi9pxV4KUlxKKKUwxC6ZElRCPLYAJxGfhSEOCz6m8HEXvOB2CyIMSk6m8HoXQTmMkJcA2YNTHm3congOvATo3tE3A29pxbpnFzQSiQPcB55IFmFNgFfEQeahaAGZMpsIJIAZWAHcDX2HN+2cT6r39GxmvC9aPNwH5gO1BOPFuBVWAZue0vA9+A12EgjPadnhCuH1WAE8ivYAQ4ohKaagV4gvxi5oG7YSA2vApsCOH60WngKrA3R9IsvQUuhIGY00K4flQG7gHH/mLytB4C42EgfrQb0mV7us8AAMeBS8mGNMR4nwHamtBB7B4QRNdaS0M8GxDEog7iyoAguvJ0QYSBuAOcAt71Kfl7wA8DcTvZ2KtOlJEr+ByyQtqqhTyHTIeB+ONeqi3brh+VgIN0fohUgWGggizZFTplu12yW8iy/YLOGWMpDMTPXnl+Az9vj2HERYqPAAAAAElFTkSuQmCC"
-      type="image/png"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Tambah Kiosk</title>
+  <link rel="shortcut icon" href="/assets/compiled/svg/favicon.svg" type="image/x-icon" />
+  <link rel="shortcut icon"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAiCAYAAADRcLDBAAAEs2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS41LjAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgZXhpZjpQaXhlbFhEaW1lbnNpb249IjMzIgogICBleGlmOlBpeGVsWURpbWVuc2lvbj0iMzQiCiAgIGV4aWY6Q29sb3JTcGFjZT0iMSIKICAgdGlmZjpJbWFnZVdpZHRoPSIzMyIKICAgdGlmZjpJbWFnZUxlbmd0aD0iMzQiCiAgIHRpZmY6UmVzb2x1dGlvblVuaXQ9IjIiCiAgIHRpZmY6WFJlc29sdXRpb249Ijk2LjAiCiAgIHRpZmY6WVJlc29sdXRpb249Ijk2LjAiCiAgIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiCiAgIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIKICAgeG1wOk1vZGlmeURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiCiAgIHhtcDpNZXRhZGF0YURhdGU9IjIwMjItMDMtMzFUMTA6NTA6MjMrMDI6MDAiPgogICA8eG1wTU06SGlzdG9yeT4KICAgIDxyZGY6U2VxPgogICAgIDxyZGY6bGkKICAgICAgc3RFdnQ6YWN0aW9uPSJwcm9kdWNlZCIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWZmaW5pdHkgRGVzaWduZXIgMS4xMC4xIgogICAgICBzdEV2dDp3aGVuPSIyMDIyLTAzLTMxVDEwOjUwOjIzKzAyOjAwIi8+CiAgICA8L3JkZjpTZXE+CiAgIDwveG1wTU06SGlzdG9yeT4KICA8L3JkZjpEZXNjcmlwdGlvbj4KIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cjw/eHBhY2tldCBlbmQ9InIiPz5V57uAAAABgmlDQ1BzUkdCIElFQzYxOTY2LTIuMQAAKJF1kc8rRFEUxz9maORHo1hYKC9hISNGTWwsRn4VFmOUX5uZZ36oeTOv954kW2WrKLHxa8FfwFZZK0WkZClrYoOe87ypmWTO7dzzud97z+nec8ETzaiaWd4NWtYyIiNhZWZ2TvE946WZSjqoj6mmPjE1HKWkfdxR5sSbgFOr9Ll/rXoxYapQVik8oOqGJTwqPL5i6Q5vCzeo6dii8KlwpyEXFL519LjLLw6nXP5y2IhGBsFTJ6ykijhexGra0ITl5bRqmWU1fx/nJTWJ7PSUxBbxJkwijBBGYYwhBgnRQ7/MIQIE6ZIVJfK7f/MnyUmuKrPOKgZLpEhj0SnqslRPSEyKnpCRYdXp/9++msneoFu9JgwVT7b91ga+LfjetO3PQ9v+PgLvI1xkC/m5A+h7F32zoLXug38dzi4LWnwHzjeg8UGPGbFfySvuSSbh9QRqZ6H+Gqrm3Z7l9zm+h+iafNUV7O5Bu5z3L/wAdthn7QIme0YAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAJTSURBVFiF7Zi9axRBGIefEw2IdxFBRQsLWUTBaywSK4ubdSGVIY1Y6HZql8ZKCGIqwX/AYLmCgVQKfiDn7jZeEQMWfsSAHAiKqPiB5mIgELWYOW5vzc3O7niHhT/YZvY37/swM/vOzJbIqVq9uQ04CYwCI8AhYAlYAB4Dc7HnrOSJWcoJcBS4ARzQ2F4BZ2LPmTeNuykHwEWgkQGAet9QfiMZjUSt3hwD7psGTWgs9pwH1hC1enMYeA7sKwDxBqjGnvNdZzKZjqmCAKh+U1kmEwi3IEBbIsugnY5avTkEtIAtFhBrQCX2nLVehqyRqFoCAAwBh3WGLAhbgCRIYYinwLolwLqKUwwi9pxV4KUlxKKKUwxC6ZElRCPLYAJxGfhSEOCz6m8HEXvOB2CyIMSk6m8HoXQTmMkJcA2YNTHm3congOvATo3tE3A29pxbpnFzQSiQPcB55IFmFNgFfEQeahaAGZMpsIJIAZWAHcDX2HN+2cT6r39GxmvC9aPNwH5gO1BOPFuBVWAZue0vA9+A12EgjPadnhCuH1WAE8ivYAQ4ohKaagV4gvxi5oG7YSA2vApsCOH60WngKrA3R9IsvQUuhIGY00K4flQG7gHH/mLytB4C42EgfrQb0mV7us8AAMeBS8mGNMR4nwHamtBB7B4QRNdaS0M8GxDEog7iyoAguvJ0QYSBuAOcAt71Kfl7wA8DcTvZ2KtOlJEr+ByyQtqqhTyHTIeB+ONeqi3brh+VgIN0fohUgWGggizZFTplu12yW8iy/YLOGWMpDMTPXnl+Az9vj2HERYqPAAAAAElFTkSuQmCC"
+    type="image/png" />
 
-    <link rel="stylesheet" href="/assets/compiled/css/app.css" />
-    <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
-    <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
+  <title>Tambah Kiosk</title>
 
-    <script src="/assets/static/js/initTheme.js"></script>
+  <link rel="stylesheet" href="/assets/compiled/css/app.css" />
+  <link rel="stylesheet" href="/assets/compiled/css/app-dark.css" />
+  <link rel="stylesheet" href="/assets/compiled/css/iconly.css" />
 
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-image: url(/assets/compiled/svg/bgKiosks.svg);
-        background-size: auto;
-        background-repeat: no-repeat;
-        background-color: #ffffff;
-        color: #333333;
-      }
-      .card {
-        box-shadow: 3px 3px 3px 3px #dde8f1;
-      }
+  <script src="/assets/static/js/initTheme.js"></script>
 
-      .form-group {
-        color: #333333;
-      }
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url(/assets/compiled/svg/bgKiosks.svg);
+      background-size: auto;
+      background-repeat: no-repeat;
+      background-color: #ffffff;
+      color: #333333;
+    }
 
+    .card {
+      box-shadow: 3px 3px 3px 3px #dde8f1;
+    }
+
+    .form-group {
+      color: #333333;
+    }
+
+    .navbar {
+      position: fixed;
+      width: 100%;
+      background-color: #132144;
+      z-index: 1000;
+      padding: 10px 0;
+    }
+
+    .navbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .navbar-logo {
+      height: 50px;
+    }
+
+    .navbar-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    .navbar-item {
+      position: relative;
+    }
+
+    .navbar-link {
+      display: block;
+      color: white;
+      text-align: right;
+      padding: 14px 20px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-item.active .navbar-link {
+      border-bottom: 2px solid #fbcb1f;
+    }
+
+    .navbar-link:hover {
+      color: #fbcb1f;
+    }
+
+    .navbar-link::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #fbcb1f;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar-link:hover::before {
+      visibility: visible;
+      width: 100%;
+    }
+
+    /* Dropdown menu styling */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      top: 100%;
+      left: 0;
+      color: #333333;
+    }
+
+    .dropdown-item {
+      width: 100%;
+    }
+
+    .dropdown-link:active {
+      color: #dde8f1;
+    }
+
+    .dropdown-link {
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      color: #333333;
+    }
+
+    .dropdown-link:hover {
+      background-color: #dde8f1;
+      border-radius: 8px;
+    }
+
+    .dropdown-item.active .dropdown-link {
+      color: #377dff;
+      cursor: default;
+      /* Prevents the pointer (hand) cursor */
+    }
+
+    .dropdown-item.active .dropdown-link:hover {
+      background-color: transparent;
+    }
+
+    /* Show the dropdown menu on hover */
+    .navbar-item.dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* New styles for responsive navbar */
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 576px) {
       .navbar {
-        position: fixed;
-        width: 100%;
-        background-color: #132144;
-        z-index: 1000;
-        padding: 10px 0;
-      }
-
-      .navbar-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        padding: 0 20px;
-        box-sizing: border-box;
-      }
-
-      .navbar-logo {
-        height: 50px;
+        font-size: 0.775rem;
       }
 
       .navbar-list {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: left;
+        padding-left: 20px;
+        /* Add padding to align to the left */
+        align-items: flex-start;
+        /* Align items to the left */
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background-color: #132144;
+        z-index: 999;
+      }
+
+      .navbar-list.active {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-grow: 1;
+        margin-top: 10px;
       }
 
       .navbar-item {
+        width: 100%;
+      }
+
+      .hamburger {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        z-index: 1001;
+        /* Ensure it's above other content */
+      }
+
+      .map-container {
+        position: relative;
+        z-index: 999;
+      }
+
+      .card {
         position: relative;
       }
 
-      .navbar-link {
-        display: block;
-        color: white;
-        text-align: right;
-        padding: 14px 20px;
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-
-      .navbar-item.active .navbar-link {
-        border-bottom: 2px solid #fbcb1f;
-      }
-
-      .navbar-link:hover {
-        color: #fbcb1f;
-      }
-
-      .navbar-link::before {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: #fbcb1f;
-        visibility: hidden;
-        transition: all 0.3s ease-in-out;
-      }
-
-      .navbar-link:hover::before {
-        visibility: visible;
-        width: 100%;
-      }
-
-      /* Dropdown menu styling */
-      .dropdown-menu {
+      .has-sub .dropdown-menu {
         display: none;
-        position: absolute;
-        background-color: #ffffff;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        top: 100%;
-        left: 0;
-        color: #333333;
+        position: static;
+        top: auto;
+        left: auto;
+        background-color: transparent;
+        box-shadow: none;
+        color: #ffe5e5;
+      }
+
+      .has-sub.active .dropdown-menu {
+        display: block;
+        margin-top: 0.5rem;
+        /* Adjust spacing between items */
+        color: white;
       }
 
       .dropdown-item {
-        width: 100%;
+        padding: 0.5rem 2rem;
+        /* background-color: #333; */
+        background-color: #132144;
+
+        border-bottom: 1px solid #555;
       }
 
-      .dropdown-link:active {
-        color: #dde8f1;
+      .dropdown-item:last-child {
+        border-bottom: none;
+        /* Remove border on last item */
       }
 
-      .dropdown-link {
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        color: #333333;
-      }
 
-      .dropdown-link:hover {
-        background-color: #dde8f1;
-        border-radius: 8px;
-      }
+    }
 
-      .dropdown-item.active .dropdown-link {
-        color: #377dff;
-        cursor: default; /* Prevents the pointer (hand) cursor */
-      }
+    .required-asterisk {
+      color: red;
+    }
+  </style>
+</head>
 
-      .dropdown-item.active .dropdown-link:hover {
-        background-color: transparent;
-      }
+<body>
+  <div id="app">
+    <div id="main" class="layout-horizontal">
+      <nav class="navbar">
+        <div class="navbar-content">
+          <a href="/index.html" class="menu-link">
+            <img class="navbar-logo" src="/assets/compiled/svg/logoATR.svg" alt="Logo" height="46" width="135" />
+          </a>
+          <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-      /* Show the dropdown menu on hover */
-      .navbar-item.dropdown:hover .dropdown-menu {
-        display: block;
-      }
-
-      /* New styles for responsive navbar */
-      .hamburger {
-        display: none;
-        font-size: 24px;
-        color: white;
-        cursor: pointer;
-      }
-
-      @media (max-width: 576px) {
-        .navbar {
-          font-size: 0.775rem;
-        }
-
-        .navbar-list {
-          display: none;
-          flex-direction: column;
-          width: 100%;
-          text-align: left;
-          padding-left: 20px; /* Add padding to align to the left */
-          align-items: flex-start; /* Align items to the left */
-          position: absolute;
-          top: 50px;
-          left: 0;
-          background-color: #132144;
-          z-index: 999;
-        }
-
-        .navbar-list.active {
-          display: flex;
-          margin-top: 10px;
-        }
-
-        .navbar-item {
-          width: 100%;
-        }
-
-        .hamburger {
-          display: block;
-          position: absolute;
-          top: 10px;
-          right: 20px;
-          z-index: 1001; /* Ensure it's above other content */
-        }
-        .map-container {
-          position: relative;
-          z-index: 999;
-        }
-
-        .card {
-          position: relative;
-        }
-
-        .has-sub .dropdown-menu {
-          display: none;
-          position: static;
-          top: auto;
-          left: auto;
-          background-color: transparent;
-          box-shadow: none;
-          color: #ffe5e5;
-        }
-
-        .has-sub.active .dropdown-menu {
-          display: block;
-          margin-top: 0.5rem; /* Adjust spacing between items */
-          color: white;
-        }
-
-        .dropdown-item {
-          padding: 0.5rem 2rem;
-          /* background-color: #333; */
-          background-color: #132144;
-
-          border-bottom: 1px solid #555;
-        }
-
-        .dropdown-item:last-child {
-          border-bottom: none; /* Remove border on last item */
-        }
-
-       
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="app">
-      <div id="main" class="layout-horizontal">
-        <nav class="navbar">
-          <div class="navbar-content">
-            <a href="/index.html" class="menu-link">
-              <img
-                class="navbar-logo"
-                src="/assets/compiled/svg/logoATR.svg"
-                alt="Logo"
-                height="46"
-                width="135"
-              />
-            </a>
-            <div class="hamburger" onclick="toggleMenu()">☰</div>
-
-            <ul class="navbar-list gap-4">
-              <li class="navbar-item">
-                <a href="/index.html" class="navbar-link"
-                  ><i class="me-2"
-                    ><img
-                      src="/assets/compiled/svg/iconDashboard.svg"
-                      alt=""
-                      height="20"
-                      width="20" /></i
-                  >Dashboard</a
-                >
-              </li>
-              <li class="navbar-item active">
-                <a href="/pages/master/kiosk.html" class="navbar-link"
-                  ><i class="me-2"
-                    ><img
-                      src="/assets/compiled/svg/iconMaster.svg"
-                      alt=""
-                      height="20"
-                      width="20" /></i
-                  >Master</a
-                >
-              </li>
-              <li class="navbar-item dropdown">
-                <a href="#" class="navbar-link" id="report-link"
-                  ><i class="me-2"
-                    ><img
-                      src="/assets/compiled/svg/iconReport.svg"
-                      alt=""
-                      height="20"
-                      width="20" /></i
-                  >Report</a
-                >
-                <ul class="dropdown-menu">
-                  <li class="dropdown-item">
-                    <a href="/pages/master/errorLog.html" class="dropdown-link"
-                      >Error Log</a
-                    >
-                  </li>
-                  <li class="dropdown-item">
-                    <a
-                      href="/pages/master/transaksi.html"
-                      class="dropdown-link"
-                    >
-                      Transaksi</a
-                    >
-                  </li>
-                  <li class="dropdown-item">
-                    <a
-                      href="/pages/master/kertasToner.html"
-                      class="dropdown-link"
-                    >
-                      Kertas & Toner</a
-                    >
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div class="content-wrapper container" style="margin-top: 100px">
-          <div class="page-heading p-3">
-            <h1 class="text-white">Tambah Kiosk</h1>
-            <nav
-              style="--bs-breadcrumb-divider: '>'"
-              aria-label="breadcrumb"
-              class=""
-            >
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item text-white">Master Kiosk</li>
-                <li
-                  class="breadcrumb-item active text-white"
-                  aria-current="page"
-                >
-                  Tambah Kiosk
+          <ul class="navbar-list gap-4">
+            <li class="navbar-item">
+              <a href="/index.html" class="navbar-link"><i class="me-2"><img
+                    src="/assets/compiled/svg/iconDashboard.svg" alt="" height="20" width="20" /></i>Dashboard</a>
+            </li>
+            <li class="navbar-item active">
+              <a href="/pages/master/kiosk.html" class="navbar-link"><i class="me-2"><img
+                    src="/assets/compiled/svg/iconMaster.svg" alt="" height="20" width="20" /></i>Master</a>
+            </li>
+            <li class="navbar-item dropdown">
+              <a href="#" class="navbar-link" id="report-link"><i class="me-2"><img
+                    src="/assets/compiled/svg/iconReport.svg" alt="" height="20" width="20" /></i>Report</a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-item">
+                  <a href="/pages/master/errorLog.html" class="dropdown-link">Error Log</a>
                 </li>
-              </ol>
-            </nav>
-          </div>
-          <div class="page-content">
-            <div class="container">
-              <div class="card mt-5 border">
-                <div class="card-header">
-                  <span class=""
-                    ><i class="me-2"
-                      ><img
-                        src="/assets/compiled/svg/iconDetail.svg"
-                        alt=""
-                        height="40"
-                        width="40" /></i
-                    >Detail Kiosk</span
-                  >
-                </div>
-                <hr />
-                <div class="card-body">
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="no_kiosk"
-                        >Nomor Kiosk*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="no_kiosk"
-                          class="form-control"
-                          name="no_kiosk"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="versi_app"
-                        >Versi Aplikasi*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="versi_app"
-                          class="form-control"
-                          name="versi_app"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="sts_kiosk"
-                        >Status Kiosk</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="sts_kiosk"
-                          class="form-control"
-                          name="sts_kiosk"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="lokasi"
-                        >Lokasi</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="lokasi"
-                          class="form-control"
-                          name="lokasi"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="latitude"
-                        >Latitide*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="latitude"
-                          class="form-control"
-                          name="latitude"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="longitude"
-                        >Longitude</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="longitude"
-                          class="form-control"
-                          name="longitude"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <li class="dropdown-item">
+                  <a href="/pages/master/transaksi.html" class="dropdown-link">
+                    Transaksi</a>
+                </li>
+                <li class="dropdown-item">
+                  <a href="/pages/master/kertasToner.html" class="dropdown-link">
+                    Kertas & Toner</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="content-wrapper container" style="margin-top: 100px">
+        <div class="page-heading p-3">
+          <h1 class="text-white">Tambah Kiosk</h1>
+          <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb" class="">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item text-white">Master Kiosk</li>
+              <li class="breadcrumb-item active text-white" aria-current="page">
+                Tambah Kiosk
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div class="page-content">
+          <div class="container">
+            <div class="card mt-5 border">
+              <div class="card-header">
+                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconDetail.svg" alt="" height="40"
+                      width="40" /></i>Detail Kiosk</span>
               </div>
-
-              <div class="card mt-5 border">
-                <div class="card-header">
-                  <span class=""
-                    ><i class="me-2"
-                      ><img
-                        src="/assets/compiled/svg/iconPrinter.svg"
-                        alt=""
-                        height="40"
-                        width="40" /></i
-                    >Printer</span
-                  >
-                </div>
-                <hr />
-                <div class="card-body">
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="nama_printer"
-                        >Nama Printer*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="nama_printer"
-                          class="form-control"
-                          name="nama_printer"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="versi_printer"
-                        >Versi Printer*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="versi_printer"
-                          class="form-control"
-                          name="versi_printer"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="sts_printer"
-                        >Status Printer</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="sts_printer"
-                          class="form-control"
-                          name="sts_printer"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="sts_kertas"
-                        >Status Kertas</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="sts_kertas"
-                          class="form-control"
-                          name="sts_kertas"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="sts_toner"
-                        >Status Toner*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="sts_toner"
-                          class="form-control"
-                          name="sts_toner"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label
-                        class="col-sm-4 col-form-label"
-                        for="sts_pencetakan"
-                        >Status Pencetakan*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="sts_pencetakan"
-                          class="form-control"
-                          name="sts_pencetakan"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card mt-5 border">
-                <div class="card-header">
-                  <span class=""
-                    ><i class="me-2"
-                      ><img
-                        src="/assets/compiled/svg/iconCPU.svg"
-                        alt=""
-                        height="40"
-                        width="40" /></i
-                    >CPU</span
-                  >
-                </div>
-                <hr />
-                <div class="card-body">
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="processor"
-                        >Processor*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="processor"
-                          class="form-control"
-                          name="processor"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="RAM"
-                        >RAM*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="RAM"
-                          class="form-control"
-                          name="RAM"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="VGA"
-                        >VGA*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="VGA"
-                          class="form-control"
-                          name="VGA"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="SSD"
-                        >SSD*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="SSD"
-                          class="form-control"
-                          name="SSD"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="HDD"
-                        >HDD*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="HDD"
-                          class="form-control"
-                          name="HDD"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="PSU"
-                        >PSU*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="PSU"
-                          class="form-control"
-                          name="PSU"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="networking"
-                        >Networking*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="networking"
-                          class="form-control"
-                          name="networking"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="OS"
-                        >OS*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="OS"
-                          class="form-control"
-                          name="OS"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card mt-5 border">
-                <div class="card-header">
-                  <span class=""
-                    ><i class="me-2"
-                      ><img
-                        src="/assets/compiled/svg/iconWebcam.svg"
-                        alt=""
-                        height="40"
-                        width="40" /></i
-                    >Webcam</span
-                  >
-                </div>
-                <hr />
-                <div class="card-body">
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="nama_webcam"
-                        >Nama*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="nama_webcam"
-                          class="form-control"
-                          name="nama_webcam"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="port"
-                        >Port*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="port"
-                          class="form-control"
-                          name="port"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label
-                        class="col-sm-4 col-form-label"
-                        for="max_resolution"
-                        >Max Resolution*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="max_resolution"
-                          class="form-control"
-                          name="max_resolution"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="focus_type"
-                        >Focus Type*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="focus_type"
-                          class="form-control"
-                          name="focus_type"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label
-                        class="col-sm-4 col-form-label"
-                        for="lens_technology"
-                        >Lens Technology*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="lens_technology"
-                          class="form-control"
-                          name="lens_technology"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="built-in-mic"
-                        >Built-in-mic*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="built-in-mic"
-                          class="form-control"
-                          name="built-in-mic"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="networking"
-                        >Networking*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="networking"
-                          class="form-control"
-                          name="networking"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="fov"
-                        >FoV*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="fov"
-                          class="form-control"
-                          name="fov"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card mt-5 border">
-                <div class="card-header">
-                  <span class=""
-                    ><i class="me-2"
-                      ><img
-                        src="/assets/compiled/svg/iconUtil.svg"
-                        alt=""
-                        height="40"
-                        width="40" /></i
-                    >Utilization</span
-                  >
-                </div>
-                <hr />
-                <div class="card-body">
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="cpu_util"
-                        >CPU Utilization*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="cpu_util"
-                          class="form-control"
-                          name="cpu_util"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="ram_util"
-                        >RAM Utilization*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="ram_util"
-                          class="form-control"
-                          name="ram_util"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="storage"
-                        >Storage*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="storage"
-                          class="form-control"
-                          name="storage"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="sts_webcam"
-                        >Status Webcam*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="sts_webcam"
-                          class="form-control"
-                          name="sts_webcam"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label
-                        class="col-sm-4 col-form-label"
-                        for="sts_camera_ocr"
-                        >Status Camera OCR*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="sts_camera_ocr"
-                          class="form-control"
-                          name="sts_camera_ocr"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label class="col-sm-4 col-form-label" for="sts_ereader"
-                        >Status E-KTP Reader*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="sts_ereader"
-                          class="form-control"
-                          name="sts_ereader"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label
-                        class="col-sm-4 col-form-label"
-                        for="api_connection"
-                        >API Connection*</label
-                      >
-                      <div class="col-sm-8">
-                        <input
-                          type="text"
-                          id="api_connection"
-                          class="form-control"
-                          name="api_connection"
-                          placeholder=""
-                          value=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-10">
-                    <div class="form-group row align-items-center">
-                      <label
-                        class="col-sm-4 col-form-label"
-                        for="internet_connection"
-                        >Internet Comnnection*</label
-                      >
-                    </div>
+              <hr />
+              <div class="card-body">
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="no_kiosk">Nomor Kiosk<span
+                        class="required-asterisk">*</span></label>
                     <div class="col-sm-8">
-                      <input
-                        type="text"
-                        id="internet_connection"
-                        class="form-control"
-                        name="internet_connection"
-                        placeholder=""
-                        value=""
-                      />
+                      <input type="text" id="no_kiosk" class="form-control" name="no_kiosk" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="versi_app">Versi Aplikasi<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="versi_app" class="form-control" name="versi_app" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="sts_kiosk">Status Kiosk</label>
+                    <div class="col-sm-8">
+                      <input type="text" id="sts_kiosk" class="form-control" name="sts_kiosk" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="lokasi">Lokasi</label>
+                    <div class="col-sm-8">
+                      <input type="text" id="lokasi" class="form-control" name="lokasi" placeholder="" value="" />
                     </div>
                   </div>
                 </div>
 
                 <div class="col-10">
                   <div class="form-group row align-items-center">
-                    <label
-                      class="col-sm-4 col-form-label"
-                      for="bandwith_internet"
-                      >Bandwith Internet*</label
-                    >
+                    <label class="col-sm-4 col-form-label" for="latitude">Latitide<span
+                        class="required-asterisk">*</span></label>
                     <div class="col-sm-8">
-                      <input
-                        type="text"
-                        id="bandwith_internet"
-                        class="form-control"
-                        name="bandwith_internet"
-                        placeholder=""
-                        value=""
-                      />
+                      <input type="text" id="latitude" class="form-control" name="latitude" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="longitude">Longitude</label>
+                    <div class="col-sm-8">
+                      <input type="text" id="longitude" class="form-control" name="longitude" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-5 border">
+              <div class="card-header">
+                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconPrinter.svg" alt="" height="40"
+                      width="40" /></i>Printer</span>
+              </div>
+              <hr />
+              <div class="card-body">
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="nama_printer">Nama Printer<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="nama_printer" class="form-control" name="nama_printer" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="versi_printer">Versi Printer<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="versi_printer" class="form-control" name="versi_printer" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="sts_printer">Status Printer</label>
+                    <div class="col-sm-8">
+                      <input type="text" id="sts_printer" class="form-control" name="sts_printer" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="sts_kertas">Status Kertas</label>
+                    <div class="col-sm-8">
+                      <input type="text" id="sts_kertas" class="form-control" name="sts_kertas" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="sts_toner">Status Toner<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="sts_toner" class="form-control" name="sts_toner" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="sts_pencetakan">Status Pencetakan<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="sts_pencetakan" class="form-control" name="sts_pencetakan" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-5 border">
+              <div class="card-header">
+                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconCPU.svg" alt="" height="40"
+                      width="40" /></i>CPU</span>
+              </div>
+              <hr />
+              <div class="card-body">
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="processor">Processor<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="processor" class="form-control" name="processor" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="RAM">RAM<span class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="RAM" class="form-control" name="RAM" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="VGA">VGA<span class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="VGA" class="form-control" name="VGA" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="SSD">SSD<span class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="SSD" class="form-control" name="SSD" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="HDD">HDD<span class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="HDD" class="form-control" name="HDD" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="PSU">PSU<span class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="PSU" class="form-control" name="PSU" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="networking">Networking<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="networking" class="form-control" name="networking" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="OS">OS<span class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="OS" class="form-control" name="OS" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-5 border">
+              <div class="card-header">
+                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconWebcam.svg" alt="" height="40"
+                      width="40" /></i>Webcam</span>
+              </div>
+              <hr />
+              <div class="card-body">
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="nama_webcam">Nama<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="nama_webcam" class="form-control" name="nama_webcam" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="port">Port<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="port" class="form-control" name="port" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="max_resolution">Max Resolution<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="max_resolution" class="form-control" name="max_resolution" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="focus_type">Focus Type<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="focus_type" class="form-control" name="focus_type" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="lens_technology">Lens Technology<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="lens_technology" class="form-control" name="lens_technology" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="built-in-mic">Built-in-mic<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="built-in-mic" class="form-control" name="built-in-mic" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="networking">Networking<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="networking" class="form-control" name="networking" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="fov">FoV<span class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="fov" class="form-control" name="fov" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card mt-5 border">
+              <div class="card-header">
+                <span class=""><i class="me-2"><img src="/assets/compiled/svg/iconUtil.svg" alt="" height="40"
+                      width="40" /></i>Utilization</span>
+              </div>
+              <hr />
+              <div class="card-body">
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="cpu_util">CPU Utilization<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="cpu_util" class="form-control" name="cpu_util" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="ram_util">RAM Utilization<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="ram_util" class="form-control" name="ram_util" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="storage">Storage<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="storage" class="form-control" name="storage" placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="sts_webcam">Status Webcam<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="sts_webcam" class="form-control" name="sts_webcam" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="sts_camera_ocr">Status Camera OCR<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="sts_camera_ocr" class="form-control" name="sts_camera_ocr" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="sts_ereader">Status E-KTP Reader<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="sts_ereader" class="form-control" name="sts_ereader" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="api_connection">API Connection<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="api_connection" class="form-control" name="api_connection" placeholder=""
+                        value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="internet_connection">Internet Connection<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="internet_connection" class="form-control" name="internet_connection"
+                        placeholder="" value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-10">
+                  <div class="form-group row align-items-center">
+                    <label class="col-sm-4 col-form-label" for="bandwith_internet">Bandwith Internet<span
+                        class="required-asterisk">*</span></label>
+                    <div class="col-sm-8">
+                      <input type="text" id="bandwith_internet" class="form-control" name="bandwith_internet"
+                        placeholder="" value="" />
                     </div>
                   </div>
                 </div>
@@ -1156,5 +779,6 @@
         }
       }
     </script>
-  </body>
+</body>
+
 </html>
