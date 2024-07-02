@@ -248,43 +248,67 @@
         } */
       }
 
-      .nav-tabs {
-        border-radius: 5px;
-        box-shadow: 41.967px -41.967px 41.967px 0px rgba(165, 165, 165, 0.2) inset,
-          -41.967px 41.967px 41.967px 0px rgba(255, 255, 255, 0.2) inset;
-        backdrop-filter: blur(59.59266662597656px);
-        padding: 10px;
-        color: #dde8f1;
-      }
-      @media (max-width: 991px) {
-        .kiosk-container {
-          padding-right: 20px;
+      ..nav-tabs-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
         }
-      }
-      .kiosk-content {
-        align-items: center;
-        display: flex;
-        gap: 20px;
-        justify-content: space-between;
-      }
-      @media (max-width: 991px) {
+
+        .nav-tabs {
+            border-radius: 5px;
+            box-shadow: 41.967px -41.967px 41.967px 0px rgba(165, 165, 165, 0.2) inset,
+                        -41.967px 41.967px 41.967px 0px rgba(255, 255, 255, 0.2) inset;
+            backdrop-filter: blur(59.59266662597656px);
+            padding: 10px;
+            color: #dde8f1;
+            /* display: inline-flex; */
+            flex-wrap: nowrap;
+        }
+
+        .nav-tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tabs-container {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         .kiosk-content {
-          flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            justify-content: space-between;
         }
-      }
-      .kiosk-title {
-        font-family: Inter, sans-serif;
-        justify-content: center;
-        border-radius: 5px;
-        align-self: stretch;
-        padding: 10px;
-        color: #dde8f1;
-      }
-      .kiosk-item {
-        font-family: Inter, sans-serif;
-        align-self: stretch;
-        margin: auto 0;
-      }
+
+        .kiosk-title {
+            font-family: Inter, sans-serif;
+            justify-content: center;
+            border-radius: 5px;
+            align-self: stretch;
+            padding: 10px;
+            color: #dde8f1;
+        }
+
+        .kiosk-item {
+            font-family: Inter, sans-serif;
+            align-self: stretch;
+            margin: auto 0;
+            display: inline-block;
+        }
+
+        @media (max-width: 991px) {
+            .nav-tabs {
+                display: flex;
+                overflow-x: hidden;
+                white-space: nowrap;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .nav-tabs .nav-item {
+                flex: 0 0 auto;
+            }
+        }
     </style>
   </head>
 
@@ -293,7 +317,7 @@
       <div id="main" class="layout-horizontal">
         <nav class="navbar">
           <div class="navbar-content">
-            <a href="index.html" class="menu-link">
+            <a href="/index.html" class="menu-link">
               <img
                 class="navbar-logo"
                 src="/assets/compiled/svg/logoATR.svg"
