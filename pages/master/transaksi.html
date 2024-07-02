@@ -864,46 +864,55 @@
   <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", initDropdowns);
+      window.addEventListener("resize", initDropdowns);
 
+      function initDropdowns() {
+        const dropdowns = document.querySelectorAll(".navbar-item.dropdown");
 
-      const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
-      if (window.innerWidth > 576) {
-        dropdowns.forEach(dropdown => {
-          dropdown.addEventListener('mouseenter', function () {
-            this.classList.add('active');
-          });
-          dropdown.addEventListener('mouseleave', function () {
-            this.classList.remove('active');
-          });
+        dropdowns.forEach((dropdown) => {
+          // Clear previous event listeners
+          dropdown.replaceWith(dropdown.cloneNode(true));
         });
-      } else {
-        dropdowns.forEach(dropdown => {
-          dropdown.classList.add('has-sub');
-          const link = dropdown.querySelector('.navbar-link');
-          link.addEventListener('click', function (e) {
-            e.preventDefault();
-            dropdown.classList.toggle('active');
+
+        const newDropdowns = document.querySelectorAll(".navbar-item.dropdown");
+
+        if (window.innerWidth > 576) {
+          newDropdowns.forEach((dropdown) => {
+            dropdown.addEventListener("mouseenter", function () {
+              this.classList.add("active");
+            });
+            dropdown.addEventListener("mouseleave", function () {
+              this.classList.remove("active");
+            });
           });
-        });
+        } else {
+          newDropdowns.forEach((dropdown) => {
+            dropdown.classList.add("has-sub");
+            const link = dropdown.querySelector(".navbar-link");
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+              dropdown.classList.toggle("active");
+            });
+          });
+        }
       }
-    });
 
-    function toggleMenu() {
-      var navbarList = document.querySelector(".navbar-list");
-      var mapContainer = document.querySelector(".map-container");
-      var card = document.querySelector(".card");
+      function toggleMenu() {
+        var navbarList = document.querySelector(".navbar-list");
+        var mapContainer = document.querySelector(".map-container");
+        var card = document.querySelector(".card");
 
-      navbarList.classList.toggle("active");
+        navbarList.classList.toggle("active");
 
-      if (navbarList.classList.contains("active")) {
-        mapContainer.style.top = `${navbarList.clientHeight}px`;
-        card.style.top = `${navbarList.clientHeight}px`;
-      } else {
-        mapContainer.style.top = "0";
-        card.style.top = "0";
+        if (navbarList.classList.contains("active")) {
+          mapContainer.style.top = `${navbarList.clientHeight}px`;
+          card.style.top = `${navbarList.clientHeight}px`;
+        } else {
+          mapContainer.style.top = "0";
+          card.style.top = "0";
+        }
       }
-    }
 
     $(document).ready(function () {
       var table = $("#example1").DataTable();

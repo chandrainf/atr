@@ -611,56 +611,39 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // const navbarItems = document.querySelectorAll(".navbar-item");
-        // const dropdownLink = document.getElementById("report-link");
-        // const dropdownMenu = dropdownLink.nextElementSibling;
+     document.addEventListener("DOMContentLoaded", initDropdowns);
+      window.addEventListener("resize", initDropdowns);
 
-        // dropdownLink.addEventListener("click", function (event) {
-        //   event.preventDefault();
-        //   dropdownMenu.classList.toggle("show");
-        //   dropdownLink.parentElement.classList.toggle("active");
-        // });
+      function initDropdowns() {
+        const dropdowns = document.querySelectorAll(".navbar-item.dropdown");
 
-        // navbarItems.forEach((item) => {
-        //   item.addEventListener("click", function () {
-        //     navbarItems.forEach((nav) => nav.classList.remove("active"));
-        //     if (this.querySelector(".dropdown-menu")) {
-        //       this.classList.add("active");
-        //     } else {
-        //       this.classList.add("active");
-        //       dropdownMenu.classList.remove("show");
-        //     }
-        //   });
-        // });
+        dropdowns.forEach((dropdown) => {
+          // Clear previous event listeners
+          dropdown.replaceWith(dropdown.cloneNode(true));
+        });
 
-        // document.addEventListener("click", function (event) {
-        //   if (!event.target.closest(".navbar-item")) {
-        //     navbarItems.forEach((nav) => nav.classList.remove("active"));
-        //     dropdownMenu.classList.remove("show");
-        //   }
-        // });
-        const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
-            if (window.innerWidth > 576) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.addEventListener('mouseenter', function() {
-                        this.classList.add('active');
-                    });
-                    dropdown.addEventListener('mouseleave', function() {
-                        this.classList.remove('active');
-                    });
-                });
-            } else {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.add('has-sub');
-                    const link = dropdown.querySelector('.navbar-link');
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                    });
-                });
-            }
-      });
+        const newDropdowns = document.querySelectorAll(".navbar-item.dropdown");
+
+        if (window.innerWidth > 576) {
+          newDropdowns.forEach((dropdown) => {
+            dropdown.addEventListener("mouseenter", function () {
+              this.classList.add("active");
+            });
+            dropdown.addEventListener("mouseleave", function () {
+              this.classList.remove("active");
+            });
+          });
+        } else {
+          newDropdowns.forEach((dropdown) => {
+            dropdown.classList.add("has-sub");
+            const link = dropdown.querySelector(".navbar-link");
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+              dropdown.classList.toggle("active");
+            });
+          });
+        }
+      }
 
       function toggleMenu() {
         var navbarList = document.querySelector(".navbar-list");

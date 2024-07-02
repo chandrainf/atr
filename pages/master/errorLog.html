@@ -468,8 +468,6 @@
         overflow-x: auto;
       } */
 
-/* 
-     
 
     </style>
   </head>
@@ -1172,30 +1170,39 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", initDropdowns);
+      window.addEventListener("resize", initDropdowns);
 
-      const dropdowns = document.querySelectorAll('.navbar-item.dropdown');
-            if (window.innerWidth > 576) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.addEventListener('mouseenter', function() {
-                        this.classList.add('active');
-                    });
-                    dropdown.addEventListener('mouseleave', function() {
-                        this.classList.remove('active');
-                    });
-                });
-            } else {
-                dropdowns.forEach(dropdown => {
-                    dropdown.classList.add('has-sub');
-                    const link = dropdown.querySelector('.navbar-link');
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        dropdown.classList.toggle('active');
-                    });
-                });
-            }
-      
-      });
+      function initDropdowns() {
+        const dropdowns = document.querySelectorAll(".navbar-item.dropdown");
+
+        dropdowns.forEach((dropdown) => {
+          // Clear previous event listeners
+          dropdown.replaceWith(dropdown.cloneNode(true));
+        });
+
+        const newDropdowns = document.querySelectorAll(".navbar-item.dropdown");
+
+        if (window.innerWidth > 576) {
+          newDropdowns.forEach((dropdown) => {
+            dropdown.addEventListener("mouseenter", function () {
+              this.classList.add("active");
+            });
+            dropdown.addEventListener("mouseleave", function () {
+              this.classList.remove("active");
+            });
+          });
+        } else {
+          newDropdowns.forEach((dropdown) => {
+            dropdown.classList.add("has-sub");
+            const link = dropdown.querySelector(".navbar-link");
+            link.addEventListener("click", function (e) {
+              e.preventDefault();
+              dropdown.classList.toggle("active");
+            });
+          });
+        }
+      }
 
       function toggleMenu() {
         var navbarList = document.querySelector(".navbar-list");

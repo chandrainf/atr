@@ -994,7 +994,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      // document.addEventListener("DOMContentLoaded", function () {
         // const navbarItems = document.querySelectorAll(".navbar-item");
         // const dropdownLink = document.getElementById("report-link");
         // const dropdownMenu = dropdownLink.nextElementSibling;
@@ -1024,9 +1024,21 @@
         //   }
         // });
 
+        document.addEventListener("DOMContentLoaded", initDropdowns);
+      window.addEventListener("resize", initDropdowns);
+
+      function initDropdowns() {
         const dropdowns = document.querySelectorAll(".navbar-item.dropdown");
+
+        dropdowns.forEach((dropdown) => {
+          // Clear previous event listeners
+          dropdown.replaceWith(dropdown.cloneNode(true));
+        });
+
+        const newDropdowns = document.querySelectorAll(".navbar-item.dropdown");
+
         if (window.innerWidth > 576) {
-          dropdowns.forEach((dropdown) => {
+          newDropdowns.forEach((dropdown) => {
             dropdown.addEventListener("mouseenter", function () {
               this.classList.add("active");
             });
@@ -1035,7 +1047,7 @@
             });
           });
         } else {
-          dropdowns.forEach((dropdown) => {
+          newDropdowns.forEach((dropdown) => {
             dropdown.classList.add("has-sub");
             const link = dropdown.querySelector(".navbar-link");
             link.addEventListener("click", function (e) {
@@ -1044,7 +1056,7 @@
             });
           });
         }
-      });
+      }
 
       function toggleMenu() {
         var navbarList = document.querySelector(".navbar-list");
