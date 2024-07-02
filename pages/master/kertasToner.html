@@ -307,6 +307,39 @@
         border-radius: 3px !important; 
       }
 
+      #table1.dataTable-custom .dataTables_info {
+            font-size: 14px; /* Default font size for total entries and showing entries */
+        }
+        #table1.dataTable-custom .dataTables_paginate {
+            font-size: 14px; /* Default font size for pagination controls */
+        }
+        #table1.dataTable-custom .dataTables_length select {
+            font-size: 14px; /* Default font size for length menu */
+        }
+        #table1.dataTable-custom .dataTables_filter input {
+            font-size: 14px; /* Default font size for search filter input */
+        }
+
+        @media (max-width: 576px) {
+            /* Styles for small screens */
+            #table1.dataTable-custom .dataTables_info {
+              font-size: 0.775rem;
+                
+            }
+            #table1.dataTable-custom .dataTables_paginate {
+              font-size: 0.775rem;
+             
+            }
+            #table1.dataTable-custom .dataTables_length select {
+              font-size: 0.775rem;
+                
+            }
+            #table1.dataTable-custom .dataTables_filter input {
+              font-size: 0.775rem;
+              
+            }
+        }
+
       /* .table-responsive {
         overflow-x: auto;
       } */
