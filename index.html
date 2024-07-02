@@ -1143,11 +1143,11 @@
       // Function to adjust map view based on screen size
       function setMapView() {
         if (window.innerWidth <= 576) {
-          map.setView([-2.5489, 118.0149], 4); // Coordinates and zoom for small screens
+          map.setView([-2.5489, 118.0149], 3); // Coordinates and zoom for small screens
         } else if (window.innerWidth <= 992) {
-          map.setView([-2.5489, 118.0149], 5); // Coordinates and zoom for medium screens
+          map.setView([-2.5489, 118.0149], 4); // Coordinates and zoom for medium screens
         } else {
-          map.setView([-2.5489, 118.0149], 6); // Coordinates and zoom for large screens
+          map.setView([-2.5489, 118.0149], 5); // Coordinates and zoom for large screens
         }
       }
 
