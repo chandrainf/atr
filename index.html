@@ -269,10 +269,6 @@
           font-size: 0.775rem;
         }
 
-        .legend-container {
-          font-size: small !important;
-        }
-
         .timeline-content h4 {
           font-size: 1rem; /* Adjust this value as needed */
         }
@@ -284,10 +280,30 @@
 
         .dataTables_wrapper .dataTables_info, .dataTables_paginate, .dataTables_length, .dataTables_length select, .dataTables_filter input {
         font-size: 12px !important;
+        
       }
+      .legend {
+        font-size: 12px !important; /* Smaller font size for small screens */
+        padding: 5px !important;
+      }
+
+      .legend-container .legend-item h6 {
+        font-size: 12px !important; /* Smaller font size for small screens */
+        gap: 5px !important;
+       
+      }
+      .legend-color {
+        width: 10px !important;
+        height: 10px !important;
+        border-radius: 50% !important;
+        margin-right: 5px !important;
+      }
+      .legend h4 {
+        font-size: 16px !important; 
 
   
       }
+    }
 
       /* Map container with default height */
       #map {
@@ -317,7 +333,6 @@
         font-size: medium;
       }
 
-  
       .legend-item {
         display: flex;
         align-items: center;
@@ -345,8 +360,6 @@
         border-radius: 5px;
         padding: 10px;
       }
-
-  
 
       .timeline {
         position: relative;
@@ -508,8 +521,6 @@
         width: 100%;
         border-collapse: collapse;
       }
-
-    
 
       .dataTable-custom th,
       .dataTable-custom td {
