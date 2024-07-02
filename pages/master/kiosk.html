@@ -45,6 +45,10 @@
       .card {
         box-shadow: 3px 3px 3px 3px #dde8f1;
       }
+      .map-container {
+        position: relative;
+        z-index: 999;
+      }
 
       .navbar {
         position: fixed;
@@ -91,11 +95,11 @@
       }
 
       .navbar-item.active .navbar-link {
-        border-bottom: 2px solid #FBCB1F;
+        border-bottom: 2px solid #fbcb1f;
       }
 
       .navbar-link:hover {
-        color: #FBCB1F;
+        color: #fbcb1f;
       }
 
       .navbar-link::before {
@@ -105,7 +109,7 @@
         height: 2px;
         bottom: 0;
         left: 0;
-        background-color: #FBCB1F;
+        background-color: #fbcb1f;
         visibility: hidden;
         transition: all 0.3s ease-in-out;
       }
@@ -212,34 +216,32 @@
           position: relative;
         }
 
-
         .has-sub .dropdown-menu {
-            display: none;
-            position: static;
-            top: auto;
-            left: auto;
-            background-color: transparent;
-            box-shadow: none;
-            color: #ffe5e5;
+          display: none;
+          position: static;
+          top: auto;
+          left: auto;
+          background-color: transparent;
+          box-shadow: none;
+          color: #ffe5e5;
         }
-        
+
         .has-sub.active .dropdown-menu {
-            display: block;
-            margin-top: 0.5rem; /* Adjust spacing between items */
-            color: white;
+          display: block;
+          margin-top: 0.5rem; /* Adjust spacing between items */
+          color: white;
         }
-        
+
         .dropdown-item {
-            padding: 0.5rem 2rem;
-            /* background-color: #333; */
-            background-color: #132144;
-            
-            
-            border-bottom: 1px solid #555;
+          padding: 0.5rem 2rem;
+          /* background-color: #333; */
+          background-color: #132144;
+
+          border-bottom: 1px solid #555;
         }
-        
+
         .dropdown-item:last-child {
-            border-bottom: none; /* Remove border on last item */
+          border-bottom: none; /* Remove border on last item */
         }
 
         /* .dropdown-link:hover {
@@ -279,7 +281,6 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         font-size: medium;
       }
-
 
       .legend-item {
         display: flex; /* Make legend items flex containers */
@@ -344,7 +345,6 @@
       .dataTable-custom th {
         background-color: #dde8f1;
       }
-
     </style>
   </head>
 
@@ -611,7 +611,7 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <script>
-     document.addEventListener("DOMContentLoaded", initDropdowns);
+      document.addEventListener("DOMContentLoaded", initDropdowns);
       window.addEventListener("resize", initDropdowns);
 
       function initDropdowns() {
@@ -679,9 +679,9 @@
         if (window.innerWidth <= 576) {
           map.setView([-2.5, 118.0], 4); // Coordinates and zoom for small screens
         } else if (window.innerWidth <= 992) {
-          map.setView([-2.5, 118.0], 5); // Coordinates and zoom for medium screens
+          map.setView([-2.5, 118.0], 4); // Coordinates and zoom for medium screens
         } else {
-          map.setView([-2.5, 118.0], 6); // Coordinates and zoom for large screens
+          map.setView([-2.5, 118.0], 5); // Coordinates and zoom for large screens
         }
       }
 

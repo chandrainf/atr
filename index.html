@@ -63,6 +63,11 @@
         box-shadow: 3px 3px 3px 3px #dde8f1;
       }
 
+      .map-container {
+        position: relative;
+        z-index: 999;
+      }
+
       .navbar {
         position: fixed;
         width: 100%;
@@ -333,10 +338,7 @@
         .legend-container {
           font-size: small !important;
         }
-
-      
       }
-
 
       .timeline {
         position: relative;
@@ -995,36 +997,36 @@
 
     <script>
       // document.addEventListener("DOMContentLoaded", function () {
-        // const navbarItems = document.querySelectorAll(".navbar-item");
-        // const dropdownLink = document.getElementById("report-link");
-        // const dropdownMenu = dropdownLink.nextElementSibling;
+      // const navbarItems = document.querySelectorAll(".navbar-item");
+      // const dropdownLink = document.getElementById("report-link");
+      // const dropdownMenu = dropdownLink.nextElementSibling;
 
-        // dropdownLink.addEventListener("click", function (event) {
-        //   event.preventDefault();
-        //   dropdownMenu.classList.toggle("show");
-        //   dropdownLink.parentElement.classList.toggle("active");
-        // });
+      // dropdownLink.addEventListener("click", function (event) {
+      //   event.preventDefault();
+      //   dropdownMenu.classList.toggle("show");
+      //   dropdownLink.parentElement.classList.toggle("active");
+      // });
 
-        // navbarItems.forEach((item) => {
-        //   item.addEventListener("click", function () {
-        //     navbarItems.forEach((nav) => nav.classList.remove("active"));
-        //     if (this.querySelector(".dropdown-menu")) {
-        //       this.classList.add("active");
-        //     } else {
-        //       this.classList.add("active");
-        //       dropdownMenu.classList.remove("show");
-        //     }
-        //   });
-        // });
+      // navbarItems.forEach((item) => {
+      //   item.addEventListener("click", function () {
+      //     navbarItems.forEach((nav) => nav.classList.remove("active"));
+      //     if (this.querySelector(".dropdown-menu")) {
+      //       this.classList.add("active");
+      //     } else {
+      //       this.classList.add("active");
+      //       dropdownMenu.classList.remove("show");
+      //     }
+      //   });
+      // });
 
-        // document.addEventListener("click", function (event) {
-        //   if (!event.target.closest(".navbar-item")) {
-        //     navbarItems.forEach((nav) => nav.classList.remove("active"));
-        //     dropdownMenu.classList.remove("show");
-        //   }
-        // });
+      // document.addEventListener("click", function (event) {
+      //   if (!event.target.closest(".navbar-item")) {
+      //     navbarItems.forEach((nav) => nav.classList.remove("active"));
+      //     dropdownMenu.classList.remove("show");
+      //   }
+      // });
 
-        document.addEventListener("DOMContentLoaded", initDropdowns);
+      document.addEventListener("DOMContentLoaded", initDropdowns);
       window.addEventListener("resize", initDropdowns);
 
       function initDropdowns() {
@@ -1193,11 +1195,11 @@
       // Function to adjust map view based on screen size
       function setMapView() {
         if (window.innerWidth <= 576) {
-          map.setView([-2.5, 118.0], 4); // Coordinates and zoom for small screens
+          map.setView([-2.5, 118.0], 3); // Coordinates and zoom for small screens
         } else if (window.innerWidth <= 992) {
-          map.setView([-2.5, 118.0], 5); // Coordinates and zoom for medium screens
+          map.setView([-2.5, 118.0], 4); // Coordinates and zoom for medium screens
         } else {
-          map.setView([-2.5, 118.0], 6); // Coordinates and zoom for large screens
+          map.setView([-2.5, 118.0], 5); // Coordinates and zoom for large screens
         }
       }
 
