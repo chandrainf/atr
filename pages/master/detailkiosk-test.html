@@ -41,7 +41,7 @@
             backdrop-filter: blur(59.59266662597656px);
             padding: 10px;
             color: #dde8f1;
-            display: flex;
+            /* display: flex; */
             flex-wrap: nowrap;
         }
 
@@ -69,6 +69,39 @@
             align-self: stretch;
             margin: auto 0;
             display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs-container {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+            /* .nav-tabs {
+                flex-direction: column;
+            } */
+
+            .nav-tabs .nav-item {
+                margin-bottom: 5px;
+            }
+
+            .kiosk-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .kiosk-title, .kiosk-item {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .breadcrumb {
+                justify-content: center;
+            }
         }
     </style>
   </head>
