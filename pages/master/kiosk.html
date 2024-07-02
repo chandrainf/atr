@@ -305,21 +305,14 @@
         border-radius: 10px;
       }
 
-      .dataTables_wrapper .dataTables_filter input {
-        color: #000000 !important; /* Text color for search box */
-        background-color: #ffffff !important; /* Background color for search box */
-        border: 1px solid #ccc !important; /* Add a border for better visibility */
-        padding: 5px !important; /* Add padding for better appearance */
-        border-radius: 3px !important; /* Add border-radius for rounded corners */
-      }
-
-      .dataTables_wrapper .dataTables_length select {
-        color: #000000 !important; /* Text color for dropdown */
-        background-color: #ffffff !important; /* Background color for dropdown */
-        border: 1px solid #ccc !important; /* Add a border for better visibility */
-        padding: 5px !important; /* Add padding for better appearance */
-        border-radius: 3px !important; /* Add border-radius for rounded corners */
-      }
+      .dataTables_wrapper .dataTables_filter input, .dataTables_length select {
+      color: #000000 !important;
+      background-color: #ffffff !important;
+      border: 1px solid #ccc !important;
+      padding: 5px !important;
+      border-radius: 3px !important;
+     
+    }
 
       /* .table-responsive {
         overflow-x: auto;
@@ -344,6 +337,18 @@
 
       .dataTable-custom th {
         background-color: #dde8f1;
+      }
+
+      .dataTables_wrapper .dataTables_info, .dataTables_paginate, .dataTables_length, .dataTables_length select, .dataTables_filter input {
+        font-size: 14px !important;
+      }
+     
+
+      @media (max-width: 576px) {
+        .dataTables_wrapper .dataTables_info, .dataTables_paginate, .dataTables_length, .dataTables_length select, .dataTables_filter input {
+        font-size: 12px !important;
+      }
+        
       }
     </style>
   </head>

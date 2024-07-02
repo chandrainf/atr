@@ -54,11 +54,8 @@
       @media (max-width: 576px) {
         .navbar {
           font-size: 0.775rem;
-
         }
       }
-
-      
 
       .navbar-content {
         display: flex;
@@ -97,11 +94,11 @@
       }
 
       .navbar-item.active .navbar-link {
-        border-bottom: 2px solid #FBCB1F;
+        border-bottom: 2px solid #fbcb1f;
       }
 
       .navbar-link:hover {
-        color: #FBCB1F;
+        color: #fbcb1f;
       }
 
       .navbar-link::before {
@@ -111,7 +108,7 @@
         height: 2px;
         bottom: 0;
         left: 0;
-        background-color: #FBCB1F;
+        background-color: #fbcb1f;
         visibility: hidden;
         transition: all 0.3s ease-in-out;
       }
@@ -136,7 +133,6 @@
 
       .dropdown-item {
         width: 100%;
-        
       }
 
       .dropdown-link:active {
@@ -159,13 +155,11 @@
 
       .dropdown-item.active .dropdown-link {
         cursor: default; /* Prevents the pointer (hand) cursor */
-        color: #377DFF;
-        
+        color: #377dff;
       }
 
       .dropdown-item.active .dropdown-link:hover {
         background-color: transparent;
-        
       }
 
       /* Show the dropdown menu on hover */
@@ -221,34 +215,32 @@
           position: relative;
         }
 
-
         .has-sub .dropdown-menu {
-            display: none;
-            position: static;
-            top: auto;
-            left: auto;
-            background-color: transparent;
-            box-shadow: none;
-            color: #ffe5e5;
+          display: none;
+          position: static;
+          top: auto;
+          left: auto;
+          background-color: transparent;
+          box-shadow: none;
+          color: #ffe5e5;
         }
-        
+
         .has-sub.active .dropdown-menu {
-            display: block;
-            margin-top: 0.5rem; /* Adjust spacing between items */
-            color: white;
+          display: block;
+          margin-top: 0.5rem; /* Adjust spacing between items */
+          color: white;
         }
-        
+
         .dropdown-item {
-            padding: 0.5rem 2rem;
-            /* background-color: #333; */
-            background-color: #132144;
-            
-            
-            border-bottom: 1px solid #555;
+          padding: 0.5rem 2rem;
+          /* background-color: #333; */
+          background-color: #132144;
+
+          border-bottom: 1px solid #555;
         }
-        
+
         .dropdown-item:last-child {
-            border-bottom: none; /* Remove border on last item */
+          border-bottom: none; /* Remove border on last item */
         }
 
         /* .dropdown-link:hover {
@@ -272,7 +264,6 @@
         .dataTable-custom {
           font-size: 0.775rem;
         }
-
       }
 
       .dataTable-custom th,
@@ -291,60 +282,30 @@
         border-radius: 10px;
       }
 
-      .dataTables_wrapper .dataTables_filter input {
-        color: #000000 !important; 
-        background-color: #ffffff !important; 
-        border: 1px solid #ccc !important; 
-        padding: 5px !important; 
-        border-radius: 3px !important;
+      .dataTables_wrapper .dataTables_filter input, .dataTables_length select {
+      color: #000000 !important;
+      background-color: #ffffff !important;
+      border: 1px solid #ccc !important;
+      padding: 5px !important;
+      border-radius: 3px !important;
+     
+    }
+
+      .dataTables_wrapper .dataTables_info, .dataTables_paginate, .dataTables_length, .dataTables_length select, .dataTables_filter input {
+        font-size: 14px !important;
       }
+     
 
-      .dataTables_wrapper .dataTables_length select {
-        color: #000000 !important; 
-        background-color: #ffffff !important; 
-        border: 1px solid #ccc !important; 
-        padding: 5px !important; 
-        border-radius: 3px !important; 
+      @media (max-width: 576px) {
+        .dataTables_wrapper .dataTables_info, .dataTables_paginate, .dataTables_length, .dataTables_length select, .dataTables_filter input {
+        font-size: 12px !important;
       }
-
-      #table1.dataTable-custom .dataTables_info {
-            font-size: 14px; /* Default font size for total entries and showing entries */
-        }
-        #table1.dataTable-custom .dataTables_paginate {
-            font-size: 14px; /* Default font size for pagination controls */
-        }
-        #table1.dataTable-custom .dataTables_length select {
-            font-size: 14px; /* Default font size for length menu */
-        }
-        #table1.dataTable-custom .dataTables_filter input {
-            font-size: 14px; /* Default font size for search filter input */
-        }
-
-        @media (max-width: 576px) {
-            /* Styles for small screens */
-            #table1.dataTable-custom .dataTables_info {
-              font-size: 0.775rem;
-                
-            }
-            #table1.dataTable-custom .dataTables_paginate {
-              font-size: 0.775rem;
-             
-            }
-            #table1.dataTable-custom .dataTables_length select {
-              font-size: 0.775rem;
-                
-            }
-            #table1.dataTable-custom .dataTables_filter input {
-              font-size: 0.775rem;
-              
-            }
-        }
+        
+      }
 
       /* .table-responsive {
         overflow-x: auto;
       } */
-
-      
     </style>
   </head>
 
@@ -354,79 +315,82 @@
       <div id="main" class="layout-horizontal">
         <!-- <div class="header-top"  style="background-color: #132144;"> -->
 
-          <nav class="navbar">
-            <div class="navbar-content">
-              <a href="/index.html" class="menu-link">
-                <img
-                  class="navbar-logo"
-                  src="/assets/compiled/svg/logoATR.svg"
-                  alt="Logo"
-                  height="46"
-                  width="135"
-                />
-              </a>
-              <div class="hamburger" onclick="toggleMenu()">☰</div>
-  
-              <ul class="navbar-list gap-4">
-                <li class="navbar-item">
-                  <a href="/index.html" class="navbar-link"
-                    ><i class="me-2"
-                      ><img
-                        src="/assets/compiled/svg/iconDashboard.svg"
-                        alt=""
-                        height="20"
-                        width="20" /></i
-                    >Dashboard</a
+        <nav class="navbar">
+          <div class="navbar-content">
+            <a href="/index.html" class="menu-link">
+              <img
+                class="navbar-logo"
+                src="/assets/compiled/svg/logoATR.svg"
+                alt="Logo"
+                height="46"
+                width="135"
+              />
+            </a>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+            <ul class="navbar-list gap-4">
+              <li class="navbar-item">
+                <a href="/index.html" class="navbar-link"
+                  ><i class="me-2"
+                    ><img
+                      src="/assets/compiled/svg/iconDashboard.svg"
+                      alt=""
+                      height="20"
+                      width="20" /></i
+                  >Dashboard</a
+                >
+              </li>
+              <li class="navbar-item">
+                <a href="/pages/master/kiosk.html" class="navbar-link"
+                  ><i class="me-2"
+                    ><img
+                      src="/assets/compiled/svg/iconMaster.svg"
+                      alt=""
+                      height="20"
+                      width="20" /></i
+                  >Master</a
+                >
+              </li>
+              <li class="navbar-item dropdown active">
+                <a href="#" class="navbar-link" id="report-link"
+                  ><i class="me-2"
+                    ><img
+                      src="/assets/compiled/svg/iconReport.svg"
+                      alt=""
+                      height="20"
+                      width="20" /></i
+                  >Report</a
+                >
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item">
+                    <a href="/pages/master/errorLog.html" class="dropdown-link"
+                      >Error Log</a
+                    >
+                  </li>
+                  <li class="dropdown-item">
+                    <a
+                      href="/pages/master/transaksi.html"
+                      class="dropdown-link"
+                    >
+                      Transaksi</a
+                    >
+                  </li>
+                  <li
+                    class="dropdown-item active"
+                    style="background-color: transparent"
                   >
-                </li>
-                <li class="navbar-item">
-                  <a href="/pages/master/kiosk.html" class="navbar-link"
-                    ><i class="me-2"
-                      ><img
-                        src="/assets/compiled/svg/iconMaster.svg"
-                        alt=""
-                        height="20"
-                        width="20" /></i
-                    >Master</a
-                  >
-                </li>
-                <li class="navbar-item dropdown active">
-                  <a href="#" class="navbar-link" id="report-link"
-                    ><i class="me-2"
-                      ><img
-                        src="/assets/compiled/svg/iconReport.svg"
-                        alt=""
-                        height="20"
-                        width="20" /></i
-                    >Report</a
-                  >
-                  <ul class="dropdown-menu">
-                    <li class="dropdown-item">
-                      <a href="/pages/master/errorLog.html" class="dropdown-link"
-                        >Error Log</a
-                      >
-                    </li>
-                    <li class="dropdown-item">
-                      <a
-                        href="/pages/master/transaksi.html"
-                        class="dropdown-link"
-                      >
-                        Transaksi</a
-                      >
-                    </li>
-                    <li class="dropdown-item active" style="background-color: transparent;">
-                      <a
-                        href="/pages/master/kertasToner.html"
-                        class="dropdown-link"
-                      >
-                        Kertas & Toner</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </nav>
+                    <a
+                      href="/pages/master/kertasToner.html"
+                      class="dropdown-link"
+                    >
+                      Kertas & Toner</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
         <div class="row justify-content-center" style="margin-top: 100px">
           <div class="col-12 px-5">

@@ -493,21 +493,14 @@
         border-radius: 10px;
       }
 
-      .dataTables_wrapper .dataTables_filter input {
-        color: #000000 !important; /* Text color for search box */
-        background-color: #ffffff !important; /* Background color for search box */
-        border: 1px solid #ccc !important; /* Add a border for better visibility */
-        padding: 5px !important; /* Add padding for better appearance */
-        border-radius: 3px !important; /* Add border-radius for rounded corners */
-      }
-
-      .dataTables_wrapper .dataTables_length select {
-        color: #000000 !important; /* Text color for dropdown */
-        background-color: #ffffff !important; /* Background color for dropdown */
-        border: 1px solid #ccc !important; /* Add a border for better visibility */
-        padding: 5px !important; /* Add padding for better appearance */
-        border-radius: 3px !important; /* Add border-radius for rounded corners */
-      }
+      .dataTables_wrapper .dataTables_filter input, .dataTables_length select {
+      color: #000000 !important;
+      background-color: #ffffff !important;
+      border: 1px solid #ccc !important;
+      padding: 5px !important;
+      border-radius: 3px !important;
+     
+    }
 
       /* .table-responsive {
         overflow-x: auto;
@@ -535,38 +528,17 @@
         background-color: #dde8f1;
       }
 
-      /* Small screens (max-width: 600px) */
-      /* @media (max-width: 600px) {
-        .dataTable-custom thead {
-          display: none;
-        }
-        .dataTable-custom tr {
-          display: block;
-          margin-bottom: 10px;
-        }
-        .dataTable-custom td {
-          display: block;
-          text-align: right;
-          position: relative;
-          padding-left: 50%;
-        }
-        .dataTable-custom td::before {
-          content: attr(data-label);
-          position: absolute;
-          left: 0;
-          padding-left: 15px;
-          font-weight: bold;
-          text-align: left;
-        }
-      } */
+      .dataTables_wrapper .dataTables_info, .dataTables_paginate, .dataTables_length, .dataTables_length select, .dataTables_filter input {
+        font-size: 14px !important;
+      }
+     
 
-      /* Medium screens (max-width: 992px) */
-      /* @media (max-width: 992px) {
-        .dataTable-custom td:nth-of-type(4),
-        .dataTable-custom th:nth-of-type(4) {
-          display: none;
-        }
-      } */
+      @media (max-width: 576px) {
+        .dataTables_wrapper .dataTables_info, .dataTables_paginate, .dataTables_length, .dataTables_length select, .dataTables_filter input {
+        font-size: 12px !important;
+      }
+        
+      }
     </style>
   </head>
 
