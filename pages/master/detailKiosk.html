@@ -248,67 +248,42 @@
         } */
       }
 
-      ..nav-tabs-container {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            white-space: nowrap;
-        }
+      .nav-tabs {
+        border-radius: 5px;
+        box-shadow: 41.967px -41.967px 41.967px 0px rgba(165, 165, 165, 0.2) inset,
+          -41.967px 41.967px 41.967px 0px rgba(255, 255, 255, 0.2) inset;
+        backdrop-filter: blur(59.59266662597656px);
+        padding: 10px;
+        color: #dde8f1;
+        display: flex;
+        flex-wrap: nowrap;
+      }
 
-        .nav-tabs {
-            border-radius: 5px;
-            box-shadow: 41.967px -41.967px 41.967px 0px rgba(165, 165, 165, 0.2) inset,
-                        -41.967px 41.967px 41.967px 0px rgba(255, 255, 255, 0.2) inset;
-            backdrop-filter: blur(59.59266662597656px);
-            padding: 10px;
-            color: #dde8f1;
-            /* display: inline-flex; */
-            flex-wrap: nowrap;
-        }
+      .nav-tabs .nav-item {
+        flex: 0 0 auto;
+      }
 
-        .nav-tabs-container::-webkit-scrollbar {
-            display: none;
-        }
+      .kiosk-content {
+        align-items: center;
+        gap: 20px;
+        justify-content: space-between;
+      }
 
-        .nav-tabs-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+      .kiosk-title {
+        font-family: Inter, sans-serif;
+        justify-content: center;
+        border-radius: 5px;
+        align-self: stretch;
+        padding: 10px;
+        color: #dde8f1;
+      }
 
-        .kiosk-content {
-            align-items: center;
-            gap: 20px;
-            justify-content: space-between;
-        }
-
-        .kiosk-title {
-            font-family: Inter, sans-serif;
-            justify-content: center;
-            border-radius: 5px;
-            align-self: stretch;
-            padding: 10px;
-            color: #dde8f1;
-        }
-
-        .kiosk-item {
-            font-family: Inter, sans-serif;
-            align-self: stretch;
-            margin: auto 0;
-            display: inline-block;
-        }
-
-        @media (max-width: 991px) {
-            .nav-tabs {
-                display: flex;
-                overflow-x: hidden;
-                white-space: nowrap;
-                flex-wrap: nowrap;
-                -webkit-overflow-scrolling: touch;
-            }
-
-            .nav-tabs .nav-item {
-                flex: 0 0 auto;
-            }
-        }
+      .kiosk-item {
+        font-family: Inter, sans-serif;
+        align-self: stretch;
+        margin: auto 0;
+        display: inline-block;
+      }
     </style>
   </head>
 
@@ -509,7 +484,9 @@
                           <div class="card-body">
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="no_kiosk"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="no_kiosk"
                                   >Nomor Kiosk*</label
                                 >
 
@@ -527,7 +504,9 @@
                             </div>
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="versi_app"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="versi_app"
                                   >Versi Aplikasi*</label
                                 >
 
@@ -545,7 +524,9 @@
                             </div>
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="sts_kiosk"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="sts_kiosk"
                                   >Status Kiosk</label
                                 >
 
@@ -563,7 +544,9 @@
                             </div>
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="lokasi"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="lokasi"
                                   >Lokasi</label
                                 >
 
@@ -582,7 +565,9 @@
 
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="latitude"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="latitude"
                                   >Latitide*</label
                                 >
 
@@ -601,7 +586,9 @@
 
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="longitude"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="longitude"
                                   >Longitude</label
                                 >
 
@@ -645,7 +632,9 @@
                           <div class="card-body">
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="nama_printer"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="nama_printer"
                                   >Nama Printer*</label
                                 >
 
@@ -683,7 +672,9 @@
                             </div>
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="sts_printer"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="sts_printer"
                                   >Status Printer</label
                                 >
 
@@ -701,7 +692,9 @@
                             </div>
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="sts_kertas"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="sts_kertas"
                                   >Status Kertas</label
                                 >
 
@@ -720,7 +713,9 @@
 
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="sts_toner"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="sts_toner"
                                   >Status Toner*</label
                                 >
 
@@ -785,7 +780,9 @@
                           <div class="card-body">
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="processor"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="processor"
                                   >Processor*</label
                                 >
 
@@ -897,7 +894,9 @@
 
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="networking"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="networking"
                                   >Networking*</label
                                 >
 
@@ -960,7 +959,9 @@
                           <div class="card-body">
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="nama_webcam"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="nama_webcam"
                                   >Nama*</label
                                 >
 
@@ -978,7 +979,9 @@
                             </div>
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="port"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="port"
                                   >Port*</label
                                 >
 
@@ -1016,7 +1019,9 @@
                             </div>
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="focus_type"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="focus_type"
                                   >Focus Type*</label
                                 >
 
@@ -1056,7 +1061,9 @@
 
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="built-in-mic"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="built-in-mic"
                                   >Built-in-mic*</label
                                 >
 
@@ -1075,7 +1082,9 @@
 
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="networking"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="networking"
                                   >Networking*</label
                                 >
 
@@ -1138,7 +1147,9 @@
                           <div class="card-body">
                             <div class="col-10">
                               <div class="form-group row align-items-center">
-                                <label class="col-sm-4 col-form-label" for="cpu_util"
+                                <label
+                                  class="col-sm-4 col-form-label"
+                                  for="cpu_util"
                                   >CPU Utilization*</label
                                 >
                               </div>
@@ -1156,7 +1167,9 @@
                           </div>
                           <div class="col-10">
                             <div class="form-group row align-items-center">
-                              <label class="col-sm-4 col-form-label" for="ram_util"
+                              <label
+                                class="col-sm-4 col-form-label"
+                                for="ram_util"
                                 >RAM Utilization*</label
                               >
 
@@ -1174,7 +1187,9 @@
                           </div>
                           <div class="col-10">
                             <div class="form-group row align-items-center">
-                              <label class="col-sm-4 col-form-label" for="storage"
+                              <label
+                                class="col-sm-4 col-form-label"
+                                for="storage"
                                 >Storage*</label
                               >
                             </div>
@@ -1192,7 +1207,9 @@
                         </div>
                         <div class="col-10">
                           <div class="form-group row align-items-center">
-                            <label class="col-sm-4 col-form-label" for="sts_webcam"
+                            <label
+                              class="col-sm-4 col-form-label"
+                              for="sts_webcam"
                               >Status Webcam*</label
                             >
 
@@ -1211,7 +1228,9 @@
 
                         <div class="col-10">
                           <div class="form-group row align-items-center">
-                            <label class="col-sm-4 col-form-label" for="sts_camera_ocr"
+                            <label
+                              class="col-sm-4 col-form-label"
+                              for="sts_camera_ocr"
                               >Status Camera OCR*</label
                             >
 
@@ -1230,7 +1249,9 @@
 
                         <div class="col-10">
                           <div class="form-group row align-items-center">
-                            <label class="col-sm-4 col-form-label" for="sts_ereader"
+                            <label
+                              class="col-sm-4 col-form-label"
+                              for="sts_ereader"
                               >Status E-KTP rEADER*</label
                             >
 
@@ -1249,7 +1270,9 @@
 
                         <div class="col-10">
                           <div class="form-group row align-items-center">
-                            <label class="col-sm-4 col-form-label" for="api_connection"
+                            <label
+                              class="col-sm-4 col-form-label"
+                              for="api_connection"
                               >API Connection*</label
                             >
 
