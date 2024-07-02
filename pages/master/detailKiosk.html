@@ -248,84 +248,43 @@
         } */
       }
 
-      .nav-tabs-container {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            white-space: nowrap;
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
+      .nav-tabs {
+        border-radius: 5px;
+        box-shadow: 41.967px -41.967px 41.967px 0px rgba(165, 165, 165, 0.2) inset,
+          -41.967px 41.967px 41.967px 0px rgba(255, 255, 255, 0.2) inset;
+        backdrop-filter: blur(59.59266662597656px);
+        padding: 10px;
+        color: #dde8f1;
+      }
+      @media (max-width: 991px) {
+        .kiosk-container {
+          padding-right: 20px;
         }
-
-        .nav-tabs-container::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
-        }
-
-        .nav-tabs {
-            border-radius: 5px;
-            box-shadow: 41.967px -41.967px 41.967px 0px rgba(165, 165, 165, 0.2) inset,
-                        -41.967px 41.967px 41.967px 0px rgba(255, 255, 255, 0.2) inset;
-            backdrop-filter: blur(59.59266662597656px);
-            padding: 10px;
-            color: #dde8f1;
-            display: flex;
-            flex-wrap: nowrap;
-            margin-bottom: 15px; /* Added margin bottom for spacing */
-        }
-
-        .nav-tabs .nav-item {
-            flex: 0 0 auto;
-            margin-right: 10px; /* Adjust spacing between nav items */
-        }
-
+      }
+      .kiosk-content {
+        align-items: center;
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+      }
+      @media (max-width: 991px) {
         .kiosk-content {
-            align-items: center;
-            gap: 20px;
-            justify-content: space-between;
+          flex-wrap: wrap;
         }
-
-        .kiosk-title {
-            font-family: Inter, sans-serif;
-            justify-content: center;
-            border-radius: 5px;
-            align-self: stretch;
-            padding: 10px;
-            color: #dde8f1;
-        }
-
-        .kiosk-item {
-            font-family: Inter, sans-serif;
-            align-self: stretch;
-            margin: auto 0;
-            display: inline-block;
-        }
-
-        @media (max-width: 576px) {
-            .nav-tabs-container {
-                /* overflow-x: auto; */
-                white-space: nowrap;
-            }
-
-            .nav-tabs {
-                flex-wrap: nowrap;
-            }
-
-            .nav-tabs .nav-item {
-                margin-bottom: 5px;
-            }
-
-            .kiosk-content {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .kiosk-title, .kiosk-item {
-                text-align: center;
-                margin: 10px 0;
-            }
-
-            .form-group {
-                margin-bottom: 15px;
-            }
-        }
+      }
+      .kiosk-title {
+        font-family: Inter, sans-serif;
+        justify-content: center;
+        border-radius: 5px;
+        align-self: stretch;
+        padding: 10px;
+        color: #dde8f1;
+      }
+      .kiosk-item {
+        font-family: Inter, sans-serif;
+        align-self: stretch;
+        margin: auto 0;
+      }
     </style>
   </head>
 
@@ -820,6 +779,7 @@
                             </div>
                             <div class="col-10">
                               <div class="form-group row align-items-center">
+                                >
                                 <label class="col-sm-4 col-form-label" for="RAM"
                                   >RAM*</label
                                 >
@@ -1157,7 +1117,7 @@
                                 <label class="col-sm-4 col-form-label" for="cpu_util"
                                   >CPU Utilization*</label
                                 >
-                              
+                             
                               <div class="col-sm-8">
                                 <input
                                   type="text"
@@ -1175,6 +1135,7 @@
                               <label class="col-sm-4 col-form-label" for="ram_util"
                                 >RAM Utilization*</label
                               >
+
                               <div class="col-sm-8">
                                 <input
                                   type="text"
