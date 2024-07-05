@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Timeline</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .timeline {
+      position: relative;
+      margin: 0 auto;
+      padding: 20px;
+      list-style: none;
+      text-align: left;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 20px;
+      width: 4px;
+      background: #ddd;
+    }
+    .timeline-item {
+      position: relative;
+      margin: 20px 0;
+      padding-left: 40px;
+      display: none;
+    }
+    .timeline-item.active {
+      display: block;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20px;
+      width: 4px;
+      height: 100%;
+      background: #ddd;
+    }
+    .timeline-item-content {
+      padding: 10px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+    .timeline-red { background: #ffdddd; }
+    .timeline-grey { background: #eeeeee; }
+    .timeline-yellow { background: #ffffe0; }
+    .timeline-green { background: #ddffdd; }
+  </style>
+</head>
+<body>
+
+<div class="container my-5">
+  <table id="example2" class="display dataTable-custom table table-bordered">
+    <thead>
+      <tr>
+        <th>Status Error</th>
+        <th>Nomor Kiosk</th>
+        <th>Lokasi</th>
+        <th>Waktu Error</th>
+        <th>Status Pengerjaan</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Kertas Hampir Habis</td>
+        <td>K2300012</td>
+        <td>Kantor Pertanahan Kota Administratif Jakarta Pusat</td>
+        <td>20 Maret 2024</td>
+        <td>
+          <div class="td-center">
+            <span class="badge bg-warning">Dalam Perbaikan</span>
+          </div>
+        </td>
+        <td class="details-cell">
+          <button class="details-btn btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">Details</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Kertas Hampir Habis</td>
+        <td>K2300013</td>
+        <td>Kantor Pertanahan Kota Surabaya I</td>
+        <td>20 Maret 2024</td>
+        <td>
+          <div class="td-center">
+            <span class="badge bg-secondary">Dalam Antrian</span>
+          </div>
+        </td>
+        <td class="details-cell">
+          <button class="details-btn btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">Details</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Toner Hampir Habis</td>
+        <td>K2300014</td>
+        <td>Kantor Pertanahan Kota Surabaya II</td>
+        <td>20 Maret 2024</td>
+        <td>
+          <div class="td-center">
+            <span class="badge bg-warning">Dalam Perbaikan</span>
+          </div>
+        </td>
+        <td class="details-cell">
+          <button class="details-btn btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight">Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Kiosk Details</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="container">
+      <div class="timeline">
+        <div id="timeline-server-error" class="timeline-item timeline-red">
+          <div class="timeline-item-content">
+            <h4>Server Error</h4>
+            <p>Sistem mendeteksi adanya “Server Error” pada Kiosk. Pemberitahuan otomatis telah dikirim ke tim teknis untuk penanganan lebih lanjut.</p>
+            <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+          </div>
+        </div>
+        <div id="timeline-notification-received" class="timeline-item timeline-grey">
+          <div class="timeline-item-content">
+            <h4>Pemberitahuan Diterima oleh Tim Teknis</h4>
+            <p>Tim Teknis telah menerima pemberitahuan dan akan melakukan penanganan.</p>
+            <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+          </div>
+        </div>
+        <div id="timeline-in-repair" class="timeline-item timeline-yellow">
+          <div class="timeline-item-content">
+            <h4 class="text-white" style="background-color: #ff8533; border-radius: 5px;">Dalam Perbaikan</h4>
+            <p>Status pengerjaan diperbarui.</p>
+            <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+          </div>
+        </div>
+        <div id="timeline-repair-completed" class="timeline-item timeline-green">
+          <div class="timeline-item-content">
+            <h4>Perbaikan Selesai</h4>
+            <p>Perbaikan telah selesai. Kiosk telah dapat digunakan dengan normal.</p>
+            <span class="text-muted">15.00 WIB | 24 Maret 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const detailButtons = document.querySelectorAll('.details-btn');
+
+    detailButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const row = this.closest('tr');
+        const kioskNumber = row.querySelector('td:nth-child(2)').textContent.trim();
+        fetchKioskDetails(row, kioskNumber);
+      });
+    });
+
+    function fetchKioskDetails(row, kioskNumber) {
+      const details = getKioskDetails(row);
+
+      // Update the offcanvas title with the kiosk number
+      document.getElementById("offcanvasRightLabel").textContent = kioskNumber;
+
+      // Update the timeline based on the fetched details
+      updateTimelineContent(details.status);
+    }
+
+    function getKioskDetails(row) {
+      const status = row.querySelector('td:nth-child(5) .badge').textContent.trim();
+      return { status };
+    }
+
+    function updateTimelineContent(status) {
+      const timelineItems = {
+        "Server Error": document.getElementById('timeline-server-error'),
+        "Pemberitahuan Diterima oleh Tim Teknis": document.getElementById('timeline-notification-received'),
+        "Dalam Perbaikan": document.getElementById('timeline-in-repair'),
+        "Perbaikan Selesai": document.getElementById('timeline-repair-completed')
+      };
+
+      // Hide all timeline items
+      Object.values(timelineItems).forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // Update and show the timeline based on the status
+      switch (status) {
+        case 'Dalam Antrian':
+          showTimelineItems(timelineItems, ["Server Error", "Pemberitahuan Diterima oleh Tim Teknis"]);
+          break;
+        case 'Dalam Perbaikan':
+          showTimelineItems(timelineItems, ["Server Error", "Pemberitahuan Diterima oleh Tim Teknis", "Dalam Perbaikan"]);
+          break;
+        case 'Perbaikan Selesai':
+          showTimelineItems(timelineItems, ["Server Error", "Pemberitahuan Diterima oleh Tim Teknis", "Dalam Perbaikan", "Perbaikan Selesai"]);
+          break;
+        default:
+          showTimelineItems(timelineItems, ["Server Error"]);
+          break;
+      }
+    }
+
+    function showTimelineItems(timelineItems, activeItems) {
+      activeItems.forEach(itemKey => {
+        timelineItems[itemKey].classList.add('active');
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
